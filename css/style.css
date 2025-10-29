@@ -1,0 +1,197 @@
+@import "fonts.css";
+
+/*--------------------------------------
+                   INFO
+
+COLOR PALLET 1
+1. Cream - #f7ecda
+2. Camel - #af9060
+3. Navy - #1e3041
+4. Olive - #525d3c
+5. Charcoal - #524e4b
+6. Forest Green - #374f37
+7. Burgundy - #623636
+8. Taupe - #8e7863
+
+COLOR PALLET 2
+1. Mustard - #FFDC4F
+2. Fern Green - #52834F
+3. Jet - #323232
+4. White - #FFFFFF
+--------------------------------------*/
+:root {
+    --main1-color-cream: #f7ecda;
+    --main1-color-camel: #af9060;
+    --main1-color-navy: #1e3041;
+    --main1-color-olive: #525d3c;
+    --main1-color-charcoal: #524e4b;
+    --main1-color-forest-green: #374f37;
+    --main1-color-burgundy: #623636;
+    --main1-color-taupe: #8e7863;
+
+    --main2-color-mustard: #FFDC4F;
+    --main2-color-fern-green: #52834F;
+    --main2-color-jet: #323232;
+    --main2-color-white: #FFFFFF;
+
+    --items-per-page: 4;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+/*----------------0.5s------------------*/
+.fadeInUp-o5s {
+    animation: 0.5s fadeInUp;
+}
+.fadeInDown-o5s {
+    animation: 0.5s fadeInDown;
+}
+.fadeInLeft-o5s {
+    animation: 0.5s fadeInLeft;
+}
+.fadeInRight-o5s {
+    animation: 0.5s fadeInRight;
+}
+/*----------------1s------------------*/
+.fadeInUp-1s {
+    animation: 1s fadeInUp;
+}
+.fadeInDown-1s {
+    animation: 1s fadeInDown;
+}
+.fadeInLeft-1s {
+    animation: 1s fadeInLeft;
+}
+.fadeInRight-1s {
+    animation: 1s fadeInRight;
+}
+/*----------------1.5s------------------*/
+.fadeInUp-1o5s {
+    animation: 1.5s fadeInUp;
+}
+.fadeInDown-1o5s {
+    animation: 1.5s fadeInDown;
+}
+.fadeInLeft-1o5s {
+    animation: 1.5s fadeInLeft;
+}
+.fadeInRight-1o5s {
+    animation: 1.5s fadeInRight;
+}
+/*----------------2s------------------*/
+.fadeInUp-2s {
+    animation: 2s fadeInUp;
+}
+.fadeInDown-2s {
+    animation: 2s fadeInDown;
+}
+.fadeInLeft-2s {
+    animation: 2s fadeInLeft;
+}
+.fadeInRight-2s {
+    animation: 2s fadeInRight;
+}
+/*----------------3s------------------*/
+.fadeInUp-3s {
+    animation: 3s fadeInUp;
+}
+.fadeInDown-3s {
+    animation: 3s fadeInDown;
+}
+.fadeInLeft-3s {
+    animation: 3s fadeInLeft;
+}
+.fadeInRight-3s {
+    animation: 3s fadeInRight;
+}
+
+.navbar a {
+    font-size: 1.5rem;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.logos {
+    overflow: hidden;
+    padding: 60px 0;
+    background: white;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logos:before,
+.logos:after {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    content: "";
+    z-index: 2;
+}
+
+.logos-slide {
+    display: inline-block;
+    animation: 35s slide infinite linear;
+}
+
+.logos-slide img {
+    height: 50px;
+    margin: 0 40px;
+}
