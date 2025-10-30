@@ -1,4 +1,5 @@
 @import "fonts.css";
+@import "keyframes.css";
 
 /*--------------------------------------
                    INFO
@@ -37,135 +38,12 @@ COLOR PALLET 2
     --items-per-page: 4;
 }
 
-@keyframes fadeInUp {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0%);
-        opacity: 1;
-    }
-}
-@keyframes fadeInDown {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0%);
-        opacity: 1;
-    }
-}
-@keyframes fadeInLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    80% {
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-@keyframes fadeInRight {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    80% {
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-}
-/*----------------0.5s------------------*/
-.fadeInUp-o5s {
-    animation: 0.5s fadeInUp;
-}
-.fadeInDown-o5s {
-    animation: 0.5s fadeInDown;
-}
-.fadeInLeft-o5s {
-    animation: 0.5s fadeInLeft;
-}
-.fadeInRight-o5s {
-    animation: 0.5s fadeInRight;
-}
-/*----------------1s------------------*/
-.fadeInUp-1s {
-    animation: 1s fadeInUp;
-}
-.fadeInDown-1s {
-    animation: 1s fadeInDown;
-}
-.fadeInLeft-1s {
-    animation: 1s fadeInLeft;
-}
-.fadeInRight-1s {
-    animation: 1s fadeInRight;
-}
-/*----------------1.5s------------------*/
-.fadeInUp-1o5s {
-    animation: 1.5s fadeInUp;
-}
-.fadeInDown-1o5s {
-    animation: 1.5s fadeInDown;
-}
-.fadeInLeft-1o5s {
-    animation: 1.5s fadeInLeft;
-}
-.fadeInRight-1o5s {
-    animation: 1.5s fadeInRight;
-}
-/*----------------2s------------------*/
-.fadeInUp-2s {
-    animation: 2s fadeInUp;
-}
-.fadeInDown-2s {
-    animation: 2s fadeInDown;
-}
-.fadeInLeft-2s {
-    animation: 2s fadeInLeft;
-}
-.fadeInRight-2s {
-    animation: 2s fadeInRight;
-}
-/*----------------3s------------------*/
-.fadeInUp-3s {
-    animation: 3s fadeInUp;
-}
-.fadeInDown-3s {
-    animation: 3s fadeInDown;
-}
-.fadeInLeft-3s {
-    animation: 3s fadeInLeft;
-}
-.fadeInRight-3s {
-    animation: 3s fadeInRight;
-}
-
 .navbar a {
     font-size: 1.5rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
 }
-
-@keyframes slide {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-100%);
-    }
+.navbar a:hover {
+    border-bottom: 2px solid rgba(0, 0, 0, 1);
 }
 
 .logos {
@@ -194,4 +72,31 @@ COLOR PALLET 2
 .logos-slide img {
     height: 50px;
     margin: 0 40px;
+}
+
+.tools-used img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.5rem;
+}
+
+.card-img-top {
+    transition: 0.3s ease-in-out;
+    transform-origin: center center;
+    z-index: 0;
+}
+
+.card-body {
+    opacity: 1;
+    transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+    .card-img-top {
+        transform: scale(2);
+        z-index: 1;
+    }
+    .card-body {
+        opacity: 0.2;
+    }
 }

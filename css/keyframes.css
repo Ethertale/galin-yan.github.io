@@ -1,0 +1,151 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.fadeIn {
+    animation: 1s fadeIn;
+}
+.fadeOut {
+    animation: 1s fadeOut;
+}
+/*----------------0.5s------------------*/
+.fadeInUp-o5s {
+    animation: 0.5s fadeInUp;
+}
+.fadeInDown-o5s {
+    animation: 0.5s fadeInDown;
+}
+.fadeInLeft-o5s {
+    animation: 0.5s fadeInLeft;
+}
+.fadeInRight-o5s {
+    animation: 0.5s fadeInRight;
+}
+/*----------------1s------------------*/
+.fadeInUp-1s {
+    animation: 1s fadeInUp;
+}
+.fadeInDown-1s {
+    animation: 1s fadeInDown;
+}
+.fadeInLeft-1s {
+    animation: 1s fadeInLeft;
+}
+.fadeInRight-1s {
+    animation: 1s fadeInRight;
+}
+/*----------------1.5s------------------*/
+.fadeInUp-1o5s {
+    animation: 1.5s fadeInUp;
+}
+.fadeInDown-1o5s {
+    animation: 1.5s fadeInDown;
+}
+.fadeInLeft-1o5s {
+    animation: 1.5s fadeInLeft;
+}
+.fadeInRight-1o5s {
+    animation: 1.5s fadeInRight;
+}
+/*----------------2s------------------*/
+.fadeInUp-2s {
+    animation: 2s fadeInUp;
+}
+.fadeInDown-2s {
+    animation: 2s fadeInDown;
+}
+.fadeInLeft-2s {
+    animation: 2s fadeInLeft;
+}
+.fadeInRight-2s {
+    animation: 2s fadeInRight;
+}
+/*----------------3s------------------*/
+.fadeInUp-3s {
+    animation: 3s fadeInUp;
+}
+.fadeInDown-3s {
+    animation: 3s fadeInDown;
+}
+.fadeInLeft-3s {
+    animation: 3s fadeInLeft;
+}
+.fadeInRight-3s {
+    animation: 3s fadeInRight;
+}
