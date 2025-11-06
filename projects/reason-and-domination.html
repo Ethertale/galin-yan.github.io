@@ -10,12 +10,62 @@
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <title>Galin Yanakov</title>
+    <style>
+        .img-gallery {
+            width: 80%;
+            margin: 100px auto 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 30px;
+        }
+
+        .img-gallery img {
+            width: 100%;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .img-gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .imageWrapper {
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .imageWrapper img {
+            width: 90%;
+            max-width: 1200px;
+            min-width: 380px;
+        }
+
+        .imageWrapper span {
+            position: absolute;
+            top: 5%;
+            right: 5%;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
 <nav style="background-color: rgba(0, 0, 0, 0)" class="navbar navbar-expand-lg">
     <div style="background-color: rgba(0, 0, 0, 0)" class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
@@ -32,19 +82,56 @@
 <div class="container d-flex justify-content-center align-items-center align-content-center flex-column">
     <div class="row d-flex justify-content-center align-items-center align-content-center flex-column">
         <div class="col-12 text-center">
-            <img class="pt-5" style="width: 380px;" src="/rsc/imgs/projects/Reason-And-Domination/logo-textonly.png" alt="">
+            <img class="pt-5" style="width: 380px;" src="/rsc/imgs/projects/Reason-And-Domination/logo-textonly.png"
+                 alt="">
         </div>
         <div class="col-12 col-lg-6">
-            <p class="pt-3 montserrat-font">A SoftUni defense project where I built a small Spring app showcasing authentication and role-based access with Spring Security, reactive web pages with Bootstrap and Thymeleaf, CRUD for posts and comments, user registration/login, and MySQL persistence.</p>
+            <p class="pt-3 montserrat-font">A SoftUni defense project where I built a small Spring app showcasing
+                authentication and role-based access with Spring Security, reactive web pages with Bootstrap and
+                Thymeleaf, CRUD for posts and comments, user registration/login, and MySQL persistence.</p>
         </div>
     </div>
+
+    <div class="imageWrapper" id="wrapper">
+        <img src="/rsc/imgs/projects/Reason-And-Domination/Welcome.png" id="bigImg" alt="">
+        <span id="closeBtn">X</span>
+    </div>
+
     <div class="container">
         <div class="img-gallery">
-
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Welcome.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Login.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Register.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Home.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/News.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/News-Ex-Post.png" alt="">
         </div>
     </div>
 </div>
 
+<script>
+    const images = document.querySelectorAll('.img-gallery img');
+    const wrapper = document.getElementById('wrapper');
+    const imgWrapper = document.getElementById('bigImg');
+    const closeBtn = document.getElementById('closeBtn');
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            const filename = img.getAttribute('src').split('/').pop()
+            openImage('/rsc/imgs/projects/Reason-And-Domination/' + filename)
+        })
+    })
+
+    function openImage(imageUrl) {
+        imgWrapper.src = imageUrl
+        wrapper.style.display = 'flex'
+    }
+
+    closeBtn.addEventListener('click', () => wrapper.style.display = 'none')
+    wrapper.addEventListener('click', (e) => {
+        if (e.target === wrapper) wrapper.style.display = 'none'
+    })
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
