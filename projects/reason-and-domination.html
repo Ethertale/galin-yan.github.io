@@ -9,58 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/imgGalleryStyling.css">
     <title>Galin Yanakov</title>
-    <style>
-        .img-gallery {
-            width: 80%;
-            margin: 100px auto 50px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            grid-gap: 30px;
-        }
-
-        .img-gallery img {
-            width: 100%;
-            cursor: pointer;
-            transition: 0.3s ease-in-out;
-        }
-
-        .img-gallery img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
-
-        .imageWrapper {
-            width: 100%;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.9);
-            position: fixed;
-            top: 0;
-            left: 0;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        }
-
-        .imageWrapper img {
-            width: 90%;
-            max-width: 1200px;
-            min-width: 380px;
-        }
-
-        .imageWrapper span {
-            position: absolute;
-            top: 5%;
-            right: 5%;
-            font-size: 50px;
-            color: white;
-            cursor: pointer;
-        }
-    </style>
 </head>
-<body>
+<body data-project="Reason-And-Domination">
 
 <nav style="background-color: rgba(0, 0, 0, 0)" class="navbar navbar-expand-lg">
     <div style="background-color: rgba(0, 0, 0, 0)" class="container-fluid">
@@ -105,34 +57,28 @@
             <img src="/rsc/imgs/projects/Reason-And-Domination/Home.png" alt="">
             <img src="/rsc/imgs/projects/Reason-And-Domination/News.png" alt="">
             <img src="/rsc/imgs/projects/Reason-And-Domination/News-Ex-Post.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Forum.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Forum-Ex-Post.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Guides.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Guides-Ex-Post.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Lookup.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Races.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Classes.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Items.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Item-Ex.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Dungeons.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Dungeon-Ex.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Timers.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Admin-Panel.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Support.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Profile.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Error-500.png" alt="">
+            <img src="/rsc/imgs/projects/Reason-And-Domination/Error-404.png" alt="">
         </div>
     </div>
 </div>
 
-<script>
-    const images = document.querySelectorAll('.img-gallery img');
-    const wrapper = document.getElementById('wrapper');
-    const imgWrapper = document.getElementById('bigImg');
-    const closeBtn = document.getElementById('closeBtn');
-
-    images.forEach(img => {
-        img.addEventListener('click', () => {
-            const filename = img.getAttribute('src').split('/').pop()
-            openImage('/rsc/imgs/projects/Reason-And-Domination/' + filename)
-        })
-    })
-
-    function openImage(imageUrl) {
-        imgWrapper.src = imageUrl
-        wrapper.style.display = 'flex'
-    }
-
-    closeBtn.addEventListener('click', () => wrapper.style.display = 'none')
-    wrapper.addEventListener('click', (e) => {
-        if (e.target === wrapper) wrapper.style.display = 'none'
-    })
-</script>
-
+<script src="../js/imgOpener.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
