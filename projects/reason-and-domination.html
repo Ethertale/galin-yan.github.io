@@ -11,11 +11,32 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/imgGalleryStyling.css">
     <title>Galin Yanakov</title>
+    <style>
+        body {
+            background-image: url("/rsc/imgs/projects/Reason-And-Domination/home-image.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .img-gallery img, .imageWrapper img, #projectDescription{
+            border: 5px ridge #d1a35d;
+        }
+        #projectDescription {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        #imageDescriptionContainer {
+            position: absolute;
+            top: 85%;
+            min-font-size: 0.7rem;
+            max-font-size: 1.3rem;
+            color: white;
+        }
+    </style>
 </head>
-<body data-project="Reason-And-Domination">
+<body class="bodyAppear" data-project="Reason-And-Domination">
 
-<nav style="background-color: rgba(0, 0, 0, 0)" class="navbar navbar-expand-lg">
-    <div style="background-color: rgba(0, 0, 0, 0)" class="container-fluid">
+<nav class="navbar sticky-top navbar-expand-lg">
+    <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,11 +55,12 @@
 <div class="container d-flex justify-content-center align-items-center align-content-center flex-column">
     <div class="row d-flex justify-content-center align-items-center align-content-center flex-column">
         <div class="col-12 text-center">
-            <img class="pt-5" style="width: 380px;" src="/rsc/imgs/projects/Reason-And-Domination/logo-textonly.png"
+            <img class="pt-5 logoAppear" style="width: 380px;" src="/rsc/imgs/projects/Reason-And-Domination/logo-textonly.png"
                  alt="">
         </div>
-        <div class="col-12 col-lg-6">
-            <p class="pt-3 montserrat-font">A SoftUni defense project where I built a small Spring app showcasing
+        <div id="projectDescription" class="col-12 col-lg-6 mt-3">
+            <h3 class="cinzel-font text-center mt-3">Reason & Domination</h3>
+            <p class="mt-3 montserrat-font text-center">A SoftUni defense project where I built a small Spring app showcasing
                 authentication and role-based access with Spring Security, reactive web pages with Bootstrap and
                 Thymeleaf, CRUD for posts and comments, user registration/login, and MySQL persistence.</p>
         </div>
@@ -47,6 +69,9 @@
     <div class="imageWrapper" id="wrapper">
         <img src="/rsc/imgs/projects/Reason-And-Domination/Welcome.png" id="bigImg" alt="">
         <span id="closeBtn">X</span>
+        <div id="imageDescriptionContainer" class="container text-center">
+            <p class="montserrat-font" id="imageDescription">silly</p>
+        </div>
     </div>
 
     <div class="container">

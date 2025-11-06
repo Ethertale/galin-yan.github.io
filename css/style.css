@@ -38,14 +38,21 @@ COLOR PALLET 2
     --items-per-page: 4;
 }
 
+nav {
+    background: linear-gradient(180deg,rgba(0, 0, 0, 0.76) 0%, rgba(255, 255, 255, 0) 95%);
+}
+
 .navbar a {
     font-size: 1.5rem;
     border-bottom: 2px solid rgba(0, 0, 0, 0);
     transition: 0.3s ease-in-out;
+    color: white;
+    text-shadow: 0 0 5px black;
 }
 
 .navbar a:hover {
-    border-bottom: 2px solid rgba(0, 0, 0, 1);
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+    color: white;
 }
 
 .logos {
