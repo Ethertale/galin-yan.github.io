@@ -13,11 +13,34 @@
         a {
             text-decoration: none;
         }
+        #backgroundImage{
+            width: 100%;
+            height: 100%;
+            background-image: url("rsc/imgs/background-test-image.jpg");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            z-index: -100;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+        @media (max-width: 768px) {
+            .logos-slide img {
+                margin: 10px;
+            }
+        }
+        @media (min-width: 769px) {
+            .logos-slide img {
+                margin: 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar sticky-top navbar-expand-lg">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,6 +57,8 @@
 </nav>
 
 
+<div id="backgroundImage"></div>
+
 <div class="container">
     <div style="height: 60vh" class="row">
         <div class="col-12 col-lg-4 fadeIn text-center align-content-center">
@@ -47,7 +72,7 @@
 </div>
 
 <div class="container">
-    <div class="logos fadeInUp-2s">
+    <div class="logos fadeInUp-2s" style="background-color:transparent">
         <div class="logos-slide">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"  alt=""/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"  alt=""/>
