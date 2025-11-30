@@ -31,9 +31,27 @@
 <div class="container d-flex justify-content-center align-items-center align-content-center flex-column">
     <img style="width: 15vw" src="https://www.cybernautme.com/wp-content/themes/excellenceauditing/assets/images/blog-detail-main-pic.png" alt="">
     <h1 class="cinzel-font">UNDER CONSTRUCTION</h1>
+    <p id="mainText">My name is <span id="myName"></span> and I have <span id="repoCount"></span> repos.</p>
 </div>
 
 
+<script type="module">
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+
+    const octokit = new Octokit();
+
+    async function loadGitHub() {
+        const user = await octokit.request("GET /users/{username}", {
+            username: "Ethertale",
+            headers: { "X-GitHub-Api-Version": "2022-11-28" }
+        });
+
+        document.getElementById("myName").textContent = user.data.name;
+        document.getElementById("repoCount").textContent = user.data.public_repos;
+    }
+
+    loadGitHub();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
