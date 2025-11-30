@@ -1,0 +1,16 @@
+.imageHover {
+    box-shadow: 0 0 15px rgba(100, 211, 20, 0), 0 10px 10px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease-in-out;
+}
+
+.imageHover:hover {
+    box-shadow: 0 0 30px rgba(100, 211, 20, 0.5), 0 10px 10px rgba(0, 0, 0, 0.8);
+    transform: scale(1.03);
+}
+
+.links div a img{
+    transition: 0.3s ease-in-out;
+}
+.links div a img:hover {
+    transform: scale(1.03) translate(0, -3px);
+}
