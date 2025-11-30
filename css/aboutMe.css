@@ -14,3 +14,13 @@
 .links div a img:hover {
     transform: scale(1.03) translate(0, -3px);
 }
+
+/*WORK EXPERIENCE STYLING*/
+
+#work1, #work2 {
+    border-left: 3px solid gray;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
