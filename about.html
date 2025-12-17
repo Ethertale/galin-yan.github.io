@@ -21,6 +21,19 @@
             cursor: pointer;
             transition: 0.3s ease-in-out;
         }
+        #backgroundImage{
+            width: 100%;
+            height: 100%;
+            background-image: url("rsc/imgs/background-test-image.jpg");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            z-index: -100;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
     </style>
 </head>
 <body>
@@ -40,6 +53,8 @@
         </div>
     </div>
 </nav>
+
+<div id="backgroundImage"></div>
 
 <div style="min-height: 80vh" class="container d-flex justify-content-center align-items-center align-content-center flex-column">
 <!--    <img style="width: 15vw" src="https://www.cybernautme.com/wp-content/themes/excellenceauditing/assets/images/blog-detail-main-pic.png" alt="">-->
@@ -66,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 align-content-center">
+            <div id="mainDesc" class="col-12 col-lg-6 align-content-center">
                 <h1 class="cinzel-font text-center">GALIN YANAKOV</h1>
                 <p class="montserrat-font">Hello, my name is Galin, a web and software developer. I love to create and design various projects both for fun and to learn.
                 With Spring Boot, Thymeleaf/Vue.js and SQL I can bring almost anything to life and making ideas and dreams come true. For me life
