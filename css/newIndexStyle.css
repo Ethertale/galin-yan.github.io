@@ -221,7 +221,21 @@ section.content {
     padding: 14px;
     border-radius: 10px;
     background: linear-gradient(180deg, rgba(203, 72, 72, 0.01), rgba(255, 255, 255, 0.02));
-    border: 1px solid rgba(255, 255, 255, 0.03)
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: 0.2s ease-in-out;
+}
+
+.card h3 {
+    color: rgba(255,255,255, 1);
+}
+
+.card p {
+    color: rgba(255,255,255, 0.7);
+}
+
+a .card:hover {
+    background-color: rgba(235, 170, 0, 0.10);
+    transform: scale(1.05);
 }
 
 footer {

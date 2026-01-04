@@ -22,7 +22,7 @@
                     </div>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link montserrat-font mx-1" href="index.html">Home</a>
+                    <a class="nav-link montserrat-font mx-1" href="newIndex.html">Home</a>
                     <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
                     <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
                     <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
@@ -53,8 +53,8 @@
             </div>
 
             <div class="cta">
-                <a class="btn" href="#projects">View Projects</a>
-                <a class="btn secondary" href="#contacts">Contact</a>
+                <a class="btn" href="projects.html">View Projects</a>
+                <a class="btn secondary" href="contacts.html">Contact</a>
             </div>
 
             <div class="tools-panel" style="margin-top:16px">
@@ -93,14 +93,18 @@
     <section id="projects" class="content">
         <h2 style="font-family:Cinzel,serif;color:var(--accent)">Selected Projects</h2>
         <div class="grid">
-            <article class="card">
-                <h3>Reason & Domination — Forum & Game DB</h3>
-                <p>Built with Spring Boot, Spring Data JPA, Spring Security, Thymeleaf and Vue — features user profiles, forum, and content management. Focus: clean architecture and automated tests.</p>
-            </article>
-            <article class="card">
-                <h3>The Fable Stable — Bookstore</h3>
-                <p>Spring + VueJS online bookstore project. Implemented cart, search, and admin panel. Containerized with Docker for deployment.</p>
-            </article>
+            <a style="text-decoration: none" href="projects/reason-and-domination.html">
+                <article class="card">
+                    <h3>Reason & Domination</h3>
+                    <p>Built with Java Spring Boot, Spring Security, MySQL and Thymeleaf, it features user profiles, forum and content management.</p>
+                </article>
+            </a>
+            <a style="text-decoration: none" href="projects/find-a-dice.html">
+                <article class="card">
+                    <h3>Find A Dice</h3>
+                    <p>A community platform for tabletop roleplayers to build personas, discover like-minded groups, join online or in-person events, designed to make finding a campaign as easy as finding friends.</p>
+                </article>
+            </a>
         </div>
     </section>
 
@@ -120,8 +124,8 @@
         <h2 style="font-family:Cinzel,serif;color:var(--accent)">Contacts</h2>
         <div class="grid">
             <div class="card">
-                <p><strong>Email:</strong> <a href="mailto:galin@example.com">galin@example.com</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/galin">github.com/galin</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@galin-yan.com?subject=Let%27s%20Talk">info@galin-yan.com</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/Ethertale">Ethertale</a></p>
             </div>
             <div class="card">
                 <p>Feel free to reach out for collaborations, job opportunities, or questions about any project.</p>
@@ -135,7 +139,6 @@
     <small>© <span id="year"></span> Galin "Ether" Yan</small>
 </footer>
 
-<!-- Scripts -->
 <script>
     const copy = document.querySelector(".logos-slide").cloneNode(true);
     document.querySelector(".logos").appendChild(copy);
