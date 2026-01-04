@@ -34,10 +34,9 @@
 
 <main id="home">
     <div class="hero">
-        <!-- Portrait: replace src with the candidate's photo URL (square recommended) -->
         <div class="portrait">
             <div class="frame">
-                <img src="rsc/imgs/profpic.jpg" alt="Galin Yan portrait" onerror="this.src='https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/person.svg'"/>
+                <img id="profilePic" style="max-height: 256px; max-width: 256px" class="img-fluid imageHover" src="https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?semt=ais_hybrid&w=740&q=80" alt="">
             </div>
         </div>
 
@@ -151,6 +150,22 @@
         crossorigin="anonymous"></script>
 <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script type="module">
+    import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
+
+    const octokit = new Octokit();
+
+    async function loadGitHub() {
+        const user = await octokit.request("GET /users/{username}", {
+            username: "Ethertale",
+            headers: { "X-GitHub-Api-Version": "2022-11-28" }
+        });
+
+        document.getElementById("profilePic").src = user.data.avatar_url;
+    }
+
+    loadGitHub();
 </script>
 </body>
 </html>
