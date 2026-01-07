@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/forumPost-style.css}" type="text/css">
+    <title th:text="'R&D - Guides - ' + ${specPost.getTitle()}">R&D Guides - Arena Season 3</title>
+    <style>
+        * {
+            color: white;
+        }
+        option {
+            color: black;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://i.ibb.co/6g0crpd/background.png')">
+<!--TODO Add nav bar-->
+<nav></nav>
+
+<div class="container border mt-5">
+    <h2>Edisonspire Foundry</h2>
+    <small>2000-01-01 10:00:00</small>
+    <div class="container border-top">
+        Honor System PvP Season Update
+        <br><br>
+        Arena Season 3 blazes forward with the Embersteel Crusade, a new chapter in the PvP wars of Azar. This season introduces the Embersteel Battlegear—a devastating armor set forged in the molten crucibles beneath Geargrind Grotto. Each piece gleams with glowing runes and scorched plating, offering stat boosts tailored for aggressive momentum and sustained pressure in battle. The Embersteel Crusade introduces:
+        <br>
+        Heat Threshold – Players build "heat" through offensive actions. At max heat, their damage is boosted by 10% for 6 sec but they also take 15% more damage.
+        <br>
+        Arena Environments – Embersteel arenas include destructible terrain, moving hazards (e.g., conveyor floors), and reduced line-of-sight pillars.
+        <br><br>
+        New Rewards:
+        <br>
+        Embersteel Battlegear (Armor Set) – Enhances heat-related mechanics, grants passive haste scaling with Heat Threshold.
+        <br>
+        Ashenforged Arsenal (Weapons) – Special PvP effects such as crit fire burst, armor shred, and brief movement impair immunity.
+        <br>
+        Mount: Emberhound, a lava-hound mount with a flame trail and PvP flag trail emitter.
+        <br>
+        New rankings and cosmetic titles include “Forged Champion” and “Ashen Warlord.” The top 0.1% will earn exclusive recolors of the Embersteel set with molten core effects.
+        <br>
+        Prepare for war. No mercy in the Embersteel arenas.
+    </div>
+</div>
+
+<footer style="color: white">
+    <p class="text-center">@Ethertale 2025</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/forumPost-style.css}" type="text/css">
+    <title th:text="'R&D - Guides - ' + ${specPost.getTitle()}">R&D Guides - Edisonspire Foundry</title>
+    <style>
+        * {
+            color: white;
+        }
+        option {
+            color: black;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://i.ibb.co/6g0crpd/background.png')">
+<!--TODO Add nav bar-->
+<nav></nav>
+
+<div class="container border mt-5">
+    <h2>Edisonspire Foundry</h2>
+    <small>2000-01-01 10:00:00</small>
+    <div class="container border-top">
+        Level 60 | 40-Player Raid | 7 Bosses
+        <br>
+        <br>
+        At the summit of Azar’s grandest industrial spire, the Edisonspire Foundry looms like a crown of brass and lightning. This raid challenges adventurers to navigate a labyrinth of lethal inventions, steam-powered guardians, and unstable energy fields.
+        <br>
+        The mad genius ruling the Foundry, known only as the Arch-Inventor, is on the brink of activating a sentient machine capable of reshaping reality. Players must ascend through chambers of malfunctioning constructs, unstable reactors, and shifting platforms before facing the final encounter at the Peak of Innovation.
+        <br>
+        Expect intense coordination, environmental hazards, and boss mechanics that require both precision and nerve. Conquer the Foundry, and you might claim schematics for some of the rarest techno-magical gear in the game.
+        <br>
+        <br>
+        Boss Encounters:
+        <br>
+        Ignition Squad Delta – A trio of elite engineers using elemental prototypes: flame, frost, and shock. Players must split into teams and coordinate takedowns to avoid overlapping elemental surges.
+        <br>
+        Magnetron Core – A giant electromagnetic orb that repels and attracts players. Standing too close stacks static debuffs; standing too far risks getting flung into hazards.
+        <br>
+        Brass Hydra – Multi-headed mechanical serpent. Each head has its own phase (poison gas, fire breath, oil slick). Destroying one head too quickly empowers the others.
+        <br>
+        Steamripper Sentinel – A walking tank. Requires coordinated tank swapping due to stacking heat debuff. Periodic ground flames and oil puddles create tight movement zones.
+        <br>
+        The Clockwork Choir – A swarm of harmonized drones that attack in rhythm-based waves. Players must interrupt synchronized "chorus casts" or wipe is guaranteed.
+        <br>
+        Edison's Prototype X9 – Near-boss level construct with randomized programming phases: defense mode, assault mode, overload mode. Each has its own mechanics and adds.
+        <br>
+        Archon Edison – Final boss. Uses a mix of tech and arcane madness: gravity inversion zones, unstable portals, and personal targeting beams. Players must coordinate position shifts every 30%, and deal with summoned fragments of "failed realities" that alter the arena's rules (e.g., reversed controls, silence zones).
+    </div>
+</div>
+
+<footer style="color: white">
+    <p class="text-center">@Ethertale 2025</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
