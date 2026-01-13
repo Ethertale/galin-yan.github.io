@@ -32,6 +32,10 @@
             transform: translateY(-5px);
         }
 
+        #contactForm {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
         @media (max-width: 999px) {
             #iconsContainer {
                 display: flex;
@@ -86,30 +90,7 @@
             </a>
         </div>
         <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center align-content-center">
-            <div class="container align-content-center">
-                <div class="text-center">
-                    <form id="contactForm">
-                        <div>
-                            <label class="form-label" for="name">Name:</label>
-                            <input class="form-control" placeholder="John Deer" type="text" id="name" name="name" required>
-                        </div>
-
-                        <div>
-                            <label class="form-label" for="email">Email:</label>
-                            <input class="form-control" placeholder="your.email-here@mail.com" type="email" id="email" name="email" required>
-                        </div>
-
-                        <div>
-                            <label class="form-label" for="message">Message:</label>
-                            <textarea class="form-control" placeholder="Let's talk..." id="message" name="message" rows="5" required></textarea>
-                        </div>
-
-                        <button class="btn btn-secondary" type="submit">Email Me</button>
-
-                        <div id="formStatus"></div>
-                    </form>
-                </div>
-            </div>
+            <a class="btn btn-primary" href="mailto:info@galin-yan.com?subject=Let's Talk">Email me here!</a>
         </div>
     </div>
 </div>
