@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@fancyapps/ui": "^6.1.6",
-    "@octokit/core": "^7.0.6"
+    "@octokit/core": "^7.0.6",
+    "resend": "^6.7.0"
   }
 }
