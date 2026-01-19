@@ -9,6 +9,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Galin Yanakov</title>
+    <style>
+        #backgroundImage{
+            width: 100%;
+            height: 100%;
+            background-image: url("rsc/imgs/background-test-image.jpg");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            z-index: -100;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+        .row a {
+            transition: 0.25s ease-in-out;
+            width: 100px;
+        }
+
+        .row a:hover {
+            transform: translateY(-5px);
+        }
+
+        #contactForm {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 999px) {
+            #iconsContainer {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        @media (min-width: 1000px) {
+            #iconsContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: end;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -29,26 +73,24 @@
     </div>
 </nav>
 
+<div id="backgroundImage"></div>
+
 <div class="container text-center">
-    <h1 class="cinzel-font">You can find me here!</h1>
-    <div class="row ">
-        <div class="col-6 col-lg-4">
+<!--    <h1 class="cinzel-font">You can find me here!</h1>-->
+    <div class="row mt-5">
+        <div id="iconsContainer" class="col-12 col-lg-3">
             <a href="https://github.com/Ethertale" target="_blank">
                 <img width="100" height="100" src="https://img.icons8.com/ios/250/github--v1.png" alt="github--v1"/>
             </a>
-        </div>
-        <div class="col-6 col-lg-4">
             <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank">
                 <img width="100" height="100" src="https://img.icons8.com/ios/2500/linkedin.png" alt="linkedin"/>
             </a>
-        </div>
-        <div class="col-6 col-lg-4">
             <a href="https://www.instagram.com/galin.yan/" target="_blank">
                 <img width="100" height="100" src="https://img.icons8.com/ios/250/instagram-new--v1.png" alt="instagram-new--v1"/>
             </a>
         </div>
-        <div class="col-12">
-            <a href="mailto:galin-yan5@gmail.com?subject=Let%27s%20Talk" class="btn btn-secondary" role="button">EMAIL ME, LET'S TALK</a>
+        <div class="col-12 col-lg-6 d-flex justify-content-center align-items-center align-content-center">
+            <a class="btn btn-primary" href="mailto:info@galin-yan.com?subject=Let's Talk">Email me here!</a>
         </div>
     </div>
 </div>
