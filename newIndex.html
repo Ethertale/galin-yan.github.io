@@ -42,7 +42,8 @@
 
         <div class="intro">
             <h1>Welcome, traveler.</h1>
-            <p>I'm <strong>Galin Yan</strong> — a passionate Java developer specializing in Spring, backend systems, and the tools needed to ship reliable software. I craft REST APIs, build integrations, and test with care.</p>
+            <p>I'm <strong>Galin Yan</strong> — a passionate Java developer specializing in Spring, backend systems, and
+                the tools needed to ship reliable software. I craft REST APIs, designs, and build with care and passion.</p>
 
             <div class="meta">
                 <div class="chip">Class: Java / Spring</div>
@@ -95,13 +96,15 @@
             <a style="text-decoration: none" href="projects/reason-and-domination.html">
                 <article class="card">
                     <h3>Reason & Domination</h3>
-                    <p>Built with Java Spring Boot, Spring Security, MySQL and Thymeleaf, it features user profiles, forum and content management.</p>
+                    <p>Built with Java Spring Boot, Spring Security, MySQL and Thymeleaf, it features user profiles,
+                        forum and content management.</p>
                 </article>
             </a>
             <a style="text-decoration: none" href="projects/find-a-dice.html">
                 <article class="card">
                     <h3>Find A Dice</h3>
-                    <p>A community platform for tabletop roleplayers to build personas, discover like-minded groups, join online or in-person events, designed to make finding a campaign as easy as finding friends.</p>
+                    <p>A community platform for tabletop roleplayers to build personas, discover like-minded groups,
+                        join online or in-person events, designed to make finding a campaign as easy as finding friends.</p>
                 </article>
             </a>
         </div>
@@ -111,10 +114,16 @@
         <h2 style="font-family:Cinzel,serif;color:var(--accent)">About Me</h2>
         <div class="grid">
             <div class="card">
-                <p>I enjoy learning tooling that keeps systems reliable: Docker, Jenkins, Prometheus, Grafana, and writing tests with JUnit. I also like UI/UX prototyping with Figma and exploring game development with UE5.</p>
+                <p>I enjoy creating software and websites from the ground up for clients and for fun.
+                    With my stack I can help you bring your ideas from your imagination to a real product.
+                    <br>
+                    More about me <a href="about.html">here...</a>
+                </p>
             </div>
             <div class="card">
-                <p>Open to junior backend and full-stack roles. Strong foundation in Java, Spring ecosystem, SQL databases, and modern front-end frameworks like Vue and vanilla JS.</p>
+                <p>As a software engineer I'm open to work as a junior back-end, front-end, full-stack roles
+                    and freelance. Strong foundation in Java, Spring ecosystem, SQL databases, and modern front-end
+                    frameworks like Vue and vanilla JS.</p>
             </div>
         </div>
     </section>
@@ -127,7 +136,7 @@
                 <p><strong>GitHub:</strong> <a href="https://github.com/Ethertale">Ethertale</a></p>
             </div>
             <div class="card">
-                <p>Feel free to reach out for collaborations, job opportunities, or questions about any project.</p>
+                <p>You're welcome to reach out for collaborations, job opportunities, or questions about any project.</p>
             </div>
         </div>
     </section>
@@ -136,6 +145,8 @@
 
 <footer>
     <small>© <span id="year"></span> Galin "Ether" Yan</small>
+    <br>
+    <small>Last update: <span id="lastPushDate"></span></small>
 </footer>
 
 <script>
@@ -157,12 +168,20 @@
     const octokit = new Octokit();
 
     async function loadGitHub() {
-        const user = await octokit.request("GET /users/{username}", {
-            username: "Ethertale",
-            headers: { "X-GitHub-Api-Version": "2022-11-28" }
+        const user = await octokit.request('GET /users/{username}', {
+            username: 'Ethertale',
+            headers: { 'X-GitHub-Api-Version': '2022-11-28' }
+        });
+
+        const lastPushDate = await octokit.request('GET /repos/Ethertale/galin-yan.github.io/branches/main', {
+            owner: 'Ethertale',
+            repo: 'galin-yan.github.io',
+            branch: 'main',
+            headers: { 'X-GitHub-Api-Version': '2022-11-28' }
         });
 
         document.getElementById("profilePic").src = user.data.avatar_url;
+        document.getElementById('lastPushDate').textContent = lastPushDate.data.commit.commit.author.date.substring(0, 10);
     }
 
     loadGitHub();
