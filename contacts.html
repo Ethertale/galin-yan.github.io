@@ -68,8 +68,9 @@
         <div>
             <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
                 <h3 style="font-family:Cinzel,serif;color:var(--gold);margin-top:0">Send a message</h3>
-                <small><strong>Note:</strong> The form will open your local mail client and prepare an email.</small>
-                <div class="mb-3">
+                <small><strong>Note:</strong> The form will open your local mail client and prepare an email. You can also
+                    directly open your mail client through the button below.</small>
+                <div class="mb-3 pt-3">
                     <label class="form-label">Your name</label>
                     <input required class="form-control" id="name" placeholder="Your full name" />
                 </div>
@@ -91,10 +92,6 @@
                     <div id="status" style="color:var(--muted);margin-left:auto"></div>
                 </div>
             </form>
-
-            <div style="margin-top:18px;color:var(--muted);font-size:14px">
-                <strong>Note:</strong> The form will open your local mail client and prepare an email.
-            </div>
         </div>
     </div>
 </main>
@@ -120,7 +117,7 @@
     function openMailClient(){
         const to = document.getElementById('emailText').textContent;
         const subj = encodeURIComponent(document.getElementById('subject').value || 'Hello');
-        const body = encodeURIComponent('Hello, Galin!\n\n' + (document.getElementById('message').value || '') + '\n\nRegards, ' + (document.getElementById('name').value || ''));
+        const body = encodeURIComponent((document.getElementById('message').value || ''));
         window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
     }
 
