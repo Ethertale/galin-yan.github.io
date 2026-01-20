@@ -21,6 +21,23 @@
             cursor: pointer;
             transition: 0.3s ease-in-out;
         }
+        #backgroundImage{
+            width: 100%;
+            height: 100%;
+            background-image: url("rsc/imgs/background-test-image.jpg");
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            z-index: -100;
+            opacity: 0.5;
+            filter: blur(10px);
+        }
+        .withBackground {
+            background-color: rgba(255,255,255,0.3);
+        }
+
     </style>
 </head>
 <body>
@@ -40,6 +57,8 @@
         </div>
     </div>
 </nav>
+
+<div id="backgroundImage"></div>
 
 <div style="min-height: 80vh" class="container d-flex justify-content-center align-items-center align-content-center flex-column">
 <!--    <img style="width: 15vw" src="https://www.cybernautme.com/wp-content/themes/excellenceauditing/assets/images/blog-detail-main-pic.png" alt="">-->
@@ -66,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-6 align-content-center">
+            <div id="mainDesc" class="withBackground col-12 col-lg-6 align-content-center">
                 <h1 class="cinzel-font text-center">GALIN YANAKOV</h1>
                 <p class="montserrat-font">Hello, my name is Galin, a web and software developer. I love to create and design various projects both for fun and to learn.
                 With Spring Boot, Thymeleaf/Vue.js and SQL I can bring almost anything to life and making ideas and dreams come true. For me life
@@ -78,7 +97,7 @@
 
 <div class="container pt-5" id="workExperience">
     <h1 class="cinzel-font">Work Experience</h1>
-    <div id="work1"  class="row">
+    <div id="work1"  class="withBackground row">
         <div class="col-12">
             <h2>Front End Intern</h2>
             <p>kidcess.com</p>
@@ -91,7 +110,7 @@
         </div>
     </div>
     <br>
-    <div id="work2"  class="row">
+    <div id="work2"  class="withBackground row">
         <div class="col-12">
             <h2>Front End Intern</h2>
             <p>pavlinaaenska.com</p>
@@ -105,7 +124,7 @@
     </div>
 </div>
 
-<div class="container pt-5" id="education">
+<div class="withBackground container pt-5" id="education">
     <h1 class="cinzel-font">Education</h1>
     <div id="educ1" class="row">
         <div class="col-12 col-lg-1"><img style="width: 50px" src="/rsc/imgs/other/softuni_logo.png" alt=""></div>
@@ -121,6 +140,7 @@
 
 <div class="container pt-5" id="certificates">
     <h1 class="cinzel-font">Certificates</h1>
+
     <div class="img-gallery">
         <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250279?code=7e78a079" alt="https://softuni.bg/Certificates/Details/250279/7e78a079">
         <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/147425?code=4b22d12c" alt="https://softuni.bg/certificates/details/147425/4b22d12c">
@@ -136,6 +156,7 @@
         <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/248123?code=0423e075" alt="https://softuni.bg/certificates/details/248123/0423e075">
         <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/249618?code=42ca56b4" alt="https://softuni.bg/certificates/details/249618/42ca56b4">
         <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250173?code=f0a948f3" alt="https://softuni.bg/certificates/details/250173/f0a948f3">
+
     </div>
 </div>
 
