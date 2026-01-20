@@ -126,7 +126,6 @@
 
     function submitContact(e){
         e.preventDefault();
-        // build mailto link and open — client-side only to avoid needing server
         openMailClient();
         const status = document.getElementById('status');
         status.textContent = 'Mail client opened.';

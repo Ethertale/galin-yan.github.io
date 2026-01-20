@@ -26,29 +26,34 @@ body::after {
     mix-blend-mode: overlay
 }
 
-/* header */
 header {
     position: sticky;
     top: 0;
     z-index: 60;
-    background: linear-gradient(180deg, rgba(6, 6, 8, 0.6), rgba(6, 6, 8, 0.2));
+    background: linear-gradient(180deg, rgba(6, 6, 8, 0.6), rgba(6, 6, 8, 0.35));
     backdrop-filter: blur(4px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03)
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
-.nav-inner {
-    max-width: 1200px;
+.nav {
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px
+    padding: 12px 20px;
 }
 
 .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.brand .sig {
     font-family: Cinzel, serif;
-    color: var(--gold);
-    font-size: 20px
+    font-size: 20px;
+    color: var(--gold)
 }
 
 nav a {
@@ -60,12 +65,13 @@ nav a {
 }
 
 .nav-link {
-    color: white;
+    color: var(--muted);
 }
 
 nav a:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.03)
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.02);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6) inset
 }
 
 /* blurred fixed background image like original */

@@ -39,8 +39,6 @@
     <h1 class="section-title">Projects & Works</h1>
 
     <section class="grid">
-        <!-- Project tiles. data-* attributes power the modal and tech list -->
-
         <article class="project-card" tabindex="0" role="button" data-title="Reason & Domination" data-img="rsc/imgs/projects/RnD-Cover.png" data-desc="Defense project for SoftUni — forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf and JPA." data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop,junit" data-link="projects/reason-and-domination.html">
             <img loading="lazy" src="rsc/imgs/projects/RnD-Cover.png" alt="Reason & Domination cover"/>
             <div class="project-body">
@@ -80,7 +78,6 @@
             </div>
         </article>
 
-        <!-- other projects (kept compact) -->
         <article class="project-card" tabindex="0" role="button" data-title="Apexi" data-img="rsc/imgs/projects/Apexi/Background_Logo.png" data-desc="Desktop-style sample using Spring and Swing; database integration with SQLite/MySQL." data-techs="java,spring,mysql,sqlite,junit" data-link="projects/apexi.html">
             <img loading="lazy" src="rsc/imgs/projects/Apexi/Background_Logo.png" alt="Apexi cover"/>
             <div class="project-body">
@@ -168,7 +165,6 @@
 
 </main>
 
-<!-- Project Modal (Bootstrap) -->
 <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -194,12 +190,10 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Map of short-name -> devicon url + label
     const DEVICONS = {
         java: ['Java','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'],
         spring: ['Spring','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg'],
@@ -214,9 +208,6 @@
         junit: ['JUnit','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-plain.svg'],
         vuejs: ['Vue.js','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg']
     };
-
-    // Fix for the accidental space in 'photoshop' key above if necessary
-    DEVICONS['photoshop'] = DEVICONS['photosho p'] || ['Photoshop','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg'];
 
     const modalEl = document.getElementById('projectModal');
     const bsModal = new bootstrap.Modal(modalEl);
@@ -241,7 +232,6 @@
             modalLink.href = link;
             modalLink.textContent = (link && link !== '#') ? 'Open Project' : 'No Link';
 
-            // populate tech icons
             modalTechs.innerHTML = '';
             techs.forEach(t => {
                 const key = t.toLowerCase();
@@ -267,7 +257,6 @@
         card.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') open(); });
     });
 
-    // Optional: keyboard shortcut (press "/" to focus search — placeholder for next iteration)
     window.addEventListener('keydown', e => {
         if(e.key === 'Escape') bootstrap.Modal.getInstance(modalEl)?.hide();
     });
