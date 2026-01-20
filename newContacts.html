@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Galin Yanakov</title>
+    <meta name="description" content="Contact Galin — social links, email and contact form. Fantasy themed developer site." />
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/newContacts.css">
+</head>
+<body>
+<header>
+    <nav class="nav navbar sticky-top navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="brand">
+                <div class="sig">Galin Yan</div>
+            </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link montserrat-font mx-1" href="newIndex.html">Home</a>
+                    <a class="nav-link montserrat-font mx-1" href="newProjects.html">Projects</a>
+                    <a class="nav-link montserrat-font mx-1" href="newAbout.html">About Me</a>
+                    <a class="nav-link montserrat-font mx-1" href="newContacts.html">Contacts</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div id="backgroundImage" aria-hidden="true"></div>
+
+<main class="wrap">
+    <h1 style="font-family:Cinzel,serif;color:var(--gold);text-align:center;margin-bottom:22px">You can find me here</h1>
+
+    <div class="contact-grid">
+        <aside class="contact-card" aria-label="Contact details">
+            <h3>Contact</h3>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/fluency/96/mail--v1.png" alt="email icon"/>
+                <div>
+                    <div style="font-weight:700">Email</div>
+                    <div id="emailText">info@galin-yan.com</div>
+                </div>
+                <div style="margin-left:auto"><button class="copy-btn" id="copyEmail">Copy</button></div>
+            </div>
+
+            <div class="contact-item">
+                <img src="https://img.icons8.com/fluency/96/location--v1.png" alt="location icon"/>
+                <div>
+                    <div style="font-weight:700">Location</div>
+                    <div>Stara Zagora, Bulgaria</div>
+                </div>
+            </div>
+
+            <h4 style="margin-top:18px">Social</h4>
+            <div class="socials">
+                <a href="https://github.com/Ethertale" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/color-glass/96/github--v1.png" alt="GitHub"> GitHub</a>
+                <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn"> LinkedIn</a>
+                <a href="https://www.instagram.com/galin.yan/" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/fluency/96/instagram-new.png" alt="Instagram"> Instagram</a>
+            </div>
+        </aside>
+
+        <div>
+            <form class="contact-form" id="contactForm" onsubmit="submitContact(event)">
+                <h3 style="font-family:Cinzel,serif;color:var(--gold);margin-top:0">Send a message</h3>
+                <small><strong>Note:</strong> The form will open your local mail client and prepare an email.</small>
+                <div class="mb-3">
+                    <label class="form-label">Your name</label>
+                    <input required class="form-control" id="name" placeholder="Your full name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Your email</label>
+                    <input required class="form-control" id="email" type="email" placeholder="you@example.com" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input required class="form-control" id="subject" placeholder="What is this about?" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea required id="message" class="form-control" rows="6" placeholder="Write your message here"></textarea>
+                </div>
+
+                <div style="display:flex;gap:12px;align-items:center">
+                    <button class="btn-gold" type="button" onclick="openMailClient()">Open Mail Client</button>
+                    <div id="status" style="color:var(--muted);margin-left:auto"></div>
+                </div>
+            </form>
+
+            <div style="margin-top:18px;color:var(--muted);font-size:14px">
+                <strong>Note:</strong> The form will open your local mail client and prepare an email.
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <small>© <span id="year"></span> Galin "Ether" Yan</small>
+
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+<script>
+    document.getElementById('copyEmail').addEventListener('click', ()=>{
+        const t = document.getElementById('emailText').textContent;
+        navigator.clipboard?.writeText(t).then(()=>{
+            const btn = document.getElementById('copyEmail');
+            const old = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(()=>btn.textContent = old,1500);
+        }).catch(()=>alert('Copy failed — please copy manually.'));
+    });
+
+    function openMailClient(){
+        const to = document.getElementById('emailText').textContent;
+        const subj = encodeURIComponent(document.getElementById('subject').value || 'Hello');
+        const body = encodeURIComponent('Hello, Galin!\n\n' + (document.getElementById('message').value || '') + '\n\nRegards, ' + (document.getElementById('name').value || ''));
+        window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
+    }
+
+    function submitContact(e){
+        e.preventDefault();
+        openMailClient();
+        const status = document.getElementById('status');
+        status.textContent = 'Mail client opened.';
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
