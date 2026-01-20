@@ -1,549 +1,265 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Galin Yanakov</title>
-    <style>
-        a {
-            text-decoration: none;
-        }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projects — Galin Yanakov</title>
+    <meta name="description" content="Projects gallery with fantasy / Warcraft-inspired theme." />
 
-        a .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-            transition: 0.3s ease-in-out;
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/newProjectsStyle.css">
 
-        a .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        img {
-            background-color: white;
-            background-size: cover;
-            aspect-ratio: 16/9;
-        }
-
-        .card h4{
-            font-family: "Cinzel", serif;
-            text-align: center;
-        }
-        .card-text {
-            font-family: "Montserrat", sans-serif;
-        }
-        #backgroundImage{
-            width: 100%;
-            height: 100%;
-            background-image: url("rsc/imgs/background-test-image.jpg");
-            background-position: center;
-            background-size: cover;
-            background-attachment: fixed;
-            position: fixed;
-            top: 0;
-            z-index: -100;
-            opacity: 0.3;
-            filter: blur(10px);
-        }
-        @media (max-width: 913px) {
-            .row div {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-            .tools-used .row {
-                display: flex;
-                flex-direction: row;
-            }
-        }
-    </style>
 </head>
 <body>
-
-<nav style="background-color: rgba(0, 0, 0, 0)" class="navbar sticky-top navbar-expand-lg">
-    <div style="background-color: rgba(0, 0, 0, 0)" class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link montserrat-font mx-1" href="newIndex.html">Home</a>
-                <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
-                <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
-                <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
+<header>
+    <nav class="nav navbar sticky-top navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="brand">
+                <div class="sig">Galin Yan</div>
+            </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link montserrat-font mx-1" href="index.html">Home</a>
+                    <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
+                    <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
+                    <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 
-<div id="backgroundImage"></div>
+<div id="backgroundImage" aria-hidden="true"></div>
 
-<div class="container">
-    <div class="row text-center">
-        <h1 class="text-center mb-3 cinzel-font">Main Projects</h1>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Reason & Domination</h2>-->
-            <a href="projects/reason-and-domination.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/RnD-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4 class>Reason & Domination</h4>
-                        <p class="card-text">This was my defense project for the Software University "SoftUni" Academy
-                            in Bulgaria, showcasing user roles, authentication, creation of posts with comments, profile
-                            customization and more...</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
+<main class="wrap">
+    <h1 class="section-title">Projects & Works</h1>
+
+    <section class="grid">
+        <article class="project-card" tabindex="0" role="button" data-title="Reason & Domination" data-img="rsc/imgs/projects/RnD-Cover.png" data-desc="Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf and JPA." data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop,junit" data-link="projects/reason-and-domination.html">
+            <img loading="lazy" src="rsc/imgs/projects/RnD-Cover.png" alt="Reason & Domination cover"/>
+            <div class="project-body">
+                <h4>Reason & Domination</h4>
+                <p>Defense project for SoftUni — forum, roles, auth, posts and profile customization.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Find A Dice" data-img="rsc/imgs/projects/FaD-Cover.png" data-desc="A social hub for role-players to host events and connect. Built with Spring and Thymeleaf." data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop" data-link="projects/find-a-dice.html">
+            <img loading="lazy" src="rsc/imgs/projects/FaD-Cover.png" alt="Find A Dice cover"/>
+            <div class="project-body">
+                <h4>Find A Dice</h4>
+                <p>Social place for role players — events, profiles and community features.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="RPG Character Generator" data-img="rsc/imgs/projects/RPGGen-Cover.png" data-desc="Small JS-based character generator for tabletop games." data-techs="html5,css3,bootstrap,javascript" data-link="https://ethertale.github.io/rpgcharactergenerator.github.io/">
+            <img loading="lazy" src="rsc/imgs/projects/RPGGen-Cover.png" alt="RPG Character Generator cover"/>
+            <div class="project-body">
+                <h4>RPG Character Generator</h4>
+                <p>Small generator for fantasy characters with instant previews and export.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Apexi" data-img="rsc/imgs/projects/Apexi/Background_Logo.png" data-desc="Desktop-style sample using Spring, Swing and database integration with SQLite/MySQL." data-techs="java,spring,mysql,sqlite,junit" data-link="projects/apexi.html">
+            <img loading="lazy" src="rsc/imgs/projects/Apexi/Background_Logo.png" alt="Apexi cover"/>
+            <div class="project-body">
+                <h4>Apexi</h4>
+                <p>Sample desktop app built with Spring + Swing and database integration.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Parmentier" data-img="rsc/imgs/projects/Parmentier/Brand-Logo.svg" data-desc="Elegant e-commerce concept for luxury pens. Template-driven with Spring + Thymeleaf." data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript" data-link="projects/parmentier.html">
+            <img loading="lazy" src="rsc/imgs/projects/Parmentier/Brand-Logo.svg" alt="Parmentier cover"/>
+            <div class="project-body">
+                <h4>Parmentier</h4>
+                <p>Luxury pens e-commerce concept — styling, templates and product pages.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Personal Blog" data-img="rsc/imgs/projects/Blog-Cover.png" data-desc="Custom blog for documenting my journey: content, tagging and previews." data-techs="java,spring,mysql,thymeleaf,html5,css3" data-link="projects/personal-blog.html">
+            <img loading="lazy" src="rsc/imgs/projects/Blog-Cover.png" alt="Personal Blog cover"/>
+            <div class="project-body">
+                <h4>Personal Blog</h4>
+                <p>My experimental blog where I test documentation patterns and formats.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Olympia Elkridge University" data-img="rsc/imgs/projects/OEU-Cover.png" data-desc="University site concept: improving Thymeleaf usage and templates." data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop" data-link="projects/olympia-elkridge-university.html">
+            <img loading="lazy" src="rsc/imgs/projects/OEU-Cover.png" alt="OEU cover"/>
+            <div class="project-body">
+                <h4>Olympia Elkridge University</h4>
+                <p>University site concept focused on templates and content layout.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="The Fable Stable" data-img="rsc/imgs/projects/Fable-Cover.png" data-desc="Bookstore & shop concept built with Spring + VueJS." data-techs="java,spring,mysql,vuejs,html5,css3,bootstrap,javascript" data-link="projects/the-fable-stable.html">
+            <img loading="lazy" src="rsc/imgs/projects/Fable-Cover.png" alt="Fable Stable cover"/>
+            <div class="project-body">
+                <h4>The Fable Stable</h4>
+                <p>Bookstore concept with shopping features and admin UI.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Dragonvale" data-img="https://placehold.co/600x400" data-desc="Sword & Sorcery browser adventure inspired by old browser games." data-techs="java,spring,mysql" data-link="projects/dragonvale.html">
+            <img loading="lazy" src="https://placehold.co/600x400" alt="Dragonvale cover"/>
+            <div class="project-body">
+                <h4>Dragonvale</h4>
+                <p>Sword & Sorcery browser adventure inspired by classic free-to-play games.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card" tabindex="0" role="button" data-title="Personal Finance Tracker" data-img="rsc/imgs/projects/Finance-Cover.png" data-desc="Finance tracker focused on transactions and persistence with Spring." data-techs="java,spring,mysql,html5,css3,javascript" data-link="projects/personal-finance-tracker.html">
+            <img loading="lazy" src="rsc/imgs/projects/Finance-Cover.png" alt="Finance Tracker cover"/>
+            <div class="project-body">
+                <h4>Personal Finance Tracker</h4>
+                <p>Transactions, persistence and simple reporting — Spring based.</p>
+                <div class="tools-row" aria-hidden="true">
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                    <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+
+</main>
+
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img id="modalImage" src="" alt="project cover" style="width:100%;height:220px;object-fit:cover;border-radius:8px;"/>
+                    </div>
+                    <div class="col-md-6">
+                        <p id="modalDesc"></p>
+                        <div id="modalTechs" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px"></div>
+                        <div style="margin-top:16px">
+                            <a style="background-color: var(--gold); color: black" id="modalLink" class="btn" target="_blank" rel="noopener">Open Project</a>
                         </div>
                     </div>
                 </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Find A Dice</h2>-->
-            <a href="projects/find-a-dice.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/FaD-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Find A Dice</h4>
-                        <p class="card-text">"Find A Dice" is a social place for role players to connect with other role
-                            players, host events, and express themselves (or their character).</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>RPG Character Generator</h2>-->
-            <a href="https://ethertale.github.io/rpgcharactergenerator.github.io/">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/RPGGen-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>RPG Character Generator</h4>
-                        <p class="card-text">A simple character generator for your fantasy worlds made with HTML, CSS
-                            and JavaScript.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <h1 class="text-center mb-3 cinzel-font">Other Projects</h1>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Apexi</h2>-->
-            <a href="projects/apexi.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/Apexi/Background_Logo.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Apexi</h4>
-                        <p class="card-text">A sample project for a made-up spedition company. Attempt to create a
-                            desktop app with Spring and Swing.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Parmentier</h2>-->
-            <a href="projects/parmentier.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/Parmentier/Brand-Logo.svg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Parmentier</h4>
-                        <p class="card-text">'Ink your legacy with Parmentier.' Website about a made-up luxury site that
-                            sells elegant, high-end pens.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Personal Blog</h2>-->
-            <a href="projects/personal-blog.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/Blog-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Personal Blog</h4>
-                        <p class="card-text">A custom self-made blog where I test out new ways to document my
-                            journey.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Olympia Elkridge University</h2>-->
-            <a href="projects/olympia-elkridge-university.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/OEU-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Olympia Elkridge University</h4>
-                        <p class="card-text">This project presents a website for a made-up university called Olympia
-                            Elkridge University (OEU). In this project my aim is to improve my Thymeleaf and Spring
-                            skills.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>The Fable Stable</h2>-->
-            <a href="projects/the-fable-stable.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/Fable-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>The Fable Stable</h4>
-                        <p class="card-text">A made-up website for selling books, dice and board games.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Dragonvale</h2>-->
-            <a href="projects/dragonvale.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Dragonvale</h4>
-                        <p class="card-text">Dragonvale is a Sword And Sorcery/Adventure Fantasy inspired by browser
-                            games like Tanoth and Bitefight.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-12 col-lg-4">
-            <!--            <h2>Personal Finance Tracker</h2>-->
-            <a href="projects/personal-finance-tracker.html">
-                <div class="card mb-3" style="width: 18rem;">
-                    <img src="rsc/imgs/projects/Finance-Cover.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h4>Personal Finance Tracker</h4>
-                        <p class="card-text">Simple Spring finance tracker project where I learned transactions and
-                            database persistence.</p>
-                        <div class="container tools-used">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
-                                         alt=""/>
-                                </div>
-                                <div class="col-4">
-                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
-                                         alt=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            </div>
         </div>
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-        crossorigin="anonymous"></script>
+<script>
+    const DEVICONS = {
+        java: ['Java','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'],
+        spring: ['Spring','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg'],
+        mysql: ['MySQL','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
+        sqlite: ['SQLite','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg'],
+        thymeleaf: ['Thymeleaf','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg'],
+        html5: ['HTML5','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
+        css3: ['CSS3','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
+        bootstrap: ['Bootstrap','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg'],
+        javascript: ['JavaScript','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
+        photoshop: ['Photoshop','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg'],
+        junit: ['JUnit','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-plain.svg'],
+        vuejs: ['Vue.js','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg']
+    };
+
+    const modalEl = document.getElementById('projectModal');
+    const bsModal = new bootstrap.Modal(modalEl);
+    const modalTitle = modalEl.querySelector('.modal-title');
+    const modalImage = document.getElementById('modalImage');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTechs = document.getElementById('modalTechs');
+    const modalLink = document.getElementById('modalLink');
+
+    document.querySelectorAll('.project-card').forEach(card=>{
+        const open = () => {
+            const title = card.dataset.title;
+            const img = card.dataset.img;
+            const desc = card.dataset.desc;
+            const techs = (card.dataset.techs||'').split(',').map(t=>t.trim()).filter(Boolean);
+            const link = card.dataset.link || '#';
+
+            modalTitle.textContent = title;
+            modalImage.src = img;
+            modalImage.alt = title + ' cover';
+            modalDesc.textContent = desc;
+            modalLink.href = link;
+            modalLink.textContent = (link && link !== '#') ? 'Open Project' : 'No Link';
+
+            modalTechs.innerHTML = '';
+            techs.forEach(t => {
+                const key = t.toLowerCase();
+                const meta = DEVICONS[key];
+                const url = meta ? meta[1] : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${key}/${key}-original.svg`;
+                const label = meta ? meta[0] : t;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'tool-badge';
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = label;
+                img.loading = 'lazy';
+                img.onerror = () => { img.style.filter = 'grayscale(1)'; img.style.opacity = '0.8'; };
+                wrapper.appendChild(img);
+                modalTechs.appendChild(wrapper);
+            });
+
+            bsModal.show();
+        };
+
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') open(); });
+    });
+
+    window.addEventListener('keydown', e => {
+        if(e.key === 'Escape') bootstrap.Modal.getInstance(modalEl)?.hide();
+    });
+</script>
 </body>
 </html>

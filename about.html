@@ -1,190 +1,128 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/aboutMe.css">
-    <link rel="stylesheet" href="css/imgGalleryStyling.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Galin Yanakov</title>
-    <style>
-        .img-gallery {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        }
-        .img-gallery img {
-            width: 60%;
-            cursor: pointer;
-            transition: 0.3s ease-in-out;
-        }
-        #backgroundImage{
-            width: 100%;
-            height: 100%;
-            background-image: url("rsc/imgs/background-test-image.jpg");
-            background-position: center;
-            background-size: cover;
-            background-attachment: fixed;
-            position: fixed;
-            top: 0;
-            z-index: -100;
-            opacity: 0.5;
-            filter: blur(10px);
-        }
-        .withBackground {
-            background-color: rgba(255,255,255,0.3);
-        }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About Me - Galin Yanakov</title>
+    <meta name="description" content="About Galin — fantasy styled developer profile, work, education, and certificates." />
 
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
+    <link rel="stylesheet" href="/css/newAboutStyle.css">
 </head>
 <body>
-
-<nav style="background-color: rgba(0, 0, 0, 0)" class="navbar navbar-expand-lg">
-    <div style="background-color: rgba(0, 0, 0, 0)" class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link montserrat-font mx-1" href="newIndex.html">Home</a>
-                <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
-                <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
-                <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
+<header>
+    <nav class="nav navbar sticky-top navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="brand">
+                <div class="sig">Galin Yan</div>
             </div>
-        </div>
-    </div>
-</nav>
-
-<div id="backgroundImage"></div>
-
-<div style="min-height: 80vh" class="container d-flex justify-content-center align-items-center align-content-center flex-column">
-<!--    <img style="width: 15vw" src="https://www.cybernautme.com/wp-content/themes/excellenceauditing/assets/images/blog-detail-main-pic.png" alt="">-->
-<!--    <h1 class="cinzel-font">UNDER CONSTRUCTION</h1>-->
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
-                <img class="imageHover" style="width: 50%" id="profilePic" src="" alt="">
-                <div class="row d-flex flex-row justify-content-center pt-3 links">
-                    <div class="col-3">
-                        <a href="https://github.com/Ethertale" target="_blank">
-                            <img width="50" height="50" src="https://img.icons8.com/ios/250/github--v1.png" alt="github--v1"/>
-                        </a>
-                    </div>
-                    <div class="col-3">
-                        <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank">
-                            <img width="50" height="50" src="https://img.icons8.com/ios/2500/linkedin.png" alt="linkedin"/>
-                        </a>
-                    </div>
-                    <div class="col-3">
-                        <a href="https://www.instagram.com/galin.yan/" target="_blank">
-                            <img width="50" height="50" src="https://img.icons8.com/ios/250/instagram-new--v1.png" alt="instagram-new--v1"/>
-                        </a>
-                    </div>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link montserrat-font mx-1" href="index.html">Home</a>
+                    <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
+                    <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
+                    <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
                 </div>
             </div>
-            <div id="mainDesc" class="withBackground col-12 col-lg-6 align-content-center">
-                <h1 class="cinzel-font text-center">GALIN YANAKOV</h1>
-                <p class="montserrat-font">Hello, my name is Galin, a web and software developer. I love to create and design various projects both for fun and to learn.
-                With Spring Boot, Thymeleaf/Vue.js and SQL I can bring almost anything to life and making ideas and dreams come true. For me life
-                is like a big, online game, but instead of just playing, I also create stuff!</p>
+        </div>
+    </nav>
+</header>
+
+<div id="backgroundImage" aria-hidden="true"></div>
+
+<main class="wrap">
+    <section class="profile-card">
+        <div class="portrait">
+            <img id="profilePic" src="" alt="Galin Yanakov portrait">
+        </div>
+        <div class="bio">
+            <h1>GALIN YANAKOV</h1>
+            <p>Hello — I'm Galin, a web and software developer who treats code like craft. I build backend services with
+                Java & Spring, compose frontend experiences with Vue or vanilla JS, and aim to deliver resilient, testable
+                systems. Outside of work, I enjoy gaming, creating fantasy worlds through art and stories and constantly
+                dabble into new hobbies for fun and learning something new.</p>
+            <div class="socials">
+                <a href="https://github.com/Ethertale" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/color-glass/96/github--v1.png" alt="GitHub"></a>
+                <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/galin.yan/" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/fluency/96/instagram-new.png" alt="Instagram"></a>
             </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="container pt-5" id="workExperience">
-    <h1 class="cinzel-font">Work Experience</h1>
-    <div id="work1"  class="withBackground row">
-        <div class="col-12">
-            <h2>Front End Intern</h2>
-            <p>kidcess.com</p>
-            <small>Apr 2025 - Jun 2025</small>
-            <br>
-            <small>Bulgaria | Remote</small>
-            <p class="mt-2">Utilizing HTML, JS, CSS/Bootstrap, and Shopify's Liquid template to add new
-                features and address faults on the frontend, as well as troubleshooting and maintaining
-                the code.</p>
+    <section id="workExperience">
+        <h2 class="section">Work Experience</h2>
+        <div class="work-card">
+            <h3>Front End Intern — kidcess.com</h3>
+            <small>Apr 2025 — Jun 2025 | Remote, Bulgaria</small>
+            <p class="mt-2">Worked on Shopify front-ends using HTML, JS, CSS/Bootstrap and Liquid templates. Implemented new features and fixed UI issues while maintaining cross-browser compatibility and performance.</p>
         </div>
-    </div>
-    <br>
-    <div id="work2"  class="withBackground row">
-        <div class="col-12">
-            <h2>Front End Intern</h2>
-            <p>pavlinaaenska.com</p>
-            <small>Nov 2024 - Feb 2025</small>
-            <br>
-            <small>Bulgaria | Remote</small>
-            <p class="mt-2">Utilizing HTML, JS, and minimal PHP to fix front-end issues while
-                implementing CSS/Bootstrap and debugging the code, and incorporating fresh features,
-                such as a dynamic navigation bar.</p>
+
+        <div class="work-card">
+            <h3>Front End Intern — pavlinaaenska.com</h3>
+            <small>Nov 2024 — Feb 2025 | Remote, Bulgaria</small>
+            <p class="mt-2">Maintained front-end code with HTML, JS, and PHP patches. Added features like dynamic navigation and responsive improvements, plus debugging and layout fixes.</p>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="withBackground container pt-5" id="education">
-    <h1 class="cinzel-font">Education</h1>
-    <div id="educ1" class="row">
-        <div class="col-12 col-lg-1"><img style="width: 50px" src="/rsc/imgs/other/softuni_logo.png" alt=""></div>
-        <div class="col-11">
-            <h2>Software University</h2>
-            <p class="m-0">Computer Programming</p>
-            <small>Oct 2022 - Aug 2025</small>
-            <br>
-            <small>Grade: Back-end Developer</small>
+    <section id="education">
+        <h2 class="section">Education</h2>
+        <div class="edu-card d-flex gap-3 align-items-center">
+            <img src="rsc/imgs/other/softuni_logo.png" alt="SoftUni" style="width:64px;height:64px;object-fit:contain;border-radius:8px">
+            <div>
+                <h3>Software University — Computer Programming</h3>
+                <small>Oct 2022 — Aug 2025 | Grade: Back-end Developer</small>
+                <p class="m-0">Focused studies on Java, Spring, databases and web engineering.</p>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
 
-<div class="container pt-5" id="certificates">
-    <h1 class="cinzel-font">Certificates</h1>
+    <section id="certificates" class="container pt-5">
+            <h1 class="cinzel-font">Certificates</h1>
+            <div class="img-gallery">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250279?code=7e78a079" alt="https://softuni.bg/Certificates/Details/250279/7e78a079">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/147425?code=4b22d12c" alt="https://softuni.bg/certificates/details/147425/4b22d12c">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/167363?code=31c77033" alt="https://softuni.bg/certificates/details/167363/31c77033">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/188694?code=8d36daf0" alt="https://softuni.bg/certificates/details/188694/8d36daf0">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/200880?code=4095ccd9" alt="https://softuni.bg/certificates/details/200880/4095ccd9">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/203097?code=98fb3148" alt="https://softuni.bg/certificates/details/203097/98fb3148">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/218490?code=ebc0b8d6" alt="https://softuni.bg/certificates/details/218490/ebc0b8d6">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/223918?code=d576db2b" alt="https://softuni.bg/certificates/details/223918/d576db2b">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/226183?code=ebbbb02d" alt="https://softuni.bg/certificates/details/226183/ebbbb02d">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/237580?code=a2d39cd3" alt="https://softuni.bg/certificates/details/237580/a2d39cd3">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/241409?code=a2fe22a3" alt="https://softuni.bg/certificates/details/241409/a2fe22a3">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/248123?code=0423e075" alt="https://softuni.bg/certificates/details/248123/0423e075">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/249618?code=42ca56b4" alt="https://softuni.bg/certificates/details/249618/42ca56b4">
+                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250173?code=f0a948f3" alt="https://softuni.bg/certificates/details/250173/f0a948f3">
+            </div>
+    </section>
 
-    <div class="img-gallery">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250279?code=7e78a079" alt="https://softuni.bg/Certificates/Details/250279/7e78a079">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/147425?code=4b22d12c" alt="https://softuni.bg/certificates/details/147425/4b22d12c">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/167363?code=31c77033" alt="https://softuni.bg/certificates/details/167363/31c77033">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/188694?code=8d36daf0" alt="https://softuni.bg/certificates/details/188694/8d36daf0">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/200880?code=4095ccd9" alt="https://softuni.bg/certificates/details/200880/4095ccd9">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/203097?code=98fb3148" alt="https://softuni.bg/certificates/details/203097/98fb3148">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/218490?code=ebc0b8d6" alt="https://softuni.bg/certificates/details/218490/ebc0b8d6">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/223918?code=d576db2b" alt="https://softuni.bg/certificates/details/223918/d576db2b">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/226183?code=ebbbb02d" alt="https://softuni.bg/certificates/details/226183/ebbbb02d">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/237580?code=a2d39cd3" alt="https://softuni.bg/certificates/details/237580/a2d39cd3">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/241409?code=a2fe22a3" alt="https://softuni.bg/certificates/details/241409/a2fe22a3">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/248123?code=0423e075" alt="https://softuni.bg/certificates/details/248123/0423e075">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/249618?code=42ca56b4" alt="https://softuni.bg/certificates/details/249618/42ca56b4">
-        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250173?code=f0a948f3" alt="https://softuni.bg/certificates/details/250173/f0a948f3">
+</main>
 
-    </div>
-</div>
+<footer>
+    <small>© <span id="year"></span> Galin "Ether" Yan</small>
+</footer>
 
-
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 <script type="module">
     import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-
     const octokit = new Octokit();
-
-    async function loadGitHub() {
-        const user = await octokit.request("GET /users/{username}", {
-            username: "Ethertale",
-            headers: { "X-GitHub-Api-Version": "2022-11-28" }
-        });
-
-        document.getElementById("profilePic").src = user.data.avatar_url;
+    async function loadGitHub(){
+        try{
+            const user = await octokit.request('GET /users/{username}', { username: 'Ethertale', headers: { 'X-GitHub-Api-Version': '2022-11-28' } });
+            document.getElementById('profilePic').src = user.data.avatar_url;
+        }catch(e){ console.warn('GitHub avatar load failed', e); document.getElementById('profilePic').src='/rsc/imgs/other/default-avatar.png'; }
     }
-
     loadGitHub();
 </script>
 
-<script src="/js/fancyBox.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/fancyBox.js"></script>
 </body>
 </html>
