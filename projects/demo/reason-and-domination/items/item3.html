@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title th:text="'R&D - ' + ${itemSpec.getName()}"></title>
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Felix Titling", sans-serif;
+            color: white;
+        }
+        p {
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://i.ibb.co/6g0crpd/background.png')">
+<!--TODO Add nav bar-->
+<nav></nav>
+
+<div class="container mt-5" th:object="${itemSpec}">
+    <div class="row d-flex">
+        <img src="https://www.hiveworkshop.com/data/ratory-images/274/274102-7010b64e5bb01aaaea8c1c2c4ac01eab_tn.jpg" alt="">
+        <h2 class="m-3">Shoulderguards of Relentless Comrades</h2>
+    </div>
+    <div class="container border ml-5" style="width: 40%">
+        <h2 style="color:green; text-shadow: 0px 0px 2px black; font-size: 1.2rem" class="m-3">Shoulderguards of Relentless Comrades</h2>
+        <p>Binds when equipped</p>
+        <p>Shoulder</p>
+        <p>65 Armour</p>
+        <p>+2 Strength</p>
+        <p>+3 Agility</p>
+        <p>+2 Stamina</p>
+    </div>
+</div>
+
+<footer th:replace="~{templates::footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
