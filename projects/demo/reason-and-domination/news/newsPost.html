@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/forumPost-style.css}" type="text/css">
+    <title>R&D News - The Grand PvP Tournament is Here!</title>
+    <style>
+        * {
+            color: white;
+        }
+        option {
+            color: black;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://i.ibb.co/6g0crpd/background.png')">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="https://i.ibb.co/Yd401Fd/logo-textonly.png" style="width: 140px" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/news.html">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/forum.html">Forum</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/guides.html">Guides</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Database
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a style="text-decoration: line-through" class="dropdown-item" href="#">Player Lookup</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/raceView.html">Races</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/classView.html">Classes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/items.html">Items</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/dungeons.html">Dungeons</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/timers.html">Timers</a>
+                    <a style="text-decoration: line-through" class="dropdown-item" href="#">DaR</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://galin-yan.com/contacts">About Us & Contact</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/supporterPage.html">Support Us</a>
+            </li>
+        </ul>
+        <div>
+            <a class="nav-link text-dark" href="/galin-yan.github.io/projects/demo/reason-and-domination/profile.html">Profile</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container border mt-5">
+    <h2>The Grand PvP Tournament is Here!</h2>
+    <small>2000-01-01 10:00:00</small>
+    <div class="container border-top">
+        <div class="container mt-5">
+            <!-- Title Section -->
+            <div class="jumbotron bg-primary text-white p-5 text-center">
+                <h1 class="display-4">The Grand PvP Tournament is Here!</h1>
+                <p class="lead">Do you have what it takes to be a champion? Test your skills and fight for glory in the most intense event of the year!</p>
+            </div>
+
+            <!-- Tournament Details -->
+            <div class="card bg-dark text-light shadow-lg">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Compete for Glory</h5>
+                </div>
+                <div class="card-body">
+                    <p>The Grand PvP Tournament is your chance to prove you are the greatest warrior in the world of Azar. Step into the arena, face off against the best of the best, and earn your place in the history books!</p>
+                    <p>In this tournament, you will compete for:</p>
+                    <ul>
+                        <li><strong>Unique Titles:</strong> Only the bravest and most skilled warriors will earn these prestigious titles!</li>
+                        <li><strong>Legendary Rewards:</strong> Earn powerful rewards that will set you apart from others on your journey.</li>
+                        <li><strong>A Permanent Spot in the Hall of Champions:</strong> The greatest of champions will have their names etched into the Hall of Champions forever.</li>
+                        <li><strong>Glory and Bragging Rights:</strong> Prove you have what it takes to reign supreme in Azar and show off your achievements to the world.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- New Titles Section -->
+            <div class="card mt-4 bg-dark text-light shadow-lg">
+                <div class="card-header bg-warning text-dark">
+                    <h5>New Steampunk PvP Titles</h5>
+                </div>
+                <div class="card-body">
+                    <p>Throughout the tournament, you will earn new steampunk-themed titles as you progress. These titles reflect your skill, determination, and relentless pursuit of victory:</p>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Gladiator</h5>
+                                    <p class="card-text">Achieved after the first step in your PvP journey. A true beginner, but already showing potential.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Merciless Gladiator</h5>
+                                    <p class="card-text">For those who have proven their dominance in battle. Fearless, ruthless, and ready for more.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Relentless Gladiator</h5>
+                                    <p class="card-text">Those who have endured the harshest of battles and come out victorious time and again. Relentless in their pursuit of greatness.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card bg-info text-white">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Tyrannical Gladiator</h5>
+                                    <p class="card-text">The pinnacle of PvP achievement. Few reach this level of power and fame. A true ruler of the arena.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Updates Section -->
+            <div class="card mt-4 bg-dark text-light shadow-lg">
+                <div class="card-header bg-success text-white">
+                    <h5>What’s Coming Next?</h5>
+                </div>
+                <div class="card-body">
+                    <p>The Grand PvP Tournament is just the beginning! We’ve got more exciting events, expansions, and updates planned:</p>
+                    <ul>
+                        <li><strong>New Tournament Formats:</strong> Additional formats and rulesets to keep the competition fresh and challenging.</li>
+                        <li><strong>Expanded Rewards:</strong> More unique rewards, skins, and items that will become available as the tournament progresses.</li>
+                        <li><strong>Special PvP Events:</strong> Seasonal events and limited-time challenges to test your skills in new ways.</li>
+                        <li><strong>Future PvP Leaderboards:</strong> Compete for your spot at the top in ongoing leaderboards and seasonal rankings.</li>
+                    </ul>
+                    <p>Stay tuned and prepare for the future of PvP in Reason & Domination. The journey to becoming the ultimate champion continues!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer style="color: white">
+    <p class="text-center">@Ethertale 2025</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

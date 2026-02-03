@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>R&D - Forums</title>
+    <style>
+        * {
+            color: white;
+        }
+        option {
+            color: black;
+        }
+        a {
+            color: #d3a862;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://i.ibb.co/6g0crpd/background.png')">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="https://i.ibb.co/Yd401Fd/logo-textonly.png" style="width: 140px" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/news.html">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/forum.html">Forum</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/guides.html">Guides</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Database
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a style="text-decoration: line-through" class="dropdown-item" href="#">Player Lookup</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/raceView.html">Races</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/classView.html">Classes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/items.html">Items</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/dungeons.html">Dungeons</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/timers.html">Timers</a>
+                    <a style="text-decoration: line-through" class="dropdown-item" href="#">DaR</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://galin-yan.com/contacts">About Us & Contact</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/supporterPage.html">Support Us</a>
+            </li>
+        </ul>
+        <div>
+            <a class="nav-link text-dark" href="/galin-yan.github.io/projects/demo/reason-and-domination/profile.html">Profile</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>R&D General Forum</h2>
+    <a style="background-color: #d3a862" href="#"><button disabled class="btn btn-warning">+ New Post</button></a>
+    <div class="container d-flex flex-column">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Subject</th>
+                <th scope="col">Author</th>
+                <th scope="col">Replies</th>
+                <th scope="col">Created On</th>
+            </tr>
+            </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="/galin-yan.github.io/projects/demo/reason-and-domination/forum/forumPost.html">Automaton Tinkerers – Best way to optimize turrets?</a></td>
+                        <td><a href="#">opallagos36</a></td>
+                        <td><span>Comments: 3</span></td>
+                        <td>2000-01-01 10:00:00</td>
+                    </tr>
+                    <tr style="text-decoration: line-through">
+                        <td><a href="#">Are Etherial Shapers underpowered in PvP?</a></td>
+                        <td><a href="#">dallasfrog47</a></td>
+                        <td><span>Comments: 0</span></td>
+                        <td>2000-01-01 10:00:00</td>
+                    </tr>
+                    <tr style="text-decoration: line-through">
+                        <td><a href="#">Clockwork Catacombs bug – Gears of Fate won't turn</a></td>
+                        <td><a href="#">topazcow43</a></td>
+                        <td><span>Comments: 0</span></td>
+                        <td>2000-01-01 10:00:00</td>
+                    </tr>
+                    <tr style="text-decoration: line-through">
+                        <td><a href="#">Smogborn Enforcer best tank build?</a></td>
+                        <td><a href="#">pariswolf48</a></td>
+                        <td><span>Comments: 0</span></td>
+                        <td>2000-01-01 10:00:00</td>
+                    </tr>
+                    <tr style="text-decoration: line-through">
+                        <td><a href="#">COG Syndicate recruiting Tinkerers & Enforcers!</a></td>
+                        <td><a href="#">koalasquirrel48</a></td>
+                        <td><span>Comments: 0</span></td>
+                        <td>2000-01-01 10:00:00</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
+
+<footer style="color: white">
+    <p class="text-center">@Ethertale 2025</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>R&D - The Grand Database</title>
+    <style>
+        * {
+            color: white;
+        }
+        a {
+            color: #d3a862;
+        }
+    </style>
+</head>
+<body style="background-image: url('https://i.ibb.co/6g0crpd/background.png')">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#"><img src="https://i.ibb.co/Yd401Fd/logo-textonly.png" style="width: 140px" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/news.html">News</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/forum.html">Forum</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/guides.html">Guides</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Database
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a style="text-decoration: line-through" class="dropdown-item" href="#">Player Lookup</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/raceView.html">Races</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/classView.html">Classes</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/items.html">Items</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/dungeons.html">Dungeons</a>
+                    <a class="dropdown-item" href="/galin-yan.github.io/projects/demo/reason-and-domination/timers.html">Timers</a>
+                    <a style="text-decoration: line-through" class="dropdown-item" href="#">DaR</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://galin-yan.com/contacts">About Us & Contact</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/galin-yan.github.io/projects/demo/reason-and-domination/supporterPage.html">Support Us</a>
+            </li>
+        </ul>
+        <div>
+            <a class="nav-link text-dark" href="/galin-yan.github.io/projects/demo/reason-and-domination/profile.html">Profile</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid pt-5 text-center">
+    <div class="row gx-5 d-flex justify-content-center">
+        <div class="col-12 col-md-4 pb-2 d-flex flex-column border">
+            <div class="container"></div>
+            <h5 class="pt-2"><img src="https://www.hiveworkshop.com/data/ratory-images/60/60040-778c63797cf3285b6ce4aa08fc4aece5.jpg" style="width: 50px" alt=""> Latest Forum Posts</h5>
+            <a class="text-left border m-1 p-1" href="/galin-yan.github.io/projects/demo/reason-and-domination/forum/forumPost.html">Automaton Tinkerers - Best way to optimize turrets? | 2025-03-07 19:52:12</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">Are Etherial Shapers underpowered in PvP? | 2025-03-07 16:33:53</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">Clockwork Catacombs bug – Gears of Fate won't turn | 2025-03-07 09:41:21</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">Smogborn Enforcer best tank build? | 2025-02-07 22:02:24</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">COG Syndicate recruiting Tinkerers & Enforcers! | 2025-02-07 21:42:11</a>
+            <a class="text-center" href="/galin-yan.github.io/projects/demo/reason-and-domination/forum.html">explore more posts...</a>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-12 col-md-4 pb-2 d-flex flex-column border">
+            <h5 class="pt-2"><img src="https://www.hiveworkshop.com/data/ratory-images/100/100779-6848c4a9a56c3133a2c5d456ad66fadb_tn.jpg" style="width: 50px" alt=""> Latest News</h5>
+<!--            <th:block th:each="post: ${newsPosts}">-->
+<!--                <td><a class="text-left border m-1 p-1" th:text="${post.getTitle()} + ' | ' + ${post.getCreatedOn()}" th:href="@{/news/posts/{slug}(slug=${post.getSlug()})}"></a></td>-->
+<!--            </th:block>-->
+            <a class="text-left border m-1 p-1" href="/galin-yan.github.io/projects/demo/reason-and-domination/news/newsPost.html">The Grand PvP Tournament is Here! | 2025-03-16 14:05:52</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">v1.5.0 - Player Housing System Introduced! | 2025-03-01 17:22:15</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">v1.4.5 - Minor Fixes & Quality of Life Adjustments | 2025-01-19 09:52:11</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">v1.4.0 - The Raid System Revamp! | 2025-01-05 11:42:25</a>
+            <a style="text-decoration: line-through" class="text-left border m-1 p-1" href="#">Winter Festival Event Begins! | 2024-12-01 09:01:37</a>
+            <a class="text-center" href="/galin-yan.github.io/projects/demo/reason-and-domination/news.html">explore more news...</a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-5 text-center">
+    <h5><img src="https://www.hiveworkshop.com/data/ratory-images/143/143734-c08c6d7416954ee16ae27bc2d2d1ae10_tn.jpg" style="width: 50px  " alt=""> R&D Featured Guides</h5>
+    <div class="container-fluid pt-2 text-center">
+        <div class="row gx-5 d-flex justify-content-center">
+            <div class="col-12 col-md-3 d-flex flex-column border">
+                <h5 class="pt-2"><img src="https://www.hiveworkshop.com/data/ratory-images/125/125186-8b39d21082f93a49a0f17cfbfe5d3c20.jpg" style="width: 50px" alt=""> Edisonspire Foundry Guides</h5>
+<!--                <th:block th:each="post: ${edisonspireGuides}">-->
+<!--                    <td><a class="text-left border m-1 p-1" th:text="${post.getTitle()}" th:href="'/guides/posts/' + ${post.getSlug()}"></a></td>-->
+<!--                </th:block>-->
+                <a class="text-left border m-1 p-1" href="/galin-yan.github.io/projects/demo/reason-and-domination/guides/guidesPostEdison.html">Edisonspire Foundry</a>
+
+            </div>
+            <div class="col-12 col-md-3 d-flex flex-column border">
+                <h5 class="pt-2"><img src="https://www.hiveworkshop.com/data/ratory-images/61/61058-a8c677e950f11090d831bab5bfe56e48.jpg" style="width: 50px" alt=""> Geargrind Grotto Guides</h5>
+<!--                <th:block th:each="post: ${geargrindGrottoGuides}">-->
+<!--                    <td><a class="text-left border m-1 p-1" th:text="${post.getTitle()}" th:href="'/guides/posts/' + ${post.getSlug()}"></a></td>-->
+<!--                </th:block>-->
+                <a class="text-left border m-1 p-1" href="/galin-yan.github.io/projects/demo/reason-and-domination/guides/guidesPostGeargrind.html">Geargrind Grotto</a>
+
+            </div>
+            <div class="col-12 col-md-3 d-flex flex-column border">
+                <h5 class="pt-2"><img src="https://www.hiveworkshop.com/data/ratory-images/217/217236-11de84cd036f0fa5fa58fac2865f188f.png" style="width: 50px" alt=""> Arena S3 Guides</h5>
+<!--                <th:block th:each="post: ${arenaS3Guides}">-->
+<!--                    <td><a class="text-left border m-1 p-1" th:text="${post.getTitle()}" th:href="'/guides/posts/' + ${post.getSlug()}"></a></td>-->
+<!--                </th:block>-->
+                <a class="text-left border m-1 p-1" href="/galin-yan.github.io/projects/demo/reason-and-domination/guides/guidesPostArena.html">Arena Season 3</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer style="color: white">
+    <p class="text-center">@Ethertale 2025</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
