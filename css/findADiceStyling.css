@@ -1,0 +1,157 @@
+/* ========== FIND A DICE PORTFOLIO PAGE - FANTASY STYLING ========== */
+/* This CSS adds medieval fantasy aesthetics to the portfolio page without modifying HTML */
+
+/* ========== COLOR PALETTE ========== */
+:root {
+    --fantasy-panel-accent: #3c2b19;
+    --fantasy-gold: #d9b261;
+    --fantasy-gold-dark: #8f6a36;
+    --fantasy-muted-text: #cfc8b8;
+    --fantasy-light-text: #f7f3e7;
+}
+
+/* ========== BACKGROUND STYLING ========== */
+body {
+    background-image: url("/rsc/imgs/projects/Find-A-Dice/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Add blurred overlay to background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+            linear-gradient(rgba(6,10,8,0.65), rgba(3,6,5,0.75)),
+            url("/rsc/imgs/projects/Find-A-Dice/background.jpeg") center center / cover no-repeat;
+    background-attachment: fixed;
+    filter: blur(8px);
+    transform: scale(1.05);
+    z-index: -1;
+}
+
+/* ========== PROJECT DESCRIPTION PANEL ========== */
+#projectDescription {
+    background: linear-gradient(180deg, rgba(25, 20, 15, 0.95), rgba(18, 15, 12, 0.97)) !important;
+    border: 4px solid var(--fantasy-panel-accent) !important;
+    border-radius: 12px !important;
+    box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.9),
+            inset 0 2px 0 rgba(255, 255, 255, 0.03),
+            inset 0 -20px 60px rgba(0, 0, 0, 0.6) !important;
+    position: relative;
+}
+
+/* Title styling */
+#projectDescription h3 {
+    color: var(--fantasy-gold);
+    text-shadow:
+            0 2px 0 rgba(0,0,0,0.8),
+            0 4px 15px rgba(60, 43, 25, 0.6);
+}
+
+/* Description text */
+#projectDescription p {
+    color: var(--fantasy-light-text);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Tech stack section */
+#projectDescription .tools-used {
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(217, 178, 97, 0.2);
+}
+
+/* ========== IMAGE GALLERY STYLING ========== */
+.img-gallery {
+    width: 80%;
+    margin: 100px auto 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 30px;
+}
+
+/* Individual image styling - ornate frames */
+.img-gallery img {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 4px solid var(--fantasy-panel-accent) !important;
+    border-radius: 12px !important;
+    box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.8),
+            inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    filter: brightness(0.9) contrast(1.05);
+    position: relative;
+}
+
+/* Add inner decorative border effect */
+.img-gallery img::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(217, 178, 97, 0.1);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 992px) {
+    .img-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .img-gallery {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    #projectDescription {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .logoAppear {
+        width: 80vw !important;
+    }
+}
+
+/* ========== CUSTOM SCROLLBAR ========== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #4a381f, #2b210c);
+    border-radius: 10px;
+    border: 2px solid rgba(0,0,0,0.45);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #5a4825, #3a2815);
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.9));
+}
+
+/* ========== FADE IN ANIMATION ========== */
+.bodyAppear {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
