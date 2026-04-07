@@ -38,7 +38,7 @@
 <main class="wrap">
     <section class="profile-card">
         <div class="portrait">
-            <img id="profilePic" src="" alt="Galin Yanakov portrait">
+            <img id="profilePic" src="/rsc/imgs/other/prof-pic.jpg" alt="Galin Yanakov portrait">
         </div>
         <div class="bio">
             <h1>GALIN YANAKOV</h1>
@@ -107,17 +107,6 @@
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<script type="module">
-    import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-    const octokit = new Octokit();
-    async function loadGitHub(){
-        try{
-            const user = await octokit.request('GET /users/{username}', { username: 'Ethertale', headers: { 'X-GitHub-Api-Version': '2022-11-28' } });
-            document.getElementById('profilePic').src = user.data.avatar_url;
-        }catch(e){ console.warn('GitHub avatar load failed', e); document.getElementById('profilePic').src='/rsc/imgs/other/default-avatar.png'; }
-    }
-    loadGitHub();
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>

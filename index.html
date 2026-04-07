@@ -36,7 +36,7 @@
     <div class="hero">
         <div class="portrait">
             <div class="frame">
-                <img id="profilePic" style="max-height: 256px; max-width: 256px" class="img-fluid imageHover" src="https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg?semt=ais_hybrid&w=740&q=80" alt="">
+                <img id="profilePic" style="max-height: 256px; max-width: 256px" class="img-fluid imageHover" src="/rsc/imgs/other/prof-pic.jpg" alt="">
             </div>
         </div>
 
@@ -159,9 +159,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 <script type="module">
     import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
 
@@ -173,15 +170,8 @@
             headers: { 'X-GitHub-Api-Version': '2022-11-28' }
         });
 
-        const lastPushDate = await octokit.request('GET /repos/Ethertale/galin-yan.github.io/branches/main', {
-            owner: 'Ethertale',
-            repo: 'galin-yan.github.io',
-            branch: 'main',
-            headers: { 'X-GitHub-Api-Version': '2022-11-28' }
-        });
-
+        console.log(user)
         document.getElementById("profilePic").src = user.data.avatar_url;
-        document.getElementById('lastPushDate').textContent = lastPushDate.data.commit.commit.author.date.substring(0, 10);
     }
 
     loadGitHub();
