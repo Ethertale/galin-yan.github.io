@@ -159,22 +159,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
         integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
         crossorigin="anonymous"></script>
-<script type="module">
-    import { Octokit } from "https://cdn.skypack.dev/@octokit/core";
-
-    const octokit = new Octokit();
-
-    async function loadGitHub() {
-        const user = await octokit.request('GET /users/{username}', {
-            username: 'Ethertale',
-            headers: { 'X-GitHub-Api-Version': '2022-11-28' }
-        });
-
-        console.log(user)
-        document.getElementById("profilePic").src = user.data.avatar_url;
-    }
-
-    loadGitHub();
-</script>
 </body>
 </html>
