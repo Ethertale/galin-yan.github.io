@@ -1,116 +1,603 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>About Me - Galin Yanakov</title>
-    <meta name="description" content="About Me - Galin Yanakov" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me — Galin Yan</title>
+    <meta name="description" content="About Me — Galin Yanakov" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.css" />
-    <link rel="stylesheet" href="/css/newAboutStyle.css">
+
+    <style>
+        @font-face {
+            font-family: 'Good Times';
+            src: url('Good-Times-Regular.otf') format('opentype');
+        }
+
+        :root {
+            --red:    #E8312A;
+            --white:  #FAFAFA;
+            --off:    #F2F1EF;
+            --dark:   #141414;
+            --mid:    #4A4A4A;
+            --border: #D8D8D5;
+            --glass:  rgba(250, 250, 250, 0.88);
+
+            --font-head:  'Good Times', sans-serif;
+            --font-label: 'Barlow Condensed', sans-serif;
+            --font-body:  'Lato', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; border-radius: 0 !important; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--white);
+            color: var(--dark);
+            font-family: var(--font-body);
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+        }
+        .navbar .container { padding-top: 14px; padding-bottom: 14px; }
+
+        .navbar-brand {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            color: var(--dark);
+            position: relative;
+            padding-left: 14px;
+        }
+        .navbar-brand::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0;
+            height: 100%; width: 3px;
+            background: var(--red);
+        }
+
+        .nav-link {
+            font-family: var(--font-label);
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid) !important;
+            padding: 6px 0 !important;
+            position: relative;
+            transition: color 0.2s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--red);
+            transition: width 0.25s ease;
+        }
+        .nav-link:hover { color: var(--dark) !important; }
+        .nav-link:hover::after { width: 100%; }
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            padding: 140px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                    linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px);
+            background-size: 100px 100px;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
+            mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
+            pointer-events: none;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute;
+            right: -5%; top: -15%;
+            width: 58%; height: 130%;
+            background: linear-gradient(to bottom left, rgba(232,49,42,0.09) 0%, rgba(232,49,42,0.04) 45%, transparent 75%);
+            transform: skewX(-8deg);
+            pointer-events: none;
+        }
+        .page-runner {
+            position: absolute;
+            left: 8.5%; top: 0;
+            width: 2px; height: 100%;
+            background: var(--red);
+            opacity: 0.14;
+        }
+        .page-header-inner { position: relative; z-index: 1; }
+
+        .section-label {
+            font-family: var(--font-label);
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px; height: 2px;
+            background: var(--red);
+            flex-shrink: 0;
+        }
+
+        .page-title {
+            font-family: var(--font-head);
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            letter-spacing: 0.05em;
+            line-height: 1.05;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        /* ── SHARED SECTION WRAPPER ── */
+        .content-wrap { padding: 0 0 100px; }
+
+        /* ── PROFILE CARD ── */
+        .profile-block {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--red);
+            background: var(--white);
+            margin-bottom: 2px;
+        }
+
+        .profile-portrait {
+            border-right: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+        .profile-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(20%);
+            transition: filter 0.3s;
+        }
+        .profile-portrait:hover img { filter: grayscale(0%); }
+
+        .profile-bio {
+            padding: 32px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .profile-name {
+            font-family: var(--font-head);
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            letter-spacing: 0.08em;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .profile-bio p {
+            font-size: 0.9rem;
+            color: var(--mid);
+            line-height: 1.8;
+            margin: 0;
+            max-width: 560px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px; height: 36px;
+            border: 1px solid var(--border);
+            background: var(--off);
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .socials a:hover { border-color: var(--red); background: var(--white); }
+        .socials a img { width: 20px; height: 20px; }
+
+        /* ── BLOCK SECTIONS (work / education) ── */
+        .data-section {
+            margin-bottom: 60px;
+        }
+
+        .block-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 2px;
+            padding: 18px 0 14px;
+            border-top: 3px solid var(--red);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .block-title {
+            font-family: var(--font-head);
+            font-size: 0.88rem;
+            letter-spacing: 0.1em;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        /* entry rows */
+        .entry-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-top: none;
+            background: var(--white);
+            transition: background 0.2s;
+        }
+        .entry-row:hover { background: var(--off); }
+
+        .entry-meta {
+            padding: 20px 20px;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .entry-org {
+            font-family: var(--font-label);
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .entry-period {
+            font-family: var(--font-label);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--mid);
+        }
+
+        .entry-body {
+            padding: 20px 24px;
+        }
+
+        .entry-title {
+            font-family: var(--font-head);
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            color: var(--dark);
+            margin: 0 0 8px;
+        }
+
+        .entry-desc {
+            font-size: 0.85rem;
+            color: var(--mid);
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        /* education logo */
+        .edu-logo {
+            width: 36px; height: 36px;
+            object-fit: contain;
+            filter: grayscale(40%);
+            margin-bottom: 6px;
+            transition: filter 0.2s;
+        }
+        .entry-row:hover .edu-logo { filter: grayscale(0%); }
+
+        /* ── CERTIFICATES ── */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .cert-item {
+            background: var(--white);
+            overflow: hidden;
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .cert-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: transparent;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+        .cert-item:hover::before { background: var(--red); }
+
+        .cert-item img {
+            width: 100%;
+            display: block;
+            filter: grayscale(25%);
+            transition: filter 0.3s, transform 0.3s;
+        }
+        .cert-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.03);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-brand {
+            font-family: var(--font-head);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--dark);
+        }
+        .footer-copy {
+            font-family: var(--font-label);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            color: var(--border);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .page-runner { left: 4%; }
+            .profile-block { grid-template-columns: 1fr; }
+            .profile-portrait { height: 260px; }
+            .entry-row { grid-template-columns: 1fr; }
+            .entry-meta { border-right: none; border-bottom: 1px solid var(--border); }
+            .footer-inner { justify-content: center; text-align: center; }
+        }
+    </style>
 </head>
+
 <body>
-<header>
-    <nav class="nav navbar sticky-top navbar-expand-lg">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="brand">
-                <div class="sig">Galin Yan</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/index.html">Galin Yan</a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav gap-lg-5">
+                <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about.html">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contacts.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="page-runner"></div>
+    <div class="container page-header-inner">
+        <p class="section-label">Identity</p>
+        <h1 class="page-title">About Me</h1>
+    </div>
+</div>
+
+<div class="content-wrap">
+    <div class="container">
+
+        <!-- PROFILE -->
+        <div class="profile-block mb-5">
+            <div class="profile-portrait">
+                <img src="/rsc/imgs/other/prof-pic.jpg" alt="Galin Yanakov portrait" />
             </div>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link montserrat-font mx-1" href="index.html">Home</a>
-                    <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
-                    <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
-                    <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
+            <div class="profile-bio">
+                <h1 class="profile-name">GALIN YANAKOV</h1>
+                <p>Hello! I'm Galin, a web and software developer who treats programming like a game. I build backend services with
+                    Java &amp; Spring, compose frontend experiences with Vue or vanilla JS. Outside of work, I enjoy gaming, creating fantasy worlds through art and stories and constantly
+                    dabble into new hobbies for fun and learning something new.</p>
+                <div class="socials">
+                    <a href="https://github.com/Ethertale" target="_blank" rel="noopener" title="GitHub">
+                        <img src="https://img.icons8.com/color-glass/96/github--v1.png" alt="GitHub" />
+                    </a>
+                    <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" rel="noopener" title="LinkedIn">
+                        <img src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn" />
+                    </a>
+                    <a href="https://www.instagram.com/galin.yan/" target="_blank" rel="noopener" title="Instagram">
+                        <img src="https://img.icons8.com/fluency/96/instagram-new.png" alt="Instagram" />
+                    </a>
                 </div>
             </div>
         </div>
-    </nav>
-</header>
 
-<div id="backgroundImage" aria-hidden="true"></div>
+        <!-- WORK EXPERIENCE -->
+        <div class="data-section">
+            <div class="block-header">
+                <p class="section-label mb-0">Experience</p>
+                <h2 class="block-title">Work Experience</h2>
+            </div>
 
-<main class="wrap">
-    <section class="profile-card">
-        <div class="portrait">
-            <img id="profilePic" src="/rsc/imgs/other/prof-pic.jpg" alt="Galin Yanakov portrait">
-        </div>
-        <div class="bio">
-            <h1>GALIN YANAKOV</h1>
-            <p>Hello! I'm Galin, a web and software developer who treats programming like a game. I build backend services with
-                Java & Spring, compose frontend experiences with Vue or vanilla JS. Outside of work, I enjoy gaming, creating fantasy worlds through art and stories and constantly
-                dabble into new hobbies for fun and learning something new.</p>
-            <div class="socials">
-                <a href="https://github.com/Ethertale" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/color-glass/96/github--v1.png" alt="GitHub"></a>
-                <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn"></a>
-                <a href="https://www.instagram.com/galin.yan/" target="_blank" rel="noopener"><img width="50" src="https://img.icons8.com/fluency/96/instagram-new.png" alt="Instagram"></a>
+            <div class="entry-row">
+                <div class="entry-meta">
+                    <span class="entry-org">kidcess.com</span>
+                    <span class="entry-period">Apr 2025 – Jun 2025</span>
+                    <span class="entry-period">Remote, Bulgaria</span>
+                </div>
+                <div class="entry-body">
+                    <h3 class="entry-title">Front End Intern</h3>
+                    <p class="entry-desc">Worked on Shopify front-ends using HTML, JS, CSS/Bootstrap and Liquid templates. Implemented new features and fixed UI issues while maintaining cross-browser compatibility and performance.</p>
+                </div>
+            </div>
+
+            <div class="entry-row">
+                <div class="entry-meta">
+                    <span class="entry-org">pavlinaaenska.com</span>
+                    <span class="entry-period">Nov 2024 – Feb 2025</span>
+                    <span class="entry-period">Remote, Bulgaria</span>
+                </div>
+                <div class="entry-body">
+                    <h3 class="entry-title">Front End Intern</h3>
+                    <p class="entry-desc">Maintained front-end code with HTML, JS, and PHP patches. Added features like dynamic navigation and responsive improvements, plus debugging and layout fixes.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="workExperience">
-        <h2 class="section">Work Experience</h2>
-        <div class="work-card">
-            <h3>Front End Intern - kidcess.com</h3>
-            <small>Apr 2025 - Jun 2025 | Remote, Bulgaria</small>
-            <p class="mt-2">Worked on Shopify front-ends using HTML, JS, CSS/Bootstrap and Liquid templates. Implemented new features and fixed UI issues while maintaining cross-browser compatibility and performance.</p>
-        </div>
+        <!-- EDUCATION -->
+        <div class="data-section">
+            <div class="block-header">
+                <p class="section-label mb-0">Background</p>
+                <h2 class="block-title">Education</h2>
+            </div>
 
-        <div class="work-card">
-            <h3>Front End Intern - pavlinaaenska.com</h3>
-            <small>Nov 2024 - Feb 2025 | Remote, Bulgaria</small>
-            <p class="mt-2">Maintained front-end code with HTML, JS, and PHP patches. Added features like dynamic navigation and responsive improvements, plus debugging and layout fixes.</p>
-        </div>
-    </section>
-
-    <section id="education">
-        <h2 class="section">Education</h2>
-        <div class="edu-card d-flex gap-3 align-items-center">
-            <img src="rsc/imgs/other/softuni_logo.png" alt="SoftUni" style="width:64px;height:64px;object-fit:contain;border-radius:8px">
-            <div>
-                <h3>Software University - Computer Programming</h3>
-                <small>Oct 2022 - Aug 2025 | Grade: Back-end Developer</small>
-                <p class="m-0">Focused studies on Java, Spring, databases and web engineering.</p>
+            <div class="entry-row">
+                <div class="entry-meta">
+                    <img src="rsc/imgs/other/softuni_logo.png" alt="SoftUni" class="edu-logo" />
+                    <span class="entry-org">Software University</span>
+                    <span class="entry-period">Oct 2022 – Aug 2025</span>
+                </div>
+                <div class="entry-body">
+                    <h3 class="entry-title">Computer Programming — Back-end Developer</h3>
+                    <p class="entry-desc">Focused studies on Java, Spring, databases and web engineering.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="certificates" class="container pt-5">
-            <h1 class="cinzel-font">Certificates</h1>
-            <div class="img-gallery">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250279?code=7e78a079" alt="https://softuni.bg/Certificates/Details/250279/7e78a079">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/147425?code=4b22d12c" alt="https://softuni.bg/certificates/details/147425/4b22d12c">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/167363?code=31c77033" alt="https://softuni.bg/certificates/details/167363/31c77033">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/188694?code=8d36daf0" alt="https://softuni.bg/certificates/details/188694/8d36daf0">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/200880?code=4095ccd9" alt="https://softuni.bg/certificates/details/200880/4095ccd9">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/203097?code=98fb3148" alt="https://softuni.bg/certificates/details/203097/98fb3148">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/218490?code=ebc0b8d6" alt="https://softuni.bg/certificates/details/218490/ebc0b8d6">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/223918?code=d576db2b" alt="https://softuni.bg/certificates/details/223918/d576db2b">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/226183?code=ebbbb02d" alt="https://softuni.bg/certificates/details/226183/ebbbb02d">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/237580?code=a2d39cd3" alt="https://softuni.bg/certificates/details/237580/a2d39cd3">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/241409?code=a2fe22a3" alt="https://softuni.bg/certificates/details/241409/a2fe22a3">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/248123?code=0423e075" alt="https://softuni.bg/certificates/details/248123/0423e075">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/249618?code=42ca56b4" alt="https://softuni.bg/certificates/details/249618/42ca56b4">
-                <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250173?code=f0a948f3" alt="https://softuni.bg/certificates/details/250173/f0a948f3">
+        <!-- CERTIFICATES -->
+        <div class="data-section">
+            <div class="block-header">
+                <p class="section-label mb-0">Certificates</p>
+                <h2 class="block-title">Certificates</h2>
             </div>
-    </section>
 
-</main>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/250279/7e78a079">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250279?code=7e78a079" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/147425/4b22d12c">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/147425?code=4b22d12c" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/167363/31c77033">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/167363?code=31c77033" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/188694/8d36daf0">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/188694?code=8d36daf0" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/200880/4095ccd9">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/200880?code=4095ccd9" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/203097/98fb3148">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/203097?code=98fb3148" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/218490/ebc0b8d6">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/218490?code=ebc0b8d6" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/223918/d576db2b">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/223918?code=d576db2b" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/226183/ebbbb02d">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/226183?code=ebbbb02d" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/237580/a2d39cd3">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/237580?code=a2d39cd3" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/241409/a2fe22a3">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/241409?code=a2fe22a3" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/248123/0423e075">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/248123?code=0423e075" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/249618/42ca56b4">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/249618?code=42ca56b4" alt="Certificate" />
+                    </a>
+                </div>
+                <div class="cert-item">
+                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/250173/f0a948f3">
+                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250173?code=f0a948f3" alt="Certificate" />
+                    </a>
+                </div>
+            </div>
+        </div>
 
+    </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-    <small>© <span id="year"></span> Galin "Ether" Yan</small>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-brand">Galin Yan</span>
+            <span class="footer-copy">© <span id="year"></span> Galin "Ether" Yan — All rights reserved</span>
+        </div>
+    </div>
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1/dist/fancybox/fancybox.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/fancyBox.js"></script>
+<script>
+    Fancybox.bind('[data-fancybox="certs"]', {
+        Toolbar: { display: { left: [], middle: [], right: ['close'] } }
+    });
+</script>
+
 </body>
 </html>
