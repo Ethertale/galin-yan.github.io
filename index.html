@@ -389,7 +389,7 @@
         }
 
         .project-link {
-            font-family: var(--font-label);
+            font-family: var(--font-head);
             font-weight: 600;
             font-size: 0.72rem;
             letter-spacing: 0.2em;
@@ -398,11 +398,13 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            transition: gap 0.2s;
+            transition: 0.2s ease-in-out;
         }
 
-        .project-link:hover { gap: 10px; color: var(--red); }
+        .project-link:hover {
+            color: var(--red);
+            transform: scale(1.02) translateX(5px);
+        }
 
         /* ── ABOUT ── */
         .about-section {
@@ -602,7 +604,6 @@
                         <div class="project-body">
                             <h5>Reason & Domination</h5>
                             <p>Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf, and MySQL.</p>
-                            <a href="https://galin-yan.com/projects/reason-and-domination" class="project-link">View Project →</a>
                         </div>
                     </div>
                 </div>
@@ -616,9 +617,12 @@
                     <div class="project-body">
                         <h5>Find A Dice</h5>
                         <p>A social hub for role-players to host events and connect. Built with Spring Boot, Thymeleaf, and MySQL.</p>
-                        <a href="https://galin-yan.com/projects/find-a-dice" class="project-link">View Project →</a>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 align-content-center" data-aos="fade-up" data-aos-delay="200">
+                <a href="/projects.html" style="font-size: 2rem" class="project-link">View All Projects →</a>
             </div>
 
 <!--            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">-->
