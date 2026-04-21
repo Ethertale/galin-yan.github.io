@@ -1,161 +1,725 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Galin Yan</title>
-    <meta name="description" content="Galin Yanakov - Software & Web Developer" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/newIndexStyle.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galin Yan | Developer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Good Times';
+            src: url('Good-Times-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --red:    #E8312A;
+            --white:  #FAFAFA;
+            --off:    #F2F1EF;
+            --dark:   #141414;
+            --mid:    #4A4A4A;
+            --border: #D8D8D5;
+            --glass:  rgba(250, 250, 250, 0.85);
+
+            --font-head: 'Good Times', sans-serif;
+            --font-label: 'Barlow Condensed', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        *, *::before, *::after {
+            border-radius: 0 !important;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--white);
+            color: var(--dark);
+            font-family: var(--font-body);
+            font-weight: 400;
+            overflow-x: hidden;
+
+        }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+        }
+
+        .navbar .container {
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+            color: var(--dark);
+            position: relative;
+            padding-left: 14px;
+        }
+
+        .navbar-brand::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--red);
+        }
+
+        .nav-link {
+            font-family: var(--font-label);
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid) !important;
+            padding: 6px 0 !important;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red);
+            transition: width 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--dark) !important;
+        }
+
+        .nav-link:hover::after { width: 100%; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* grid overlay — fades in left → right via mask */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(to right, rgba(0,0,0,0.055) 2px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.055) 2px, transparent 1px);
+            background-size: 100px 100px;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
+            mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
+            pointer-events: none;
+        }
+
+        /* red diagonal shadow — sits over the right half, tilted */
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -5%;
+            top: -15%;
+            width: 58%;
+            height: 130%;
+            background: linear-gradient(to bottom left, rgba(232, 49, 42, 0.09) 0%, rgba(232, 49, 42, 0.04) 45%, transparent 75%);
+            /*background: linear-gradient(to right, rgba(232, 49, 42, 0.09) 0%, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px);*/
+            transform: skewX(-8deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* runner line — now a real element */
+        .hero-runner {
+            position: absolute;
+            left: 8.5%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--red);
+            opacity: 0.18;
+        }
+
+        @media (max-width: 768px) {
+            .hero::after {
+                content: '';
+                position: absolute;
+                right: -5%;
+                top: -15%;
+                width: 58%;
+                height: 130%;
+                background: linear-gradient(to bottom left, rgba(232, 49, 42, 0) 0%, rgba(232, 49, 42, 0) 45%, transparent 75%);
+                /*background: linear-gradient(to right, rgba(232, 49, 42, 0.09) 0%, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px);*/
+                transform: skewX(-8deg);
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            .hero-runner {
+                position: absolute;
+                left: 8.5%;
+                top: 0;
+                width: 2px;
+                height: 100%;
+                background: var(--red);
+                opacity: 0;
+            }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            font-family: var(--font-label);
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-tag::before {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 2px;
+            background: var(--red);
+            flex-shrink: 0;
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 1.02;
+            letter-spacing: 0.04em;
+            color: var(--dark);
+            margin: 0 0 1.6rem;
+        }
+
+        .hero h1 .line-accent {
+            color: var(--red);
+        }
+
+        .hero-sub {
+            font-family: var(--font-label);
+            font-weight: 300;
+            font-size: 1.1rem;
+            letter-spacing: 0.06em;
+            color: var(--mid);
+            max-width: 420px;
+            line-height: 1.7;
+            margin-bottom: 2.8rem;
+        }
+
+        .btn-me {
+            font-family: var(--font-label);
+            font-weight: 600;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--red);
+            border: 2px solid var(--red);
+            background: transparent;
+            padding: 12px 28px;
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.25s;
+        }
+
+        .btn-me::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--red);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s ease;
+            z-index: 0;
+        }
+
+        .btn-me:hover { color: white; }
+        .btn-me:hover::before { transform: scaleX(1); }
+        .btn-me span { position: relative; z-index: 1; }
+
+        /* coordinate stamp */
+        .coord-stamp {
+            position: absolute;
+            right: 2rem;
+            bottom: 2.5rem;
+            font-family: var(--font-label);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: var(--border);
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* ── SECTION HEADERS ── */
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-label {
+            font-family: var(--font-label);
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            letter-spacing: 0.05em;
+            color: var(--dark);
+            line-height: 1.1;
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 100px 0; }
+
+        /* ── PROJECT CARDS ── */
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--red);
+            position: relative;
+            transition: border-color 0.2s, transform 0.2s;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom right, rgba(232,49,42,0.03), transparent);
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .project-card:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .project-thumb {
+            height: 160px;
+            background: var(--off);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* subtle cross-hatch in thumb */
+        .project-thumb::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                    linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
+                    linear-gradient(-45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.03) 75%),
+                    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.03) 75%);
+            background-size: 12px 12px;
+        }
+
+        .project-number {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            font-family: var(--font-label);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            color: rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .project-body { padding: 20px 22px 22px; }
+
+        .project-body h5 {
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+
+        .project-body p {
+            font-size: 0.85rem;
+            color: var(--mid);
+            margin-bottom: 14px;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--red);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            transition: 0.2s ease-in-out;
+        }
+
+        .project-link:hover {
+            color: var(--red);
+            transform: scale(1.02) translateX(5px);
+        }
+
+        /* ── ABOUT ── */
+        .about-section {
+            background: var(--off);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--red);
+        }
+
+        .about-text {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--mid);
+            max-width: 540px;
+        }
+
+        .about-text strong {
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        /* skill tags */
+        .skill-tag {
+            display: inline-block;
+            font-family: var(--font-label);
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--mid);
+            border: 1px solid var(--border);
+            padding: 4px 10px;
+            margin: 4px 4px 4px 0;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        /* ── CONTACT ── */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            color: var(--dark);
+            transition: color 0.2s;
+        }
+
+        .contact-item:hover { color: var(--red); }
+
+        .contact-item:hover .contact-arrow { transform: translateX(4px); }
+
+        .contact-platform {
+            font-family: var(--font-label);
+            font-size: 0.65rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--red);
+            min-width: 72px;
+        }
+
+        .contact-value {
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .contact-arrow {
+            font-size: 0.8rem;
+            color: var(--border);
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .contact-item:hover .contact-arrow { color: var(--red); }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-head);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--dark);
+        }
+
+        .footer-copy {
+            font-family: var(--font-label);
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            color: var(--border);
+        }
+
+        /* ── AOS ── */
+        [data-aos="me-slide-up"] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        [data-aos="me-slide-up"].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .hero::after { left: 4%; }
+            .coord-stamp { display: none; }
+            .footer-inner { justify-content: center; text-align: center; }
+        }
+    </style>
 </head>
+
 <body>
-<header>
-    <nav class="nav navbar sticky-top navbar-expand-lg">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-                    <div class="brand">
-                        <div class="sig">Galin Yan</div>
-                    </div>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link montserrat-font mx-1" href="index.html">Home</a>
-                    <a class="nav-link montserrat-font mx-1" href="projects.html">Projects</a>
-                    <a class="nav-link montserrat-font mx-1" href="about.html">About Me</a>
-                    <a class="nav-link montserrat-font mx-1" href="contacts.html">Contacts</a>
-                </div>
-            </div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Galin Yan</a>
+
+        <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="nav" class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav gap-lg-5">
+                <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/projects.html">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about.html">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contacts.html">Contacts</a></li>
+            </ul>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
 
-<main id="home">
-    <div class="hero">
-        <div class="portrait">
-            <div class="frame">
-                <img id="profilePic" style="max-height: 256px; max-width: 256px" class="img-fluid imageHover" src="/rsc/imgs/other/prof-pic.jpg" alt="">
-            </div>
-        </div>
+<!-- HERO -->
+<div class="hero-runner"></div>
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-inner" data-aos="fade-up">
+            <p class="hero-tag">Software &amp; Web Developer</p>
 
-        <div class="intro">
-            <h1>Welcome, traveler.</h1>
-            <p>I'm <strong>Galin Yan</strong> - a passionate Java developer specializing in Spring, backend systems, and
-                the tools needed to ship reliable software. I craft REST APIs, designs, and build with care and passion.</p>
+            <h1>
+                Galin<br>
+                <span class="line-accent">Yan</span>
+            </h1>
 
-            <div class="meta">
-                <div class="chip">Class: Java / Spring</div>
-                <div class="chip">Role: Backend & Full-stack</div>
-                <div class="chip">Level: Junior</div>
-                <div class="chip">Location: Bulgaria</div>
-            </div>
+            <p class="hero-sub">
+                Helping small businesses grow online.<br>
+                Together we bring your ideas to life.
+            </p>
 
-            <div class="cta">
-                <a class="btn" href="projects.html">View Projects</a>
-                <a class="btn secondary" href="contacts.html">Contact</a>
-            </div>
-
-            <div class="tools-panel" style="margin-top:16px">
-                <div class="tools-title">Technologies & Tools</div>
-                <div class="container carouselContainer">
-                    <div class="logos" style="background-color:transparent">
-                        <div class="logos-slide">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/junit/junit-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prometheus/prometheus-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/intellij/intellij-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg"  alt=""/>
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"  alt=""/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <a href="/projects.html" class="btn-me"><span>View Projects →</span></a>
         </div>
     </div>
 
-    <section id="projects" class="content">
-        <h2 style="font-family:Cinzel,serif;color:var(--accent)">Selected Projects</h2>
-        <div class="grid">
-            <a style="text-decoration: none" href="projects/reason-and-domination.html">
-                <article class="card">
-                    <h3>Reason & Domination</h3>
-                    <p>Built with Java Spring Boot, Spring Security, MySQL and Thymeleaf, it features user profiles,
-                        forum and content management.</p>
-                </article>
+    <span class="coord-stamp">42.6975° N &nbsp; 23.3241° E</span>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <div class="container">
+
+        <div class="section-header" data-aos="fade-up">
+            <p class="section-label">Work</p>
+            <h2 class="section-title">Selected Projects</h2>
+        </div>
+
+        <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="project-card">
+                        <div class="project-thumb">
+                            <img style="width: 100%" src="/rsc/imgs/projects/RnD-Cover.png" alt="">
+                        </div>
+                        <div class="project-body">
+                            <h5>Reason & Domination</h5>
+                            <p>Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf, and MySQL.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="project-card">
+                    <div class="project-thumb">
+                        <img style="width: 100%" src="/rsc/imgs/projects/Find-A-Dice/welcome-page.png" alt="">
+                    </div>
+                    <div class="project-body">
+                        <h5>Find A Dice</h5>
+                        <p>A social hub for role-players to host events and connect. Built with Spring Boot, Thymeleaf, and MySQL.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 align-content-center" data-aos="fade-up" data-aos-delay="200">
+                <a href="/projects.html" style="font-size: 2rem" class="project-link">View All Projects →</a>
+            </div>
+
+<!--            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">-->
+<!--                <div class="project-card">-->
+<!--                    <div class="project-thumb">-->
+<!--                        <span class="project-number">03</span>-->
+<!--                    </div>-->
+<!--                    <div class="project-body">-->
+<!--                        <h5>Project Three</h5>-->
+<!--                        <p>Short description of the project and what problem it solves.</p>-->
+<!--                        <a href="#" class="project-link">View Project →</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+    <div class="container">
+
+        <div class="section-header" data-aos="fade-up">
+            <p class="section-label">Background</p>
+            <h2 class="section-title">About Me</h2>
+        </div>
+
+        <p class="about-text" data-aos="fade-up">
+            I'm a software and web developer focused on
+            <strong>bringing your ideas to life.</strong>
+            I combine technical precision with thoughtful design
+            to create intuitive, modern experiences that work.
+        </p>
+
+        <div class="mt-4" data-aos="fade-up" data-aos-delay="100">
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-plain.svg" />Java</span>
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" />Spring</span>
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/thymeleaf/thymeleaf-original.svg" />Thymeleaf</span>
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />JavaScript</span>
+<!--            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg" />Hibernate</span>-->
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />HTML /<img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />CSS</span>
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" />Bootstrap</span>
+            <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" />MySQL /<img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" />SQLite</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+
+        <div class="section-header" data-aos="fade-up">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-title">Contact</h2>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-up">
+
+            <a href="mailto:info@galin-yan.com" class="contact-item">
+                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt="new-post--v1"/> Email</span>
+                <span class="contact-value">info@galin-yan.com</span>
+                <span class="contact-arrow">→</span>
             </a>
-            <a style="text-decoration: none" href="projects/find-a-dice.html">
-                <article class="card">
-                    <h3>Find A Dice</h3>
-                    <p>A community platform for tabletop roleplayers to build personas, discover like-minded groups,
-                        join online or in-person events, designed to make finding a campaign as easy as finding friends.</p>
-                </article>
+
+            <a href="https://github.com/Ethertale" target="_blank" class="contact-item">
+                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/github--v1.png" alt="github--v1"/> GitHub</span>
+                <span class="contact-value">Ethertale</span>
+                <span class="contact-arrow">→</span>
             </a>
+
+            <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" class="contact-item">
+                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin"/> LinkedIn</span>
+                <span class="contact-value">in/galin-yanakov</span>
+                <span class="contact-arrow">→</span>
+            </a>
+
         </div>
-    </section>
 
-    <section id="about" class="content">
-        <h2 style="font-family:Cinzel,serif;color:var(--accent)">About Me</h2>
-        <div class="grid">
-            <div class="card">
-                <p>I enjoy creating software and websites from the ground up for clients and for fun.
-                    With my stack I can help you bring your ideas from your imagination to a real product.
-                    <br>
-                    More about me <a href="about.html">here...</a>
-                </p>
-            </div>
-            <div class="card">
-                <p>As a software engineer I'm open to work as a junior back-end, front-end, full-stack roles
-                    and freelance. Strong foundation in Java, Spring ecosystem, SQL databases, and modern front-end
-                    frameworks like Vue and vanilla JS.</p>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <section id="contacts" class="content">
-        <h2 style="font-family:Cinzel,serif;color:var(--accent)">Contacts</h2>
-        <div class="grid">
-            <div class="card">
-                <p><strong>Email:</strong> <a href="mailto:info@galin-yan.com?subject=Let%27s%20Talk">info@galin-yan.com</a></p>
-                <p><strong>GitHub:</strong> <a href="https://github.com/Ethertale">Ethertale</a></p>
-            </div>
-            <div class="card">
-                <p>You're welcome to reach out for collaborations, job opportunities, or questions about any project.</p>
-            </div>
-        </div>
-    </section>
-
-</main>
-
+<!-- FOOTER -->
 <footer>
-    <small>© <span id="year"></span> Galin "Ether" Yan</small>
+    <div class="container">
+        <div class="footer-inner">
+            <span class="footer-brand">Galin Yan</span>
+            <span class="footer-copy">© <span id="year"></span> Galin Yan - All rights reserved</span>
+        </div>
+    </div>
 </footer>
-
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-    const copy = document.querySelector(".logos-slide").cloneNode(true);
-    document.querySelector(".logos").appendChild(copy);
+    AOS.init({ duration: 700, once: true, easing: 'ease-out' });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-        crossorigin="anonymous"></script>
+
 </body>
 </html>
