@@ -244,17 +244,6 @@
             outline-offset: -2px;
         }
 
-        /* card number stamp */
-        .card-index {
-            position: absolute;
-            top: 12px; right: 14px;
-            font-family: var(--font-label);
-            font-size: 0.6rem;
-            letter-spacing: 0.22em;
-            color: rgba(0,0,0,0.18);
-            z-index: 3;
-        }
-
         .card-thumb {
             width: 100%;
             height: 190px;
@@ -486,7 +475,10 @@
         /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
             .page-runner { left: 4%; }
-            .projects-grid { grid-template-columns: 1fr; }
+            .projects-grid {
+                display: flex;
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -528,6 +520,49 @@
 <div class="projects-wrap">
     <div class="container">
         <div class="projects-grid">
+            <article style="display: none" class="project-card"
+                     tabindex="0" role="button"
+                     data-title="RCTH Stara Zagora"
+                     data-img="/rsc/imgs/projects/RCTH-Cover.png"
+                     data-desc="Website for a blood donation center based in Stara Zagora, Bulgaria."
+                     data-techs="wordpress,php,html5,css3,javascript,docker"
+                     data-link="https://rcth-stz.eu/">
+                <div class="card-thumb">
+                    <img loading="lazy" style="transform: scale(1)" src="/rsc/imgs/projects/RCTH-Cover.png" alt="RCTH cover" />
+                    <span class="card-open-hint">View Project →</span>
+                </div>
+                <div class="card-body">
+                    <h4>RCTH Stara Zagora</h4>
+                    <p>Website for a blood donation center based in Stara Zagora, Bulgaria.</p>
+                    <div class="tools-row" aria-hidden="true">
+                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg" alt="Wordpress"/></div>
+                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"/></div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card"
+                     tabindex="0" role="button"
+                     data-title="Find A Dice"
+                     data-img="/rsc/imgs/projects/find-a-dice-logo.svg"
+                     data-desc="Social place for D&D role players — campaign tools, events, groups."
+                     data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop,docker"
+                     data-link="https://find-a-dice.onrender.com/">
+                <div class="card-thumb">
+                    <img loading="lazy" style="background-color: black" src="/rsc/imgs/projects/find-a-dice-logo.svg" alt="Find A Dice cover" />
+                    <span class="card-open-hint">View Project →</span>
+                </div>
+                <div class="card-body">
+                    <h4>Find A Dice</h4>
+                    <small style="color: var(--red)">The demo is now live!</small>
+                    <p>Social place for D&D role players — campaign tools, events, groups.</p>
+                    <div class="tools-row" aria-hidden="true">
+                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
+                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
+                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
+                    </div>
+                </div>
+            </article>
 
             <article class="project-card"
                      tabindex="0" role="button"
@@ -536,7 +571,6 @@
                      data-desc="Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf and JPA."
                      data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop,junit"
                      data-link="projects/reason-and-domination.html">
-                <span class="card-index">01</span>
                 <div class="card-thumb">
                     <img loading="lazy" src="rsc/imgs/projects/RnD-Cover.png" alt="Reason & Domination cover" />
                     <span class="card-open-hint">View Project →</span>
@@ -554,42 +588,18 @@
 
             <article class="project-card"
                      tabindex="0" role="button"
-                     data-title="Find A Dice"
-                     data-img="/rsc/imgs/projects/Find-A-Dice/welcome-page.png"
-                     data-desc="A social hub for role-players to host events and connect. Built with Spring and Thymeleaf."
-                     data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop"
-                     data-link="projects/find-a-dice.html">
-                <span class="card-index">02</span>
-                <div class="card-thumb">
-                    <img loading="lazy" style="transform: scale(2.5); margin-top: 2.5rem" src="/rsc/imgs/projects/Find-A-Dice/welcome-page.png" alt="Find A Dice cover" />
-                    <span class="card-open-hint">View Project →</span>
-                </div>
-                <div class="card-body">
-                    <h4>Find A Dice</h4>
-                    <p>Social place for role players — events, profiles and community features.</p>
-                    <div class="tools-row" aria-hidden="true">
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card"
-                     tabindex="0" role="button"
                      data-title="RPG Character Generator"
                      data-img="rsc/imgs/projects/RPGGen-Cover.png"
                      data-desc="Small JS-based character generator for tabletop games."
                      data-techs="html5,css3,bootstrap,javascript"
                      data-link="https://ethertale.github.io/rpgcharactergenerator.github.io/">
-                <span class="card-index">03</span>
                 <div class="card-thumb">
                     <img loading="lazy" src="rsc/imgs/projects/RPGGen-Cover.png" alt="RPG Character Generator cover" />
                     <span class="card-open-hint">View Project →</span>
                 </div>
                 <div class="card-body">
                     <h4>RPG Character Generator</h4>
-                    <p>Small generator for fantasy characters with instant previews and export.</p>
+                    <p>Small JavaScript-based character generator for tabletop games.</p>
                     <div class="tools-row" aria-hidden="true">
                         <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/></div>
                         <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/></div>
@@ -659,7 +669,10 @@
         javascript: ['JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
         photoshop:  ['Photoshop',  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg'],
         junit:      ['JUnit',      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-plain.svg'],
-        vuejs:      ['Vue.js',     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg']
+        vuejs:      ['Vue.js',     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
+        docker:     ['Docker',     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg'],
+        wordpress:  ['WordPress',  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg'],
+        php:        ['PHP',        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg'],
     };
 
     const modalEl    = document.getElementById('projectModal');
