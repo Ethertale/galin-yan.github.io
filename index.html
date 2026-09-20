@@ -319,6 +319,16 @@
             text-orientation: mixed;
         }
 
+        .coord-stamp a {
+            color: var(--border);
+            text-decoration: none;
+            transition: 0.2s ease-in-out;
+        }
+
+        .coord-stamp a:hover {
+            color: var(--red);
+        }
+
         /* ── SECTION HEADERS ── */
         .section-header {
             margin-bottom: 3.5rem;
@@ -330,7 +340,7 @@
             letter-spacing: 0.28em;
             text-transform: uppercase;
             color: var(--red);
-            display: flex;
+            display: none;
             align-items: center;
             gap: 10px;
             margin-bottom: 0.8rem;
@@ -617,7 +627,7 @@
 <section id="home" class="hero">
     <div class="container">
         <div class="hero-inner" data-aos="fade-up">
-            <p class="hero-tag">Software &amp; Web Developer</p>
+<!--            <p class="hero-tag">Software &amp; Web Developer</p>-->
 
             <h1>
                 Galin<br>
@@ -636,7 +646,7 @@
         </div>
     </div>
 
-    <span class="coord-stamp">42.6975° N &nbsp; 23.3241° E</span>
+    <span class="coord-stamp"><a href="https://maps.app.goo.gl/n3m9G1J8RQU3Y2PQA">42.619220241756686° N &nbsp; , 25.393182328585105° E</a></span>
 </section>
 
 <!-- PROJECTS -->
