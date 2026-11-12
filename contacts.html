@@ -132,7 +132,7 @@
                     You can also directly open your mail client through the button below.
                 </p>
 
-                <form id="contactForm" onsubmit="submitContact(event)">
+                <form id="contactForm">
                     <div class="field-group">
                         <label class="field-label" for="name">Your name</label>
                         <input class="field-input" id="name" type="text" placeholder="Your full name" required />
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button class="btn-me" type="button" onclick="openMailClient()">
+                        <button class="btn-me" type="button" id="openMailClient">
                             <span>Open Mail Client →</span>
                         </button>
                         <span class="form-status" id="status"></span>
@@ -173,32 +173,8 @@
     </div>
 </footer>
 
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.getElementById('copyEmail').addEventListener('click', () => {
-        const t = document.getElementById('emailText').textContent;
-        navigator.clipboard?.writeText(t).then(() => {
-            const btn = document.getElementById('copyEmail');
-            const old = btn.textContent;
-            btn.textContent = 'Copied!';
-            setTimeout(() => btn.textContent = old, 1500);
-        }).catch(() => alert('Copy failed — please copy manually.'));
-    });
-
-    function openMailClient() {
-        const to   = document.getElementById('emailText').textContent;
-        const subj = encodeURIComponent(document.getElementById('subject').value || 'Hello');
-        const body = encodeURIComponent(document.getElementById('message').value || '');
-        window.location.href = `mailto:${to}?subject=${subj}&body=${body}`;
-    }
-
-    function submitContact(e) {
-        e.preventDefault();
-        openMailClient();
-        document.getElementById('status').textContent = 'Mail client opened.';
-    }
-</script>
+<script src="/js/site.js"></script>
+<script src="/js/contacts.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
