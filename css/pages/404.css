@@ -54,24 +54,6 @@ body { min-height: 100vh; display: flex; flex-direction: column; }
 
 .stage-inner { position: relative; z-index: 1; }
 
-.err-tag {
-    font-family: var(--font-label);
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--red);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1.4rem;
-}
-.err-tag::before {
-    content: '';
-    width: 28px; height: 2px;
-    background: var(--red);
-    flex-shrink: 0;
-}
-
 .err-code {
     font-family: var(--font-head);
     font-size: clamp(5rem, 18vw, 12rem);
