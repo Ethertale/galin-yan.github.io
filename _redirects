@@ -1,0 +1,35 @@
+# Cloudflare Pages redirects — https://developers.cloudflare.com/pages/configuration/redirects/
+# Format: <from> <to> <status>
+# Retired in 1.1.2: every removed page points to its closest live page.
+# Both ".html" and clean URLs are listed: Pages only auto-strips ".html"
+# for files that still exist.
+
+# Legacy site (pre-redesign)
+/old-Index.html      /           301
+/old-Index           /           301
+/old-about.html      /about      301
+/old-about           /about      301
+/old-contacts.html   /contacts   301
+/old-contacts        /contacts   301
+/old-projects.html   /projects   301
+/old-projects        /projects   301
+
+# Retired project detail pages
+/projects/apexi.html                        /projects  301
+/projects/apexi                             /projects  301
+/projects/dragonvale.html                   /projects  301
+/projects/dragonvale                        /projects  301
+/projects/find-a-dice.html                  /projects  301
+/projects/find-a-dice                       /projects  301
+/projects/olympia-elkridge-university.html  /projects  301
+/projects/olympia-elkridge-university       /projects  301
+/projects/parmentier.html                   /projects  301
+/projects/parmentier                        /projects  301
+/projects/personal-blog.html                /projects  301
+/projects/personal-blog                     /projects  301
+/projects/personal-finance-tracker.html     /projects  301
+/projects/personal-finance-tracker          /projects  301
+/projects/rpg-character-generator.html      /projects  301
+/projects/rpg-character-generator           /projects  301
+/projects/the-fable-stable.html             /projects  301
+/projects/the-fable-stable                  /projects  301
