@@ -324,6 +324,28 @@
             flex: 1;
         }
 
+        /* live-site indicator (positive-only, see setStatus) */
+        .site-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-label);
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid);
+            margin-bottom: 8px;
+        }
+        .site-live::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: var(--red);
+            animation: live-pulse 2s ease-in-out infinite;
+        }
+        @keyframes live-pulse { 50% { opacity: 0.25; } }
+        @media (prefers-reduced-motion: reduce) { .site-live::before { animation: none; } }
+
         .tools-row {
             display: flex;
             flex-wrap: wrap;
@@ -776,8 +798,11 @@
         const el = document.getElementById(elementId);
         if (!el) return; // element missing on this page, skip quietly
 
-        el.textContent = online ? "Online" : "Offline";
-        el.className = online ? "badge bg-success" : "badge bg-danger";
+        // Positive-only: a failed check (timeout, cold start, moved favicon) is
+        // not proof a client site is down, so it never shows "Offline".
+        if (!online) return;
+        el.textContent = "Live";
+        el.className = "site-live";
     }
 
     function checkSite(elementId, baseUrl) {
