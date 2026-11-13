@@ -27,7 +27,7 @@ scripts:
         <!-- PROFILE -->
         <div class="profile-block mb-5">
             <div class="profile-portrait">
-                <img src="/rsc/imgs/other/prof-pic.jpg" alt="Galin Yanakov portrait" />
+                {% image "/rsc/imgs/other/prof-pic.jpg", "Galin Yanakov portrait", "(min-width: 768px) 220px, 100vw", {}, [440, 800] %}
             </div>
             <div class="profile-bio">
                 <h1 class="profile-name">GALIN YANAKOV</h1>
@@ -85,7 +85,7 @@ scripts:
 
             <div class="entry-row">
                 <div class="entry-meta">
-                    <img src="/rsc/imgs/other/softuni_logo.png" alt="SoftUni" class="edu-logo" />
+                    {% image "/rsc/imgs/other/softuni_logo.png", "SoftUni", "36px", { class: "edu-logo" }, [72] %}
                     <span class="entry-org">Software University</span>
                     <span class="entry-period">Oct 2022 – Aug 2025</span>
                 </div>

@@ -9,9 +9,10 @@
 
 @font-face {
     font-family: 'Good Times';
-    src: url('/Good-Times-Regular.otf') format('opentype');
+    src: url('/fonts/good-times.woff2') format('woff2');   /* preloaded in layouts/base.njk */
     font-weight: normal;
     font-style: normal;
+    font-display: swap;   /* show the fallback instead of invisible text if the font is slow */
 }
 
 /* ── TOKENS ── */

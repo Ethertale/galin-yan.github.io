@@ -2,7 +2,6 @@
 
 /* ── overrides of css/main.css ── */
 body { min-height: 100vh; display: flex; flex-direction: column; }
-@font-face { font-family: 'Good Times'; src: url('/Good-Times-Regular.otf') format('opentype'); font-display: swap; }
 .footer-copy { color: var(--mid); }
 
 /* ── 404 STAGE ── */

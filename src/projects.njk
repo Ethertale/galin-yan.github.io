@@ -29,12 +29,12 @@ scripts:
             <article class="project-card"
                      tabindex="0" role="button"
                      data-title="{{ p.title }}"
-                     data-img="{{ p.cover }}"
+                     data-img="{% imageUrl p.cover %}"
                      data-desc="{{ p.description }}"
                      data-techs="{{ p.stack | join(',') }}"
                      data-link="{{ p.url }}">
                 <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
-                    <img loading="lazy"{% if p.imgStyle %} style="{{ p.imgStyle }}"{% endif %} src="{{ p.cover }}" alt="{{ p.coverAlt }}" />
+                    {% image p.cover, p.coverAlt, "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
                     <span class="card-open-hint">View Project →</span>
                 </div>
                 <div class="card-body">
