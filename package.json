@@ -1,0 +1,16 @@
+{
+  "name": "galin-yan.com",
+  "private": true,
+  "description": "Portfolio site of Galin Yanakov - built with Eleventy, deployed on Cloudflare Pages.",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8"
+  }
+}

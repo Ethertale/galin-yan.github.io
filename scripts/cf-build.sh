@@ -7,19 +7,15 @@
 # Branches without this script (main, until v2.0) take the `else` path:
 # a plain copy of every tracked file - exactly what was deployed before.
 #
-# Stage 1.2.3.0: same plain copy, minus repo-only files that should never be public.
-# Stage 1.2.3.1+: replaced by the Eleventy build.
+# Stage 1.2.3+: Eleventy builds src/ into _site/ (config: eleventy.config.js).
+# Only what's in src/ can reach the site, so repo files (scripts/, package.json,
+# .gitignore...) are never public.
 set -euo pipefail
 
-OUT=_site
-rm -rf "$OUT"
-mkdir -p "$OUT"
+# Pages installs dependencies itself when it sees package.json; this covers local runs.
+[ -d node_modules/@11ty/eleventy ] || npm ci
 
-# Repo-only files: tooling and config, not website content.
-EXCLUDE='^(\.gitignore|scripts/|package(-lock)?\.json$|README\.md$)'
+rm -rf _site
+npx @11ty/eleventy
 
-git ls-files -z \
-  | grep -zvE "$EXCLUDE" \
-  | xargs -0 cp --parents -t "$OUT"
-
-echo "cf-build: copied $(find "$OUT" -type f | wc -l) files into $OUT/ (branch: ${CF_PAGES_BRANCH:-local})"
+echo "cf-build: $(find _site -type f | wc -l) files in _site/ (branch: ${CF_PAGES_BRANCH:-local})"

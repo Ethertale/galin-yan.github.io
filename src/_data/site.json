@@ -1,0 +1,13 @@
+{
+  "url": "https://galin-yan.com",
+  "name": "Galin Yan",
+  "author": "Galin Yanakov",
+  "ogImage": "/rsc/imgs/other/preview-banner.jpg",
+  "nav": [
+    { "label": "Home",     "url": "/" },
+    { "label": "Projects", "url": "/projects" },
+    { "label": "About Me", "url": "/about" },
+    { "label": "Contacts", "url": "/contacts" }
+  ],
+  "extraSitemapUrls": ["/projects/reason-and-domination"]
+}
