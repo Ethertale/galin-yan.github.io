@@ -70,6 +70,19 @@ export default function (eleventyConfig) {
   // cleanUrl turns the output path back into the public URL for canonicals and the sitemap.
   eleventyConfig.addFilter('cleanUrl', (url) => url.replace(/(index)?\.html$/, ''));
 
+  // '#6B6B6B' | contrast('#FAFAFA') -> '5.10' (WCAG 2 contrast ratio; AA = 4.5 for text, 3 for large text)
+  const luminance = (hex) => {
+    const [r, g, b] = hex.replace('#', '').match(/../g).map((h) => {
+      const v = parseInt(h, 16) / 255;
+      return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  };
+  eleventyConfig.addFilter('contrast', (fg, bg) => {
+    const [a, b] = [luminance(fg), luminance(bg)];
+    return ((Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05)).toFixed(2);
+  });
+
   // 'https://mdoil.bg/' | origin -> 'https://mdoil.bg'  (CSP source lists in src/headers.njk)
   eleventyConfig.addFilter('origin', (url) => new URL(url).origin);
 

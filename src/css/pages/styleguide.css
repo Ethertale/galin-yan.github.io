@@ -1,0 +1,195 @@
+/* styleguide.css: the style tile (roadmap 1.3.0). Draft tokens come from src/styleguide.11tydata.js
+   (generated as .sg-light / .sg-dark custom properties in the page head). Not used by real pages. */
+
+:root {
+    --sg-cond: 'Sofia Sans Condensed', 'Arial Narrow', sans-serif;
+    --sg-sans: 'Sofia Sans', sans-serif;
+    --sg-shadow: 8px 8px 0 rgba(20, 20, 20, 0.06);
+    --sg-fast: 150ms;
+    --sg-base: 250ms;
+    --sg-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ── shell ── */
+.sg-header { padding: 130px 0 40px; border-bottom: 1px solid var(--border); }
+.sg-title { font-family: var(--font-head); font-size: clamp(2.2rem, 7vw, 4.5rem); letter-spacing: 0.05em; margin: 0 0 0.6rem; }
+.sg-intro { max-width: 60ch; color: var(--mid); margin: 1rem 0 0; font-family: var(--sg-sans); font-size: 1.05rem; line-height: 1.65; }
+.sg-main { padding-bottom: 80px; }
+.sg-section { padding: 56px 0 8px; }
+.sg-h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: 0.05em; margin: 0 0 1rem; display: flex; align-items: baseline; gap: 14px; }
+.sg-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--red); }
+.sg-h3 { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: 0.06em; margin: 0 0 0.6rem; color: var(--ink, var(--dark)); }
+.sg-sub { margin-top: 2.2rem; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.sg-note { max-width: 70ch; color: var(--mid); font-family: var(--sg-sans); font-size: 0.95rem; line-height: 1.6; }
+.sg-note code, .sg-swatch code { font-size: 0.85em; color: inherit; }
+
+/* HUD text: condensed uppercase "position data" */
+.sg-hud {
+    font-family: var(--sg-cond);
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted, var(--mid));
+    margin: 0;
+}
+.sg-hud-big { font-size: 0.8rem; }
+
+/* ── theme scope: everything inside uses the draft tokens ── */
+.sg-theme { background: var(--white); color: var(--ink); }
+.sg-accent { color: var(--red); }
+
+/* ── 01 palette ── */
+.sg-palettes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 1.2rem 0; }
+.sg-palette { padding: 18px; border: 1px solid var(--line); }
+.sg-palette > .sg-hud { margin-bottom: 10px; }
+.sg-swatch { display: flex; align-items: center; gap: 12px; padding: 7px 0; border-top: 1px solid var(--line); }
+.sg-chip { width: 40px; height: 40px; flex-shrink: 0; border: 1px solid var(--line); }
+.sg-swatch-text { flex: 1; font-family: var(--sg-sans); font-size: 0.9rem; line-height: 1.3; }
+.sg-swatch-text small { color: var(--muted); }
+.sg-ratio { font-family: var(--sg-cond); font-weight: 600; font-size: 1rem; text-align: right; line-height: 1.1; }
+.sg-ratio small { display: block; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
+.sg-ratio.is-pass small { color: var(--muted); }
+.sg-ratio.is-large small { color: #B07A00; }
+.sg-ratio.is-fail small { color: var(--red); }
+
+/* ── 02 type ── */
+.sg-type-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--border); }
+.sg-type-row > p { margin: 0; }
+.sg-display { font-family: var(--font-head); font-size: clamp(2.6rem, 8vw, 5.5rem); line-height: 1; letter-spacing: 0.04em; }
+.sg-h1 { font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.05; letter-spacing: 0.05em; }
+.sg-h2-demo { font-family: var(--font-head); font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: 0.05em; }
+.sg-label-demo { font-family: var(--sg-cond); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.sg-body { font-size: 1.0625rem; line-height: 1.7; max-width: 65ch; margin: 0; }
+.sg-sofia { font-family: var(--sg-sans); }
+.sg-lato { font-family: 'Lato', sans-serif; }
+.sg-cyr { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 1rem; }
+.sg-cyr > div { border-top: 1px solid var(--border); padding-top: 10px; }
+.sg-cyr-head { font-size: clamp(1.5rem, 3.2vw, 2rem); letter-spacing: 0.03em; margin: 6px 0 0; line-height: 1.15; }
+.sg-cyr-body .sg-body { margin-top: 6px; font-size: 1.25rem; }
+
+/* ── 03 signature elements ── */
+.sg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 1rem; }
+.sg-card { margin: 0; border: 1px solid var(--border); background: #fff; display: flex; flex-direction: column; }
+.sg-card figcaption { padding: 12px 14px; border-top: 1px solid var(--border); font-family: var(--sg-sans); font-size: 0.88rem; color: var(--mid); line-height: 1.45; }
+.sg-card figcaption b { display: block; color: var(--dark); font-weight: 700; margin-bottom: 2px; }
+.sg-demo { position: relative; min-height: 190px; padding: 24px; flex: 1; background: var(--white); overflow: hidden; }
+.sg-center { display: flex; align-items: center; justify-content: center; }
+
+/* 1 runner + notch (static version of js/runner.js) */
+.sg-runner-demo { padding-left: 56px; }
+.sg-runner { position: absolute; left: 24px; top: 0; width: 2px; height: 52px; background: rgba(232, 49, 42, 0.35); }
+.sg-runner::after { content: ''; position: absolute; left: 0; bottom: 0; width: 24px; height: 2px; background: var(--red); }
+.sg-runner-title { font-family: var(--font-head); font-size: 1.6rem; letter-spacing: 0.05em; margin: 22px 0 0.6rem; line-height: 1.2; }
+.sg-runner-text { font-family: var(--sg-sans); color: var(--mid); margin: 0; }
+
+/* 2 chamfered button: red outer shape = border, inner shape = face, sweep inside the face.
+   Inner cut = cut - 1.17px keeps the diagonal edge 2px thick, like the straight ones (2 - 2(√2-1)). */
+.sg-chamfers { display: flex; flex-wrap: wrap; gap: 14px; align-content: center; }
+.sg-btn {
+    --cut: 12px;
+    display: inline-flex;          /* not inline-block: that adds a descender gap = thicker bottom border */
+    padding: 2px;
+    background: var(--red);
+    text-decoration: none;
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%);
+}
+.sg-btn span {
+    display: block;
+    position: relative;
+    isolation: isolate;
+    padding: 11px 26px;
+    background: var(--white, #FAFAFA);
+    color: var(--red-text, var(--red));
+    font-family: var(--sg-cond);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - max(0px, var(--cut) - 1.17px)) 0, 100% max(0px, var(--cut) - 1.17px), 100% 100%, 0 100%);
+    transition: color var(--sg-base) var(--sg-ease), background-color 0s var(--sg-base);
+}
+.sg-btn span::before {
+    content: '';
+    position: absolute; inset: 0;
+    z-index: -1;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--sg-base) var(--sg-ease);
+}
+.sg-btn:hover span, .sg-btn:focus-visible span, .sg-btn.is-hover span { color: #fff; background-color: var(--red); }
+/* ↑ once the sweep has finished, the face itself turns red, hiding the anti-aliased seam between the two diagonals */
+.sg-btn:hover span::before, .sg-btn:focus-visible span::before, .sg-btn.is-hover span::before { transform: scaleX(1); }
+.sg-btn:focus-visible { outline: none; }
+.sg-btn:focus-visible span { outline: 2px solid var(--ink, var(--dark)); outline-offset: -6px; }
+
+/* 3 triple line */
+.sg-triple { display: grid; gap: 3px; width: 160px; }
+.sg-triple i { display: block; height: 1px; background: var(--line, var(--border)); }
+.sg-triple i:nth-child(2) { background: var(--red); }
+.sg-triple-short { width: 56px; margin-top: 10px; }
+
+/* 4 plinth */
+.sg-plinth { position: relative; background: var(--panel, #fff); border: 1px solid var(--line, var(--border)); box-shadow: var(--sg-shadow); padding: 26px 12px 12px; width: min(100%, 320px); }
+.sg-plinth img { display: block; width: 100%; height: auto; }
+.sg-plinth-label { position: absolute; top: 6px; left: 12px; font-size: 0.62rem; }
+
+/* 5 HUD stamp */
+.sg-stamp { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; text-align: center; }
+.sg-stamp span + span::before { content: '/'; margin-right: 14px; color: var(--border); }
+
+/* 6 textures */
+.sg-textures { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.sg-tex { height: 180px; background: var(--white); position: relative; overflow: hidden; }
+.sg-tex svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sg-tex-grid {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* ── 04 section markers ── */
+.sg-markers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 1rem; }
+.sg-marker { min-height: 150px; }
+.sg-marker-a { padding-left: 56px; }
+.sg-marker-title { font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 0.05em; margin: 22px 0 0; line-height: 1.2; display: flex; align-items: baseline; gap: 10px; }
+.sg-phone { max-width: 300px; margin: 0 auto; width: 100%; border-left: 1px dashed var(--border); border-right: 1px dashed var(--border); }
+.sg-margin-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; color: var(--red); }
+
+/* ── 05 light and black: the component sheet ── */
+.sg-themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 1rem; }
+.sg-themes .sg-theme { padding: 26px; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 18px; }
+.sg-sheet-name { margin-bottom: -6px; }
+.sg-theme .sg-h3 { font-size: 1.3rem; margin: 0; }
+.sg-theme .sg-body { font-family: var(--sg-sans); font-size: 1rem; color: var(--ink); }
+.sg-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.sg-link { color: var(--red-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.sg-link:hover { color: var(--red-hover); text-decoration-thickness: 2px; }
+.sg-link-label { font-family: var(--sg-cond); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; padding: 4px 0; transition: color var(--sg-fast), border-color var(--sg-fast); }
+.sg-link-label:hover { color: var(--ink); border-color: var(--red); }
+.sg-nav-demo { gap: 26px; }
+.sg-nav { font-family: var(--sg-cond); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding: 4px 0; border-bottom: 2px solid transparent; }
+.sg-nav.is-active { color: var(--ink); border-color: var(--red); }
+.sg-nav.is-focus { color: var(--ink); outline: 2px solid var(--red); outline-offset: 4px; }
+.sg-field { display: flex; flex-direction: column; gap: 6px; }
+.sg-field input { font-family: var(--sg-sans); font-size: 1rem; padding: 10px 12px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-bottom: 2px solid var(--muted); outline: none; }
+.sg-field input::placeholder { color: var(--muted); }
+.sg-field input:focus { border-bottom-color: var(--red); }
+.sg-glass { padding: 14px 16px; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent); backdrop-filter: blur(12px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); }
+.sg-glass p { margin: 4px 0 0; font-family: var(--sg-sans); font-size: 0.92rem; color: var(--ink); }
+.sg-dark .sg-glass { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+
+/* ── 06 decisions ── */
+.sg-decisions { font-family: var(--sg-sans); font-size: 1rem; line-height: 1.6; padding-left: 1.4rem; max-width: 75ch; }
+.sg-decisions li { padding: 8px 0; border-top: 1px solid var(--border); }
+.sg-decisions .sg-hud { display: block; color: var(--red); }
+
+@media (max-width: 640px) {
+    .sg-type-row { grid-template-columns: 1fr; gap: 4px; }
+    .sg-header { padding-top: 110px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sg-btn span, .sg-btn span::before, .sg-link-label { transition: none; }
+}

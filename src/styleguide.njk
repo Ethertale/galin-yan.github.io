@@ -1,0 +1,248 @@
+---
+permalink: /styleguide.html
+title: "Style tile | Galin Yan"
+description: "Design system draft for galin-yan.com (roadmap 1.3.0)."
+noindex: true
+eleventyExcludeFromCollections: true
+pageStyle: styleguide
+scripts:
+  - /js/styleguide.js
+---
+{% extends "layouts/base.njk" %}
+
+{#- One component sheet, rendered once per theme (light and black). -#}
+{% macro sheet(theme) %}
+<div class="sg-theme sg-{{ theme }}">
+    <p class="sg-hud sg-sheet-name">{{ "Daylight" if theme == "light" else "Black" }} · DORFic</p>
+
+    <h3 class="sg-h3">Ready for the next <span class="sg-accent">run</span></h3>
+    <p class="sg-body">Body copy sits on the base colour in ink. Secondary text uses muted. Red only marks
+        the path: <a href="#" class="sg-link">a text link</a>, buttons, focus and the runner.</p>
+
+    <div class="sg-row">
+        <a href="#" class="sg-btn" style="--cut: 12px"><span>View projects →</span></a>
+        <a href="#" class="sg-btn is-hover" style="--cut: 12px"><span>Hovered →</span></a>
+        <a href="#" class="sg-link-label">Text link</a>
+    </div>
+
+    <div class="sg-row sg-nav-demo">
+        <span class="sg-nav">Home</span>
+        <span class="sg-nav is-active">Projects</span>
+        <span class="sg-nav is-focus">About</span>
+    </div>
+
+    <label class="sg-field">
+        <span class="sg-hud">Your email</span>
+        <input type="email" placeholder="you@example.com" tabindex="-1">
+    </label>
+
+    <div class="sg-triple" aria-hidden="true"><i></i><i></i><i></i></div>
+
+    <div class="sg-glass">
+        <span class="sg-hud">Glass panel</span>
+        <p>Translucent polycarbonate: modal, language switch, toasts.</p>
+    </div>
+</div>
+{% endmacro %}
+
+{% block head %}
+    <!-- Font candidates for the tile only. Chosen fonts get self-hosted in 1.3.2. -->
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Sofia+Sans+Condensed:wght@400;500;600;700&family=Unbounded:wght@500;700&family=Tektur:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
+    <!-- Draft tokens, generated from src/styleguide.11tydata.js -->
+    <style>
+{%- for theme, tokens in palette %}
+        .sg-{{ theme }} { {% for t in tokens %}--{{ t.name }}: {{ t.hex }}; {% endfor %}}
+{%- endfor %}
+    </style>
+{% endblock %}
+
+{% block content %}
+<header class="sg-header">
+    <div class="container">
+        <h1 class="sg-title">Style tile</h1>
+        <p class="sg-hud">Draft v1.3.0 &nbsp;/&nbsp; Runner Vision &nbsp;/&nbsp; <span data-clock>Kazanlak</span></p>
+        <p class="sg-intro">The design system on one page, before any real page changes. Everything here is a
+            proposal: each numbered decision at the bottom needs a yes, a no, or a pick.</p>
+    </div>
+</header>
+
+<div class="container sg-main">
+
+    <!-- 01 PALETTE -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">01</span>Palette</h2>
+        <p class="sg-note">Contrast is computed at build time against the base and the panel colour.
+            AA needs 4.5 for normal text and 3 for large text (24px+, or 19px+ bold).</p>
+        <div class="sg-palettes">
+        {%- for theme, tokens in palette %}
+            <div class="sg-palette sg-theme sg-{{ theme }}">
+                <p class="sg-hud">{{ "Daylight" if theme == "light" else "Black" }}</p>
+                {%- set base = tokens[0].hex %}{% set panel = tokens[1].hex %}
+                {%- for t in tokens %}
+                <div class="sg-swatch">
+                    <span class="sg-chip" style="background: {{ t.hex }}"></span>
+                    <span class="sg-swatch-text">
+                        <b>--{{ t.name }}</b> <code>{{ t.hex }}</code><br>
+                        <small>{{ t.role }}</small>
+                    </span>
+                    {%- if t.type == "text" %}
+                    {%- set c = t.hex | contrast(base) %}
+                    <span class="sg-ratio {{ 'is-pass' if c >= 4.5 else ('is-large' if c >= 3 else 'is-fail') }}"
+                          title="vs panel: {{ t.hex | contrast(panel) }}">{{ c }}<small>{{ 'AA' if c >= 4.5 else ('AA large' if c >= 3 else 'fail') }}</small></span>
+                    {%- endif %}
+                </div>
+                {%- endfor %}
+            </div>
+        {%- endfor %}
+        </div>
+        <p class="sg-note"><b>Still open (1.3.1.1):</b> <code>--red</code> must match the red printed on your business
+            cards. Send me the Pantone/CMYK value from the print file (or a photo next to a white sheet) and I'll match it on screen.</p>
+    </section>
+
+    <!-- 02 TYPE -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">02</span>Type</h2>
+        <div class="sg-type">
+            <div class="sg-type-row"><span class="sg-hud">Display · Good Times</span><p class="sg-display">Galin <span class="sg-accent">Yan</span></p></div>
+            <div class="sg-type-row"><span class="sg-hud">H1 · Good Times</span><p class="sg-h1">Projects &amp; Works</p></div>
+            <div class="sg-type-row"><span class="sg-hud">H2 · Good Times</span><p class="sg-h2-demo">Selected projects</p></div>
+            <div class="sg-type-row"><span class="sg-hud">Label · Sofia Sans Condensed 600</span><p class="sg-label-demo">View project · Stack · Contact</p></div>
+            <div class="sg-type-row"><span class="sg-hud">HUD · Sofia Sans Condensed 500</span><p class="sg-hud sg-hud-big">Base · Kazanlak, BG / 42.62° N, 25.39° E</p></div>
+            <div class="sg-type-row"><span class="sg-hud">Body · Sofia Sans 400 (new)</span>
+                <p class="sg-body sg-sofia">I'm Galin, a Java/Spring developer based in Kazanlak, Bulgaria. I build websites and web applications, from the database to the last hover state.</p></div>
+            <div class="sg-type-row"><span class="sg-hud">Body · Lato 400 (today)</span>
+                <p class="sg-body sg-lato">I'm Galin, a Java/Spring developer based in Kazanlak, Bulgaria. I build websites and web applications, from the database to the last hover state.</p></div>
+        </div>
+
+        <h3 class="sg-h3 sg-sub">Bulgarian <span class="sg-hud">decision 5</span></h3>
+        <p class="sg-note">Good Times has no Cyrillic, so Bulgarian headlines need a second font. Sofia Sans is by a Bulgarian
+            studio and switches to Bulgarian letterforms when the page says <code>lang="bg"</code>: compare д, л, ж, к below.</p>
+        <div class="sg-cyr">
+            <div><span class="sg-hud">Good Times (no Cyrillic: falls back)</span><p class="sg-cyr-head" style="font-family: 'Good Times', sans-serif">Галин Янаков</p></div>
+            <div><span class="sg-hud">Unbounded 700</span><p class="sg-cyr-head" style="font-family: 'Unbounded'; font-weight: 700">Галин Янаков</p></div>
+            <div><span class="sg-hud">Tektur 700</span><p class="sg-cyr-head" style="font-family: 'Tektur'; font-weight: 700">Галин Янаков</p></div>
+            <div><span class="sg-hud">Russo One</span><p class="sg-cyr-head" style="font-family: 'Russo One'">Галин Янаков</p></div>
+        </div>
+        <div class="sg-cyr sg-cyr-body">
+            <div><span class="sg-hud">Sofia Sans · lang="bg"</span><p lang="bg" class="sg-body sg-sofia">Създавам уебсайтове и уеб приложения: дълго, лесно, жълто, книга.</p></div>
+            <div><span class="sg-hud">Sofia Sans · lang="ru" (default forms)</span><p lang="ru" class="sg-body sg-sofia">Създавам уебсайтове и уеб приложения: дълго, лесно, жълто, книга.</p></div>
+        </div>
+    </section>
+
+    <!-- 03 SIGNATURE ELEMENTS -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">03</span>Signature elements</h2>
+
+        <div class="sg-grid">
+            <figure class="sg-card">
+                <div class="sg-demo sg-runner-demo">
+                    <span class="sg-runner" aria-hidden="true"></span>
+                    <p class="sg-runner-title">Projects</p>
+                    <p class="sg-runner-text">The runner sits in the gutter and turns 90° into each section title.</p>
+                </div>
+                <figcaption><b>1 · Runner line + notch</b> Live on the 404 since the trial. Approved, so it rolls out in 1.3.3.5.</figcaption>
+            </figure>
+
+            <figure class="sg-card">
+                <div class="sg-demo sg-chamfers">
+                    {%- for c in chamfers %}
+                    <a href="#" class="sg-btn" style="--cut: {{ c }}px"><span>{{ c }}px</span></a>
+                    {%- endfor %}
+                </div>
+                <figcaption><b>2 · Chamfered button</b> Top-right corner cut at 45°. Hover one to see the red sweep. <span class="sg-hud">decision 1</span></figcaption>
+            </figure>
+
+            <figure class="sg-card">
+                <div class="sg-demo sg-center">
+                    <div class="sg-triple" aria-hidden="true"><i></i><i></i><i></i></div>
+                </div>
+                <figcaption><b>3 · Triple line</b> Three parallel hairlines, the middle one red. Section divider and logo motif.</figcaption>
+            </figure>
+
+            <figure class="sg-card">
+                <div class="sg-demo sg-center">
+                    <div class="sg-plinth">
+                        <span class="sg-hud sg-plinth-label">PRJ-02</span>
+                        {% image "/rsc/imgs/projects/RCTH-Cover.png", "RCTH Stara Zagora cover", "320px", { loading: "lazy" } %}
+                    </div>
+                </div>
+                <figcaption><b>4 · Plinth</b> Screenshots on display: bright panel, hairline, hard offset shadow, index label.</figcaption>
+            </figure>
+
+            <figure class="sg-card">
+                <div class="sg-demo sg-center">
+                    <p class="sg-hud sg-hud-big sg-stamp">
+                        <span>Base · Kazanlak, BG</span>
+                        <span>42.62° N, 25.39° E</span>
+                        <span data-clock>local time</span>
+                        <span>02 / 04</span>
+                    </p>
+                </div>
+                <figcaption><b>5 · HUD stamp</b> Coordinates, live Kazanlak time and the page index.</figcaption>
+            </figure>
+        </div>
+
+        <h3 class="sg-h3 sg-sub">6 · Background texture <span class="sg-hud">decision 2</span></h3>
+        <div class="sg-textures">
+            <figure class="sg-card"><div class="sg-tex sg-tex-grid"></div><figcaption><b>A · Grid</b> Today's page header.</figcaption></figure>
+            <figure class="sg-card"><div class="sg-tex">
+                <svg viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                    {%- for t in lowPoly %}<polygon points="{{ t.points }}" fill="#141414" fill-opacity="{{ t.o }}"/>{% endfor %}
+                </svg></div><figcaption><b>B · Low-poly</b> Triangulated greys, near-invisible.</figcaption></figure>
+            <figure class="sg-card"><div class="sg-tex">
+                <svg aria-hidden="true" width="100%" height="100%">
+                    <defs><pattern id="sg-hex" width="27.71" height="48" patternUnits="userSpaceOnUse">
+                        <path d="M13.86 0 L27.71 8 L27.71 24 L13.86 32 L0 24 L0 8 Z M13.86 32 L13.86 48" fill="none" stroke="#141414" stroke-opacity=".07" stroke-width="1"/>
+                    </pattern></defs>
+                    <rect width="100%" height="100%" fill="url(#sg-hex)"/>
+                </svg></div><figcaption><b>C · Hex</b> Honeycomb hairlines.</figcaption></figure>
+        </div>
+    </section>
+
+    <!-- 04 SECTION MARKERS (eyebrow replacements) -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">04</span>Section markers</h2>
+        <p class="sg-note">What replaces the eyebrow labels. The runner notch (A) is approved for desktop. The runner is
+            hidden on phones, so phones need a fallback: B or D. <span class="sg-hud">decision 3</span></p>
+        <div class="sg-markers">
+            <figure class="sg-card">
+                <div class="sg-demo sg-marker sg-marker-a"><span class="sg-runner" aria-hidden="true"></span><p class="sg-marker-title">About me</p></div>
+                <figcaption><b>A · Runner notch</b> Desktop (approved).</figcaption>
+            </figure>
+            <figure class="sg-card">
+                <div class="sg-demo sg-marker sg-phone"><p class="sg-marker-title"><span class="sg-margin-index">03</span>About me</p></div>
+                <figcaption><b>B · Margin index</b> Phone width. Position data, like a page number.</figcaption>
+            </figure>
+            <figure class="sg-card">
+                <div class="sg-demo sg-marker sg-phone"><p class="sg-marker-title">About me</p><div class="sg-triple sg-triple-short" aria-hidden="true"><i></i><i></i><i></i></div></div>
+                <figcaption><b>D · Triple line</b> Phone width. Reuses signature element 3.</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <!-- 05 LIGHT AND BLACK -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">05</span>Daylight and black</h2>
+        <p class="sg-note">The same components with the same red. Daylight is the identity; black is the variant
+            (dark mode follows in 1.7). <span class="sg-hud">decision 4</span></p>
+        <div class="sg-themes">
+            {{ sheet("light") }}
+            {{ sheet("dark") }}
+        </div>
+    </section>
+
+    <!-- 06 DECISIONS -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">06</span>Decisions</h2>
+        <ol class="sg-decisions">
+            <li><b>Chamfer size</b> on primary buttons and feature cards: 0, 8, 12 or 16px? <span class="sg-hud">Proposal: 12px</span></li>
+            <li><b>Background texture</b> behind headers: grid, low-poly or hex? <span class="sg-hud">Proposal: keep the grid</span></li>
+            <li><b>Phone section marker</b>: margin index (B) or triple line (D)? <span class="sg-hud">Proposal: D</span></li>
+            <li><b>Black variant</b>: does it still feel like you? <span class="sg-hud">Yes / adjust</span></li>
+            <li><b>Bulgarian headline font</b>: Unbounded, Tektur or Russo One? And Good Times for English only, or one font for both? <span class="sg-hud">Proposal: Unbounded, BG only</span></li>
+            <li><b>Body font</b>: Sofia Sans instead of Lato (needed for Cyrillic anyway). <span class="sg-hud">Proposal: yes</span></li>
+        </ol>
+    </section>
+
+</div>
+{% endblock %}
