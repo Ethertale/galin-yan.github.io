@@ -1,5 +1,17 @@
 // Eleventy build for galin-yan.com: src/ -> _site/ (deployed by Cloudflare Pages, see scripts/cf-build.sh).
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import Image from '@11ty/eleventy-img';
+
+// Third-party libraries, self-hosted from node_modules (exact versions in package.json,
+// integrity-checked by npm via package-lock.json). Served from /vendor/<pkg>@<version>/,
+// so an upgrade changes the URL and the long cache in src/headers.njk stays safe.
+const VENDOR = {
+  bootstrap: { pkg: 'bootstrap',     css: 'dist/css/bootstrap.min.css',  js: 'dist/js/bootstrap.bundle.min.js' },
+  aos:       { pkg: 'aos',           css: 'dist/aos.css',                js: 'dist/aos.js' },
+  fancybox:  { pkg: '@fancyapps/ui', css: 'dist/fancybox/fancybox.css',  js: 'dist/fancybox/fancybox.umd.js' },
+};
+const pkgVersion = (pkg) => JSON.parse(readFileSync(`node_modules/${pkg}/package.json`, 'utf8')).version;
 
 // Responsive images: originals stay in src/rsc/, resized copies go to _site/img/.
 // AVIF and WebP for current browsers, the original format as the <img> fallback.
@@ -12,6 +24,24 @@ const IMAGE_OPTIONS = {
 const imageMeta = (src, widths) => Image(`src${src}`, { ...IMAGE_OPTIONS, widths });
 
 export default function (eleventyConfig) {
+  // vendor.bootstrap.css -> '/vendor/bootstrap@5.3.8/bootstrap.min.css' (+ the matching passthrough copy)
+  const vendor = {};
+  for (const [name, lib] of Object.entries(VENDOR)) {
+    const dir = `vendor/${name}@${pkgVersion(lib.pkg)}`;
+    vendor[name] = {};
+    for (const kind of ['css', 'js']) {
+      const file = lib[kind].split('/').pop();
+      eleventyConfig.addPassthroughCopy({ [`node_modules/${lib.pkg}/${lib[kind]}`]: `${dir}/${file}` });
+      vendor[name][kind] = `/${dir}/${file}`;
+    }
+  }
+  eleventyConfig.addGlobalData('vendor', vendor);
+
+  // '/css/main.css' | bust -> '/css/main.css?v=1a2b3c4d' (hash of the file's content).
+  // /css and /js are cached for a year (src/headers.njk): a changed file gets a new URL.
+  eleventyConfig.addFilter('bust', (url) =>
+    `${url}?v=${createHash('sha256').update(readFileSync(`src${url}`)).digest('hex').slice(0, 8)}`);
+
   // {% image "/rsc/x.png", "Alt text", "(min-width: 992px) 400px, 100vw", { loading: "lazy" } %}
   // -> <picture> with AVIF/WebP sources and an <img> carrying width/height (no layout shift).
   // Widths larger than the original are skipped automatically.
@@ -39,6 +69,9 @@ export default function (eleventyConfig) {
   // that file at the clean URL /about. A folder would make /about redirect to /about/.
   // cleanUrl turns the output path back into the public URL for canonicals and the sitemap.
   eleventyConfig.addFilter('cleanUrl', (url) => url.replace(/(index)?\.html$/, ''));
+
+  // 'https://mdoil.bg/' | origin -> 'https://mdoil.bg'  (CSP source lists in src/headers.njk)
+  eleventyConfig.addFilter('origin', (url) => new URL(url).origin);
 
   // [{url: 'a'}, {url: 'b'}] | pluck('url') -> ['a', 'b']  (e.g. socials -> JSON-LD sameAs)
   eleventyConfig.addFilter('pluck', (list, key) => list.map((item) => item[key]));

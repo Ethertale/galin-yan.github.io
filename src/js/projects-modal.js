@@ -33,7 +33,7 @@
             techs.forEach(t => {
                 const key  = t.toLowerCase();
                 const meta = TECHS[key];
-                const url  = meta ? meta.icon : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${key}/${key}-original.svg`;
+                const url  = meta ? meta.icon : `https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/${key}/${key}-original.svg`;
                 const label = meta ? meta.label : t;
 
                 const wrapper = document.createElement('div');
