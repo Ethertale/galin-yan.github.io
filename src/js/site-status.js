@@ -2,19 +2,13 @@
 (function () {
     'use strict';
 
-    const sites = {
-        FindADiceStatus: "https://find-a-dice.onrender.com",
-        RCTHStatus: "https://rcth-stz.eu",
-        MDOilStatus: "https://mdoil.bg",
-    };
+    // Which sites to check comes from the markup: <small data-live-check="https://...">,
+    // rendered from "liveCheck": true in src/_data/projects.json.
 
     const TIMEOUT_MS = 10000;
     const IMAGE_PATH = "/favicon.ico";
 
-    function setStatus(elementId, online) {
-        const el = document.getElementById(elementId);
-        if (!el) return; // element missing on this page, skip quietly
-
+    function setStatus(el, online) {
         // Positive-only: a failed check (timeout, cold start, moved favicon) is
         // not proof a client site is down, so it never shows "Offline".
         if (!online) return;
@@ -22,7 +16,7 @@
         el.className = "site-live";
     }
 
-    function checkSite(elementId, baseUrl) {
+    function checkSite(el, baseUrl) {
         const img = new Image();
         let done = false;
 
@@ -30,7 +24,7 @@
             if (done) return;
             done = true;
             clearTimeout(timer);
-            setStatus(elementId, online);
+            setStatus(el, online);
         };
 
         const timer = setTimeout(() => finish(false), TIMEOUT_MS);
@@ -43,9 +37,7 @@
     }
 
     function checkAllSites() {
-        for (const [elementId, baseUrl] of Object.entries(sites)) {
-            checkSite(elementId, baseUrl);
-        }
+        document.querySelectorAll('[data-live-check]').forEach(el => checkSite(el, el.dataset.liveCheck));
     }
 
     document.addEventListener("DOMContentLoaded", checkAllSites);

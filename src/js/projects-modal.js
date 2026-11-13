@@ -2,24 +2,8 @@
 (function () {
     'use strict';
 
-    const DEVICONS = {
-        java:       ['Java',       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'],
-        spring:     ['Spring',     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg'],
-        mysql:      ['MySQL',      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
-        sqlite:     ['SQLite',     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg'],
-        thymeleaf:  ['Thymeleaf',  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/thymeleaf/thymeleaf-original.svg'],
-        html5:      ['HTML5',      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
-        css3:       ['CSS3',       'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
-        bootstrap:  ['Bootstrap',  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg'],
-        javascript: ['JavaScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
-        photoshop:  ['Photoshop',  'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg'],
-        junit:      ['JUnit',      'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-plain.svg'],
-        vuejs:      ['Vue.js',     'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg'],
-        docker:     ['Docker',     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg'],
-        wordpress:  ['WordPress',  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg'],
-        php:        ['PHP',        'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg'],
-        cpanel:     ['CPanel',     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cpanel/cpanel-original.svg']
-    };
+    // { key: { label, icon } } from src/_data/techs.json, embedded in the page as JSON.
+    const TECHS = JSON.parse(document.getElementById('techData').textContent);
 
     const modalEl    = document.getElementById('projectModal');
     const bsModal    = new bootstrap.Modal(modalEl);
@@ -48,9 +32,9 @@
             modalTechs.innerHTML = '';
             techs.forEach(t => {
                 const key  = t.toLowerCase();
-                const meta = DEVICONS[key];
-                const url  = meta ? meta[1] : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${key}/${key}-original.svg`;
-                const label = meta ? meta[0] : t;
+                const meta = TECHS[key];
+                const url  = meta ? meta.icon : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${key}/${key}-original.svg`;
+                const label = meta ? meta.label : t;
 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'tool-badge';

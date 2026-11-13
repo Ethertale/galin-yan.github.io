@@ -13,6 +13,9 @@ export default function (eleventyConfig) {
   // cleanUrl turns the output path back into the public URL for canonicals and the sitemap.
   eleventyConfig.addFilter('cleanUrl', (url) => url.replace(/(index)?\.html$/, ''));
 
+  // [{url: 'a'}, {url: 'b'}] | pluck('url') -> ['a', 'b']  (e.g. socials -> JSON-LD sameAs)
+  eleventyConfig.addFilter('pluck', (list, key) => list.map((item) => item[key]));
+
   return {
     dir: { input: 'src', output: '_site', includes: '_includes', data: '_data' },
     templateFormats: ['njk'],          // plain .html in src/ is never processed

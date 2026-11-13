@@ -2,7 +2,41 @@
   "url": "https://galin-yan.com",
   "name": "Galin Yan",
   "author": "Galin Yanakov",
+  "jobTitle": "Software & Web Developer",
+  "email": "info@galin-yan.com",
   "ogImage": "/rsc/imgs/other/preview-banner.jpg",
+
+  "location": {
+    "_note": "City-level on purpose (~1 km). With a business address: label -> \"HQ\" and fill streetAddress/postalCode (the JSON-LD picks them up).",
+    "label": "Base",
+    "city": "Kazanlak",
+    "region": "Stara Zagora",
+    "country": "Bulgaria",
+    "countryCode": "BG",
+    "streetAddress": "",
+    "postalCode": "",
+    "lat": "42.62° N",
+    "lng": "25.39° E",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Kazanlak%2C+Bulgaria"
+  },
+
+  "socials": [
+    {
+      "name": "GitHub", "handle": "Ethertale", "url": "https://github.com/Ethertale", "onHome": true,
+      "icon": "https://img.icons8.com/color-glass/96/github--v1.png",
+      "iconLine": "https://img.icons8.com/ios/50/github--v1.png"
+    },
+    {
+      "name": "LinkedIn", "handle": "in/galin-yanakov", "url": "https://www.linkedin.com/in/galin-yanakov/", "onHome": true,
+      "icon": "https://img.icons8.com/color/96/linkedin.png",
+      "iconLine": "https://img.icons8.com/ios/50/linkedin.png"
+    },
+    {
+      "name": "Instagram", "handle": "galin.yan", "url": "https://www.instagram.com/galin.yan/", "onHome": false,
+      "icon": "https://img.icons8.com/fluency/96/instagram-new.png"
+    }
+  ],
+
   "nav": [
     { "label": "Home",     "url": "/" },
     { "label": "Projects", "url": "/projects" },

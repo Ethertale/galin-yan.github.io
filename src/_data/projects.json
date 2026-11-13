@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Find A Dice",
+    "url": "https://find-a-dice.onrender.com/",
+    "liveCheck": true,
+    "cover": "/rsc/imgs/projects/find-a-dice-logo.svg",
+    "coverAlt": "Find A Dice cover",
+    "imgStyle": "background-color: black",
+    "summary": "A social place for D&D role players - events, groups, campaigns.",
+    "description": "A social place for D&D role players where they can chat together, form groups, host events, and manage their own campaigns - all in one place! This is something special to me as a gamer, and to have everything in one place to ease people and let them enjoy the role-playing without any distractions or juggling 20 window tabs is a key to immersion.",
+    "stack": ["java", "spring", "mysql", "thymeleaf", "html5", "css3", "bootstrap", "javascript", "photoshop", "docker"],
+    "cardStack": ["java", "spring", "mysql"]
+  },
+  {
+    "title": "RCTH Stara Zagora",
+    "url": "https://rcth-stz.eu/",
+    "liveCheck": true,
+    "cover": "/rsc/imgs/projects/RCTH-Cover.png",
+    "coverAlt": "RCTH cover",
+    "thumbStyle": "background-color: black",
+    "imgStyle": "transform: scale(1)",
+    "summary": "Website for a blood donation center based in Stara Zagora, Bulgaria.",
+    "description": "Website for a blood donation center based in Stara Zagora, Bulgaria. A complete redesign of the website. The project replaced an outdated site with a modern, responsive, and easy-to-navigate one.",
+    "stack": ["wordpress", "php", "html5", "css3", "javascript", "docker"],
+    "cardStack": ["wordpress", "php"]
+  },
+  {
+    "title": "EM DI OIL",
+    "url": "https://mdoil.bg/",
+    "liveCheck": true,
+    "cover": "/rsc/imgs/projects/MDOil-thumb.png",
+    "coverAlt": "MDOil cover",
+    "thumbStyle": "background-color: rgba(255, 219, 89)",
+    "summary": "Redesigned website for EM DI OIL LTD, Bulgaria.",
+    "description": "A redesigned website for a PVC products company based in Tryavna, Bulgaria. The project replaced the client's outdated site with a modern, responsive design that presents the company's services more clearly and presents the user with a more polished catalogue and better user accessibility.",
+    "stack": ["html5", "css3", "javascript", "cpanel"],
+    "cardStack": ["javascript", "cpanel"]
+  },
+  {
+    "title": "Reason & Domination",
+    "url": "/projects/reason-and-domination",
+    "cover": "/rsc/imgs/projects/RnD-Cover.png",
+    "coverAlt": "Reason & Domination cover",
+    "summary": "Defense project for SoftUni - forum, roles, auth, posts and profile customization.",
+    "description": "Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf and JPA.",
+    "stack": ["java", "spring", "mysql", "thymeleaf", "html5", "css3", "bootstrap", "javascript", "photoshop", "junit"],
+    "cardStack": ["java", "spring", "mysql"]
+  },
+  {
+    "title": "RPG Character Generator",
+    "url": "https://ethertale.github.io/rpgcharactergenerator.github.io/",
+    "cover": "/rsc/imgs/projects/RPGGen-Cover.png",
+    "coverAlt": "RPG Character Generator cover",
+    "summary": "Small JavaScript-based character generator for tabletop games.",
+    "description": "Small JS-based character generator for tabletop games.",
+    "stack": ["html5", "css3", "bootstrap", "javascript"],
+    "cardStack": ["html5", "css3", "javascript"]
+  }
+]

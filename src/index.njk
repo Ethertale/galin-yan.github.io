@@ -12,25 +12,26 @@ scripts:
 {% extends "layouts/base.njk" %}
 
 {% block head %}
+    {%- set loc = site.location %}
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Galin Yanakov",
-            "url": "https://galin-yan.com",
-            "jobTitle": "Software & Web Developer",
-            "email": "info@galin-yan.com",
+            "name": {{ site.author | dump | safe }},
+            "url": {{ site.url | dump | safe }},
+            "jobTitle": {{ site.jobTitle | dump | safe }},
+            "email": {{ site.email | dump | safe }},
             "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Kazanlak",
-                "addressRegion": "Stara Zagora",
-                "addressCountry": "BG"
+                {%- if loc.streetAddress %}
+                "streetAddress": {{ loc.streetAddress | dump | safe }},
+                "postalCode": {{ loc.postalCode | dump | safe }},
+                {%- endif %}
+                "addressLocality": {{ loc.city | dump | safe }},
+                "addressRegion": {{ loc.region | dump | safe }},
+                "addressCountry": {{ loc.countryCode | dump | safe }}
             },
-            "sameAs": [
-                "https://github.com/Ethertale",
-                "https://www.linkedin.com/in/galin-yanakov/",
-                "https://www.instagram.com/galin.yan/"
-            ]
+            "sameAs": {{ site.socials | pluck('url') | dump | safe }}
         }
     </script>
 {% endblock %}
@@ -60,9 +61,10 @@ scripts:
         </div>
     </div>
 
-    <!-- Location stamp: city-level on purpose (~1 km). When there is a business address,
-         switch "Base" to "HQ" here and add streetAddress/postalCode to the JSON-LD above. -->
-    <span class="coord-stamp"><a href="https://www.google.com/maps/search/?api=1&amp;query=Kazanlak%2C+Bulgaria" target="_blank" rel="noopener" aria-label="Base: Kazanlak, Bulgaria (opens Google Maps)">Base · Kazanlak, BG &nbsp;/&nbsp; 42.62° N, 25.39° E</a></span>
+    <!-- Location stamp: city-level on purpose (~1 km). Edit site.location in src/_data/site.json
+         (label "Base" -> "HQ" plus streetAddress once there is a business address). -->
+    {%- set loc = site.location %}
+    <span class="coord-stamp"><a href="{{ loc.mapsUrl }}" target="_blank" rel="noopener" aria-label="{{ loc.label }}: {{ loc.city }}, {{ loc.country }} (opens Google Maps)">{{ loc.label }} · {{ loc.city }}, {{ loc.countryCode }} &nbsp;/&nbsp; {{ loc.lat }}, {{ loc.lng }}</a></span>
 </section>
 
 <!-- PROJECTS -->
@@ -160,23 +162,19 @@ scripts:
 
         <div class="col-lg-6" data-aos="fade-up">
 
-            <a href="mailto:info@galin-yan.com" class="contact-item">
-                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt="new-post--v1"/> Email</span>
-                <span class="contact-value">info@galin-yan.com</span>
+            <a href="mailto:{{ site.email }}" class="contact-item">
+                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt=""/> Email</span>
+                <span class="contact-value">{{ site.email }}</span>
                 <span class="contact-arrow">→</span>
             </a>
+            {%- for s in site.socials %}{% if s.onHome %}
 
-            <a href="https://github.com/Ethertale" target="_blank" rel="noopener" class="contact-item">
-                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/github--v1.png" alt="github--v1"/> GitHub</span>
-                <span class="contact-value">Ethertale</span>
+            <a href="{{ s.url }}" target="_blank" rel="noopener" class="contact-item">
+                <span class="contact-platform"><img width="15" height="15" src="{{ s.iconLine }}" alt=""/> {{ s.name }}</span>
+                <span class="contact-value">{{ s.handle }}</span>
                 <span class="contact-arrow">→</span>
             </a>
-
-            <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" rel="noopener" class="contact-item">
-                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/linkedin.png" alt="linkedin"/> LinkedIn</span>
-                <span class="contact-value">in/galin-yanakov</span>
-                <span class="contact-arrow">→</span>
-            </a>
+            {%- endif %}{% endfor %}
 
         </div>
 

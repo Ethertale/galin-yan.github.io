@@ -25,123 +25,39 @@ scripts:
 <div class="projects-wrap">
     <div class="container">
         <div class="projects-grid">
+            {%- for p in projects %}
             <article class="project-card"
                      tabindex="0" role="button"
-                     data-title="Find A Dice"
-                     data-img="/rsc/imgs/projects/find-a-dice-logo.svg"
-                     data-desc="A social place for D&D role players where they can chat together,
-                     form groups, host events, and manage their own campaigns - all in one place!
-                     This is something special to me as a gamer, and to have everything in one place
-                     to ease people and let them enjoy the role-playing without any distractions or juggling 20 window tabs is a key to immersion."
-                     data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop,docker"
-                     data-link="https://find-a-dice.onrender.com/">
-                <div class="card-thumb">
-                    <img loading="lazy" style="background-color: black" src="/rsc/imgs/projects/find-a-dice-logo.svg" alt="Find A Dice cover" />
+                     data-title="{{ p.title }}"
+                     data-img="{{ p.cover }}"
+                     data-desc="{{ p.description }}"
+                     data-techs="{{ p.stack | join(',') }}"
+                     data-link="{{ p.url }}">
+                <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
+                    <img loading="lazy"{% if p.imgStyle %} style="{{ p.imgStyle }}"{% endif %} src="{{ p.cover }}" alt="{{ p.coverAlt }}" />
                     <span class="card-open-hint">View Project →</span>
                 </div>
                 <div class="card-body">
-                    <h4>Find A Dice</h4>
-                    <small id="FindADiceStatus"></small>
-                    <p>A social place for D&D role players - events, groups, campaigns.</p>
+                    <h4>{{ p.title }}</h4>
+                    {%- if p.liveCheck %}
+                    <small data-live-check="{{ p.url }}"></small>
+                    {%- endif %}
+                    <p>{{ p.summary }}</p>
                     <div class="tools-row" aria-hidden="true">
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
+                        {%- for key in p.cardStack %}
+                        <div class="tool-badge"><img src="{{ techs[key].icon }}" alt="{{ techs[key].label }}"/></div>
+                        {%- endfor %}
                     </div>
                 </div>
             </article>
-
-            <article class="project-card"
-                     tabindex="0" role="button"
-                     data-title="RCTH Stara Zagora"
-                     data-img="/rsc/imgs/projects/RCTH-Cover.png"
-                     data-desc="Website for a blood donation center based in Stara Zagora, Bulgaria. A complete redesign of the website. The project replaced an outdated site with a modern, responsive, and easy-to-navigate one."
-                     data-techs="wordpress,php,html5,css3,javascript,docker"
-                     data-link="https://rcth-stz.eu/">
-                <div style="background-color: black" class="card-thumb">
-                    <img loading="lazy" style="transform: scale(1)" src="/rsc/imgs/projects/RCTH-Cover.png" alt="RCTH cover" />
-                    <span class="card-open-hint">View Project →</span>
-                </div>
-                <div class="card-body">
-                    <h4>RCTH Stara Zagora</h4>
-                    <small id="RCTHStatus"></small>
-                    <p>Website for a blood donation center based in Stara Zagora, Bulgaria.</p>
-                    <div class="tools-row" aria-hidden="true">
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-plain.svg" alt="Wordpress"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP"/></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card"
-                     tabindex="0" role="button"
-                     data-title="EM DI OIL"
-                     data-img="/rsc/imgs/projects/MDOil-thumb.png"
-                     data-desc="A redesigned website for a PVC products company based in Tryavna, Bulgaria. The project replaced the client's outdated site with a modern, responsive design that presents the company's services more clearly and presents the user with a more polished catalogue and better user accessibility."
-                     data-techs="html5,css3,javascript,cpanel"
-                     data-link="https://mdoil.bg/">
-                <div class="card-thumb" style="background-color: rgba(255, 219, 89)">
-                    <img loading="lazy" src="/rsc/imgs/projects/MDOil-thumb.png" alt="MDOil cover" />
-                    <span class="card-open-hint">View Project →</span>
-                </div>
-                <div class="card-body">
-                    <h4>EM DI OIL</h4>
-                    <small id="MDOilStatus"></small>
-                    <p>Redesigned website for EM DI OIL LTD, Bulgaria.</p>
-                    <div class="tools-row" aria-hidden="true">
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cpanel/cpanel-original.svg" /></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card"
-                     tabindex="0" role="button"
-                     data-title="Reason &amp; Domination"
-                     data-img="/rsc/imgs/projects/RnD-Cover.png"
-                     data-desc="Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf and JPA."
-                     data-techs="java,spring,mysql,thymeleaf,html5,css3,bootstrap,javascript,photoshop,junit"
-                     data-link="/projects/reason-and-domination">
-                <div class="card-thumb">
-                    <img loading="lazy" src="/rsc/imgs/projects/RnD-Cover.png" alt="Reason & Domination cover" />
-                    <span class="card-open-hint">View Project →</span>
-                </div>
-                <div class="card-body">
-                    <h4>Reason &amp; Domination</h4>
-                    <p>Defense project for SoftUni - forum, roles, auth, posts and profile customization.</p>
-                    <div class="tools-row" aria-hidden="true">
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"/></div>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card"
-                     tabindex="0" role="button"
-                     data-title="RPG Character Generator"
-                     data-img="/rsc/imgs/projects/RPGGen-Cover.png"
-                     data-desc="Small JS-based character generator for tabletop games."
-                     data-techs="html5,css3,bootstrap,javascript"
-                     data-link="https://ethertale.github.io/rpgcharactergenerator.github.io/">
-                <div class="card-thumb">
-                    <img loading="lazy" src="/rsc/imgs/projects/RPGGen-Cover.png" alt="RPG Character Generator cover" />
-                    <span class="card-open-hint">View Project →</span>
-                </div>
-                <div class="card-body">
-                    <h4>RPG Character Generator</h4>
-                    <p>Small JavaScript-based character generator for tabletop games.</p>
-                    <div class="tools-row" aria-hidden="true">
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"/></div>
-                        <div class="tool-badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS"/></div>
-                    </div>
-                </div>
-            </article>
+            {%- endfor %}
 
         </div>
     </div>
 </div>
+
+<!-- Tech icons for the modal (read by js/projects-modal.js). JSON, never executed. -->
+<script type="application/json" id="techData">{{ techs | dump | safe }}</script>
 
 <!-- MODAL -->
 <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">

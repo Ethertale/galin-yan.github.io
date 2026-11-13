@@ -35,15 +35,11 @@ scripts:
                     Java &amp; Spring and compose frontend experiences with Vue or vanilla JS. Outside of work, I enjoy gaming, creating fantasy worlds through art and stories, and constantly
                     dabble in new hobbies for fun and to learn new things.</p>
                 <div class="socials">
-                    <a href="https://github.com/Ethertale" target="_blank" rel="noopener" title="GitHub">
-                        <img src="https://img.icons8.com/color-glass/96/github--v1.png" alt="GitHub" />
+                    {%- for s in site.socials %}
+                    <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}">
+                        <img src="{{ s.icon }}" alt="{{ s.name }}" />
                     </a>
-                    <a href="https://www.linkedin.com/in/galin-yanakov/" target="_blank" rel="noopener" title="LinkedIn">
-                        <img src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn" />
-                    </a>
-                    <a href="https://www.instagram.com/galin.yan/" target="_blank" rel="noopener" title="Instagram">
-                        <img src="https://img.icons8.com/fluency/96/instagram-new.png" alt="Instagram" />
-                    </a>
+                    {%- endfor %}
                 </div>
             </div>
         </div>
