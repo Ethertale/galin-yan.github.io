@@ -4,7 +4,7 @@
    Load order on every page:  Bootstrap  →  main.css  →  pages/<page>.css
    Anything used by 2+ pages lives here. Page files only hold what is unique
    to that page, plus temporary overrides for values that drifted between
-   pages (marked "DRIFT"). Those get one final value in roadmap step 1.3.1.
+   pages. Tokens below come from the approved style tile (/styleguide, roadmap 1.3.0).
    ========================================================================== */
 
 @font-face {
@@ -15,17 +15,38 @@
     font-display: swap;   /* show the fallback instead of invisible text if the font is slow */
 }
 
-/* ── TOKENS ── */
+/* ── TOKENS ── (approved style tile, roadmap 1.3.1) */
 :root {
-    --red:    #E8312A;
-    --white:  #FAFAFA;
-    --off:    #F2F1EF;
-    --dark:   #141414;
-    --mid:    #4A4A4A;
-    --border: #D8D8D5;
-    --glass:  rgba(250, 250, 250, 0.88);  /* DRIFT: index uses 0.85 */
+    /* Red marks the path only: interactive elements, focus, the runner. */
+    --red-rgb:   232, 49, 42;                    /* change the brand red here (and the 3 below) */
+    --red:       rgb(var(--red-rgb));            /* #E8312A: fills, borders, large red text */
+    --red-text:  #C62A23;                        /* small red text (4.5:1 on white) */
+    --red-hover: #B8221C;                        /* hover and pressed */
+    --red-wash:  rgba(var(--red-rgb), 0.09);     /* tinted backgrounds */
+    --red-wash-soft: rgba(var(--red-rgb), 0.04);
 
-    --grid-line: 1px;                     /* DRIFT: projects header uses 2px */
+    /* Neutrals */
+    --white: #FAFAFA;   /* base */
+    --panel: #FFFFFF;   /* plinths and cards */
+    --off:   #F2F1EF;   /* alternate section */
+    --line:  #D8D8D5;   /* hairlines only, never text */
+    --muted: #6B6B6B;   /* meta text: stamps, arrows, placeholders (5.3:1) */
+    --mid:   #4A4A4A;   /* secondary text (8.9:1) */
+    --ink:   #141414;   /* primary text */
+    --glass: rgba(250, 250, 250, 0.88);
+
+    /* Spacing scale */
+    --s-1: 4px;  --s-2: 8px;  --s-3: 16px;  --s-4: 24px;
+    --s-5: 40px; --s-6: 64px; --s-7: 100px;
+
+    /* Stacking: page layers below Bootstrap's own scale (navbar 1030, modal 1055) */
+    --z-bg: 0;  --z-content: 1;  --z-raised: 2;  --z-overlay: 4;
+
+    /* Motion */
+    --t-fast: 150ms;
+    --t-base: 250ms;
+    --t-slow: 600ms;
+    --ease:   cubic-bezier(0.2, 0.7, 0.2, 1);
 
     --font-head:  'Good Times', sans-serif;
     --font-label: 'Barlow Condensed', sans-serif;  /* not loaded yet, fixed in 1.3.2 */
@@ -39,7 +60,7 @@ html { scroll-behavior: smooth; }
 
 body {
     background: var(--white);
-    color: var(--dark);
+    color: var(--ink);
     font-family: var(--font-body);
     font-weight: 400;
     overflow-x: hidden;
@@ -50,7 +71,7 @@ body {
     background: var(--glass);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
     padding: 0;
 }
 .navbar .container { padding-top: 14px; padding-bottom: 14px; }
@@ -59,7 +80,7 @@ body {
     font-family: var(--font-head);
     font-size: 1rem;
     letter-spacing: 0.12em;
-    color: var(--dark);
+    color: var(--ink);
     position: relative;
     padding-left: 14px;
 }
@@ -80,7 +101,7 @@ body {
     color: var(--mid) !important;
     padding: 6px 0 !important;
     position: relative;
-    transition: color 0.2s;
+    transition: color var(--t-fast);
 }
 .nav-link::after {
     content: '';
@@ -88,9 +109,9 @@ body {
     bottom: 0; left: 0;
     width: 0; height: 2px;
     background: var(--red);
-    transition: width 0.25s ease;
+    transition: width var(--t-base) var(--ease);
 }
-.nav-link:hover { color: var(--dark) !important; }
+.nav-link:hover { color: var(--ink) !important; }
 .nav-link:hover::after { width: 100%; }
 
 /* ── PAGE HEADER (inner pages) ── */
@@ -105,8 +126,8 @@ body {
     position: absolute;
     inset: 0;
     background-image:
-            linear-gradient(to right, rgba(0,0,0,0.055) var(--grid-line), transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.055) var(--grid-line), transparent 1px);
+            linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px);
     background-size: 100px 100px;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
     mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
@@ -118,7 +139,7 @@ body {
     position: absolute;
     right: -5%; top: -15%;
     width: 58%; height: 130%;
-    background: linear-gradient(to bottom left, rgba(232,49,42,0.09) 0%, rgba(232,49,42,0.04) 45%, transparent 75%);
+    background: linear-gradient(to bottom left, var(--red-wash) 0%, var(--red-wash-soft) 45%, transparent 75%);
     transform: skewX(-8deg);
     pointer-events: none;
 }
@@ -130,14 +151,14 @@ body {
     background: var(--red);
     opacity: 0.14;
 }
-.page-header-inner { position: relative; z-index: 1; }
+.page-header-inner { position: relative; z-index: var(--z-content); }
 
 .page-title {
     font-family: var(--font-head);
     font-size: clamp(2rem, 5vw, 3.8rem);
     letter-spacing: 0.05em;
     line-height: 1.05;
-    color: var(--dark);
+    color: var(--ink);
     margin: 0;
 }
 
@@ -149,7 +170,7 @@ body {
     color: var(--mid);
 }
 
-.content-wrap { padding: 0 0 100px; }
+.content-wrap { padding: 0 0 var(--s-7); }
 
 /* ── SECTION LABEL (currently hidden everywhere; decide in 1.3) ── */
 .section-label {
@@ -157,7 +178,7 @@ body {
     font-size: 0.68rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--red-text);
     display: none;
     align-items: center;
     gap: 10px;
@@ -178,7 +199,7 @@ body {
     font-size: 0.78rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--red-text);
     border: 2px solid var(--red);
     background: transparent;
     padding: 12px 28px;
@@ -186,7 +207,7 @@ body {
     text-decoration: none;
     position: relative;
     overflow: hidden;
-    transition: color 0.25s;
+    transition: color var(--t-base);
 }
 .btn-me::before {
     content: '';
@@ -195,16 +216,18 @@ body {
     background: var(--red);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.25s ease;
-    z-index: 0;
+    transition: transform var(--t-base) var(--ease);
+    z-index: var(--z-bg);
 }
 .btn-me:hover { color: white; }
 .btn-me:hover::before { transform: scaleX(1); }
-.btn-me span { position: relative; z-index: 1; }
+.btn-me span { position: relative; z-index: var(--z-content); }
+/* small variant: inline with a field or inside a modal */
+.btn-me.btn-sm { font-size: 0.75rem; padding: 10px 22px; }
 
 /* ── FOOTER ── */
 footer {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
     padding: 28px 0;
 }
 .footer-inner {
@@ -218,11 +241,11 @@ footer {
     font-family: var(--font-head);
     font-size: 0.75rem;
     letter-spacing: 0.1em;
-    color: var(--dark);
+    color: var(--ink);
 }
 .footer-copy {
     font-family: var(--font-label);
     font-size: 0.68rem;
     letter-spacing: 0.12em;
-    color: var(--border);  /* ≈1.3:1 contrast, fixed in 1.3.1 */
+    color: var(--muted);
 }

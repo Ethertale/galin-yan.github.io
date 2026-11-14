@@ -5,14 +5,14 @@
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: 0;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     border-top: 3px solid var(--red);
     background: var(--white);
     margin-bottom: 2px;
 }
 
 .profile-portrait {
-    border-right: 1px solid var(--border);
+    border-right: 1px solid var(--line);
     overflow: hidden;
     position: relative;
 }
@@ -22,7 +22,7 @@
     object-fit: cover;
     display: block;
     filter: grayscale(20%);
-    transition: filter 0.3s;
+    transition: filter var(--t-base);
 }
 .profile-portrait:hover img { filter: grayscale(0%); }
 
@@ -38,7 +38,7 @@
     font-family: var(--font-head);
     font-size: clamp(1.1rem, 2.5vw, 1.6rem);
     letter-spacing: 0.08em;
-    color: var(--dark);
+    color: var(--ink);
     margin: 0;
 }
 
@@ -61,9 +61,9 @@
     align-items: center;
     justify-content: center;
     width: 36px; height: 36px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     background: var(--off);
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color var(--t-fast), background var(--t-fast);
 }
 .socials a:hover { border-color: var(--red); background: var(--white); }
 .socials a img { width: 20px; height: 20px; }
@@ -80,14 +80,14 @@
     margin-bottom: 2px;
     padding: 18px 0 14px;
     border-top: 3px solid var(--red);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
 }
 
 .block-title {
     font-family: var(--font-head);
     font-size: 0.88rem;
     letter-spacing: 0.1em;
-    color: var(--dark);
+    color: var(--ink);
     margin: 0;
 }
 
@@ -96,16 +96,16 @@
     display: grid;
     grid-template-columns: 180px 1fr;
     gap: 0;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     border-top: none;
     background: var(--white);
-    transition: background 0.2s;
+    transition: background var(--t-fast);
 }
 .entry-row:hover { background: var(--off); }
 
 .entry-meta {
     padding: 20px 20px;
-    border-right: 1px solid var(--border);
+    border-right: 1px solid var(--line);
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -116,7 +116,7 @@
     font-size: 0.65rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--red-text);
 }
 
 .entry-period {
@@ -134,7 +134,7 @@
     font-family: var(--font-head);
     font-size: 0.82rem;
     letter-spacing: 0.05em;
-    color: var(--dark);
+    color: var(--ink);
     margin: 0 0 8px;
 }
 
@@ -151,7 +151,7 @@
     object-fit: contain;
     filter: grayscale(40%);
     margin-bottom: 6px;
-    transition: filter 0.2s;
+    transition: filter var(--t-fast);
 }
 .entry-row:hover .edu-logo { filter: grayscale(0%); }
 
@@ -160,8 +160,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+    background: var(--line);
+    border: 1px solid var(--line);
 }
 
 .cert-item {
@@ -177,8 +177,8 @@
     top: 0; left: 0; right: 0;
     height: 2px;
     background: transparent;
-    transition: background 0.2s;
-    z-index: 2;
+    transition: background var(--t-fast);
+    z-index: var(--z-raised);
 }
 .cert-item:hover::before { background: var(--red); }
 
@@ -186,7 +186,7 @@
     width: 100%;
     display: block;
     filter: grayscale(25%);
-    transition: filter 0.3s, transform 0.3s;
+    transition: filter var(--t-base), transform var(--t-base);
 }
 .cert-item:hover img {
     filter: grayscale(0%);
@@ -199,6 +199,6 @@
     .profile-block { grid-template-columns: 1fr; }
     .profile-portrait { height: 260px; }
     .entry-row { grid-template-columns: 1fr; }
-    .entry-meta { border-right: none; border-bottom: 1px solid var(--border); }
+    .entry-meta { border-right: none; border-bottom: 1px solid var(--line); }
     .footer-inner { justify-content: center; text-align: center; }
 }

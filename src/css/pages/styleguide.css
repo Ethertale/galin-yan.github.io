@@ -11,14 +11,14 @@
 }
 
 /* ── shell ── */
-.sg-header { padding: 130px 0 40px; border-bottom: 1px solid var(--border); }
+.sg-header { padding: 130px 0 40px; border-bottom: 1px solid var(--line); }
 .sg-title { font-family: var(--font-head); font-size: clamp(2.2rem, 7vw, 4.5rem); letter-spacing: 0.05em; margin: 0 0 0.6rem; }
 .sg-intro { max-width: 60ch; color: var(--mid); margin: 1rem 0 0; font-family: var(--sg-sans); font-size: 1.05rem; line-height: 1.65; }
 .sg-main { padding-bottom: 80px; }
 .sg-section { padding: 56px 0 8px; }
 .sg-h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: 0.05em; margin: 0 0 1rem; display: flex; align-items: baseline; gap: 14px; }
 .sg-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--red); }
-.sg-h3 { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: 0.06em; margin: 0 0 0.6rem; color: var(--ink, var(--dark)); }
+.sg-h3 { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: 0.06em; margin: 0 0 0.6rem; color: var(--ink, var(--ink)); }
 .sg-sub { margin-top: 2.2rem; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .sg-note { max-width: 70ch; color: var(--mid); font-family: var(--sg-sans); font-size: 0.95rem; line-height: 1.6; }
 .sg-note code, .sg-swatch code { font-size: 0.85em; color: inherit; }
@@ -54,7 +54,7 @@
 .sg-ratio.is-fail small { color: var(--red); }
 
 /* ── 02 type ── */
-.sg-type-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--border); }
+.sg-type-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
 .sg-type-row > p { margin: 0; }
 .sg-display { font-family: var(--font-head); font-size: clamp(2.6rem, 8vw, 5.5rem); line-height: 1; letter-spacing: 0.04em; }
 .sg-h1 { font-family: var(--font-head); font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.05; letter-spacing: 0.05em; }
@@ -64,15 +64,15 @@
 .sg-sofia { font-family: var(--sg-sans); }
 .sg-lato { font-family: 'Lato', sans-serif; }
 .sg-cyr { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 1rem; }
-.sg-cyr > div { border-top: 1px solid var(--border); padding-top: 10px; }
+.sg-cyr > div { border-top: 1px solid var(--line); padding-top: 10px; }
 .sg-cyr-head { font-size: clamp(1.5rem, 3.2vw, 2rem); letter-spacing: 0.03em; margin: 6px 0 0; line-height: 1.15; }
 .sg-cyr-body .sg-body { margin-top: 6px; font-size: 1.25rem; }
 
 /* ── 03 signature elements ── */
 .sg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 1rem; }
-.sg-card { margin: 0; border: 1px solid var(--border); background: #fff; display: flex; flex-direction: column; }
-.sg-card figcaption { padding: 12px 14px; border-top: 1px solid var(--border); font-family: var(--sg-sans); font-size: 0.88rem; color: var(--mid); line-height: 1.45; }
-.sg-card figcaption b { display: block; color: var(--dark); font-weight: 700; margin-bottom: 2px; }
+.sg-card { margin: 0; border: 1px solid var(--line); background: #fff; display: flex; flex-direction: column; }
+.sg-card figcaption { padding: 12px 14px; border-top: 1px solid var(--line); font-family: var(--sg-sans); font-size: 0.88rem; color: var(--mid); line-height: 1.45; }
+.sg-card figcaption b { display: block; color: var(--ink); font-weight: 700; margin-bottom: 2px; }
 .sg-demo { position: relative; min-height: 190px; padding: 24px; flex: 1; background: var(--white); overflow: hidden; }
 .sg-center { display: flex; align-items: center; justify-content: center; }
 
@@ -122,22 +122,22 @@
 /* ↑ once the sweep has finished, the face itself turns red, hiding the anti-aliased seam between the two diagonals */
 .sg-btn:hover span::before, .sg-btn:focus-visible span::before, .sg-btn.is-hover span::before { transform: scaleX(1); }
 .sg-btn:focus-visible { outline: none; }
-.sg-btn:focus-visible span { outline: 2px solid var(--ink, var(--dark)); outline-offset: -6px; }
+.sg-btn:focus-visible span { outline: 2px solid var(--ink, var(--ink)); outline-offset: -6px; }
 
 /* 3 triple line */
 .sg-triple { display: grid; gap: 3px; width: 160px; }
-.sg-triple i { display: block; height: 1px; background: var(--line, var(--border)); }
+.sg-triple i { display: block; height: 1px; background: var(--line, var(--line)); }
 .sg-triple i:nth-child(2) { background: var(--red); }
 .sg-triple-short { width: 56px; margin-top: 10px; }
 
 /* 4 plinth */
-.sg-plinth { position: relative; background: var(--panel, #fff); border: 1px solid var(--line, var(--border)); box-shadow: var(--sg-shadow); padding: 26px 12px 12px; width: min(100%, 320px); }
+.sg-plinth { position: relative; background: var(--panel, #fff); border: 1px solid var(--line, var(--line)); box-shadow: var(--sg-shadow); padding: 26px 12px 12px; width: min(100%, 320px); }
 .sg-plinth img { display: block; width: 100%; height: auto; }
 .sg-plinth-label { position: absolute; top: 6px; left: 12px; font-size: 0.62rem; }
 
 /* 5 HUD stamp */
 .sg-stamp { display: flex; flex-wrap: wrap; gap: 6px 14px; justify-content: center; text-align: center; }
-.sg-stamp span + span::before { content: '/'; margin-right: 14px; color: var(--border); }
+.sg-stamp span + span::before { content: '/'; margin-right: 14px; color: var(--line); }
 
 /* 6 textures */
 .sg-textures { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
@@ -167,7 +167,7 @@
 .sg-marker { min-height: 150px; }
 .sg-marker-a { padding-left: 56px; }
 .sg-marker-title { font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 0.05em; margin: 22px 0 0; line-height: 1.2; display: flex; align-items: baseline; gap: 10px; }
-.sg-phone { max-width: 300px; margin: 0 auto; width: 100%; border-left: 1px dashed var(--border); border-right: 1px dashed var(--border); }
+.sg-phone { max-width: 300px; margin: 0 auto; width: 100%; border-left: 1px dashed var(--line); border-right: 1px dashed var(--line); }
 .sg-margin-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; color: var(--red); }
 
 /* ── 05 light and black: the component sheet ── */
@@ -195,7 +195,7 @@
 
 /* ── 06 decisions ── */
 .sg-decisions { font-family: var(--sg-sans); font-size: 1rem; line-height: 1.6; padding-left: 1.4rem; max-width: 75ch; }
-.sg-decisions li { padding: 8px 0; border-top: 1px solid var(--border); }
+.sg-decisions li { padding: 8px 0; border-top: 1px solid var(--line); }
 .sg-decisions .sg-hud { display: block; color: var(--red); }
 
 @media (max-width: 640px) {

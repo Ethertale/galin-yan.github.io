@@ -2,9 +2,7 @@
 
 /* ── overrides of css/main.css ── */
 body { min-height: 100vh; }
-.page-header { --grid-line: 2px; }  /* DRIFT: main.css uses 1px */
 .page-title { margin: 0 0 1rem; }
-.btn-me { font-size: 0.75rem; padding: 10px 22px; }  /* DRIFT */
 
 /* ── GRID ── */
 .projects-wrap {
@@ -16,7 +14,7 @@ body { min-height: 100vh; }
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1px;
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
 }
 
 /* ── PROJECT CARD ── */
@@ -26,9 +24,9 @@ body { min-height: 100vh; }
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    transition: background 0.2s;
+    transition: background var(--t-fast);
     outline: none;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
 }
 
 .project-card::before {
@@ -37,8 +35,8 @@ body { min-height: 100vh; }
     top: 0; left: 0; right: 0;
     height: 3px;
     background: transparent;
-    transition: background 0.2s;
-    z-index: 2;
+    transition: background var(--t-fast);
+    z-index: var(--z-raised);
 }
 
 .project-card:hover,
@@ -69,7 +67,7 @@ body { min-height: 100vh; }
     height: 100%;
     object-fit: contain;
     display: block;
-    transition: transform 0.35s ease;
+    transition: transform var(--t-base) var(--ease);
     filter: grayscale(15%);
 }
 
@@ -85,7 +83,7 @@ body { min-height: 100vh; }
     inset: 0;
     background: linear-gradient(to top, rgba(20,20,20,0.45) 0%, transparent 60%);
     opacity: 0;
-    transition: opacity 0.25s;
+    transition: opacity var(--t-base);
 }
 .project-card:hover .card-thumb::after { opacity: 1; }
 
@@ -100,8 +98,8 @@ body { min-height: 100vh; }
     color: white;
     opacity: 0;
     transform: translateY(4px);
-    transition: opacity 0.22s, transform 0.22s;
-    z-index: 4;
+    transition: opacity var(--t-fast), transform var(--t-fast);
+    z-index: var(--z-overlay);
 }
 .project-card:hover .card-open-hint {
     opacity: 1;
@@ -119,7 +117,7 @@ body { min-height: 100vh; }
     font-family: var(--font-head);
     font-size: 0.82rem;
     letter-spacing: 0.07em;
-    color: var(--dark);
+    color: var(--ink);
     margin: 0 0 6px;
     line-height: 1.3;
 }
@@ -167,7 +165,7 @@ body { min-height: 100vh; }
     align-items: center;
     justify-content: center;
     opacity: 0.65;
-    transition: opacity 0.2s;
+    transition: opacity var(--t-fast);
 }
 .tool-badge img { width: 18px; height: 18px; }
 .project-card:hover .tool-badge { opacity: 1; }
@@ -175,13 +173,13 @@ body { min-height: 100vh; }
 /* ── MODAL ── */
 .modal-content {
     background: var(--white);
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     border-top: 3px solid var(--red);
     box-shadow: 0 20px 60px rgba(0,0,0,0.14);
 }
 
 .modal-header {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
     padding: 18px 24px;
     align-items: flex-start;
 }
@@ -190,12 +188,12 @@ body { min-height: 100vh; }
     font-family: var(--font-head);
     font-size: 0.92rem;
     letter-spacing: 0.08em;
-    color: var(--dark);
+    color: var(--ink);
 }
 
 .btn-close {
     opacity: 0.4;
-    transition: opacity 0.2s;
+    transition: opacity var(--t-fast);
 }
 .btn-close:hover { opacity: 1; }
 
@@ -221,7 +219,7 @@ body { min-height: 100vh; }
     font-size: 0.65rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--red-text);
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -244,7 +242,7 @@ body { min-height: 100vh; }
 #modalTechs .tool-badge {
     width: 30px; height: 30px;
     background: var(--off);
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
     opacity: 1;
     padding: 5px;
 }
