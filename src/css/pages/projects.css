@@ -92,7 +92,7 @@ body { min-height: 100vh; }
     position: absolute;
     bottom: 10px; right: 12px;
     font-family: var(--font-label);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: white;
@@ -136,7 +136,7 @@ body { min-height: 100vh; }
     align-items: center;
     gap: 6px;
     font-family: var(--font-label);
-    font-size: 0.62rem;
+    font-size: 0.71rem;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -215,8 +215,8 @@ body { min-height: 100vh; }
 }
 
 .modal-techs-label {
-    font-family: var(--font-body);
-    font-size: 0.65rem;
+    font-family: var(--font-label);
+    font-size: 0.75rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--red-text);

@@ -113,7 +113,7 @@
 
 .entry-org {
     font-family: var(--font-label);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--red-text);
@@ -121,7 +121,7 @@
 
 .entry-period {
     font-family: var(--font-label);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.1em;
     color: var(--mid);
 }

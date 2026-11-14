@@ -70,8 +70,6 @@ scripts:
 {% endmacro %}
 
 {% block head %}
-    <!-- Font candidates for the tile only. Chosen fonts get self-hosted in 1.3.2. -->
-    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Sofia+Sans+Condensed:wght@400;500;600;700&family=Unbounded:wght@500;700&family=Tektur:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
     <!-- Draft tokens, generated from src/styleguide.11tydata.js -->
     <style>
 {%- for theme, tokens in palette %}
@@ -132,20 +130,15 @@ scripts:
             <div class="sg-type-row"><span class="sg-hud">H2 · Good Times</span><p class="sg-h2-demo">Selected projects</p></div>
             <div class="sg-type-row"><span class="sg-hud">Label · Sofia Sans Condensed 600</span><p class="sg-label-demo">View project · Stack · Contact</p></div>
             <div class="sg-type-row"><span class="sg-hud">HUD · Sofia Sans Condensed 500</span><p class="sg-hud sg-hud-big">Base · Kazanlak, BG / 42.62° N, 25.39° E</p></div>
-            <div class="sg-type-row"><span class="sg-hud">Body · Sofia Sans 400 (new)</span>
+            <div class="sg-type-row"><span class="sg-hud">Body · Sofia Sans 400</span>
                 <p class="sg-body sg-sofia">I'm Galin, a Java/Spring developer based in Kazanlak, Bulgaria. I build websites and web applications, from the database to the last hover state.</p></div>
-            <div class="sg-type-row"><span class="sg-hud">Body · Lato 400 (today)</span>
-                <p class="sg-body sg-lato">I'm Galin, a Java/Spring developer based in Kazanlak, Bulgaria. I build websites and web applications, from the database to the last hover state.</p></div>
         </div>
 
         <h3 class="sg-h3 sg-sub">Bulgarian <span class="sg-hud">decision 5</span></h3>
-        <p class="sg-note">Good Times has no Cyrillic, so Bulgarian headlines need a second font. Sofia Sans is by a Bulgarian
+        <p class="sg-note">Good Times has no Cyrillic, so Bulgarian letters in a headline come from Unbounded automatically. Sofia Sans is by a Bulgarian
             studio and switches to Bulgarian letterforms when the page says <code>lang="bg"</code>: compare д, л, ж, к below.</p>
         <div class="sg-cyr">
-            <div><span class="sg-hud">Good Times (no Cyrillic: falls back)</span><p class="sg-cyr-head" style="font-family: 'Good Times', sans-serif">Галин Янъков</p></div>
-            <div><span class="sg-hud">Unbounded 700</span><p class="sg-cyr-head" style="font-family: 'Unbounded'; font-weight: 700">Галин Янъков</p></div>
-            <div><span class="sg-hud">Tektur 700</span><p class="sg-cyr-head" style="font-family: 'Tektur'; font-weight: 700">Галин Янъков</p></div>
-            <div><span class="sg-hud">Russo One</span><p class="sg-cyr-head" style="font-family: 'Russo One'">Галин Янъков</p></div>
+            <div><span class="sg-hud">Headline · Good Times + Unbounded</span><p class="sg-cyr-head" style="font-family: var(--font-head)">Галин Янъков · Galin Yan</p></div>
         </div>
         <div class="sg-cyr sg-cyr-body">
             <div><span class="sg-hud">Sofia Sans · lang="bg"</span><p lang="bg" class="sg-body sg-sofia">Създавам уебсайтове и уеб приложения: дълго, лесно, жълто, книга.</p></div>

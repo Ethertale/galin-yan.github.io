@@ -100,7 +100,7 @@ body { min-height: 100vh; display: flex; flex-direction: column; }
 .text-link {
     font-family: var(--font-label);
     font-weight: 600;
-    font-size: 0.78rem;
+    font-size: 0.9rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--mid);
@@ -115,7 +115,7 @@ body { min-height: 100vh; display: flex; flex-direction: column; }
     position: absolute;
     right: 2rem; bottom: 2.5rem;
     font-family: var(--font-label);
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--mid);

@@ -62,7 +62,6 @@
 .sg-label-demo { font-family: var(--sg-cond); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; }
 .sg-body { font-size: 1.0625rem; line-height: 1.7; max-width: 65ch; margin: 0; }
 .sg-sofia { font-family: var(--sg-sans); }
-.sg-lato { font-family: 'Lato', sans-serif; }
 .sg-cyr { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 1rem; }
 .sg-cyr > div { border-top: 1px solid var(--line); padding-top: 10px; }
 .sg-cyr-head { font-size: clamp(1.5rem, 3.2vw, 2rem); letter-spacing: 0.03em; margin: 6px 0 0; line-height: 1.15; }
