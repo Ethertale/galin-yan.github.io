@@ -12,10 +12,9 @@ scripts:
 {% block content %}
 <!-- PAGE HEADER -->
 <div class="page-header">
-    <div class="page-runner"></div>
+    <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container page-header-inner">
-        <p class="section-label">Reach Out</p>
-        <h1 class="page-title">You can find<br>me here</h1>
+        <h1 class="page-title" data-runner-target>You can find<br>me here</h1>
         <p class="page-sub">Open to opportunities, collaborations, and questions.</p>
     </div>
 </div>
@@ -65,7 +64,6 @@ scripts:
 
             <!-- FORM -->
             <div class="form-block">
-                <p class="section-label">Message</p>
                 <p class="form-note">
                     <strong>Note:</strong> The form will open your local mail client and prepare an email.
                     You can also directly open your mail client through the button below.

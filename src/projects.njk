@@ -12,11 +12,10 @@ scripts:
 {% block content %}
 <!-- PAGE HEADER -->
 <div class="page-header">
-    <div class="page-runner"></div>
+    <div class="runner" data-runner aria-hidden="true"></div>
 
     <div class="container page-header-inner">
-        <p class="section-label">Work</p>
-        <h1 class="page-title">Projects &amp;<br>Works</h1>
+        <h1 class="page-title" data-runner-target>Projects &amp;<br>Works</h1>
         <p class="page-sub">Click any card to explore.</p>
     </div>
 </div>
@@ -26,7 +25,7 @@ scripts:
     <div class="container">
         <div class="projects-grid">
             {%- for p in projects %}
-            <article class="project-card"
+            <article class="project-card" id="{{ p.title | slugify }}"
                      tabindex="0" role="button"
                      data-title="{{ p.title }}"
                      data-img="{% imageUrl p.cover %}"

@@ -57,6 +57,10 @@
         card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
     });
 
+    // Deep link from the homepage cards: /projects#find-a-dice opens that project's modal.
+    const linked = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (linked && linked.classList.contains('project-card')) linked.click();
+
     window.addEventListener('keydown', e => {
         if (e.key === 'Escape') bootstrap.Modal.getInstance(modalEl)?.hide();
     });

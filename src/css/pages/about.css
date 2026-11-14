@@ -6,7 +6,7 @@
     grid-template-columns: 220px 1fr;
     gap: 0;
     border: 1px solid var(--line);
-    border-top: 3px solid var(--red);
+    border-top: 3px solid var(--ink);
     background: var(--white);
     margin-bottom: 2px;
 }
@@ -79,7 +79,7 @@
     gap: 16px;
     margin-bottom: 2px;
     padding: 18px 0 14px;
-    border-top: 3px solid var(--red);
+    border-top: 3px solid var(--ink);
     border-bottom: 1px solid var(--line);
 }
 
@@ -116,7 +116,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--red-text);
+    color: var(--ink);
 }
 
 .entry-period {
@@ -195,7 +195,6 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .page-runner { left: 4%; }
     .profile-block { grid-template-columns: 1fr; }
     .profile-portrait { height: 260px; }
     .entry-row { grid-template-columns: 1fr; }

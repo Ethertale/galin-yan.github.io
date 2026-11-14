@@ -174,7 +174,7 @@ body { min-height: 100vh; }
 .modal-content {
     background: var(--white);
     border: 1px solid var(--line);
-    border-top: 3px solid var(--red);
+    border-top: 3px solid var(--ink);
     box-shadow: 0 20px 60px rgba(0,0,0,0.14);
 }
 
@@ -219,7 +219,7 @@ body { min-height: 100vh; }
     font-size: 0.75rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--red-text);
+    color: var(--muted);
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -229,7 +229,7 @@ body { min-height: 100vh; }
     content: '';
     display: inline-block;
     width: 16px; height: 2px;
-    background: var(--red);
+    background: var(--ink);
 }
 
 #modalTechs {
@@ -250,7 +250,6 @@ body { min-height: 100vh; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .page-runner { left: 4%; }
     .projects-grid {
         display: flex;
         flex-direction: column;

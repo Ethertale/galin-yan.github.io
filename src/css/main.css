@@ -163,8 +163,13 @@ body {
     background: var(--red);
     transition: width var(--t-base) var(--ease);
 }
-.nav-link:hover { color: var(--ink) !important; }
-.nav-link:hover::after { width: 100%; }
+.nav-link:hover, .nav-link[aria-current="page"] { color: var(--ink) !important; }
+.nav-link:hover::after, .nav-link[aria-current="page"]::after { width: 100%; }
+
+/* ── FOCUS ── one visible keyboard focus everywhere: 2px red outline */
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.navbar-toggler:focus { box-shadow: none; }
+.navbar-toggler:focus-visible { outline: 2px solid var(--red); }
 
 /* ── PAGE HEADER (inner pages) ── */
 .page-header {
@@ -195,14 +200,29 @@ body {
     transform: skewX(-8deg);
     pointer-events: none;
 }
-/* runner line */
-.page-runner {
+/* ── RUNNER (js/runner.js) ──
+   Runner Vision: a faint red line runs down the gutter and turns 90° into its target (a heading or
+   the primary button). The turn is solid red, so the path "lights up" where it arrives.
+   Hidden until the script has measured it, and on phones (the triple line takes over there). */
+.runner {
     position: absolute;
-    left: 8.5%; top: 0;
-    width: 2px; height: 100%;
-    background: var(--red);
-    opacity: 0.14;
+    top: 0;
+    left: var(--runner-x, 0);
+    width: 2px;
+    height: calc(var(--runner-turn-y, 0px) + 1px);
+    background: rgba(var(--red-rgb), 0.35);
+    visibility: hidden;
+    pointer-events: none;
 }
+.runner::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: var(--runner-notch-w, 0);
+    height: 2px;
+    background: var(--red);
+}
+.runner-turns > .runner { visibility: visible; }
 .page-header-inner { position: relative; z-index: var(--z-content); }
 
 .page-title {
@@ -223,26 +243,6 @@ body {
 }
 
 .content-wrap { padding: 0 0 var(--s-7); }
-
-/* ── SECTION LABEL (currently hidden everywhere; decide in 1.3) ── */
-.section-label {
-    font-family: var(--font-label);
-    font-size: 0.78rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--red-text);
-    display: none;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 0.8rem;
-}
-.section-label::before {
-    content: '';
-    display: inline-block;
-    width: 20px; height: 2px;
-    background: var(--red);
-    flex-shrink: 0;
-}
 
 /* ── BUTTON ── */
 .btn-me {
@@ -300,4 +300,19 @@ footer {
     font-size: 0.78rem;
     letter-spacing: 0.12em;
     color: var(--muted);
+}
+
+/* ── PHONES ── the runner is hidden, so titles get the triple line instead (style tile, decision 3) */
+@media (max-width: 768px) {
+    .runner { display: none; }
+    .page-title::after, .section-title::after {
+        content: '';
+        display: block;
+        width: 56px; height: 5px;
+        margin-top: 14px;
+        background:
+            linear-gradient(var(--line), var(--line)) top / 100% 1px no-repeat,
+            linear-gradient(var(--red), var(--red)) center / 100% 1px no-repeat,
+            linear-gradient(var(--line), var(--line)) bottom / 100% 1px no-repeat;
+    }
 }

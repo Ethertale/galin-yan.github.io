@@ -15,7 +15,7 @@
 /* ── LEFT PANEL ── */
 .contact-panel {
     border: 1px solid var(--line);
-    border-top: 3px solid var(--red);
+    border-top: 3px solid var(--ink);
     background: var(--white);
 }
 
@@ -30,7 +30,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--red-text);
+    color: var(--muted);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -40,7 +40,7 @@
     content: '';
     display: inline-block;
     width: 14px; height: 2px;
-    background: var(--red);
+    background: var(--ink);
     flex-shrink: 0;
 }
 
@@ -120,7 +120,7 @@
 /* ── FORM ── */
 .form-block {
     border: 1px solid var(--line);
-    border-top: 3px solid var(--red);
+    border-top: 3px solid var(--ink);
     background: var(--white);
     padding: 32px 36px;
 }
@@ -187,7 +187,6 @@ textarea.field-input { resize: vertical; min-height: 140px; }
 /* ── RESPONSIVE ── */
 @media (max-width: 860px) {
     .contact-layout { grid-template-columns: 1fr; }
-    .page-runner { left: 4%; }
     .form-block { padding: 24px 20px; }
     .footer-inner { justify-content: center; text-align: center; }
 }
