@@ -29,11 +29,13 @@ const palette = {
   ],
 };
 
+// Seeded random (Park-Miller), so the build output is the same every time.
+const seeded = (seed) => () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+
 // Low-poly texture: a jittered point grid split into triangles, each a slightly different grey.
-// Seeded, so the build output is the same every time.
-function lowPoly(cols = 14, rows = 6, w = 1200, h = 400) {
-  let seed = 7;
-  const rand = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+// light > 0 adds a left-to-right lighting ramp, so facets read as one lit surface, not noise.
+function lowPoly(cols = 14, rows = 6, w = 1200, h = 400, light = 0) {
+  const rand = seeded(7);
   const pts = [];
   for (let r = 0; r <= rows; r++) {
     pts.push([]);
@@ -49,15 +51,39 @@ function lowPoly(cols = 14, rows = 6, w = 1200, h = 400) {
     for (let c = 0; c < cols; c++) {
       const [a, b, d, e] = [pts[r][c], pts[r][c + 1], pts[r + 1][c], pts[r + 1][c + 1]];
       for (const t of rand() > 0.5 ? [[a, b, e], [a, e, d]] : [[a, b, d], [b, e, d]]) {
-        tris.push({ points: t.map((p) => p.join(',')).join(' '), o: (0.015 + rand() * 0.045).toFixed(3) });
+        const cx = (t[0][0] + t[1][0] + t[2][0]) / 3;
+        tris.push({ points: t.map((p) => p.join(',')).join(' '), o: (0.015 + rand() * 0.045 + light * (cx / w)).toFixed(3) });
       }
     }
   }
   return tris;
 }
 
+// Hex texture: pointy-top honeycomb cells of radius r, filled like the low-poly facets.
+function hexGrid(r = 30, w = 1200, h = 480, light = 0) {
+  const rand = seeded(11);
+  const hw = Math.sqrt(3) * r;  // cell width
+  const cells = [];
+  for (let row = -1; row * 1.5 * r < h + r * 2; row++) {
+    const y = row * 1.5 * r;
+    for (let x = (row % 2 ? hw / 2 : 0) - hw; x < w + hw; x += hw) {
+      const pts = [0, 1, 2, 3, 4, 5].map((i) => {
+        const a = (Math.PI / 3) * i - Math.PI / 2;
+        return [(x + r * Math.cos(a)).toFixed(1), (y + r * Math.sin(a)).toFixed(1)].join(',');
+      });
+      cells.push({ points: pts.join(' '), o: (0.01 + rand() * 0.045 + light * (x / w)).toFixed(3) });
+    }
+  }
+  return cells;
+}
+
 export default {
   palette,
   lowPoly: lowPoly(),
+  // Hero-sized samples for decision 2 (same size, same lighting, so they compare fairly).
+  heroPoly: lowPoly(16, 7, 1200, 480, 0.04),
+  heroHex: hexGrid(30, 1200, 480, 0.04),
   chamfers: [0, 8, 12, 16],
+  // Approved 2026-11-14: 1 = 12px, 3 = triple line (D), 4 = yes, 5 = Unbounded BG-only, 6 = Sofia Sans.
+  chosenChamfer: 12,
 };

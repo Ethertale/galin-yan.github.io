@@ -45,6 +45,30 @@ scripts:
 </div>
 {% endmacro %}
 
+{#- A page hero on one of the two shortlisted textures (decision 2). -#}
+{% macro hero(texture, theme, bg) %}
+<figure class="sg-card sg-hero-card">
+<div class="sg-hero sg-theme sg-{{ theme }}"{% if bg %} lang="bg"{% endif %}>
+    <svg class="sg-hero-tex" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        {%- for t in (heroPoly if texture == "poly" else heroHex) %}<polygon points="{{ t.points }}" fill-opacity="{{ t.o }}"/>{% endfor %}
+    </svg>
+    <div class="sg-hero-body">
+        <p class="sg-hud sg-stamp sg-hero-stamp"><span>Base · Kazanlak, BG</span><span>42.62° N, 25.39° E</span><span data-clock>local time</span></p>
+        {%- if bg %}
+        <p class="sg-hero-name sg-hero-bg">Галин Янъков</p>
+        <p class="sg-hero-sub">Софтуерен инженер. Уеб, игри и инструменти, които работят бързо.</p>
+        {%- else %}
+        <p class="sg-hero-name">Galin Yan</p>
+        <p class="sg-hero-sub">Software engineer. Web, games and tools that run fast.</p>
+        {%- endif %}
+        <div class="sg-triple sg-triple-short" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="sg-row"><a href="#" class="sg-btn" style="--cut: {{ chosenChamfer }}px"><span>{{ "Проекти →" if bg else "View projects →" }}</span></a></div>
+    </div>
+</div>
+<figcaption><b>{{ "Low-poly" if texture == "poly" else "Hex" }}</b> {{ "Daylight" if theme == "light" else "Black" }}{{ ", Bulgarian (Unbounded)" if bg }}</figcaption>
+</figure>
+{% endmacro %}
+
 {% block head %}
     <!-- Font candidates for the tile only. Chosen fonts get self-hosted in 1.3.2. -->
     <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Sofia+Sans+Condensed:wght@400;500;600;700&family=Unbounded:wght@500;700&family=Tektur:wght@500;700&family=Russo+One&display=swap" rel="stylesheet">
@@ -118,10 +142,10 @@ scripts:
         <p class="sg-note">Good Times has no Cyrillic, so Bulgarian headlines need a second font. Sofia Sans is by a Bulgarian
             studio and switches to Bulgarian letterforms when the page says <code>lang="bg"</code>: compare д, л, ж, к below.</p>
         <div class="sg-cyr">
-            <div><span class="sg-hud">Good Times (no Cyrillic: falls back)</span><p class="sg-cyr-head" style="font-family: 'Good Times', sans-serif">Галин Янаков</p></div>
-            <div><span class="sg-hud">Unbounded 700</span><p class="sg-cyr-head" style="font-family: 'Unbounded'; font-weight: 700">Галин Янаков</p></div>
-            <div><span class="sg-hud">Tektur 700</span><p class="sg-cyr-head" style="font-family: 'Tektur'; font-weight: 700">Галин Янаков</p></div>
-            <div><span class="sg-hud">Russo One</span><p class="sg-cyr-head" style="font-family: 'Russo One'">Галин Янаков</p></div>
+            <div><span class="sg-hud">Good Times (no Cyrillic: falls back)</span><p class="sg-cyr-head" style="font-family: 'Good Times', sans-serif">Галин Янъков</p></div>
+            <div><span class="sg-hud">Unbounded 700</span><p class="sg-cyr-head" style="font-family: 'Unbounded'; font-weight: 700">Галин Янъков</p></div>
+            <div><span class="sg-hud">Tektur 700</span><p class="sg-cyr-head" style="font-family: 'Tektur'; font-weight: 700">Галин Янъков</p></div>
+            <div><span class="sg-hud">Russo One</span><p class="sg-cyr-head" style="font-family: 'Russo One'">Галин Янъков</p></div>
         </div>
         <div class="sg-cyr sg-cyr-body">
             <div><span class="sg-hud">Sofia Sans · lang="bg"</span><p lang="bg" class="sg-body sg-sofia">Създавам уебсайтове и уеб приложения: дълго, лесно, жълто, книга.</p></div>
@@ -231,16 +255,30 @@ scripts:
         </div>
     </section>
 
-    <!-- 06 DECISIONS -->
+    <!-- 06 TEXTURE SAMPLES -->
     <section class="sg-section">
-        <h2 class="sg-h2"><span class="sg-index">06</span>Decisions</h2>
+        <h2 class="sg-h2"><span class="sg-index">06</span>Texture samples</h2>
+        <p class="sg-note">Low-poly and hex as a full page header, with the approved 12px button, the triple line and
+            Unbounded for Bulgarian. Both use the same lighting: facets get a little darker toward the right, and the
+            left side fades out behind the text. <span class="sg-hud">decision 2</span></p>
+        <div class="sg-heroes">
+            {{ hero("poly", "light") }}
+            {{ hero("hex", "light") }}
+            {{ hero("poly", "dark", true) }}
+            {{ hero("hex", "dark", true) }}
+        </div>
+    </section>
+
+    <!-- 07 DECISIONS -->
+    <section class="sg-section">
+        <h2 class="sg-h2"><span class="sg-index">07</span>Decisions</h2>
         <ol class="sg-decisions">
-            <li><b>Chamfer size</b> on primary buttons and feature cards: 0, 8, 12 or 16px? <span class="sg-hud">Proposal: 12px</span></li>
-            <li><b>Background texture</b> behind headers: grid, low-poly or hex? <span class="sg-hud">Proposal: keep the grid</span></li>
-            <li><b>Phone section marker</b>: margin index (B) or triple line (D)? <span class="sg-hud">Proposal: D</span></li>
-            <li><b>Black variant</b>: does it still feel like you? <span class="sg-hud">Yes / adjust</span></li>
-            <li><b>Bulgarian headline font</b>: Unbounded, Tektur or Russo One? And Good Times for English only, or one font for both? <span class="sg-hud">Proposal: Unbounded, BG only</span></li>
-            <li><b>Body font</b>: Sofia Sans instead of Lato (needed for Cyrillic anyway). <span class="sg-hud">Proposal: yes</span></li>
+            <li><b>Chamfer size</b> on primary buttons and feature cards. <span class="sg-hud">Approved: 12px</span></li>
+            <li><b>Background texture</b> behind headers: low-poly or hex? See 06. <span class="sg-hud">Open: low-poly favoured</span></li>
+            <li><b>Phone section marker</b>. <span class="sg-hud">Approved: triple line (D)</span></li>
+            <li><b>Black variant</b>. <span class="sg-hud">Approved</span></li>
+            <li><b>Bulgarian headline font</b>. <span class="sg-hud">Approved: Unbounded, Bulgarian only; Good Times stays for English</span></li>
+            <li><b>Body font</b>. <span class="sg-hud">Approved: Sofia Sans replaces Lato</span></li>
         </ol>
     </section>
 

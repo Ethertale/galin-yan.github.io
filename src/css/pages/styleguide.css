@@ -149,6 +149,19 @@
     background-size: 50px 50px;
 }
 
+/* ── 06 texture samples: a page hero per texture ── */
+.sg-heroes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; margin-top: 1rem; }
+.sg-hero { position: relative; overflow: hidden; min-height: 340px; border: 1px solid var(--line); display: flex; align-items: flex-end; }
+.sg-hero-tex { position: absolute; inset: 0; width: 100%; height: 100%; fill: var(--ink);
+    /* keep the text side calm: the texture comes in from the right */
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.25), #000 60%);
+            mask-image: linear-gradient(to right, rgba(0,0,0,0.25), #000 60%); }
+.sg-hero-body { position: relative; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+.sg-hero-stamp { justify-content: flex-start; text-align: left; }
+.sg-hero-name { font-family: var(--font-head); font-size: clamp(1.9rem, 5vw, 3.2rem); letter-spacing: 0.05em; line-height: 1.05; margin: 0; color: var(--ink); }
+.sg-hero-bg { font-family: 'Unbounded', sans-serif; font-weight: 700; letter-spacing: 0.01em; }
+.sg-hero-sub { font-family: var(--sg-sans); font-size: 1.05rem; line-height: 1.55; color: var(--muted); margin: 0; max-width: 40ch; }
+
 /* ── 04 section markers ── */
 .sg-markers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 1rem; }
 .sg-marker { min-height: 150px; }
