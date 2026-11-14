@@ -257,15 +257,25 @@ body {
 
 .content-wrap { padding: 0 0 var(--s-7); }
 
-/* ── BUTTON ── chamfered primary button (style tile, decision 1: 12px cut).
-   The outer element is the red 2px frame, the inner <span> the face. The span's cut is 1.17px smaller
-   so the diagonal edge is as thick as the straight ones (2 - 2(√2 - 1)). Markup: <a class="btn-me"><span>…</span></a> */
+/* ── BUTTON ── chamfered button (style tile, decision 1: 12px cut).
+   The outer element is the 2px frame, the inner <span> the face. The span's cut is 1.17px smaller
+   so the diagonal edge is as thick as the straight ones (2 - 2(√2 - 1)). Markup: <a class="btn-me"><span>…</span></a>
+   Variants only swap the four colour variables:
+     .btn-me             primary: red frame, light face, red sweep on hover
+     .btn-me.btn-solid   the one committing action (Send): red face, ink sweep
+     .btn-me.btn-ink     secondary: ink frame and sweep
+   States: :disabled / [aria-disabled="true"], and [aria-busy="true"] while working (1.5 form). */
 .btn-me {
     --cut: 12px;
+    --btn-c: var(--red);          /* frame */
+    --btn-sweep: var(--btn-c);    /* the fill that sweeps in on hover */
+    --btn-face: var(--white);
+    --btn-fg: var(--red-text);
+    --btn-fg-on: #fff;            /* text once the sweep has filled the face */
     display: inline-flex;               /* not inline-block: that adds a descender gap under the face */
     padding: 2px;
     border: 0;
-    background: var(--red);
+    background: var(--btn-c);
     font-family: var(--font-label);
     font-weight: 600;
     font-size: 0.9rem;
@@ -280,10 +290,10 @@ body {
     position: relative;
     isolation: isolate;
     padding: 10px 26px;
-    background: var(--white);
-    color: var(--red-text);
+    background: var(--btn-face);
+    color: var(--btn-fg);
     clip-path: polygon(0 0, calc(100% - var(--cut) + 1.17px) 0, 100% calc(var(--cut) - 1.17px), 100% 100%, 0 100%);
-    /* the face turns red only after the sweep, hiding the seam between the two diagonals */
+    /* the face changes colour only after the sweep, hiding the seam between the two diagonals */
     transition: color var(--t-base) var(--ease), background-color 0s var(--t-base);
 }
 .btn-me span::before {
@@ -291,19 +301,307 @@ body {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: var(--red);
+    background: var(--btn-sweep);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--t-base) var(--ease);
 }
-.btn-me:hover span, .btn-me:focus-visible span { color: #fff; background-color: var(--red); }
-.btn-me:hover span::before, .btn-me:focus-visible span::before { transform: scaleX(1); }
+.btn-me:hover span, .btn-me:focus-visible span, .btn-me.is-hover span { color: var(--btn-fg-on); background-color: var(--btn-sweep); }
+.btn-me:hover span::before, .btn-me:focus-visible span::before, .btn-me.is-hover span::before { transform: scaleX(1); }
 /* clip-path would cut an outside outline off: draw the focus ring inside the face */
 .btn-me:focus-visible { outline: none; }
-.btn-me:focus-visible span { outline: 2px solid #fff; outline-offset: -6px; }
+.btn-me:focus-visible span { outline: 2px solid var(--btn-fg-on); outline-offset: -6px; }
 /* small variant: inline with a field or inside a modal */
 .btn-me.btn-sm { --cut: 10px; font-size: 0.86rem; }
 .btn-me.btn-sm span { padding: 8px 20px; }
+
+.btn-me.btn-solid { --btn-face: var(--red); --btn-fg: #fff; --btn-sweep: var(--ink); }
+.btn-me.btn-ink   { --btn-c: var(--ink); --btn-fg: var(--ink); }
+
+.btn-me:disabled, .btn-me[aria-disabled="true"] {
+    --btn-c: var(--line); --btn-face: var(--white); --btn-sweep: var(--white);
+    --btn-fg: var(--muted); --btn-fg-on: var(--muted);
+    cursor: not-allowed;
+}
+/* working: the sweep runs back and forth until the request is done */
+.btn-me[aria-busy="true"] { cursor: progress; }
+.btn-me[aria-busy="true"] span::before { opacity: 0.22; animation: btn-busy 1.2s var(--ease) infinite; }
+@keyframes btn-busy {
+    0%     { transform: scaleX(0); transform-origin: left; }
+    50%    { transform: scaleX(1); transform-origin: left; }
+    50.01% { transform: scaleX(1); transform-origin: right; }
+    100%   { transform: scaleX(0); transform-origin: right; }
+}
+
+/* chip: tiny inline action next to a value (Copy) */
+.btn-chip {
+    display: inline-block;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red-text);
+    background: transparent;
+    border: 1px solid var(--red);
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: background-color var(--t-fast), color var(--t-fast);
+}
+.btn-chip:hover, .btn-chip.is-hover { background: var(--red); color: #fff; }
+
+/* text link with an arrow: secondary navigation ("View all projects →") */
+.link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: var(--fs-label);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red-text);
+    text-decoration: none;
+}
+.link-arrow::after {
+    content: '→';
+    content: '→' / '';          /* decorative: screen readers skip it where supported */
+    transition: transform var(--t-fast) var(--ease);
+}
+.link-arrow:hover { color: var(--red-hover); }
+.link-arrow:hover::after, .link-arrow.is-hover::after,
+.card-me:hover .link-arrow::after, .card-me:focus-visible .link-arrow::after, .card-me.is-hover .link-arrow::after { transform: translateX(4px); }
+.link-arrow-lg { font-size: clamp(1.2rem, 2.4vw, 1.6rem); }
+
+/* ── PANEL ── a lit surface with the red top edge (contact panel, form, profile, modal) */
+.panel-me {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--red);
+}
+
+/* ── CARD ── chamfered feature card. The root is not clipped, so its drop-shadow (the hard offset
+   block) follows the cut corner of the clipped face. The frame is drawn by .card-face::after on
+   top of the content: hairline sides, the red top edge, and the red edge turning down the chamfer.
+   Markup: <a class="card-me"><div class="card-face"><div class="card-thumb">…</div>
+           <div class="card-body"><h3 class="card-title">…</h3><p class="card-text">…</p></div></div></a> */
+.card-me {
+    --cut: 12px;
+    --card-edge: var(--line);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 0 rgba(20, 20, 20, 0.06));
+    transition: transform var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
+}
+.card-me:hover, .card-me:focus-visible, .card-me.is-hover {
+    --card-edge: var(--red);
+    color: inherit;
+    transform: translate(-3px, -3px);
+    filter: drop-shadow(8px 8px 0 rgba(20, 20, 20, 0.08));
+}
+.card-face {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%);
+}
+.card-face::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-overlay);
+    pointer-events: none;
+    box-shadow: inset 0 3px 0 var(--red), inset 0 0 0 1px var(--card-edge);
+    background: linear-gradient(to bottom left, transparent 50%, var(--red) 50%, var(--red) calc(50% + 3px), transparent calc(50% + 3px))
+                top right / var(--cut) var(--cut) no-repeat;
+    transition: box-shadow var(--t-fast);
+}
+.card-thumb {
+    position: relative;
+    height: 180px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--off);
+    border-bottom: 1px solid var(--line);
+}
+.card-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--t-base) var(--ease);
+}
+.card-me:hover .card-thumb img, .card-me:focus-visible .card-thumb img { transform: scale(1.04); }
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    padding: 20px 22px 22px;
+}
+.card-title {
+    font-family: var(--font-head);
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+}
+.card-text {
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--mid);
+    margin: 0;
+}
+.card-foot { margin-top: auto; padding-top: var(--s-2); }
+
+/* ── PLINTH ── a screenshot on display: bright panel, hairline, hard offset shadow.
+   Optional index label: <div class="plinth" data-label="PRJ-02"> */
+.plinth {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: 8px 8px 0 rgba(20, 20, 20, 0.06);
+    padding: var(--s-2);
+}
+.plinth[data-label] { padding-top: 28px; }
+.plinth[data-label]::before {
+    content: attr(data-label);
+    position: absolute;
+    top: 7px; left: 10px;
+    font-family: var(--font-label);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.plinth img { display: block; width: 100%; height: auto; }
+
+/* ── TAGS AND BADGES ── tags name things (a skill, a stack item); badges flag a state */
+.tags { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-label);
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--mid);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 4px 10px;
+}
+.tag img { width: 15px; height: 15px; }
+.tag-ink { color: #fff; background: var(--ink); border-color: var(--ink); }
+
+.badge-me {
+    --cut: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--ink);
+    padding: 2px 12px 2px 8px;
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%);
+}
+.badge-red { background: var(--red-text); }   /* --red-text, not --red: white small text needs 4.5:1 */
+/* live: a client site answered (js/site-status.js). Positive-only, so there is no "offline" badge. */
+.badge-live { color: var(--mid); background: none; padding: 0; clip-path: none; }
+.badge-live::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--red);
+    animation: live-pulse 2s ease-in-out infinite;
+}
+@keyframes live-pulse { 50% { opacity: 0.25; } }
+
+/* ── NOTICE ── a message strip: form notes, results. Default is neutral; ok and error tint the bar. */
+.notice {
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--mid);
+    background: var(--off);
+    border-left: 3px solid var(--line);
+    padding: 12px 16px;
+}
+.notice strong { color: var(--ink); font-weight: 600; }
+.notice-ok    { border-left-color: var(--ink); color: var(--ink); }
+.notice-error { border-left-color: var(--red); background: var(--red-wash-soft); color: var(--ink); }
+
+/* ── FORM FIELDS ──
+   States come from attributes a script sets, so assistive tech hears the same thing people see:
+     aria-invalid="true"  error: red frame, red corner flag, message below (.field-msg)
+     .is-valid            accepted: ink top bar
+   (.is-focus and .is-hover are static demo hooks for the style guide.) */
+.field-group { margin-bottom: 20px; }
+.field-label {
+    display: block;
+    font-family: var(--font-label);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 6px;
+}
+.field-input {
+    width: 100%;
+    background: var(--off);
+    border: 1px solid var(--line);
+    border-top: 2px solid var(--line);
+    padding: 10px 14px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--ink);
+    outline: none;                     /* focus is the red frame below, not the global outline */
+    appearance: none;
+    transition: border-color var(--t-fast), background-color var(--t-fast);
+}
+textarea.field-input { resize: vertical; min-height: 140px; }
+.field-input::placeholder { color: var(--muted); }
+.field-input:hover, .field-input.is-hover { border-top-color: var(--mid); }
+.field-input:focus, .field-input.is-focus {
+    border-color: var(--red);
+    background-color: var(--panel);
+}
+.field-input[aria-invalid="true"] {
+    border-color: var(--red);
+    background: linear-gradient(225deg, var(--red) 7px, transparent 7px), var(--red-wash-soft);
+}
+.field-input.is-valid { border-top-color: var(--ink); }
+.field-input:disabled {
+    background: transparent;
+    border-style: dashed;
+    color: var(--muted);
+    cursor: not-allowed;
+}
+.field-hint, .field-msg {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--font-label);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+.field-msg { font-weight: 600; color: var(--red-text); }
+.field-msg::before { content: '✕  '; content: '✕  ' / ''; }
+.field-msg.is-ok { color: var(--ink); }
+.field-msg.is-ok::before { content: '✓  '; content: '✓  ' / ''; }
 
 /* ── FOOTER ── */
 footer {
@@ -356,5 +654,6 @@ footer {
         animation-iteration-count: 1 !important;
     }
     .js [data-reveal] { opacity: 1; transform: none; }
-    .project-card:hover, .project-card:focus-visible { transform: none !important; }
+    .card-me:hover, .card-me:focus-visible { transform: none !important; }
+    .badge-live::before, .btn-me[aria-busy="true"] span::before { animation: none; }
 }

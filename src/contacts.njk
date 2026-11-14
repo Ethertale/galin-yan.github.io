@@ -25,7 +25,7 @@ scripts:
         <div class="contact-layout">
 
             <!-- LEFT PANEL -->
-            <aside class="contact-panel">
+            <aside class="contact-panel panel-me">
 
                 <div class="panel-section">
                     <p class="panel-label">Contact</p>
@@ -35,7 +35,7 @@ scripts:
                         <div>
                             <div class="contact-item-label">Email</div>
                             <div class="contact-item-value" id="emailText">{{ site.email }}</div>
-                            <button class="copy-btn" id="copyEmail">Copy</button>
+                            <button class="btn-chip" type="button" id="copyEmail">Copy</button>
                         </div>
                     </div>
 
@@ -63,8 +63,8 @@ scripts:
             </aside>
 
             <!-- FORM -->
-            <div class="form-block">
-                <p class="form-note">
+            <div class="form-block panel-me">
+                <p class="notice">
                     <strong>Note:</strong> The form will open your local mail client and prepare an email.
                     You can also directly open your mail client through the button below.
                 </p>

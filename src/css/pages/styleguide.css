@@ -205,3 +205,18 @@
 @media (prefers-reduced-motion: reduce) {
     .sg-btn span, .sg-btn span::before, .sg-link-label { transition: none; }
 }
+
+/* 08 live components: label column + demo column */
+.sg-comp { display: grid; grid-template-columns: minmax(200px, 280px) 1fr; gap: 24px 40px; padding: 28px 0; border-top: 1px solid var(--line); }
+.sg-comp:first-of-type { margin-top: 1.5rem; }
+.sg-comp-head .sg-note { font-size: 0.88rem; }
+.sg-comp-demo { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.sg-comp-demo .sg-row { margin: 0; }
+.sg-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+.sg-cards .card-thumb { height: 130px; }
+.sg-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 24px; }
+.sg-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; align-items: start; }
+.sg-panel-demo { padding: 20px; }
+.sg-notices { display: flex; flex-direction: column; gap: 12px; }
+.sg-notices .notice { margin: 0; }
+@media (max-width: 860px) { .sg-comp { grid-template-columns: 1fr; } }

@@ -80,9 +80,10 @@ pageStyle: styleguide
 <header class="sg-header">
     <div class="container">
         <h1 class="sg-title">Style tile</h1>
-        <p class="sg-hud">Draft v1.3.0 &nbsp;/&nbsp; Runner Vision &nbsp;/&nbsp; <span data-clock>Kazanlak</span></p>
-        <p class="sg-intro">The design system on one page, before any real page changes. Everything here is a
-            proposal: each numbered decision at the bottom needs a yes, a no, or a pick.</p>
+        <p class="sg-hud">v1.3.5 &nbsp;/&nbsp; Runner Vision &nbsp;/&nbsp; <span data-clock>Kazanlak</span></p>
+        <p class="sg-intro">The design system on one page. Sections 01 to 07 are the approved style tile (the
+            decisions are in 07); <a href="#components" class="link-arrow">08 Components</a> shows the live components
+            the pages are built from.</p>
     </div>
 </header>
 
@@ -271,6 +272,154 @@ pageStyle: styleguide
             <li><b>Bulgarian headline font</b>. <span class="sg-hud">Approved: Unbounded, Bulgarian only; Good Times stays for English</span></li>
             <li><b>Body font</b>. <span class="sg-hud">Approved: Sofia Sans replaces Lato</span></li>
         </ol>
+    </section>
+
+    <!-- 08 COMPONENTS (live: real classes from css/main.css) -->
+    <section class="sg-section" id="components">
+        <h2 class="sg-h2"><span class="sg-index">08</span>Components</h2>
+        <p class="sg-note">The real components from <code>css/main.css</code>, not drawings. A change there shows up here
+            first, so this is the page to check before and after any style change. States that need a mouse or a
+            keyboard are shown with static <code>.is-hover</code> / <code>.is-focus</code> hooks.</p>
+
+        <div class="sg-comp">
+            <div class="sg-comp-head"><h3 class="sg-h3">Buttons</h3>
+                <p class="sg-note"><code>.btn-me</code> primary, <code>.btn-solid</code> for the one committing action
+                    (Send), <code>.btn-ink</code> secondary, <code>.btn-sm</code> small. Disabled and busy come from
+                    <code>disabled</code> / <code>aria-busy</code>, so screen readers hear the same state.</p></div>
+            <div class="sg-comp-demo">
+                <div class="sg-row">
+                    <a href="#" class="btn-me"><span>View projects →</span></a>
+                    <a href="#" class="btn-me is-hover"><span>Hovered →</span></a>
+                    <button type="button" class="btn-me btn-solid"><span>Send message</span></button>
+                    <button type="button" class="btn-me btn-solid is-hover"><span>Hovered</span></button>
+                </div>
+                <div class="sg-row">
+                    <a href="#" class="btn-me btn-ink"><span>Download CV</span></a>
+                    <a href="#" class="btn-me btn-sm"><span>Open project →</span></a>
+                    <button type="button" class="btn-me btn-solid" disabled><span>Disabled</span></button>
+                    <button type="button" class="btn-me btn-solid" aria-busy="true"><span>Sending…</span></button>
+                </div>
+                <div class="sg-row">
+                    <a href="#" class="link-arrow">Text link</a>
+                    <a href="#" class="link-arrow is-hover">Hovered</a>
+                    <a href="#" class="link-arrow link-arrow-lg">View all projects</a>
+                    <button type="button" class="btn-chip">Copy</button>
+                    <button type="button" class="btn-chip is-hover">Copy</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sg-comp">
+            <div class="sg-comp-head"><h3 class="sg-h3">Cards</h3>
+                <p class="sg-note"><code>.card-me</code>: a 12px chamfer, the red top edge turning down the cut, and a
+                    hard offset shadow that grows as the card lifts. Project card (thumb, title, text, link) and service
+                    card (no thumb).</p></div>
+            <div class="sg-comp-demo sg-cards">
+                <a href="#" class="card-me">
+                    <div class="card-face">
+                        <div class="card-thumb">{% image "/rsc/imgs/projects/RCTH-Cover.png", "", "320px", { loading: "lazy" } %}</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Project card</h4>
+                            <span class="badge-me badge-live">Live</span>
+                            <p class="card-text">Short summary of what was built and for whom.</p>
+                            <span class="link-arrow card-foot">View project</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="card-me is-hover">
+                    <div class="card-face">
+                        <div class="card-thumb">{% image "/rsc/imgs/projects/RCTH-Cover.png", "", "320px", { loading: "lazy" } %}</div>
+                        <div class="card-body">
+                            <h4 class="card-title">Hovered</h4>
+                            <p class="card-text">Lifts 3px up and left; the hairline frame turns red.</p>
+                            <span class="link-arrow card-foot">View project</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="card-me">
+                    <div class="card-face">
+                        <div class="card-body">
+                            <span class="badge-me">Service</span>
+                            <h4 class="card-title">Service card</h4>
+                            <p class="card-text">Websites for small businesses: fast, bilingual, easy to update. No thumb,
+                                same frame.</p>
+                            <span class="link-arrow card-foot">Ask about it</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="sg-comp">
+            <div class="sg-comp-head"><h3 class="sg-h3">Tags and badges</h3>
+                <p class="sg-note"><code>.tag</code> names a thing (a skill, a stack item). <code>.badge-me</code> flags a
+                    state, with a 6px chamfer. Red badges use <code>--red-text</code> so small white text keeps 4.5:1.</p></div>
+            <div class="sg-comp-demo">
+                <div class="tags">
+                    <span class="tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/java/java-plain.svg" alt="" />Java</span>
+                    <span class="tag">Spring</span>
+                    <span class="tag">Eleventy</span>
+                    <span class="tag tag-ink">Featured</span>
+                </div>
+                <div class="sg-row">
+                    <span class="badge-me">Client</span>
+                    <span class="badge-me badge-red">New</span>
+                    <span class="badge-me badge-live">Live</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sg-comp">
+            <div class="sg-comp-head"><h3 class="sg-h3">Form fields</h3>
+                <p class="sg-note">Default, focus, error, accepted, disabled. The error state comes from
+                    <code>aria-invalid="true"</code> (the red corner flag plus a message), so it is announced, not only
+                    coloured. Success stays ink: green is not in the palette.</p></div>
+            <div class="sg-comp-demo sg-fields">
+                <div class="field-group">
+                    <label class="field-label" for="sg-f1">Default</label>
+                    <input class="field-input" id="sg-f1" type="text" placeholder="Your full name" />
+                    <span class="field-hint">Hint text sits under the field.</span>
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="sg-f2">Focus</label>
+                    <input class="field-input is-focus" id="sg-f2" type="text" value="Galin" />
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="sg-f3">Error</label>
+                    <input class="field-input" id="sg-f3" type="email" value="galin@" aria-invalid="true" aria-describedby="sg-f3-msg" />
+                    <span class="field-msg" id="sg-f3-msg">Enter an email like you@example.com</span>
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="sg-f4">Accepted</label>
+                    <input class="field-input is-valid" id="sg-f4" type="email" value="you@example.com" aria-describedby="sg-f4-msg" />
+                    <span class="field-msg is-ok" id="sg-f4-msg">Looks good</span>
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="sg-f5">Disabled</label>
+                    <input class="field-input" id="sg-f5" type="text" value="Not editable" disabled />
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="sg-f6">Message</label>
+                    <textarea class="field-input" id="sg-f6" rows="3" placeholder="Write your message here"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="sg-comp">
+            <div class="sg-comp-head"><h3 class="sg-h3">Panels, plinth and notices</h3>
+                <p class="sg-note"><code>.panel-me</code> is the lit surface with the red top edge. <code>.plinth</code>
+                    puts a screenshot on display (optional <code>data-label</code>). <code>.notice</code> carries form
+                    notes and results.</p></div>
+            <div class="sg-comp-demo sg-panels">
+                <div class="panel-me sg-panel-demo"><p class="card-text">Panel: contact sidebar, the form, the profile, the project popup.</p></div>
+                <div class="plinth" data-label="PRJ-02">{% image "/rsc/imgs/projects/RCTH-Cover.png", "RCTH Stara Zagora cover", "320px", { loading: "lazy" } %}</div>
+                <div class="sg-notices">
+                    <p class="notice"><strong>Note:</strong> neutral information, like how the form works.</p>
+                    <p class="notice notice-ok"><strong>Sent.</strong> Thanks, I'll reply within two working days.</p>
+                    <p class="notice notice-error"><strong>Not sent.</strong> Something went wrong, so your mail app will open instead.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
 </div>

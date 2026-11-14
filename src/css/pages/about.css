@@ -5,9 +5,6 @@
     display: grid;
     grid-template-columns: 220px 1fr;
     gap: 0;
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--red);
-    background: var(--white);
     margin-bottom: 2px;
 }
 

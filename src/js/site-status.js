@@ -13,7 +13,7 @@
         // not proof a client site is down, so it never shows "Offline".
         if (!online) return;
         el.textContent = "Live";
-        el.className = "site-live";
+        el.className = "badge-me badge-live";
     }
 
     function checkSite(el, baseUrl) {

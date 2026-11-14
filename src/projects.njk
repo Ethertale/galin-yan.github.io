@@ -25,27 +25,29 @@ scripts:
     <div class="container">
         <div class="projects-grid">
             {%- for p in projects %}
-            <article class="project-card" id="{{ p.title | slugify }}"
+            <article class="card-me project-card" id="{{ p.title | slugify }}"
                      tabindex="0" role="button"
                      data-title="{{ p.title }}"
                      data-img="{% imageUrl p.cover %}"
                      data-desc="{{ p.description }}"
                      data-techs="{{ p.stack | join(',') }}"
                      data-link="{{ p.url }}">
-                <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
-                    {% image p.cover, p.coverAlt, "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
-                    <span class="card-open-hint">View Project →</span>
-                </div>
-                <div class="card-body">
-                    <h4>{{ p.title }}</h4>
-                    {%- if p.liveCheck %}
-                    <small data-live-check="{{ p.url }}"></small>
-                    {%- endif %}
-                    <p>{{ p.summary }}</p>
-                    <div class="tools-row" aria-hidden="true">
-                        {%- for key in p.cardStack %}
-                        <div class="tool-badge"><img src="{{ techs[key].icon }}" alt="{{ techs[key].label }}"/></div>
-                        {%- endfor %}
+                <div class="card-face">
+                    <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
+                        {% image p.cover, p.coverAlt, "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
+                        <span class="card-open-hint">View Project →</span>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ p.title }}</h2>
+                        {%- if p.liveCheck %}
+                        <small data-live-check="{{ p.url }}"></small>
+                        {%- endif %}
+                        <p class="card-text">{{ p.summary }}</p>
+                        <div class="tools-row card-foot" aria-hidden="true">
+                            {%- for key in p.cardStack %}
+                            <div class="tool-badge"><img src="{{ techs[key].icon }}" alt="{{ techs[key].label }}"/></div>
+                            {%- endfor %}
+                        </div>
                     </div>
                 </div>
             </article>
@@ -71,7 +73,7 @@ scripts:
             <div class="modal-body">
                 <div class="row g-4">
                     <div class="col-md-5">
-                        <img id="modalImage" src="" alt="project cover" />
+                        <div class="plinth"><img id="modalImage" src="" alt="project cover" /></div>
                     </div>
                     <div class="col-md-7 d-flex flex-column">
                         <p id="modalDesc" class="modal-desc"></p>

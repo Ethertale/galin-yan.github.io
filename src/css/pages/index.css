@@ -7,6 +7,8 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
+    /* "showroom light": a soft white glow top-left, so the base reads as lit rather than flat */
+    background: radial-gradient(ellipse 55% 65% at 18% 32%, #fff 0%, rgba(255, 255, 255, 0) 70%);
 }
 /* phones: no red wash behind the name */
 @media (max-width: 768px) {
@@ -101,101 +103,8 @@
 /* ── SECTIONS ── */
 section { padding: 100px 0; position: relative; }
 
-/* ── PROJECT CARDS ── */
-.project-card {
-    display: block;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--red);
-    position: relative;
-    transition: border-color var(--t-fast), transform var(--t-fast);
-    overflow: hidden;
-}
-
-.project-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom right, rgba(var(--red-rgb), 0.03), transparent);
-    opacity: 0;
-    transition: opacity var(--t-base);
-}
-
-.project-card:hover, .project-card:focus-visible {
-    border-color: var(--red);
-    transform: translateY(-4px);
-}
-
-.project-card:hover::before, .project-card:focus-visible::before { opacity: 1; }
-
-.project-thumb {
-    height: 160px;
-    background: var(--off);
-    position: relative;
-    overflow: hidden;
-}
-
-/* subtle cross-hatch in thumb */
-.project-thumb::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-            linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
-            linear-gradient(-45deg, rgba(0,0,0,0.03) 25%, transparent 25%),
-            linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.03) 75%),
-            linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.03) 75%);
-    background-size: 12px 12px;
-}
-
-.project-number {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    font-family: var(--font-label);
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: rgba(0,0,0,0.2);
-    z-index: var(--z-content);
-}
-
-.project-body { padding: 20px 22px 22px; }
-
-.project-body h3 {
-    font-family: var(--font-head);
-    font-size: 0.9rem;
-    letter-spacing: 0.06em;
-    color: var(--ink);
-    margin-bottom: 6px;
-}
-
-.project-body p {
-    font-size: 0.85rem;
-    color: var(--mid);
-    margin-bottom: 14px;
-    line-height: 1.6;
-}
-
-.project-link {
-    font-family: var(--font-head);
-    font-weight: 600;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red-text);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    transition: var(--t-fast) var(--ease);
-}
-
-.project-link:hover {
-    color: var(--red-text);
-    transform: scale(1.02) translateX(5px);
-}
+/* ── PROJECT CARDS ── (component: .card-me in main.css) */
+.project-card .card-thumb { height: 160px; }
 
 /* ── ABOUT ── */
 .about-section {
@@ -215,19 +124,6 @@ section { padding: 100px 0; position: relative; }
     font-weight: 400;
 }
 
-/* skill tags */
-.skill-tag {
-    display: inline-block;
-    font-family: var(--font-label);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--mid);
-    border: 1px solid var(--line);
-    padding: 4px 10px;
-    margin: 4px 4px 4px 0;
-    transition: border-color var(--t-fast), color var(--t-fast);
-}
 
 
 /* ── CONTACT ── */
@@ -267,11 +163,6 @@ section { padding: 100px 0; position: relative; }
 }
 
 .contact-item:hover .contact-arrow { color: var(--red-text); }
-
-[data-aos="me-slide-up"].aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
