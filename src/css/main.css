@@ -171,27 +171,19 @@ body {
 .navbar-toggler:focus { box-shadow: none; }
 .navbar-toggler:focus-visible { outline: 2px solid var(--red); }
 
-/* ── PAGE HEADER (inner pages) ── */
-.page-header {
-    padding: 140px 0 72px;
-    position: relative;
-    overflow: hidden;
-}
-/* faint grid — fades in from center-right */
-.page-header::before {
+/* ── PAGE FRAME ── one header backdrop for every page (home hero, inner headers, 404):
+   the low-poly texture fading in from the right, plus the red diagonal wash. Add class="page-frame". */
+.page-frame { position: relative; overflow: hidden; }
+.page-frame::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-            linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(0,0,0,0.055) 1px, transparent 1px);
-    background-size: 100px 100px;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
-    mask-image: linear-gradient(to right, transparent 0%, transparent 35%, black 65%, black 100%);
+    background: url('/textures/lowpoly-v1.svg') center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 15%, rgba(0,0,0,0.35) 40%, #000 75%);
+            mask-image: linear-gradient(to right, transparent 15%, rgba(0,0,0,0.35) 40%, #000 75%);
     pointer-events: none;
 }
-/* red diagonal wash */
-.page-header::after {
+.page-frame::after {
     content: '';
     position: absolute;
     right: -5%; top: -15%;
@@ -200,6 +192,9 @@ body {
     transform: skewX(-8deg);
     pointer-events: none;
 }
+
+/* ── PAGE HEADER (inner pages) ── */
+.page-header { padding: 140px 0 72px; }
 /* ── RUNNER (js/runner.js) ──
    Runner Vision: a faint red line runs down the gutter and turns 90° into its target (a heading or
    the primary button). The turn is solid red, so the path "lights up" where it arrives.
@@ -213,6 +208,10 @@ body {
     background: rgba(var(--red-rgb), 0.35);
     visibility: hidden;
     pointer-events: none;
+    /* draw-in (js/runner.js adds .runner-drawn when the stage scrolls into view) */
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform var(--t-slow) var(--ease);
 }
 .runner::after {
     content: '';
@@ -221,8 +220,22 @@ body {
     width: var(--runner-notch-w, 0);
     height: 2px;
     background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-base) var(--ease) var(--t-slow);   /* the turn starts when the line arrives */
 }
 .runner-turns > .runner { visibility: visible; }
+.runner-drawn > .runner, .runner-drawn > .runner::after { transform: none; }
+
+/* ── SCROLL REVEAL (js/site.js) ── content rises in once; never hidden without JS */
+.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+}
+.js [data-reveal-delay="100"] { transition-delay: 100ms; }
+.js [data-reveal-delay="200"] { transition-delay: 200ms; }
+.js [data-reveal].is-in { opacity: 1; transform: none; }
 .page-header-inner { position: relative; z-index: var(--z-content); }
 
 .page-title {
@@ -244,38 +257,53 @@ body {
 
 .content-wrap { padding: 0 0 var(--s-7); }
 
-/* ── BUTTON ── */
+/* ── BUTTON ── chamfered primary button (style tile, decision 1: 12px cut).
+   The outer element is the red 2px frame, the inner <span> the face. The span's cut is 1.17px smaller
+   so the diagonal edge is as thick as the straight ones (2 - 2(√2 - 1)). Markup: <a class="btn-me"><span>…</span></a> */
 .btn-me {
+    --cut: 12px;
+    display: inline-flex;               /* not inline-block: that adds a descender gap under the face */
+    padding: 2px;
+    border: 0;
+    background: var(--red);
     font-family: var(--font-label);
     font-weight: 600;
     font-size: 0.9rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--red-text);
-    border: 2px solid var(--red);
-    background: transparent;
-    padding: 12px 28px;
-    display: inline-block;
     text-decoration: none;
-    position: relative;
-    overflow: hidden;
-    transition: color var(--t-base);
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - var(--cut)) 0, 100% var(--cut), 100% 100%, 0 100%);
 }
-.btn-me::before {
+.btn-me span {
+    display: block;
+    position: relative;
+    isolation: isolate;
+    padding: 10px 26px;
+    background: var(--white);
+    color: var(--red-text);
+    clip-path: polygon(0 0, calc(100% - var(--cut) + 1.17px) 0, 100% calc(var(--cut) - 1.17px), 100% 100%, 0 100%);
+    /* the face turns red only after the sweep, hiding the seam between the two diagonals */
+    transition: color var(--t-base) var(--ease), background-color 0s var(--t-base);
+}
+.btn-me span::before {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: -1;
     background: var(--red);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform var(--t-base) var(--ease);
-    z-index: var(--z-bg);
 }
-.btn-me:hover { color: white; }
-.btn-me:hover::before { transform: scaleX(1); }
-.btn-me span { position: relative; z-index: var(--z-content); }
+.btn-me:hover span, .btn-me:focus-visible span { color: #fff; background-color: var(--red); }
+.btn-me:hover span::before, .btn-me:focus-visible span::before { transform: scaleX(1); }
+/* clip-path would cut an outside outline off: draw the focus ring inside the face */
+.btn-me:focus-visible { outline: none; }
+.btn-me:focus-visible span { outline: 2px solid #fff; outline-offset: -6px; }
 /* small variant: inline with a field or inside a modal */
-.btn-me.btn-sm { font-size: 0.86rem; padding: 10px 22px; }
+.btn-me.btn-sm { --cut: 10px; font-size: 0.86rem; }
+.btn-me.btn-sm span { padding: 8px 20px; }
 
 /* ── FOOTER ── */
 footer {
@@ -315,4 +343,18 @@ footer {
             linear-gradient(var(--red), var(--red)) center / 100% 1px no-repeat,
             linear-gradient(var(--line), var(--line)) bottom / 100% 1px no-repeat;
     }
+}
+
+/* ── REDUCED MOTION ── people who ask their system for less motion get no reveals, no draw-in,
+   no smooth scrolling and no hover movement: everything is simply there. */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        transition-delay: 0s !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+    .js [data-reveal] { opacity: 1; transform: none; }
+    .project-card:hover, .project-card:focus-visible { transform: none !important; }
 }

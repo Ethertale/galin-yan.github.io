@@ -174,7 +174,7 @@ body { min-height: 100vh; }
 .modal-content {
     background: var(--white);
     border: 1px solid var(--line);
-    border-top: 3px solid var(--ink);
+    border-top: 3px solid var(--red);
     box-shadow: 0 20px 60px rgba(0,0,0,0.14);
 }
 

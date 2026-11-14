@@ -1,0 +1,7 @@
+---
+permalink: /textures/lowpoly-v1.svg
+eleventyExcludeFromCollections: true
+---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice"><!-- page-frame texture (main.css). Bump -vN in the permalink when it changes. -->
+{%- for t in texture.frame %}<polygon points="{{ t.points }}" fill="#141414" fill-opacity="{{ t.o }}"/>{% endfor -%}
+</svg>

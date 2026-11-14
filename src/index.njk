@@ -3,9 +3,6 @@ permalink: /index.html
 title: "Galin Yan - Software & Web Developer"
 description: "Software and web developer building clean, efficient, and scalable solutions. Based in Bulgaria."
 pageStyle: index
-libs: [aos]
-scripts:
-  - /js/home.js
 ---
 {% extends "layouts/base.njk" %}
 
@@ -36,10 +33,10 @@ scripts:
 
 {% block content %}
 <!-- HERO: the runner leads to the primary button -->
-<section id="home" class="hero">
+<section id="home" class="hero page-frame">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
-        <div class="hero-inner" data-aos="fade-up">
+        <div class="hero-inner" data-reveal>
 <!--            <p class="hero-tag">Software &amp; Web Developer</p>-->
 
             <h1>
@@ -62,7 +59,7 @@ scripts:
     <!-- Location stamp: city-level on purpose (~1 km). Edit site.location in src/_data/site.json
          (label "Base" -> "HQ" plus streetAddress once there is a business address). -->
     {%- set loc = site.location %}
-    <span class="coord-stamp"><a href="{{ loc.mapsUrl }}" target="_blank" rel="noopener" aria-label="{{ loc.label }}: {{ loc.city }}, {{ loc.country }} (opens Google Maps)">{{ loc.label }} · {{ loc.city }}, {{ loc.countryCode }} &nbsp;/&nbsp; {{ loc.lat }}, {{ loc.lng }}</a></span>
+    <span class="coord-stamp"><a href="{{ loc.mapsUrl }}" target="_blank" rel="noopener" aria-label="{{ loc.label }}: {{ loc.city }}, {{ loc.country }} (opens Google Maps)">{{ loc.label }} · {{ loc.city }}, {{ loc.countryCode }} &nbsp;/&nbsp; {{ loc.lat }}, {{ loc.lng }}</a> &nbsp;/&nbsp; <span data-clock></span></span>
 </section>
 
 <!-- PROJECTS -->
@@ -70,12 +67,12 @@ scripts:
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
 
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header" data-reveal>
             <h2 class="section-title" data-runner-target>Selected Projects</h2>
         </div>
 
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="100">
                 <a class="project-card" href="/projects#{{ "Find A Dice" | slugify }}">
                     <div class="project-thumb">
                         {% image "/rsc/imgs/projects/Find-A-Dice/welcome-page.png", "", "(min-width: 768px) 420px, 100vw", { style: "width: 100%; height: auto" } %}
@@ -87,7 +84,7 @@ scripts:
                 </a>
             </div>
 
-                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="col-md-6 col-lg-4" data-reveal>
                     <a class="project-card" href="/projects#{{ "Reason & Domination" | slugify }}">
                         <div class="project-thumb">
                             {% image "/rsc/imgs/projects/RnD-Cover.png", "", "(min-width: 768px) 420px, 100vw", { style: "width: 100%; height: auto" } %}
@@ -98,11 +95,11 @@ scripts:
                         </div>
                     </a>
                 </div>
-            <div class="col-md-6 col-lg-4 align-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-6 col-lg-4 align-content-center" data-reveal data-reveal-delay="200">
                 <a href="/projects" style="font-size: 2rem" class="project-link">View All Projects →</a>
             </div>
 
-<!--            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">-->
+<!--            <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="200">-->
 <!--                <div class="project-card">-->
 <!--                    <div class="project-thumb">-->
 <!--                        <span class="project-number">03</span>-->
@@ -124,18 +121,18 @@ scripts:
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
 
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header" data-reveal>
             <h2 class="section-title" data-runner-target>About Me</h2>
         </div>
 
-        <p class="about-text" data-aos="fade-up">
+        <p class="about-text" data-reveal>
             I'm a software and web developer focused on
             <strong>bringing your ideas to life.</strong>
             I combine technical precision with thoughtful design
             to create intuitive, modern experiences that work.
         </p>
 
-        <div class="mt-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="mt-4" data-reveal data-reveal-delay="100">
             <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/java/java-plain.svg" />Java</span>
             <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/spring/spring-original.svg" />Spring</span>
             <span class="skill-tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/thymeleaf/thymeleaf-original.svg" />Thymeleaf</span>
@@ -154,11 +151,11 @@ scripts:
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
 
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header" data-reveal>
             <h2 class="section-title" data-runner-target>Contact</h2>
         </div>
 
-        <div class="col-lg-6" data-aos="fade-up">
+        <div class="col-lg-6" data-reveal>
 
             <a href="mailto:{{ site.email }}" class="contact-item">
                 <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt=""/> Email</span>

@@ -8,7 +8,6 @@ import Image from '@11ty/eleventy-img';
 // so an upgrade changes the URL and the long cache in src/headers.njk stays safe.
 const VENDOR = {
   bootstrap: { pkg: 'bootstrap',     css: 'dist/css/bootstrap.min.css',  js: 'dist/js/bootstrap.bundle.min.js' },
-  aos:       { pkg: 'aos',           css: 'dist/aos.css',                js: 'dist/aos.js' },
   fancybox:  { pkg: '@fancyapps/ui', css: 'dist/fancybox/fancybox.css',  js: 'dist/fancybox/fancybox.umd.js' },
 };
 const pkgVersion = (pkg) => JSON.parse(readFileSync(`node_modules/${pkg}/package.json`, 'utf8')).version;

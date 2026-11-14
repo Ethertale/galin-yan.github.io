@@ -37,6 +37,23 @@
 
     function placeAll() { runners.forEach(place); }
 
+    // Draw-in: each runner draws itself (down, then the turn) the first time its stage scrolls into
+    // view. The CSS transition does the drawing; reduced motion makes it instant (main.css).
+    function draw(stage) { stage.classList.add('runner-drawn'); }
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+                if (!e.isIntersecting) return;
+                // two frames: the start state must be painted once, or the browser skips the transition
+                requestAnimationFrame(function () { requestAnimationFrame(function () { draw(e.target); }); });
+                io.unobserve(e.target);
+            });
+        }, { rootMargin: '0px 0px -15% 0px' });
+        runners.forEach(function (r) { io.observe(r.parentElement); });
+    } else {
+        runners.forEach(function (r) { draw(r.parentElement); });
+    }
+
     placeAll();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeAll); // sizes depend on webfonts
     window.addEventListener('load', placeAll);
