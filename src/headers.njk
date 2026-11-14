@@ -41,6 +41,9 @@ eleventyExcludeFromCollections: true
 # Rename the file if the font ever changes (it's referenced by a fixed URL in main.css and the preload).
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
+# Build-time textures carry a version in the file name (lowpoly-v1.svg): bump it when one changes.
+/textures/*
+  Cache-Control: public, max-age=31536000, immutable
 # Original images (Open Graph banner, R&D screenshots) - unversioned, so a week.
 /rsc/*
   Cache-Control: public, max-age=604800
