@@ -17,7 +17,7 @@
 .sg-main { padding-bottom: 80px; }
 .sg-section { padding: 56px 0 8px; }
 .sg-h2 { font-family: var(--font-head); font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: 0.05em; margin: 0 0 1rem; display: flex; align-items: baseline; gap: 14px; }
-.sg-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--red); }
+.sg-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--red-text); }
 .sg-h3 { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: 0.06em; margin: 0 0 0.6rem; color: var(--ink, var(--ink)); }
 .sg-sub { margin-top: 2.2rem; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .sg-note { max-width: 70ch; color: var(--mid); font-family: var(--sg-sans); font-size: 0.95rem; line-height: 1.6; }
@@ -37,7 +37,7 @@
 
 /* ── theme scope: everything inside uses the draft tokens ── */
 .sg-theme { background: var(--white); color: var(--ink); }
-.sg-accent { color: var(--red); }
+.sg-accent { color: var(--red-text); }
 
 /* ── 01 palette ── */
 .sg-palettes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin: 1.2rem 0; }
@@ -50,8 +50,8 @@
 .sg-ratio { font-family: var(--sg-cond); font-weight: 600; font-size: 1rem; text-align: right; line-height: 1.1; }
 .sg-ratio small { display: block; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
 .sg-ratio.is-pass small { color: var(--muted); }
-.sg-ratio.is-large small { color: #B07A00; }
-.sg-ratio.is-fail small { color: var(--red); }
+.sg-ratio.is-large small { color: #8A5F00; }
+.sg-ratio.is-fail small { color: var(--red-text); }
 
 /* ── 02 type ── */
 .sg-type-row { display: grid; grid-template-columns: 220px 1fr; gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
@@ -117,7 +117,7 @@
     transform-origin: left;
     transition: transform var(--sg-base) var(--sg-ease);
 }
-.sg-btn:hover span, .sg-btn:focus-visible span, .sg-btn.is-hover span { color: #fff; background-color: var(--red); }
+.sg-btn:hover span, .sg-btn:focus-visible span, .sg-btn.is-hover span { color: #fff; background-color: var(--red-text); }
 /* ↑ once the sweep has finished, the face itself turns red, hiding the anti-aliased seam between the two diagonals */
 .sg-btn:hover span::before, .sg-btn:focus-visible span::before, .sg-btn.is-hover span::before { transform: scaleX(1); }
 .sg-btn:focus-visible { outline: none; }
@@ -167,7 +167,7 @@
 .sg-marker-a { padding-left: 56px; }
 .sg-marker-title { font-family: var(--font-head); font-size: 1.5rem; letter-spacing: 0.05em; margin: 22px 0 0; line-height: 1.2; display: flex; align-items: baseline; gap: 10px; }
 .sg-phone { max-width: 300px; margin: 0 auto; width: 100%; border-left: 1px dashed var(--line); border-right: 1px dashed var(--line); }
-.sg-margin-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; color: var(--red); }
+.sg-margin-index { font-family: var(--sg-cond); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.18em; color: var(--red-text); }
 
 /* ── 05 light and black: the component sheet ── */
 .sg-themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 1rem; }
@@ -179,15 +179,15 @@
 .sg-link { color: var(--red-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .sg-link:hover { color: var(--red-hover); text-decoration-thickness: 2px; }
 .sg-link-label { font-family: var(--sg-cond); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 2px solid transparent; padding: 4px 0; transition: color var(--sg-fast), border-color var(--sg-fast); }
-.sg-link-label:hover { color: var(--ink); border-color: var(--red); }
+.sg-link-label:hover { color: var(--ink); border-color: var(--red-text); }
 .sg-nav-demo { gap: 26px; }
 .sg-nav { font-family: var(--sg-cond); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); padding: 4px 0; border-bottom: 2px solid transparent; }
-.sg-nav.is-active { color: var(--ink); border-color: var(--red); }
+.sg-nav.is-active { color: var(--ink); border-color: var(--red-text); }
 .sg-nav.is-focus { color: var(--ink); outline: 2px solid var(--red); outline-offset: 4px; }
 .sg-field { display: flex; flex-direction: column; gap: 6px; }
 .sg-field input { font-family: var(--sg-sans); font-size: 1rem; padding: 10px 12px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-bottom: 2px solid var(--muted); outline: none; }
 .sg-field input::placeholder { color: var(--muted); }
-.sg-field input:focus { border-bottom-color: var(--red); }
+.sg-field input:focus { border-bottom-color: var(--red-text); }
 .sg-glass { padding: 14px 16px; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 80%, transparent); backdrop-filter: blur(12px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); }
 .sg-glass p { margin: 4px 0 0; font-family: var(--sg-sans); font-size: 0.92rem; color: var(--ink); }
 .sg-dark .sg-glass { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }
@@ -195,7 +195,7 @@
 /* ── 06 decisions ── */
 .sg-decisions { font-family: var(--sg-sans); font-size: 1rem; line-height: 1.6; padding-left: 1.4rem; max-width: 75ch; }
 .sg-decisions li { padding: 8px 0; border-top: 1px solid var(--line); }
-.sg-decisions .sg-hud { display: block; color: var(--red); }
+.sg-decisions .sg-hud { display: block; color: var(--red-text); }
 
 @media (max-width: 640px) {
     .sg-type-row { grid-template-columns: 1fr; gap: 4px; }

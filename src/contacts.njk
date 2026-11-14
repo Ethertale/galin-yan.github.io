@@ -31,16 +31,17 @@ scripts:
                     <p class="panel-label">Contact</p>
 
                     <div class="contact-item">
-                        <img src="https://img.icons8.com/fluency/96/mail--v1.png" alt="email" />
+                        <img src="https://img.icons8.com/fluency/96/mail--v1.png" alt="" />
                         <div>
                             <div class="contact-item-label">Email</div>
                             <div class="contact-item-value" id="emailText">{{ site.email }}</div>
-                            <button class="btn-chip" type="button" id="copyEmail">Copy</button>
+                            <button class="btn-chip" type="button" id="copyEmail" aria-label="Copy email address">Copy</button>
+                            <span class="visually-hidden" role="status" id="copyStatus"></span>
                         </div>
                     </div>
 
                     <div class="contact-item">
-                        <img src="https://img.icons8.com/fluency/96/location--v1.png" alt="location" />
+                        <img src="https://img.icons8.com/fluency/96/location--v1.png" alt="" />
                         <div>
                             <div class="contact-item-label">Location</div>
                             <div class="contact-item-value">{{ site.location.city }}, {{ site.location.country }}</div>
@@ -53,9 +54,9 @@ scripts:
 
                     {%- for s in site.socials %}
                     <a class="social-link" href="{{ s.url }}" target="_blank" rel="noopener">
-                        <img src="{{ s.icon }}" alt="{{ s.name }}" />
+                        <img src="{{ s.icon }}" alt="" />
                         {{ s.name }}
-                        <span class="social-arrow">→</span>
+                        <span class="social-arrow" aria-hidden="true">→</span>
                     </a>
                     {%- endfor %}
                 </div>
@@ -91,7 +92,7 @@ scripts:
                         <button class="btn-me btn-sm" type="button" id="openMailClient">
                             <span>Open Mail Client →</span>
                         </button>
-                        <span class="form-status" id="status"></span>
+                        <span class="form-status" id="status" role="status"></span>
                     </div>
                 </form>
             </div>

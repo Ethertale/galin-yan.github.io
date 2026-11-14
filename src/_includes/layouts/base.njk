@@ -33,9 +33,13 @@
 
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 {% include "partials/nav.njk" %}
 
+<main id="main" tabindex="-1">
 {% block content %}{% endblock %}
+</main>
 
 {% include "partials/footer.njk" %}
 

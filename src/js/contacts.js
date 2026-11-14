@@ -8,13 +8,15 @@
     var copyBtn = document.getElementById('copyEmail');
     var form = document.getElementById('contactForm');
     var openBtn = document.getElementById('openMailClient');
+    var copyStatus = document.getElementById('copyStatus');   // role="status": screen readers hear the result
 
     copyBtn.addEventListener('click', function () {
         var t = emailText.textContent;
         navigator.clipboard?.writeText(t).then(function () {
             var old = copyBtn.textContent;
             copyBtn.textContent = 'Copied!';
-            setTimeout(function () { copyBtn.textContent = old; }, 1500);
+            copyStatus.textContent = 'Email address copied';
+            setTimeout(function () { copyBtn.textContent = old; copyStatus.textContent = ''; }, 1500);
         }).catch(function () { alert('Copy failed — please copy manually.'); });
     });
 

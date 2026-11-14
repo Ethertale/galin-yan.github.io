@@ -13,8 +13,15 @@
     const modalTechs = document.getElementById('modalTechs');
     const modalLink  = document.getElementById('modalLink');
 
+    // Each card is a link to its own #slug, so it is focusable, announced as a link, opens with Enter,
+    // and the address bar shows a shareable deep link while the popup is open.
+    let opener = null;
+
     document.querySelectorAll('.project-card').forEach(card => {
-        const open = () => {
+        const open = e => {
+            if (e) e.preventDefault();               // no jump to the anchor; the modal opens instead
+            opener = card;
+            history.replaceState(null, '', '#' + card.id);
             const title = card.dataset.title;
             const img   = card.dataset.img;
             const desc  = card.dataset.desc;
@@ -25,9 +32,10 @@
             modalImage.src = img;
             modalImage.alt = title + ' cover';
             modalDesc.textContent = desc;
-            modalLink.href = link;
-            modalLink.querySelector('span').textContent =
-                (link && link !== '#') ? 'Open Project →' : 'No Link';
+            const hasLink = link && link !== '#';
+            if (hasLink) { modalLink.href = link; modalLink.removeAttribute('aria-disabled'); }
+            else { modalLink.removeAttribute('href'); modalLink.setAttribute('aria-disabled', 'true'); }
+            modalLink.querySelector('span').textContent = hasLink ? 'Open Project →' : 'No Link';
 
             modalTechs.innerHTML = '';
             techs.forEach(t => {
@@ -54,7 +62,12 @@
         };
 
         card.addEventListener('click', open);
-        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+    });
+
+    // Closing: drop the #slug and put keyboard focus back on the card that opened the popup.
+    modalEl.addEventListener('hidden.bs.modal', () => {
+        history.replaceState(null, '', location.pathname + location.search);
+        if (opener) opener.focus();
     });
 
     // Deep link from the homepage cards: /projects#find-a-dice opens that project's modal.

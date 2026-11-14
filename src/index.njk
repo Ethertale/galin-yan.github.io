@@ -125,14 +125,14 @@ pageStyle: index
         </p>
 
         <div class="tags mt-4" data-reveal data-reveal-delay="100">
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/java/java-plain.svg" />Java</span>
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/spring/spring-original.svg" />Spring</span>
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/thymeleaf/thymeleaf-original.svg" />Thymeleaf</span>
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/javascript/javascript-original.svg" />JavaScript</span>
-<!--            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/hibernate/hibernate-original.svg" />Hibernate</span>-->
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/html5/html5-original.svg" />HTML /<img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/css3/css3-original.svg" />CSS</span>
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/bootstrap/bootstrap-original.svg" />Bootstrap</span>
-            <span class="tag"><img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/mysql/mysql-original.svg" />MySQL /<img width="15px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/sqlite/sqlite-original.svg" />SQLite</span>
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/java/java-plain.svg" />Java</span>
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/spring/spring-original.svg" />Spring</span>
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/thymeleaf/thymeleaf-original.svg" />Thymeleaf</span>
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/javascript/javascript-original.svg" />JavaScript</span>
+<!--            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/hibernate/hibernate-original.svg" />Hibernate</span>-->
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/html5/html5-original.svg" />HTML /<img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/css3/css3-original.svg" />CSS</span>
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/bootstrap/bootstrap-original.svg" />Bootstrap</span>
+            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/mysql/mysql-original.svg" />MySQL /<img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/sqlite/sqlite-original.svg" />SQLite</span>
         </div>
 
     </div>
@@ -152,14 +152,14 @@ pageStyle: index
             <a href="mailto:{{ site.email }}" class="contact-item">
                 <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt=""/> Email</span>
                 <span class="contact-value">{{ site.email }}</span>
-                <span class="contact-arrow">→</span>
+                <span class="contact-arrow" aria-hidden="true">→</span>
             </a>
             {%- for s in site.socials %}{% if s.onHome %}
 
             <a href="{{ s.url }}" target="_blank" rel="noopener" class="contact-item">
                 <span class="contact-platform"><img width="15" height="15" src="{{ s.iconLine }}" alt=""/> {{ s.name }}</span>
                 <span class="contact-value">{{ s.handle }}</span>
-                <span class="contact-arrow">→</span>
+                <span class="contact-arrow" aria-hidden="true">→</span>
             </a>
             {%- endif %}{% endfor %}
 

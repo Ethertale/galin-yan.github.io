@@ -9,7 +9,7 @@ pageStyle: 404
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-<main class="stage page-frame">
+<div class="stage page-frame">
     <div class="runner" data-runner aria-hidden="true"></div>
 
     <div class="container stage-inner">
@@ -27,5 +27,5 @@ pageStyle: 404
     </div>
 
     <span class="hud" aria-hidden="true">ERR_404 · Path terminated</span>
-</main>
+</div>
 {% endblock %}
