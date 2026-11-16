@@ -400,6 +400,9 @@ main:focus { outline: none; }          /* focused only as the skip-link target *
 .card-me:hover .link-arrow::after, .card-me:focus-visible .link-arrow::after, .card-me.is-hover .link-arrow::after { transform: translateX(4px); }
 .link-arrow-lg { font-size: clamp(1.2rem, 2.4vw, 1.6rem); }
 
+/* ── ICONS ── inline SVGs from {% icon %} (Bootstrap Icons): sized by font, coloured by text */
+.icon { width: 1em; height: 1em; flex-shrink: 0; vertical-align: -0.125em; }
+
 /* ── PANEL ── a lit surface with the red top edge (contact panel, form, profile, modal) */
 .panel-me {
     background: var(--panel);

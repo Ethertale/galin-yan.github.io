@@ -182,13 +182,13 @@ pageStyle: index
 
             <div class="strip-links">
                 <a href="mailto:{{ site.email }}" class="contact-item">
-                    <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt=""/> Email</span>
+                    <span class="contact-platform">{% icon "envelope" %} Email</span>
                     <span class="contact-value">{{ site.email }}</span>
                     <span class="contact-arrow" aria-hidden="true">→</span>
                 </a>
                 {%- for s in site.socials %}{% if s.onHome %}
                 <a href="{{ s.url }}" target="_blank" rel="noopener" class="contact-item">
-                    <span class="contact-platform"><img width="15" height="15" src="{{ s.iconLine }}" alt=""/> {{ s.name }}</span>
+                    <span class="contact-platform">{% icon s.icon %} {{ s.name }}</span>
                     <span class="contact-value">{{ s.handle }}</span>
                     <span class="contact-arrow" aria-hidden="true">→</span>
                 </a>

@@ -63,7 +63,9 @@
     transition: border-color var(--t-fast), background var(--t-fast);
 }
 .socials a:hover { border-color: var(--red); background: var(--white); }
-.socials a img { width: 20px; height: 20px; }
+.socials a { color: var(--ink); }
+.socials a:hover { color: var(--red-text); }
+.socials .icon { width: 18px; height: 18px; }
 
 /* ── BLOCK SECTIONS (work / education) ── */
 .data-section {

@@ -48,11 +48,10 @@
 .contact-item:last-child { border-bottom: none; padding-bottom: 0; }
 .contact-item:first-child { padding-top: 0; }
 
-.contact-item img {
-    width: 22px; height: 22px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    filter: grayscale(40%);
+.contact-item .icon {
+    width: 20px; height: 20px;
+    margin-top: 2px;
+    color: var(--red);
 }
 
 .contact-item-label {
@@ -86,8 +85,8 @@
 .social-link:last-child { border-bottom: none; padding-bottom: 0; }
 .social-link:first-child { padding-top: 0; }
 .social-link:hover { color: var(--red-text); padding-left: 4px; }
-.social-link img { width: 20px; height: 20px; filter: grayscale(30%); flex-shrink: 0; }
-.social-link:hover img { filter: grayscale(0%); }
+.social-link .icon { width: 18px; height: 18px; color: var(--ink); transition: color var(--t-fast); }
+.social-link:hover .icon { color: var(--red-text); }
 
 .social-arrow {
     margin-left: auto;

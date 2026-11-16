@@ -50,6 +50,14 @@ export default function (eleventyConfig) {
     return Image.generateHTML(meta, { alt, sizes, ...extra });
   });
 
+  // {% icon "github" %} -> the inline SVG from src/_includes/icons/github.svg (Bootstrap Icons, MIT).
+  // Decorative: aria-hidden, so the link or text next to it carries the name. Colour = currentColor.
+  eleventyConfig.addShortcode('icon', (name) =>
+    readFileSync(`src/_includes/icons/${name}.svg`, 'utf8')
+      .replace(/\s(width|height|class)="[^"]*"/g, '')
+      .replace('<svg', `<svg class="icon icon-${name}" aria-hidden="true" focusable="false"`)
+      .replace(/\n\s*/g, ''));
+
   // URL of a single WebP rendition, for images set from JS (the projects modal reads data-img).
   eleventyConfig.addAsyncShortcode('imageUrl', async (src, width = 800) => {
     const meta = await imageMeta(src, [width]);

@@ -34,9 +34,7 @@ scripts:
                     <a class="btn-me btn-sm" href="{{ '/rsc/cv/galin-yanakov-cv.pdf' | bust }}" download><span>Download CV (PDF)</span></a>
                     <div class="socials">
                         {%- for s in site.socials %}
-                        <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}">
-                            <img src="{{ s.icon }}" alt="{{ s.name }}" />
-                        </a>
+                        <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}" aria-label="{{ s.name }}">{% icon s.icon %}</a>
                         {%- endfor %}
                     </div>
                 </div>

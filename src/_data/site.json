@@ -23,17 +23,15 @@
   "socials": [
     {
       "name": "GitHub", "handle": "Ethertale", "url": "https://github.com/Ethertale", "onHome": true,
-      "icon": "https://img.icons8.com/color-glass/96/github--v1.png",
-      "iconLine": "https://img.icons8.com/ios/50/github--v1.png"
+      "icon": "github"
     },
     {
       "name": "LinkedIn", "handle": "in/galin-yanakov", "url": "https://www.linkedin.com/in/galin-yanakov/", "onHome": true,
-      "icon": "https://img.icons8.com/color/96/linkedin.png",
-      "iconLine": "https://img.icons8.com/ios/50/linkedin.png"
+      "icon": "linkedin"
     },
     {
       "name": "Instagram", "handle": "galin.yan", "url": "https://www.instagram.com/galin.yan/", "onHome": false,
-      "icon": "https://img.icons8.com/fluency/96/instagram-new.png"
+      "icon": "instagram"
     }
   ],
 

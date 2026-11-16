@@ -243,7 +243,12 @@ section { padding: 100px 0; position: relative; }
     text-transform: uppercase;
     color: var(--muted);
     min-width: 72px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
+.contact-platform .icon { font-size: 15px; color: var(--ink); }
+.contact-item:hover .contact-platform .icon { color: var(--red-text); }
 
 .contact-value {
     font-size: 0.9rem;
