@@ -1,0 +1,212 @@
+/* project.css — the project pages (/projects/<slug>, from src/project-pages.njk). Shared rules live in /css/main.css. */
+
+/* ── HEADER ── */
+.page-title { margin: 0 0 1rem; }
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3);
+    margin: 1.2rem 0 1.8rem;
+}
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+}
+
+.project-wrap { padding: 0 0 100px; }
+
+/* ── STORY ── */
+.project-section { margin-top: 3.5rem; }
+.project-section p {
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 40em;
+}
+.project-section strong { color: var(--ink); font-weight: 600; }
+.project-h {
+    font-family: var(--font-head);
+    font-size: 1.15rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    margin: 0 0 1rem;
+}
+.project-cover img { max-height: 420px; object-fit: contain; }
+
+/* the one number worth showing big */
+.metric { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 14px; margin-bottom: 1.2rem; }
+.metric-value {
+    font-family: var(--font-head);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.1;
+    color: var(--red);
+}
+.metric-label {
+    font-family: var(--font-label);
+    font-size: var(--fs-label);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mid);
+}
+.metric-note { font-size: var(--fs-small); color: var(--muted) !important; margin-top: 1rem; }
+
+/* results: a short checklist with red ticks */
+.results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px 24px;
+}
+.results li {
+    position: relative;
+    padding: 10px 0 10px 26px;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+}
+.results li::before {
+    content: '';
+    position: absolute;
+    left: 2px; top: 50%;
+    width: 12px; height: 6px;
+    border-left: 2px solid var(--red);
+    border-bottom: 2px solid var(--red);
+    transform: translateY(-70%) rotate(-45deg);
+}
+
+/* ── BEFORE / AFTER ── the "before" image sits on top, clipped to --pos (set by js/project.js) */
+.ba { --pos: 50%; margin: 0; }
+.ba-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    box-shadow: 8px 8px 0 rgba(20, 20, 20, 0.06);
+    background: var(--panel);
+    touch-action: pan-y;               /* vertical page scroll still works on phones */
+}
+.ba-frame img { display: block; width: 100%; height: auto; }
+.ba-before {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+.ba-before img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.ba-handle {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: var(--pos);
+    width: 3px;
+    margin-left: -1.5px;
+    background: var(--red);
+    pointer-events: none;
+}
+/* the grip: a small chamfered tab in the middle of the line */
+.ba-handle::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 34px; height: 34px;
+    transform: translate(-50%, -50%);
+    background: var(--red)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M14 11l-6 6 6 6M20 11l6 6-6 6' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E")
+        center / 100% no-repeat;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+.ba-label {
+    position: absolute;
+    top: 12px;
+    padding: 4px 10px;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--ink);
+    pointer-events: none;
+}
+.ba-label-before { left: 12px; }
+.ba-label-after { right: 12px; background: var(--red-text); }
+/* the real control: an invisible range input over the whole image */
+.ba-range {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+}
+.ba-range:focus-visible ~ .ba-handle::after { outline: 2px solid var(--ink); outline-offset: 3px; }
+.ba-frame:focus-within { outline: none; }
+.ba-caption {
+    margin-top: 14px;
+    font-size: var(--fs-small);
+    color: var(--muted);
+}
+
+/* ── GALLERY ── */
+.gallery {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--s-3);
+}
+.gallery a {
+    display: block;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    overflow: hidden;
+    transition: border-color var(--t-fast);
+}
+.gallery a:hover { border-color: var(--red); }
+.gallery img {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    object-position: top;
+    transition: transform var(--t-base) var(--ease);
+}
+.gallery a:hover img { transform: scale(1.04); }
+
+/* ── FACTS ── */
+.project-facts {
+    padding: 26px 24px;
+    position: sticky;
+    top: 100px;
+}
+.facts-label {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 0.6rem;
+}
+.project-facts > p, .project-facts > ul { margin: 0 0 1.6rem; }
+.project-facts > :last-child { margin-bottom: 0; }
+.project-facts ul.tags { list-style: none; padding: 0; }
+.facts-links { list-style: none; padding: 0; display: grid; gap: 8px; }
+
+/* ── NEXT ── */
+.project-next {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-4);
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+}
+.link-back::after { content: none; }
+.link-back::before { content: '← '; content: '← ' / ''; }   /* second line: modern browsers skip the arrow in screen readers */
+
+@media (max-width: 991.98px) {
+    .project-facts { position: static; }
+}

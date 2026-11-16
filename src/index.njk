@@ -73,7 +73,7 @@ pageStyle: index
         <div class="row g-4">
             {%- for p in projects | selectattr("featured") | sort(false, false, "featured") %}
             <div class="col-md-6 col-lg-4" data-reveal{% if loop.index0 %} data-reveal-delay="{{ loop.index0 * 100 }}"{% endif %}>
-                <a class="card-me project-card" href="/projects#{{ p.title | slugify }}">
+                <a class="card-me project-card" href="/projects/{{ p.slug }}">
                     <div class="card-face">
                         <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
                             {% image p.cover, "", "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}

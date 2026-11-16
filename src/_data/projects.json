@@ -8,11 +8,32 @@
     "cover": "/rsc/imgs/projects/RCTH-Cover.png",
     "coverAlt": "RCTH cover",
     "thumbStyle": "background-color: black",
-    "imgStyle": "transform: scale(1)",
     "summary": "Website for a blood donation center based in Stara Zagora, Bulgaria.",
     "description": "Website for a blood donation center based in Stara Zagora, Bulgaria. A complete redesign of the website. The project replaced an outdated site with a modern, responsive, and easy-to-navigate one.",
     "stack": ["wordpress", "php", "html5", "css3", "javascript", "docker"],
-    "cardStack": ["wordpress", "php"]
+    "cardStack": ["wordpress", "php"],
+    "links": {
+      "live": "https://rcth-stz.eu/"
+    },
+    "role": "Redesign · WordPress theme",
+    "shot": "/rsc/imgs/projects/RCTH/after.png",
+    "shotAlt": "The RCTH Stara Zagora homepage after the redesign",
+    "before": {
+      "src": "/rsc/imgs/projects/RCTH/before-2021.png",
+      "label": "April 2021",
+      "alt": "The RCTH Stara Zagora homepage in April 2021, before the redesign",
+      "source": "Wayback Machine"
+    },
+    "brief": "The Regional Centre for Transfusion Haematology in Stara Zagora has to publish a lot of information: rules for donors, results, procurement notices. Their old site was dated and bare, with long pages of text and nothing to guide the eye.",
+    "goal": "A modern, up-to-date site that donors and partners find easy to use.",
+    "work": "I kept WordPress, so the team can still edit their own content, but stripped out the plugins and libraries that weighed it down. The whole site became one custom theme: lighter, faster, and much simpler to maintain and extend.",
+    "results": ["Faster pages", "Easier to use", "Easier for the team to edit", "Works on every phone"],
+    "metric": {
+      "value": "0.5 s",
+      "label": "until the main content shows",
+      "note": "Measured on a desktop connection, November 2026."
+    },
+    "slug": "rcth-stara-zagora"
   },
   {
     "title": "EM DI OIL",
@@ -26,7 +47,24 @@
     "summary": "Redesigned website for EM DI OIL LTD, Bulgaria.",
     "description": "A redesigned website for a PVC products company based in Tryavna, Bulgaria. The project replaced the client's outdated site with a modern, responsive design that presents the company's services more clearly and presents the user with a more polished catalogue and better user accessibility.",
     "stack": ["html5", "css3", "javascript", "cpanel"],
-    "cardStack": ["javascript", "cpanel"]
+    "cardStack": ["javascript", "cpanel"],
+    "links": {
+      "live": "https://mdoil.bg/",
+      "code": "https://github.com/Ethertale/mdoil-bg"
+    },
+    "role": "Rebuild · HTML, CSS, JS",
+    "shot": "/rsc/imgs/projects/EM-DI-OIL/after.png",
+    "shotAlt": "The EM DI OIL homepage after the rebuild",
+    "brief": "EM DI OIL AGRO sells PVC wall panels, suspended ceilings and profile systems from two warehouses in Bulgaria. Their WordPress site looked decent, but plugins and poor extensions made every page take more than 10 seconds to load, and its upkeep cost far more than it should.",
+    "goal": "A site that loads fast and is easy to use.",
+    "work": "I rebuilt it from the ground up in plain HTML, CSS and JavaScript with Bootstrap: no CMS and no plugins. Fewer moving parts make it fast, reliable, and easy to change.",
+    "results": ["Faster pages", "Easier to use", "Easier for the team to edit", "Works on every phone"],
+    "metric": {
+      "value": "10 s → 0.4 s",
+      "label": "until the main content shows",
+      "note": "Before: over 10 seconds per page. After: measured on a desktop connection, November 2026."
+    },
+    "slug": "em-di-oil"
   },
   {
     "title": "Find A Dice",
@@ -40,18 +78,77 @@
     "summary": "A social place for D&D role players - events, groups, campaigns.",
     "description": "A social place for D&D role players where they can chat together, form groups, host events, and manage their own campaigns - all in one place! This is something special to me as a gamer, and to have everything in one place to ease people and let them enjoy the role-playing without any distractions or juggling 20 window tabs is a key to immersion.",
     "stack": ["java", "spring", "mysql", "thymeleaf", "html5", "css3", "bootstrap", "javascript", "photoshop", "docker"],
-    "cardStack": ["java", "spring", "mysql"]
+    "cardStack": ["java", "spring", "mysql"],
+    "links": {
+      "live": "https://find-a-dice.onrender.com/",
+      "code": "https://github.com/Ethertale/find-a-dice-TL"
+    },
+    "role": "Own product · Java, Spring",
+    "gallery": [
+      ["/rsc/imgs/projects/Find-A-Dice/welcome-page.png", "Welcome page"],
+      ["/rsc/imgs/projects/Find-A-Dice/login.png", "Log in"],
+      ["/rsc/imgs/projects/Find-A-Dice/register.png", "Registration"],
+      ["/rsc/imgs/projects/Find-A-Dice/home.png", "Home"],
+      ["/rsc/imgs/projects/Find-A-Dice/chatrooms.png", "Chat rooms"],
+      ["/rsc/imgs/projects/Find-A-Dice/chat-specific.png", "A chat room"],
+      ["/rsc/imgs/projects/Find-A-Dice/events.png", "Events"],
+      ["/rsc/imgs/projects/Find-A-Dice/event-specific.png", "An event"],
+      ["/rsc/imgs/projects/Find-A-Dice/groups.png", "Groups"],
+      ["/rsc/imgs/projects/Find-A-Dice/group-specific-1.png", "A group (1 of 3)"],
+      ["/rsc/imgs/projects/Find-A-Dice/group-specific-2.png", "A group (2 of 3)"],
+      ["/rsc/imgs/projects/Find-A-Dice/group-specific-3.png", "A group (3 of 3)"],
+      ["/rsc/imgs/projects/Find-A-Dice/heroes.png", "Heroes"],
+      ["/rsc/imgs/projects/Find-A-Dice/classes.png", "Character classes"],
+      ["/rsc/imgs/projects/Find-A-Dice/dice-roll.png", "Dice roller"],
+      ["/rsc/imgs/projects/Find-A-Dice/profile-1.png", "Profile (1 of 2)"],
+      ["/rsc/imgs/projects/Find-A-Dice/profile-2.png", "Profile (2 of 2)"],
+      ["/rsc/imgs/projects/Find-A-Dice/profile-hero-edit.png", "Editing a hero"],
+      ["/rsc/imgs/projects/Find-A-Dice/search.png", "Search"],
+      ["/rsc/imgs/projects/Find-A-Dice/users.png", "Users"]
+    ],
+    "slug": "find-a-dice"
   },
   {
     "title": "Reason & Domination",
-    "url": "/projects/reason-and-domination",
+    "url": "/projects/demo/reason-and-domination/welcomePage",
     "kind": "study",
     "cover": "/rsc/imgs/projects/RnD-Cover.png",
     "coverAlt": "Reason & Domination cover",
     "summary": "Defense project for SoftUni - forum, roles, auth, posts and profile customization.",
     "description": "Defense project for SoftUni: forum, user roles, auth, posts, profile customization. Built with Spring Boot, Thymeleaf and JPA.",
     "stack": ["java", "spring", "mysql", "thymeleaf", "html5", "css3", "bootstrap", "javascript", "photoshop", "junit"],
-    "cardStack": ["java", "spring", "mysql"]
+    "cardStack": ["java", "spring", "mysql"],
+    "links": {
+      "demo": "/projects/demo/reason-and-domination/welcomePage",
+      "code": "https://github.com/Ethertale/new-ReasonAndDomination"
+    },
+    "role": "Study project · SoftUni defense",
+    "gallery": [
+      ["/rsc/imgs/projects/Reason-And-Domination/Welcome.png", "The main page of the website."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Login.png", "Log in: checks the name and password against existing users, with error handling."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Register.png", "Registration is checked on both the front and the back end; wrong details send the user back with an error."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Home.png", "Home: the 5 most recent topics from each category."],
+      ["/rsc/imgs/projects/Reason-And-Domination/News.png", "News: like forum posts, but only an admin can create them."],
+      ["/rsc/imgs/projects/Reason-And-Domination/News-Ex-Post.png", "A news post."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Forum.png", "The forum: start a topic or join others."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Forum-Ex-Post.png", "Every forum post can be commented on and discussed."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Guides.png", "Guides: like forum posts, but only an admin can create them."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Guides-Ex-Post.png", "A guide post."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Lookup.png", "User lookup: finds every user whose name contains the search word."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Races.png", "Races, switched with a small JavaScript gallery."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Classes.png", "Classes, switched with a small JavaScript gallery."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Items.png", "Every item in the database (the filter is unfinished)."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Item-Ex.png", "An item, with Thymeleaf colouring the name by rarity."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Dungeons.png", "The dungeons."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Dungeon-Ex.png", "A dungeon, with its map and details."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Timers.png", "Raid timers for every dungeon."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Admin-Panel.png", "The admin panel: add items, browse users and game data."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Support.png", "Supporter tiers that earn a title (a placeholder, no payments)."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Profile.png", "The profile: users change their picture; only an admin can change user details."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Error-404.png", "Error page for 4XX codes."],
+      ["/rsc/imgs/projects/Reason-And-Domination/Error-500.png", "Error page for 5XX codes."]
+    ],
+    "slug": "reason-and-domination"
   },
   {
     "title": "RPG Character Generator",
@@ -62,6 +159,12 @@
     "summary": "Small JavaScript-based character generator for tabletop games.",
     "description": "Small JS-based character generator for tabletop games.",
     "stack": ["html5", "css3", "bootstrap", "javascript"],
-    "cardStack": ["html5", "css3", "javascript"]
+    "cardStack": ["html5", "css3", "javascript"],
+    "links": {
+      "live": "https://ethertale.github.io/rpgcharactergenerator.github.io/",
+      "code": "https://github.com/Ethertale/rpgcharactergenerator.github.io"
+    },
+    "role": "Study project · JavaScript",
+    "slug": "rpg-character-generator"
   }
 ]

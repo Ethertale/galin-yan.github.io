@@ -4,7 +4,7 @@ title: "Galin Yan - Projects"
 description: "Selected projects by Galin Yanakov - Java, Spring, JavaScript."
 pageStyle: projects
 scripts:
-  - /js/projects-modal.js
+  - /js/projects.js
   - /js/site-status.js
 ---
 {% extends "layouts/base.njk" %}
@@ -16,21 +16,26 @@ scripts:
 
     <div class="container page-header-inner">
         <h1 class="page-title" data-runner-target>Projects &amp;<br>Works</h1>
-        <p class="page-sub">Click any card to explore.</p>
+        <p class="page-sub">Client sites, my own products, and the projects I learned on.</p>
     </div>
 </div>
 
 <!-- PROJECTS GRID -->
 <div class="projects-wrap">
     <div class="container">
-        <div class="projects-grid">
+        <!-- Filters: buttons with aria-pressed (js/projects.js). Without JS they stay hidden and every card shows. -->
+        <div class="filter-bar" role="group" aria-label="Filter projects" hidden>
+            <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">All</button>
+            {%- for key, label in home.kinds %}
+            <button class="filter-chip" type="button" data-filter="{{ key }}" aria-pressed="false">{{ label }}</button>
+            {%- endfor %}
+            <span class="visually-hidden" role="status" id="filterStatus"></span>
+        </div>
+
+        <ul class="projects-grid">
             {%- for p in projects %}
-            <a class="card-me project-card" id="{{ p.title | slugify }}" href="#{{ p.title | slugify }}"
-                     data-title="{{ p.title }}"
-                     data-img="{% imageUrl p.cover %}"
-                     data-desc="{{ p.description }}"
-                     data-techs="{{ p.stack | join(',') }}"
-                     data-link="{{ p.url }}">
+            <li data-kind="{{ p.kind }}">
+            <a class="card-me project-card" href="/projects/{{ p.slug }}">
                 <div class="card-face">
                     <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
                         {% image p.cover, p.coverAlt, "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
@@ -42,52 +47,20 @@ scripts:
                         <small data-live-check="{{ p.url }}"></small>
                         {%- endif %}
                         <p class="card-text">{{ p.summary }}</p>
-                        <div class="tools-row card-foot" aria-hidden="true">
-                            {%- for key in p.cardStack %}
-                            <div class="tool-badge"><img src="{{ techs[key].icon }}" alt="{{ techs[key].label }}"/></div>
-                            {%- endfor %}
+                        <div class="card-foot work-foot">
+                            <span class="tag">{{ home.kinds[p.kind] }}</span>
+                            <div class="tools-row" aria-hidden="true">
+                                {%- for key in p.cardStack %}
+                                <div class="tool-badge"><img src="{{ techs[key].icon }}" alt=""/></div>
+                                {%- endfor %}
+                            </div>
                         </div>
                     </div>
                 </div>
             </a>
+            </li>
             {%- endfor %}
-
-        </div>
-    </div>
-</div>
-
-<!-- Tech icons for the modal (read by js/projects-modal.js). JSON, never executed. -->
-<script type="application/json" id="techData">{{ techs | dump | safe }}</script>
-
-<!-- MODAL -->
-<div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h2 class="modal-title" id="projectModalTitle"></h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="modal-body">
-                <div class="row g-4">
-                    <div class="col-md-5">
-                        <div class="plinth"><img id="modalImage" src="" alt="project cover" /></div>
-                    </div>
-                    <div class="col-md-7 d-flex flex-column">
-                        <p id="modalDesc" class="modal-desc"></p>
-
-                        <p class="modal-techs-label">Stack</p>
-                        <div id="modalTechs"></div>
-
-                        <a id="modalLink" class="btn-me btn-sm mt-auto align-self-start" href="#" target="_blank" rel="noopener">
-                            <span>Open Project →</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        </ul>
     </div>
 </div>
 {% endblock %}

@@ -11,9 +11,4 @@ eleventyExcludeFromCollections: true
         <lastmod>{{ p.date.toISOString().slice(0, 10) }}</lastmod>
     </url>
 {%- endfor %}
-{%- for url in site.extraSitemapUrls %}
-    <url>
-        <loc>{{ site.url }}{{ url }}</loc>
-    </url>
-{%- endfor %}
 </urlset>

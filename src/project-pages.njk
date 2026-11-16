@@ -1,0 +1,154 @@
+---
+# One page per project in src/_data/projects.json -> /projects/<slug> (written as /projects/<slug>.html,
+# see the cleanUrl note in eleventy.config.js). Every section is optional: it shows only when the
+# project has that field (brief, goal, work, results, metric, before, gallery). Title, description,
+# libs and scripts are computed in project-pages.11tydata.js.
+pagination:
+  data: projects
+  size: 1
+  alias: p
+permalink: "/projects/{{ p.slug }}.html"
+pageStyle: project
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<!-- PAGE HEADER -->
+<div class="page-header page-frame">
+    <div class="runner" data-runner aria-hidden="true"></div>
+    <div class="container page-header-inner">
+        <h1 class="page-title" data-runner-target>{{ p.title }}</h1>
+        <p class="page-sub">{{ p.summary }}</p>
+
+        <div class="project-meta">
+            <span class="tag">{{ home.kinds[p.kind] }}</span>
+            {%- if p.liveCheck %}
+            <small data-live-check="{{ p.url }}"></small>
+            {%- endif %}
+        </div>
+
+        <div class="project-actions">
+            {%- if p.links.live %}
+            <a class="btn-me" href="{{ p.links.live }}" target="_blank" rel="noopener"><span>Visit the site →</span></a>
+            {%- endif %}
+            {%- if p.links.demo %}
+            <a class="btn-me" href="{{ p.links.demo }}"><span>Try the demo →</span></a>
+            {%- endif %}
+            {%- if p.links.code %}
+            <a class="btn-me btn-ink" href="{{ p.links.code }}" target="_blank" rel="noopener"><span>Code on GitHub</span></a>
+            {%- endif %}
+        </div>
+    </div>
+</div>
+
+<div class="project-wrap">
+    <div class="container">
+        <div class="row g-4 g-lg-5">
+
+            <div class="col-lg-8">
+                <!-- The site itself: a before/after slider when there is a "before", otherwise one screenshot -->
+                {%- if p.before %}
+                <figure class="ba" data-ba data-reveal>
+                    <div class="ba-frame">
+                        {% image p.shot, p.shotAlt, "(min-width: 992px) 860px, 100vw", { class: "ba-after" }, [800, 1440] %}
+                        <div class="ba-before">
+                            {% image p.before.src, p.before.alt, "(min-width: 992px) 860px, 100vw", {}, [800, 1440] %}
+                        </div>
+                        <!-- the input comes before the handle so CSS can style the grip on focus (.ba-range:focus-visible ~ .ba-handle) -->
+                        <input class="ba-range" type="range" min="0" max="100" value="50"
+                               aria-label="Compare before and after: left shows the old site, right the new one">
+                        <span class="ba-label ba-label-before" aria-hidden="true">Before</span>
+                        <span class="ba-label ba-label-after" aria-hidden="true">After</span>
+                        <span class="ba-handle" aria-hidden="true"></span>
+                    </div>
+                    <figcaption class="ba-caption">Before: {{ p.before.label }} (from the {{ p.before.source }}). After: today. Drag to compare.</figcaption>
+                </figure>
+                {%- elif p.shot %}
+                <div class="plinth" data-reveal>{% image p.shot, p.shotAlt, "(min-width: 992px) 860px, 100vw", {}, [800, 1440] %}</div>
+                {%- else %}
+                <div class="plinth project-cover" data-reveal>{% image p.cover, p.coverAlt, "(min-width: 992px) 860px, 100vw" %}</div>
+                {%- endif %}
+
+                {%- if p.brief %}
+                <section class="project-section" data-reveal>
+                    <h2 class="project-h">The brief</h2>
+                    <p>{{ p.brief }}</p>
+                    {%- if p.goal %}<p><strong>What they asked for:</strong> {{ p.goal }}</p>{% endif %}
+                </section>
+                {%- else %}
+                <section class="project-section" data-reveal>
+                    <h2 class="project-h">About the project</h2>
+                    <p>{{ p.description }}</p>
+                </section>
+                {%- endif %}
+
+                {%- if p.work %}
+                <section class="project-section" data-reveal>
+                    <h2 class="project-h">What I did</h2>
+                    <p>{{ p.work }}</p>
+                </section>
+                {%- endif %}
+
+                {%- if p.results %}
+                <section class="project-section" data-reveal>
+                    <h2 class="project-h">The result</h2>
+                    {%- if p.metric %}
+                    <p class="metric"><span class="metric-value">{{ p.metric.value }}</span> <span class="metric-label">{{ p.metric.label }}</span></p>
+                    {%- endif %}
+                    <ul class="results">
+                        {%- for r in p.results %}
+                        <li>{{ r }}</li>
+                        {%- endfor %}
+                    </ul>
+                    {%- if p.metric.note %}<p class="metric-note">{{ p.metric.note }}</p>{% endif %}
+                </section>
+                {%- endif %}
+
+                {%- if p.gallery %}
+                <section class="project-section" data-reveal>
+                    <h2 class="project-h">Screens</h2>
+                    <ul class="gallery">
+                        {%- for g in p.gallery %}
+                        <li>
+                            <a href="{% imageUrl g[0], 1600 %}" data-fancybox="gallery" data-caption="{{ g[1] }}">
+                                {% image g[0], g[1], "(min-width: 992px) 260px, 50vw", { loading: "lazy" }, [400, 800] %}
+                            </a>
+                        </li>
+                        {%- endfor %}
+                    </ul>
+                </section>
+                {%- endif %}
+            </div>
+
+            <!-- FACTS -->
+            <aside class="col-lg-4">
+                <div class="panel-me project-facts" data-reveal>
+                    <h2 class="facts-label">Type</h2>
+                    <p>{{ p.role or home.kinds[p.kind] }}</p>
+
+                    <h2 class="facts-label">Stack</h2>
+                    <ul class="tags">
+                        {%- for key in p.stack %}
+                        <li class="tag"><img width="15" height="15" alt="" src="{{ techs[key].icon }}" />{{ techs[key].label }}</li>
+                        {%- endfor %}
+                    </ul>
+
+                    <h2 class="facts-label">Links</h2>
+                    <ul class="facts-links">
+                        {%- if p.links.live %}<li><a class="link-arrow" href="{{ p.links.live }}" target="_blank" rel="noopener">{{ p.links.live | host }}</a></li>{% endif %}
+                        {%- if p.links.demo %}<li><a class="link-arrow" href="{{ p.links.demo }}">Demo</a></li>{% endif %}
+                        {%- if p.links.code %}<li><a class="link-arrow" href="{{ p.links.code }}" target="_blank" rel="noopener">Code</a></li>{% endif %}
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!-- NEXT -->
+        <nav class="project-next" aria-label="More projects" data-reveal>
+            <a class="link-arrow link-back" href="/projects">All projects</a>
+            {%- set next = projects[(pagination.pageNumber + 1) % projects.length] %}
+            <a class="link-arrow link-arrow-lg" href="/projects/{{ next.slug }}">Next: {{ next.title }}</a>
+        </nav>
+    </div>
+</div>
+{% endblock %}

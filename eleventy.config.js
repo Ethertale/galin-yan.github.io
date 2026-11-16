@@ -85,6 +85,9 @@ export default function (eleventyConfig) {
   // 'https://mdoil.bg/' | origin -> 'https://mdoil.bg'  (CSP source lists in src/headers.njk)
   eleventyConfig.addFilter('origin', (url) => new URL(url).origin);
 
+  // 'https://rcth-stz.eu/' | host -> 'rcth-stz.eu'  (link text on the project pages)
+  eleventyConfig.addFilter('host', (url) => new URL(url).host);
+
   // [{url: 'a'}, {url: 'b'}] | pluck('url') -> ['a', 'b']  (e.g. socials -> JSON-LD sameAs)
   eleventyConfig.addFilter('pluck', (list, key) => list.map((item) => item[key]));
 

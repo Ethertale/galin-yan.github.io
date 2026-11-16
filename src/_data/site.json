@@ -42,6 +42,5 @@
     { "label": "Projects", "url": "/projects" },
     { "label": "About Me", "url": "/about" },
     { "label": "Contacts", "url": "/contacts" }
-  ],
-  "extraSitemapUrls": ["/projects/reason-and-domination"]
+  ]
 }
