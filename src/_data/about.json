@@ -1,0 +1,55 @@
+{
+  "_note": "One source for /about and the CV (/cv and its PDF). Timeline entries are newest first; 'end' is shown as written ('Present' is fine). Certificates: id + code build the softuni.bg verify link; the image is self-hosted at /rsc/imgs/certs/<id>.png.",
+
+  "bio": "Hello! I'm Galin, a web and software developer who treats programming like a game. I build backend services with Java & Spring and compose frontend experiences with Vue or vanilla JS. Outside of work, I enjoy gaming, creating fantasy worlds through art and stories, and constantly dabble in new hobbies for fun and to learn new things.",
+
+  "cvSummary": "Web and software developer from Kazanlak, Bulgaria. I design and build websites for businesses and web applications in Java and Spring, with a focus on speed, clarity and sites that are easy to maintain.",
+
+  "timeline": [
+    {
+      "kind": "Education",
+      "start": "Oct 2022", "end": "Aug 2025",
+      "title": "Back-End Software Engineer with Java",
+      "org": "Software University (SoftUni)",
+      "place": "Bulgaria",
+      "text": "Diploma programme focused on Java, Spring, databases and web engineering.",
+      "logo": "/rsc/imgs/other/softuni_logo.png"
+    },
+    {
+      "kind": "Work",
+      "start": "Apr 2025", "end": "Jun 2025",
+      "title": "Front End Intern",
+      "org": "kidcess.com",
+      "place": "Remote, Bulgaria",
+      "text": "Enhanced the e-commerce front end with HTML, CSS/Bootstrap, JavaScript and Shopify Liquid. Shipped new features, fixed UI bugs, and owned ongoing front-end maintenance."
+    },
+    {
+      "kind": "Work",
+      "start": "Nov 2024", "end": "Feb 2025",
+      "title": "Front End Intern",
+      "org": "pavlinaaenska.com",
+      "place": "Remote, Bulgaria",
+      "text": "Improved front-end performance and UX by refactoring HTML, CSS and JavaScript. Delivered new features, including a dynamic navigation bar, and fixed cross-browser UI bugs."
+    }
+  ],
+
+  "diploma": { "id": "250279", "code": "7e78a079", "name": "Back-End Software Engineer with Java", "date": "Aug 2025" },
+
+  "certificates": [
+    { "id": "249618", "code": "42ca56b4", "name": "Containers and Cloud", "date": "Jul 2025" },
+    { "id": "248123", "code": "0423e075", "name": "Spring Data", "date": "Jun 2025" },
+    { "id": "250173", "code": "f0a948f3", "name": "Software Engineering and DevOps", "date": "May 2025" },
+    { "id": "241409", "code": "a2fe22a3", "name": "Spring Advanced", "date": "Feb 2025" },
+    { "id": "237580", "code": "a2d39cd3", "name": "Spring Fundamentals", "date": "Jan 2025" },
+    { "id": "226183", "code": "ebbbb02d", "name": "MySQL", "date": "Sep 2024" },
+    { "id": "223918", "code": "d576db2b", "name": "JS Front-End", "date": "Jun 2024" },
+    { "id": "218490", "code": "ebc0b8d6", "name": "HTML & CSS", "date": "May 2024" },
+    { "id": "203097", "code": "98fb3148", "name": "Introduction to Game Development with Unreal Engine 5", "date": "Nov 2023" },
+    { "id": "200880", "code": "4095ccd9", "name": "Java OOP", "date": "Oct 2023" },
+    { "id": "188694", "code": "8d36daf0", "name": "Java Advanced", "date": "Sep 2023" },
+    { "id": "167363", "code": "31c77033", "name": "Programming Fundamentals with Java", "date": "Jan 2023" },
+    { "id": "147425", "code": "4b22d12c", "name": "Programming Basics", "date": "Oct 2022" }
+  ],
+
+  "skills": ["java", "spring", "thymeleaf", "mysql", "javascript", "html5", "css3", "bootstrap", "wordpress", "php", "docker"]
+}

@@ -1,0 +1,103 @@
+---
+# The CV as a web page (/cv), built from about.json, projects.json and site.json.
+# The PDF linked on /about is this page printed to A4: node tcl/tools/vr/cv.js (writes src/rsc/cv/galin-yanakov-cv.pdf).
+# Standalone on purpose (no nav, no footer, no scripts), so the print is clean.
+permalink: /cv.html
+title: "Galin Yanakov - CV"
+description: "CV of Galin Yanakov, software and web developer."
+noindex: true
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ '/css/main.css' | bust }}">
+    <link rel="stylesheet" href="{{ '/css/pages/cv.css' | bust }}">
+</head>
+<body class="cv-body">
+{%- set loc = site.location %}
+<nav class="cv-bar" aria-label="CV"><a class="link-arrow" href="{{ '/rsc/cv/galin-yanakov-cv.pdf' | bust }}" download>Download PDF</a> <a class="link-arrow" href="/about">Back to the site</a></nav>
+
+<main>
+<article class="cv">
+    <header class="cv-head">
+        <div>
+            <h1 class="cv-name">Galin Yanakov</h1>
+            <p class="cv-role">{{ site.jobTitle }}</p>
+        </div>
+        <ul class="cv-contact">
+            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+            <li><a href="{{ site.url }}">{{ site.url | host }}</a></li>
+            {%- for s in site.socials %}{% if s.onHome %}
+            <li><a href="{{ s.url }}">{{ s.url | replace("https://", "") | replace("www.", "") | replace(r/\/$/, "") }}</a></li>
+            {%- endif %}{% endfor %}
+            <li>{{ loc.city }}, {{ loc.country }}</li>
+        </ul>
+    </header>
+
+    <p class="cv-summary">{{ about.cvSummary }}</p>
+
+    <section class="cv-section">
+        <h2 class="cv-h">Selected work</h2>
+        {%- for p in projects | selectattr("featured") | sort(false, false, "featured") %}
+        <div class="cv-entry">
+            <p class="cv-when">{{ home.kinds[p.kind] }}</p>
+            <div>
+                <h3 class="cv-title">{{ p.title }} <span class="cv-org">· {{ p.role }}</span></h3>
+                <p>{{ p.work or p.summary }}</p>
+                <p class="cv-link">{{ site.url | host }}/projects/{{ p.slug }}{% if p.links.live %} · {{ p.links.live | host }}{% endif %}</p>
+            </div>
+        </div>
+        {%- endfor %}
+    </section>
+
+    <section class="cv-section">
+        <h2 class="cv-h">Experience</h2>
+        {%- for e in about.timeline %}{% if e.kind == "Work" %}
+        <div class="cv-entry">
+            <p class="cv-when">{{ e.start }} – {{ e.end }}</p>
+            <div>
+                <h3 class="cv-title">{{ e.title }} <span class="cv-org">· {{ e.org }}, {{ e.place }}</span></h3>
+                <p>{{ e.text }}</p>
+            </div>
+        </div>
+        {%- endif %}{% endfor %}
+    </section>
+
+    <section class="cv-section">
+        <h2 class="cv-h">Education</h2>
+        {%- for e in about.timeline %}{% if e.kind == "Education" %}
+        <div class="cv-entry">
+            <p class="cv-when">{{ e.start }} – {{ e.end }}</p>
+            <div>
+                <h3 class="cv-title">{{ e.title }} <span class="cv-org">· {{ e.org }}</span></h3>
+                <p>{{ e.text }}</p>
+            </div>
+        </div>
+        {%- endif %}{% endfor %}
+    </section>
+
+    <div class="cv-cols">
+        <section class="cv-section">
+            <h2 class="cv-h">Skills</h2>
+            <p class="cv-skills">
+                {%- for key in about.skills %}{{ techs[key].label }}{% if not loop.last %} · {% endif %}{% endfor -%}
+            </p>
+        </section>
+
+        <section class="cv-section">
+            <h2 class="cv-h">Certificates</h2>
+            <p class="cv-certs">SoftUni: {% for c in about.certificates %}{{ c.name }}{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+        </section>
+    </div>
+</article>
+</main>
+</body>
+</html>

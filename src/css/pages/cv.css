@@ -1,0 +1,117 @@
+/* cv.css — the CV page (/cv) and its A4 print (the PDF). Tokens and fonts come from /css/main.css. */
+.cv-body { background: var(--off); }
+
+.cv-bar {
+    max-width: 210mm;
+    margin: 24px auto 12px;
+    padding: 0 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+/* one A4 sheet on screen, the same sheet in print */
+.cv {
+    max-width: 210mm;
+    margin: 0 auto 48px;
+    padding: 16mm 16mm 14mm;
+    background: var(--panel);
+    border-top: 4px solid var(--red);
+    box-shadow: 8px 8px 0 rgba(20, 20, 20, 0.06);
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--mid);
+    font-variant-ligatures: none;   /* keep "fi" as two letters in the PDF text, so CV scanners (ATS) read it */
+}
+.cv p { margin: 0; }
+
+.cv-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+}
+.cv-name {
+    font-family: var(--font-head);
+    font-size: 22pt;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0;
+}
+.cv-role {
+    margin-top: 6px !important;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 10pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red-text);
+}
+.cv-contact {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 9pt;
+    line-height: 1.6;
+}
+.cv-contact a { color: var(--ink); text-decoration: none; }
+
+.cv-summary { margin: 12px 0 4px !important; color: var(--ink); }
+
+.cv-section { margin-top: 14px; }
+.cv-h {
+    font-family: var(--font-head);
+    font-size: 10pt;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    margin: 0 0 6px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--red);
+    display: inline-block;
+}
+.cv-entry {
+    display: grid;
+    grid-template-columns: 30mm 1fr;
+    gap: 12px;
+    padding: 5px 0;
+    break-inside: avoid;
+}
+.cv-when {
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 8.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 2px;
+}
+.cv-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 10.5pt;
+    color: var(--ink);
+    margin: 0 0 2px;
+}
+.cv-org { font-weight: 400; color: var(--mid); }
+.cv-link { font-size: 8.5pt; color: var(--muted); margin-top: 2px !important; }
+
+.cv-cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; }
+.cv-skills, .cv-certs { font-size: 9pt; }
+
+@media screen and (max-width: 700px) {   /* screens only: the A4 print always uses the two-column layout */
+    .cv { padding: 24px 18px; }
+    .cv-head { flex-direction: column; align-items: flex-start; }
+    .cv-contact { text-align: left; }
+    .cv-entry, .cv-cols { grid-template-columns: 1fr; gap: 2px; }
+}
+
+@page { size: A4; margin: 0; }
+@media print {
+    .cv-body { background: #fff; }
+    .cv-bar { display: none; }
+    .cv { margin: 0; max-width: none; box-shadow: none; }
+}

@@ -49,13 +49,12 @@
     "stack": ["html5", "css3", "javascript", "cpanel"],
     "cardStack": ["javascript", "cpanel"],
     "links": {
-      "live": "https://mdoil.bg/",
-      "code": "https://github.com/Ethertale/mdoil-bg"
+      "live": "https://mdoil.bg/"
     },
     "role": "Rebuild · HTML, CSS, JS",
     "shot": "/rsc/imgs/projects/EM-DI-OIL/after.png",
     "shotAlt": "The EM DI OIL homepage after the rebuild",
-    "brief": "EM DI OIL AGRO sells PVC wall panels, suspended ceilings and profile systems from two warehouses in Bulgaria. Their WordPress site looked decent, but plugins and poor extensions made every page take more than 10 seconds to load, and its upkeep cost far more than it should.",
+    "brief": "EM DI OIL AGRO sells PVC wall panels, suspended ceilings and profile systems from two warehouses in Bulgaria. Their WordPress site looked decent, but plugins and poor extensions made every page take more than 10 seconds to load, and keeping it running had become costly.",
     "goal": "A site that loads fast and is easy to use.",
     "work": "I rebuilt it from the ground up in plain HTML, CSS and JavaScript with Bootstrap: no CMS and no plugins. Fewer moving parts make it fast, reliable, and easy to change.",
     "results": ["Faster pages", "Easier to use", "Easier for the team to edit", "Works on every phone"],
@@ -83,7 +82,7 @@
       "live": "https://find-a-dice.onrender.com/",
       "code": "https://github.com/Ethertale/find-a-dice-TL"
     },
-    "role": "Own product · Java, Spring",
+    "role": "Social platform · Java, Spring",
     "gallery": [
       ["/rsc/imgs/projects/Find-A-Dice/welcome-page.png", "Welcome page"],
       ["/rsc/imgs/projects/Find-A-Dice/login.png", "Log in"],

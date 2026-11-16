@@ -18,6 +18,7 @@ scripts:
     </div>
 </div>
 
+<!-- Content: src/_data/about.json (shared with /cv) -->
 <div class="content-wrap">
     <div class="container">
 
@@ -28,148 +29,82 @@ scripts:
             </div>
             <div class="profile-bio">
                 <h2 class="profile-name">GALIN YANAKOV</h2>
-                <p>Hello! I'm Galin, a web and software developer who treats programming like a game. I build backend services with
-                    Java &amp; Spring and compose frontend experiences with Vue or vanilla JS. Outside of work, I enjoy gaming, creating fantasy worlds through art and stories, and constantly
-                    dabble in new hobbies for fun and to learn new things.</p>
-                <div class="socials">
-                    {%- for s in site.socials %}
-                    <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}">
-                        <img src="{{ s.icon }}" alt="{{ s.name }}" />
-                    </a>
+                <p>{{ about.bio }}</p>
+                <div class="profile-actions">
+                    <a class="btn-me btn-sm" href="{{ '/rsc/cv/galin-yanakov-cv.pdf' | bust }}" download><span>Download CV (PDF)</span></a>
+                    <div class="socials">
+                        {%- for s in site.socials %}
+                        <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}">
+                            <img src="{{ s.icon }}" alt="{{ s.name }}" />
+                        </a>
+                        {%- endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE AND EDUCATION: one timeline, newest first -->
+        <section class="data-section" aria-labelledby="tl-title">
+            <div class="block-header">
+                <h2 class="block-title" id="tl-title">Experience &amp; Education</h2>
+            </div>
+
+            <ol class="timeline">
+                {%- for e in about.timeline %}
+                <li class="tl-item" data-reveal>
+                    <p class="tl-when">{{ e.start }} – {{ e.end }}</p>
+                    <div class="tl-card">
+                        <h3 class="entry-title">{{ e.title }}</h3>
+                        <p class="tl-org">
+                            {%- if e.logo %}{% image e.logo, "", "36px", { class: "edu-logo" }, [72] %}{% endif -%}
+                            {{ e.org }} · {{ e.place }}
+                        </p>
+                        <p class="entry-desc">{{ e.text }}</p>
+                        <span class="tag">{{ e.kind }}</span>
+                    </div>
+                </li>
+                {%- endfor %}
+            </ol>
+        </section>
+
+        <!-- CERTIFICATES: the diploma plus one line; every certificate opens in the lightbox -->
+        {%- set d = about.diploma %}
+        <section class="data-section" aria-labelledby="cert-title">
+            <div class="block-header">
+                <h2 class="block-title" id="cert-title">Certificates</h2>
+            </div>
+
+            <div class="cert-summary panel-me">
+                <a class="cert-thumb" data-fancybox="certs" href="{% imageUrl '/rsc/imgs/certs/' + d.id + '.png', 780 %}"
+                   data-caption="Diploma: {{ d.name }} ({{ d.date }})">
+                    {% image "/rsc/imgs/certs/" + d.id + ".png", "SoftUni diploma: " + d.name, "120px", { loading: "lazy" }, [240] %}
+                </a>
+                <div class="cert-text">
+                    <h3 class="entry-title">Diploma: {{ d.name }}</h3>
+                    <p class="entry-desc">Software University, {{ d.date }}. Plus {{ about.certificates | length }} course certificates, from Programming Basics to Spring Advanced, MySQL and Containers and Cloud.</p>
+                    <div class="cert-actions">
+                        <button class="btn-me btn-sm" type="button" data-cert-open><span>View all {{ about.certificates | length + 1 }}</span></button>
+                        <a class="link-arrow" href="https://softuni.bg/certificates/details/{{ d.id }}/{{ d.code }}" target="_blank" rel="noopener">Verify on softuni.bg</a>
+                    </div>
+                </div>
+            </div>
+
+            <details class="cert-details">
+                <summary>List every course</summary>
+                <ul class="cert-list">
+                    {%- for c in about.certificates %}
+                    <li>
+                        <span class="cert-name">{{ c.name }}</span>
+                        <span class="cert-date">{{ c.date }}</span>
+                        <a data-fancybox="certs" href="{% imageUrl '/rsc/imgs/certs/' + c.id + '.png', 780 %}" data-caption="{{ c.name }} ({{ c.date }})"
+                           aria-label="View the {{ c.name }} certificate">View</a>
+                        <a href="https://softuni.bg/certificates/details/{{ c.id }}/{{ c.code }}" target="_blank" rel="noopener"
+                           aria-label="Verify the {{ c.name }} certificate on softuni.bg">Verify</a>
+                    </li>
                     {%- endfor %}
-                </div>
-            </div>
-        </div>
-
-        <!-- WORK EXPERIENCE -->
-        <div style="display: none" class="data-section">
-            <div class="block-header">
-                <h2 class="block-title">Work Experience</h2>
-            </div>
-
-            <div class="entry-row">
-                <div class="entry-meta">
-                    <span class="entry-org">kidcess.com</span>
-                    <span class="entry-period">Apr 2025 – Jun 2025</span>
-                    <span class="entry-period">Remote, Bulgaria</span>
-                </div>
-                <div class="entry-body">
-                    <h3 class="entry-title">Front End Intern</h3>
-                    <p class="entry-desc">Enhanced e-commerce front-end using HTML, CSS/Bootstrap, JavaScript, and Shopify Liquid. Shipped new features, resolved UI bugs, and owned ongoing front-end maintenance.</p>
-                </div>
-            </div>
-
-            <div class="entry-row">
-                <div class="entry-meta">
-                    <span class="entry-org">pavlinaaenska.com</span>
-                    <span class="entry-period">Nov 2024 – Feb 2025</span>
-                    <span class="entry-period">Remote, Bulgaria</span>
-                </div>
-                <div class="entry-body">
-                    <h3 class="entry-title">Front End Intern</h3>
-                    <p class="entry-desc">Boosted front-end performance and UX by refactoring HTML/CSS and JavaScript. Delivered new features including a dynamic navigation bar and resolved cross-browser UI bugs.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- EDUCATION -->
-        <div style="display: none" class="data-section">
-            <div class="block-header">
-                <h2 class="block-title">Education</h2>
-            </div>
-
-            <div class="entry-row">
-                <div class="entry-meta">
-                    {% image "/rsc/imgs/other/softuni_logo.png", "SoftUni", "36px", { class: "edu-logo" }, [72] %}
-                    <span class="entry-org">Software University</span>
-                    <span class="entry-period">Oct 2022 – Aug 2025</span>
-                </div>
-                <div class="entry-body">
-                    <h3 class="entry-title">Computer Programming - Back-end Developer with Java</h3>
-                    <p class="entry-desc">Focused studies on Java, Spring, databases and web engineering.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CERTIFICATES -->
-        <div class="data-section">
-            <div class="block-header">
-                <h2 class="block-title">Certificates</h2>
-            </div>
-
-            <div class="cert-grid">
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/250279/7e78a079">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250279?code=7e78a079" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/147425/4b22d12c">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/147425?code=4b22d12c" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/167363/31c77033">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/167363?code=31c77033" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/188694/8d36daf0">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/188694?code=8d36daf0" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/200880/4095ccd9">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/200880?code=4095ccd9" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/203097/98fb3148">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/203097?code=98fb3148" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/218490/ebc0b8d6">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/218490?code=ebc0b8d6" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/223918/d576db2b">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/223918?code=d576db2b" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/226183/ebbbb02d">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/226183?code=ebbbb02d" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/237580/a2d39cd3">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/237580?code=a2d39cd3" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/241409/a2fe22a3">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/241409?code=a2fe22a3" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/248123/0423e075">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/248123?code=0423e075" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/249618/42ca56b4">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/249618?code=42ca56b4" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-                <div class="cert-item">
-                    <a data-fancybox="certs" href="https://softuni.bg/certificates/details/250173/f0a948f3">
-                        <img loading="lazy" src="https://softuni.bg/certificates/certificates/converttoimage/250173?code=f0a948f3" alt="SoftUni course certificate" />
-                    </a>
-                </div>
-            </div>
-        </div>
+                </ul>
+            </details>
+        </section>
 
     </div>
 </div>
