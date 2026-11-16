@@ -118,6 +118,9 @@ body {
     overflow-x: hidden;
 }
 
+/* in-page anchors (#work, #quote) land below the fixed navbar, not under it */
+html { scroll-padding-top: 90px; }
+
 /* ── NAVBAR ── */
 .navbar {
     background: var(--glass);
@@ -165,6 +168,10 @@ body {
 }
 .nav-link:hover, .nav-link[aria-current="page"] { color: var(--ink) !important; }
 .nav-link:hover::after, .nav-link[aria-current="page"]::after { width: 100%; }
+/* "Get a quote": the one button in the nav, after the links */
+.nav-cta { margin-left: 3rem; }
+.nav-cta span { padding: 6px 16px; }
+@media (max-width: 991.98px) { .nav-cta { margin: 10px 0 14px; } }
 
 /* ── SKIP LINK ── first Tab stop on every page; jumps past the navbar to <main> */
 .skip-link {

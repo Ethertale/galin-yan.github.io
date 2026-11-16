@@ -1,20 +1,10 @@
 [
   {
-    "title": "Find A Dice",
-    "url": "https://find-a-dice.onrender.com/",
-    "liveCheck": true,
-    "cover": "/rsc/imgs/projects/find-a-dice-logo.svg",
-    "coverAlt": "Find A Dice cover",
-    "imgStyle": "background-color: black",
-    "summary": "A social place for D&D role players - events, groups, campaigns.",
-    "description": "A social place for D&D role players where they can chat together, form groups, host events, and manage their own campaigns - all in one place! This is something special to me as a gamer, and to have everything in one place to ease people and let them enjoy the role-playing without any distractions or juggling 20 window tabs is a key to immersion.",
-    "stack": ["java", "spring", "mysql", "thymeleaf", "html5", "css3", "bootstrap", "javascript", "photoshop", "docker"],
-    "cardStack": ["java", "spring", "mysql"]
-  },
-  {
     "title": "RCTH Stara Zagora",
     "url": "https://rcth-stz.eu/",
     "liveCheck": true,
+    "kind": "client",
+    "featured": 1,
     "cover": "/rsc/imgs/projects/RCTH-Cover.png",
     "coverAlt": "RCTH cover",
     "thumbStyle": "background-color: black",
@@ -28,6 +18,8 @@
     "title": "EM DI OIL",
     "url": "https://mdoil.bg/",
     "liveCheck": true,
+    "kind": "client",
+    "featured": 2,
     "cover": "/rsc/imgs/projects/MDOil-thumb.png",
     "coverAlt": "MDOil cover",
     "thumbStyle": "background-color: rgba(255, 219, 89)",
@@ -37,8 +29,23 @@
     "cardStack": ["javascript", "cpanel"]
   },
   {
+    "title": "Find A Dice",
+    "url": "https://find-a-dice.onrender.com/",
+    "liveCheck": true,
+    "kind": "product",
+    "featured": 3,
+    "cover": "/rsc/imgs/projects/find-a-dice-logo.svg",
+    "coverAlt": "Find A Dice cover",
+    "imgStyle": "background-color: black",
+    "summary": "A social place for D&D role players - events, groups, campaigns.",
+    "description": "A social place for D&D role players where they can chat together, form groups, host events, and manage their own campaigns - all in one place! This is something special to me as a gamer, and to have everything in one place to ease people and let them enjoy the role-playing without any distractions or juggling 20 window tabs is a key to immersion.",
+    "stack": ["java", "spring", "mysql", "thymeleaf", "html5", "css3", "bootstrap", "javascript", "photoshop", "docker"],
+    "cardStack": ["java", "spring", "mysql"]
+  },
+  {
     "title": "Reason & Domination",
     "url": "/projects/reason-and-domination",
+    "kind": "study",
     "cover": "/rsc/imgs/projects/RnD-Cover.png",
     "coverAlt": "Reason & Domination cover",
     "summary": "Defense project for SoftUni - forum, roles, auth, posts and profile customization.",
@@ -49,6 +56,7 @@
   {
     "title": "RPG Character Generator",
     "url": "https://ethertale.github.io/rpgcharactergenerator.github.io/",
+    "kind": "study",
     "cover": "/rsc/imgs/projects/RPGGen-Cover.png",
     "coverAlt": "RPG Character Generator cover",
     "summary": "Small JavaScript-based character generator for tabletop games.",

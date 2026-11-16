@@ -1,0 +1,47 @@
+{
+  "_note": "Homepage copy that repeats in a pattern (services tiles, process steps). One place to edit, and one place to translate in 1.6.",
+
+  "kinds": {
+    "client": "Client work",
+    "product": "Own product",
+    "study": "Study project"
+  },
+
+  "services": [
+    {
+      "title": "Business websites",
+      "text": "A site that says clearly what you do and makes it easy to get in touch. Designed and built from scratch, fast on any phone."
+    },
+    {
+      "title": "Redesigns",
+      "text": "Your site looks dated or breaks on phones? I rebuild it modern and responsive, and keep the content your customers already know."
+    },
+    {
+      "title": "Web applications",
+      "text": "Bookings, accounts, dashboards: custom features in Java and Spring, for when a ready-made template won't do."
+    },
+    {
+      "title": "Care after launch",
+      "text": "Small changes, updates and fixes, plus help with your domain, hosting and email, so the site keeps working for you."
+    }
+  ],
+
+  "process": [
+    {
+      "title": "Talk",
+      "text": "You tell me about your business and what the site should do. Free, with no obligation."
+    },
+    {
+      "title": "Plan",
+      "text": "I propose the structure, the look and a clear price before any work starts."
+    },
+    {
+      "title": "Build",
+      "text": "You follow the progress on a private preview link and give feedback as it grows."
+    },
+    {
+      "title": "Launch",
+      "text": "I put it live, check speed and search basics, and stay around for questions."
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 permalink: /index.html
 title: "Galin Yan - Software & Web Developer"
-description: "Software and web developer building clean, efficient, and scalable solutions. Based in Bulgaria."
+description: "Websites for businesses that are easy to find, trust and contact. Designed and built by Galin Yanakov in Kazanlak, Bulgaria."
 pageStyle: index
 ---
 {% extends "layouts/base.njk" %}
@@ -32,27 +32,26 @@ pageStyle: index
 {% endblock %}
 
 {% block content %}
-<!-- HERO: the runner leads to the primary button -->
+<!-- HERO: the runner leads to the primary action -->
 <section id="home" class="hero page-frame">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
         <div class="hero-inner" data-reveal>
-<!--            <p class="hero-tag">Software &amp; Web Developer</p>-->
-
             <h1>
                 Galin<br>
                 <span class="line-accent">Yan</span>
             </h1>
 
             <p class="hero-sub">
-                I'm Galin, a Java/Spring developer based in Kazanlak, Bulgaria.<br>
+                I design and build websites that make your business easy to find, trust and contact.
                 <span class="section-divider"></span>
-                I build websites and web applications.<br>
-<!--                <span class="section-divider"></span>-->
-<!--                Currently open to internships, junior roles, and freelancing.-->
+                Clear to read, fast on every phone, made by hand in Kazanlak, Bulgaria.
             </p>
 
-            <a href="/projects" class="btn-me" data-runner-target><span>View Projects →</span></a>
+            <div class="hero-actions">
+                <a href="/contacts#quote" class="btn-me btn-solid" data-runner-target><span>Get a quote →</span></a>
+                <a href="#work" class="link-arrow">See my work</a>
+            </div>
         </div>
     </div>
 
@@ -62,54 +61,85 @@ pageStyle: index
     <span class="coord-stamp"><a href="{{ loc.mapsUrl }}" target="_blank" rel="noopener" aria-label="{{ loc.label }}: {{ loc.city }}, {{ loc.country }} (opens Google Maps)">{{ loc.label }} · {{ loc.city }}, {{ loc.countryCode }} &nbsp;/&nbsp; {{ loc.lat }}, {{ loc.lng }}</a> &nbsp;/&nbsp; <span data-clock></span></span>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
+<!-- SELECTED WORK: projects with "featured" in src/_data/projects.json, in that order -->
+<section id="work">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
 
         <div class="section-header" data-reveal>
-            <h2 class="section-title" data-runner-target>Selected Projects</h2>
+            <h2 class="section-title" data-runner-target>Selected Work</h2>
         </div>
 
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4" data-reveal data-reveal-delay="100">
-                <a class="card-me project-card" href="/projects#{{ "Find A Dice" | slugify }}">
+            {%- for p in projects | selectattr("featured") | sort(false, false, "featured") %}
+            <div class="col-md-6 col-lg-4" data-reveal{% if loop.index0 %} data-reveal-delay="{{ loop.index0 * 100 }}"{% endif %}>
+                <a class="card-me project-card" href="/projects#{{ p.title | slugify }}">
                     <div class="card-face">
-                        <div class="card-thumb">
-                            {% image "/rsc/imgs/projects/Find-A-Dice/welcome-page.png", "", "(min-width: 768px) 420px, 100vw", { style: "width: 100%; height: auto" } %}
+                        <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
+                            {% image p.cover, "", "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">Find A Dice</h3>
-                            <p class="card-text">A social place for D&D role players to chat, form groups, host events, and manage campaigns - all in one place.</p>
-                            <span class="link-arrow card-foot">View project</span>
+                            <h3 class="card-title">{{ p.title }}</h3>
+                            <p class="card-text">{{ p.summary }}</p>
+                            <div class="card-foot work-foot">
+                                <span class="tag">{{ home.kinds[p.kind] }}</span>
+                                <span class="link-arrow">View project</span>
+                            </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-6 col-lg-4" data-reveal>
-                <a class="card-me project-card" href="/projects#{{ "Reason & Domination" | slugify }}">
-                    <div class="card-face">
-                        <div class="card-thumb">
-                            {% image "/rsc/imgs/projects/RnD-Cover.png", "", "(min-width: 768px) 420px, 100vw", { style: "width: 100%; height: auto" } %}
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">Reason & Domination</h3>
-                            <p class="card-text">Defense project for SoftUni - forum, roles, auth, posts and profile customization.</p>
-                            <span class="link-arrow card-foot">View project</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-4 align-content-center" data-reveal data-reveal-delay="200">
-                <a href="/projects" class="link-arrow link-arrow-lg">View all projects</a>
-            </div>
+            {%- endfor %}
+        </div>
 
+        <p class="work-all" data-reveal><a href="/projects" class="link-arrow link-arrow-lg">All projects</a></p>
+    </div>
+</section>
+
+<!-- SERVICES: copy in src/_data/home.json -->
+<section id="services" class="section-off">
+    <div class="runner" data-runner aria-hidden="true"></div>
+    <div class="container">
+
+        <div class="section-header" data-reveal>
+            <h2 class="section-title" data-runner-target>What I Do</h2>
+        </div>
+
+        <div class="row g-4">
+            {%- for s in home.services %}
+            <div class="col-md-6 col-lg-3" data-reveal{% if loop.index0 %} data-reveal-delay="{{ loop.index0 * 100 }}"{% endif %}>
+                <div class="panel-me service-tile">
+                    <h3 class="tile-title">{{ s.title }}</h3>
+                    <p class="tile-text">{{ s.text }}</p>
+                </div>
+            </div>
+            {%- endfor %}
         </div>
     </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="about-section">
+<!-- PROCESS: four steps, copy in src/_data/home.json -->
+<section id="process">
+    <div class="runner" data-runner aria-hidden="true"></div>
+    <div class="container">
+
+        <div class="section-header" data-reveal>
+            <h2 class="section-title" data-runner-target>How It Works</h2>
+        </div>
+
+        <ol class="process">
+            {%- for step in home.process %}
+            <li class="process-step" data-reveal{% if loop.index0 %} data-reveal-delay="{{ loop.index0 * 100 }}"{% endif %}>
+                <h3 class="tile-title">{{ step.title }}</h3>
+                <p class="tile-text">{{ step.text }}</p>
+            </li>
+            {%- endfor %}
+        </ol>
+    </div>
+</section>
+
+<!-- ABOUT (short; the full story is on /about) -->
+<section id="about" class="section-off">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
 
@@ -118,7 +148,7 @@ pageStyle: index
         </div>
 
         <p class="about-text" data-reveal>
-            I'm a software and web developer focused on
+            I'm Galin, a software and web developer focused on
             <strong>bringing your ideas to life.</strong>
             I combine technical precision with thoughtful design
             to create intuitive, modern experiences that work.
@@ -129,42 +159,43 @@ pageStyle: index
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/spring/spring-original.svg" />Spring</span>
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/thymeleaf/thymeleaf-original.svg" />Thymeleaf</span>
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/javascript/javascript-original.svg" />JavaScript</span>
-<!--            <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/hibernate/hibernate-original.svg" />Hibernate</span>-->
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/html5/html5-original.svg" />HTML /<img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/css3/css3-original.svg" />CSS</span>
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/bootstrap/bootstrap-original.svg" />Bootstrap</span>
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/mysql/mysql-original.svg" />MySQL /<img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/sqlite/sqlite-original.svg" />SQLite</span>
         </div>
 
+        <p class="mt-4" data-reveal data-reveal-delay="200"><a href="/about" class="link-arrow">More about me</a></p>
     </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT STRIP -->
 <section id="contact">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container">
+        <div class="contact-strip panel-me" data-reveal>
 
-        <div class="section-header" data-reveal>
-            <h2 class="section-title" data-runner-target>Contact</h2>
+            <div class="strip-pitch">
+                <h2 class="section-title" data-runner-target>Have a project in mind?</h2>
+                <p class="strip-text">Tell me what you need. I'll come back with questions or a quote.</p>
+                <a href="/contacts#quote" class="btn-me btn-solid"><span>Get a quote →</span></a>
+            </div>
+
+            <div class="strip-links">
+                <a href="mailto:{{ site.email }}" class="contact-item">
+                    <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt=""/> Email</span>
+                    <span class="contact-value">{{ site.email }}</span>
+                    <span class="contact-arrow" aria-hidden="true">→</span>
+                </a>
+                {%- for s in site.socials %}{% if s.onHome %}
+                <a href="{{ s.url }}" target="_blank" rel="noopener" class="contact-item">
+                    <span class="contact-platform"><img width="15" height="15" src="{{ s.iconLine }}" alt=""/> {{ s.name }}</span>
+                    <span class="contact-value">{{ s.handle }}</span>
+                    <span class="contact-arrow" aria-hidden="true">→</span>
+                </a>
+                {%- endif %}{% endfor %}
+            </div>
+
         </div>
-
-        <div class="col-lg-6" data-reveal>
-
-            <a href="mailto:{{ site.email }}" class="contact-item">
-                <span class="contact-platform"><img width="15" height="15" src="https://img.icons8.com/ios/50/new-post--v1.png" alt=""/> Email</span>
-                <span class="contact-value">{{ site.email }}</span>
-                <span class="contact-arrow" aria-hidden="true">→</span>
-            </a>
-            {%- for s in site.socials %}{% if s.onHome %}
-
-            <a href="{{ s.url }}" target="_blank" rel="noopener" class="contact-item">
-                <span class="contact-platform"><img width="15" height="15" src="{{ s.iconLine }}" alt=""/> {{ s.name }}</span>
-                <span class="contact-value">{{ s.handle }}</span>
-                <span class="contact-arrow" aria-hidden="true">→</span>
-            </a>
-            {%- endif %}{% endfor %}
-
-        </div>
-
     </div>
 </section>
 {% endblock %}

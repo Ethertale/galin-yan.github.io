@@ -29,6 +29,10 @@
 
     openBtn.addEventListener('click', openMailClient);
 
+    // Arriving from a "Get a quote" button (/contacts#quote): start the subject for them.
+    var subject = document.getElementById('subject');
+    if (location.hash === '#quote' && !subject.value) subject.value = 'Quote request';
+
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         openMailClient();
