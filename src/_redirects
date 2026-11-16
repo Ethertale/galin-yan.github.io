@@ -14,13 +14,12 @@
 /old-projects.html   /projects   301
 /old-projects        /projects   301
 
-# Retired project detail pages
+# Retired project detail pages (find-a-dice and rpg-character-generator came back as real pages in 1.4.3:
+# a rule here would win over the file, so they must not be listed)
 /projects/apexi.html                        /projects  301
 /projects/apexi                             /projects  301
 /projects/dragonvale.html                   /projects  301
 /projects/dragonvale                        /projects  301
-/projects/find-a-dice.html                  /projects  301
-/projects/find-a-dice                       /projects  301
 /projects/olympia-elkridge-university.html  /projects  301
 /projects/olympia-elkridge-university       /projects  301
 /projects/parmentier.html                   /projects  301
@@ -29,7 +28,5 @@
 /projects/personal-blog                     /projects  301
 /projects/personal-finance-tracker.html     /projects  301
 /projects/personal-finance-tracker          /projects  301
-/projects/rpg-character-generator.html      /projects  301
-/projects/rpg-character-generator           /projects  301
 /projects/the-fable-stable.html             /projects  301
 /projects/the-fable-stable                  /projects  301
