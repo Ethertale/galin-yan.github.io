@@ -2,6 +2,7 @@
 pagination:
   data: site.langs
   size: 1
+  addAllPagesToCollections: true   # default is the first page only, which left pages out of the sitemap
   alias: lang
 permalink: "{{ '/privacy' | lp(lang) }}.html"
 pageKey: privacy

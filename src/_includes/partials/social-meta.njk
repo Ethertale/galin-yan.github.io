@@ -3,6 +3,13 @@
     <meta name="author" content="{{ site.author }}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ canonical }}">
+{%- if site.langs.length > 1 and pagination %}
+    <!-- The same page in every language; x-default (no language match) goes to English -->
+    {%- for l in site.langs %}
+    <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}{{ page.url | cleanUrl | altUrl(l) }}">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.url | cleanUrl | altUrl('en') }}">
+{%- endif %}
 
     <!-- Open Graph (link previews everywhere) -->
     <meta property="og:type" content="website">

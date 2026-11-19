@@ -6,6 +6,7 @@
 pagination:
   data: l10n.projectPages
   size: 1
+  addAllPagesToCollections: true   # default is the first page only, which left pages out of the sitemap
   alias: pp
 permalink: "{{ ('/projects/' + pp.p.slug) | lp(pp.lang) }}.html"
 pageStyle: project

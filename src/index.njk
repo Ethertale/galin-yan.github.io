@@ -2,6 +2,7 @@
 pagination:
   data: site.langs
   size: 1
+  addAllPagesToCollections: true   # default is the first page only, which left pages out of the sitemap
   alias: lang
 permalink: "{{ '/' | lp(lang) }}index.html"
 pageKey: index
@@ -16,7 +17,8 @@ pageStyle: index
             "@context": "https://schema.org",
             "@type": "Person",
             "name": {{ site.author | dump | safe }},
-            "url": {{ site.url | dump | safe }},
+            "alternateName": {{ site.authorBg | dump | safe }},
+            "url": {{ (site.url + ('/' | lp(lang))) | dump | safe }},
             "jobTitle": {{ site.jobTitle | dump | safe }},
             "email": {{ site.email | dump | safe }},
             "address": {
@@ -25,7 +27,7 @@ pageStyle: index
                 "streetAddress": {{ loc.streetAddress | dump | safe }},
                 "postalCode": {{ loc.postalCode | dump | safe }},
                 {%- endif %}
-                "addressLocality": {{ loc.city | dump | safe }},
+                "addressLocality": {{ t.loc.city | dump | safe }},
                 "addressRegion": {{ loc.region | dump | safe }},
                 "addressCountry": {{ loc.countryCode | dump | safe }}
             },
