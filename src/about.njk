@@ -1,7 +1,10 @@
 ---
-permalink: /about.html
-title: "Galin Yan - About Me"
-description: "Learn about Galin Yanakov - Software & Web developer."
+pagination:
+  data: site.langs
+  size: 1
+  alias: lang
+permalink: "{{ '/about' | lp(lang) }}.html"
+pageKey: about
 pageStyle: about
 libs: [fancybox]
 scripts:
@@ -14,7 +17,7 @@ scripts:
 <div class="page-header page-frame">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container page-header-inner">
-        <h1 class="page-title" data-runner-target>About Me</h1>
+        <h1 class="page-title" data-runner-target>{{ t.about.title }}</h1>
     </div>
 </div>
 
@@ -25,13 +28,13 @@ scripts:
         <!-- PROFILE -->
         <div class="profile-block panel-me mb-5">
             <div class="profile-portrait">
-                {% image "/rsc/imgs/other/prof-pic.jpg", "Galin Yanakov portrait", "(min-width: 768px) 220px, 100vw", {}, [440, 800] %}
+                {% image "/rsc/imgs/other/prof-pic.jpg", t.about.portraitAlt, "(min-width: 768px) 220px, 100vw", {}, [440, 800] %}
             </div>
             <div class="profile-bio">
-                <h2 class="profile-name">GALIN YANAKOV</h2>
+                <h2 class="profile-name">{{ t.about.name }}</h2>
                 <p>{{ about.bio }}</p>
                 <div class="profile-actions">
-                    <a class="btn-me btn-sm" href="{{ '/rsc/cv/galin-yanakov-cv.pdf' | bust }}" download><span>Download CV (PDF)</span></a>
+                    <a class="btn-me btn-sm" href="{{ '/rsc/cv/galin-yanakov-cv.pdf' | bust }}" download><span>{{ t.about.downloadCv }}</span></a>
                     <div class="socials">
                         {%- for s in site.socials %}
                         <a href="{{ s.url }}" target="_blank" rel="noopener" title="{{ s.name }}" aria-label="{{ s.name }}">{% icon s.icon %}</a>
@@ -44,7 +47,7 @@ scripts:
         <!-- EXPERIENCE AND EDUCATION: one timeline, newest first -->
         <section class="data-section" aria-labelledby="tl-title">
             <div class="block-header">
-                <h2 class="block-title" id="tl-title">Experience &amp; Education</h2>
+                <h2 class="block-title" id="tl-title">{{ t.about.timeline | safe }}</h2>
             </div>
 
             <ol class="timeline">
@@ -58,7 +61,7 @@ scripts:
                             {{ e.org }} · {{ e.place }}
                         </p>
                         {%- if e.text %}<p class="entry-desc">{{ e.text }}</p>{% endif %}
-                        <span class="tag">{{ e.kind }}</span>
+                        <span class="tag">{{ t.about.kinds[e.kind] }}</span>
                     </div>
                 </li>
                 {%- endfor %}
@@ -69,35 +72,35 @@ scripts:
         {%- set d = about.diploma %}
         <section class="data-section" aria-labelledby="cert-title">
             <div class="block-header">
-                <h2 class="block-title" id="cert-title">Certificates</h2>
+                <h2 class="block-title" id="cert-title">{{ t.about.certificates }}</h2>
             </div>
 
             <div class="cert-summary panel-me">
                 <a class="cert-thumb" data-fancybox="certs" href="{% imageUrl '/rsc/imgs/certs/' + d.id + '.png', 780 %}"
-                   data-caption="Diploma: {{ d.name }} ({{ d.date }})">
-                    {% image "/rsc/imgs/certs/" + d.id + ".png", "SoftUni diploma: " + d.name, "120px", { loading: "lazy" }, [240] %}
+                   data-caption="{{ t.about.diplomaCaption | fmt({ name: d.name, date: d.date }) }}">
+                    {% image "/rsc/imgs/certs/" + d.id + ".png", t.about.diplomaAlt | fmt({ name: d.name }), "120px", { loading: "lazy" }, [240] %}
                 </a>
                 <div class="cert-text">
-                    <h3 class="entry-title">Diploma: {{ d.name }}</h3>
-                    <p class="entry-desc">Software University, {{ d.date }}. Plus {{ about.certificates | length }} course certificates, from Programming Basics to Spring Advanced, MySQL and Containers and Cloud.</p>
+                    <h3 class="entry-title">{{ t.about.diploma | fmt({ name: d.name }) }}</h3>
+                    <p class="entry-desc">{{ t.about.certSummary | fmt({ date: d.date, count: about.certificates | length }) }}</p>
                     <div class="cert-actions">
-                        <button class="btn-me btn-sm" type="button" data-cert-open><span>View all {{ about.certificates | length + 1 }}</span></button>
-                        <a class="link-arrow" href="https://softuni.bg/certificates/details/{{ d.id }}/{{ d.code }}" target="_blank" rel="noopener">Verify on softuni.bg</a>
+                        <button class="btn-me btn-sm" type="button" data-cert-open><span>{{ t.about.viewAll | fmt({ count: about.certificates | length + 1 }) }}</span></button>
+                        <a class="link-arrow" href="https://softuni.bg/certificates/details/{{ d.id }}/{{ d.code }}" target="_blank" rel="noopener">{{ t.about.verifySite }}</a>
                     </div>
                 </div>
             </div>
 
             <details class="cert-details">
-                <summary>List every course</summary>
+                <summary>{{ t.about.listAll }}</summary>
                 <ul class="cert-list">
                     {%- for c in about.certificates %}
                     <li>
                         <span class="cert-name">{{ c.name }}</span>
                         <span class="cert-date">{{ c.date }}</span>
                         <a data-fancybox="certs" href="{% imageUrl '/rsc/imgs/certs/' + c.id + '.png', 780 %}" data-caption="{{ c.name }} ({{ c.date }})"
-                           aria-label="View the {{ c.name }} certificate">View</a>
+                           aria-label="{{ t.about.viewAria | fmt({ name: c.name }) }}">{{ t.about.view }}</a>
                         <a href="https://softuni.bg/certificates/details/{{ c.id }}/{{ c.code }}" target="_blank" rel="noopener"
-                           aria-label="Verify the {{ c.name }} certificate on softuni.bg">Verify</a>
+                           aria-label="{{ t.about.verifyAria | fmt({ name: c.name }) }}">{{ t.about.verify }}</a>
                     </li>
                     {%- endfor %}
                 </ul>

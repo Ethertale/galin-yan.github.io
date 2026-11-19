@@ -96,6 +96,16 @@ export default function (eleventyConfig) {
   // 'https://rcth-stz.eu/' | host -> 'rcth-stz.eu'  (link text on the project pages)
   eleventyConfig.addFilter('host', (url) => new URL(url).host);
 
+  // ── Languages (1.6): English lives at /, every other language under /<code>/ ──
+  // '/about' | lp(lang) -> '/about' (en) or '/bg/about' (bg); '/' | lp('bg') -> '/bg/'
+  const lp = (path, lang) => (!lang || lang === 'en' ? path : `/${lang}${path}`);
+  eleventyConfig.addFilter('lp', lp);
+  // The same page in another language: '/bg/about' | altUrl('en') -> '/about'
+  // (only real language prefixes are stripped: /cv is a page, not a language)
+  eleventyConfig.addFilter('altUrl', (url, to) => lp(url.replace(/^\/bg(?=\/|$)/, '') || '/', to));
+  // 'Next: {title}' | fmt({ title: 'RCTH' }) -> 'Next: RCTH'
+  eleventyConfig.addFilter('fmt', (str, vars = {}) => str.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? vars[k] : m)));
+
   // [{url: 'a'}, {url: 'b'}] | pluck('url') -> ['a', 'b']  (e.g. socials -> JSON-LD sameAs)
   eleventyConfig.addFilter('pluck', (list, key) => list.map((item) => item[key]));
 

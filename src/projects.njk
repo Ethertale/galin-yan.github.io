@@ -1,7 +1,10 @@
 ---
-permalink: /projects.html
-title: "Galin Yan - Projects"
-description: "Selected projects by Galin Yanakov - Java, Spring, JavaScript."
+pagination:
+  data: site.langs
+  size: 1
+  alias: lang
+permalink: "{{ '/projects' | lp(lang) }}.html"
+pageKey: projects
 pageStyle: projects
 scripts:
   - /js/projects.js
@@ -15,8 +18,8 @@ scripts:
     <div class="runner" data-runner aria-hidden="true"></div>
 
     <div class="container page-header-inner">
-        <h1 class="page-title" data-runner-target>Projects &amp;<br>Works</h1>
-        <p class="page-sub">Client sites, my own products, and the projects I learned on.</p>
+        <h1 class="page-title" data-runner-target>{{ t.projects.titleHtml | safe }}</h1>
+        <p class="page-sub">{{ t.projects.sub }}</p>
     </div>
 </div>
 
@@ -24,8 +27,8 @@ scripts:
 <div class="projects-wrap">
     <div class="container">
         <!-- Filters: buttons with aria-pressed (js/projects.js). Without JS they stay hidden and every card shows. -->
-        <div class="filter-bar" role="group" aria-label="Filter projects" hidden>
-            <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <div class="filter-bar" role="group" aria-label="{{ t.projects.filterLabel }}" hidden>
+            <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">{{ t.projects.all }}</button>
             {%- for key, label in home.kinds %}
             <button class="filter-chip" type="button" data-filter="{{ key }}" aria-pressed="false">{{ label }}</button>
             {%- endfor %}
@@ -35,11 +38,11 @@ scripts:
         <ul class="projects-grid">
             {%- for p in projects %}
             <li data-kind="{{ p.kind }}">
-            <a class="card-me project-card" href="/projects/{{ p.slug }}">
+            <a class="card-me project-card" href="{{ ('/projects/' + p.slug) | lp(lang) }}">
                 <div class="card-face">
                     <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
                         {% image p.cover, p.coverAlt, "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
-                        <span class="card-open-hint" aria-hidden="true">View Project →</span>
+                        <span class="card-open-hint" aria-hidden="true">{{ t.projects.openHint }}</span>
                     </div>
                     <div class="card-body">
                         <h2 class="card-title">{{ p.title }}</h2>

@@ -1,0 +1,153 @@
+{
+  "_note": "Interface text for English pages. bg.json must have every key (the build checks it). {name} placeholders are filled by the fmt filter. Longer copy lives in src/_data/*.json (EN) and src/_l10n/bg/*.json (BG overrides).",
+
+  "lang": { "code": "en", "locale": "en_US", "name": "English", "short": "EN", "switchLabel": "Read this page in English" },
+
+  "meta": {
+    "index":    { "title": "Galin Yan - Software & Web Developer", "description": "Websites for businesses that are easy to find, trust and contact. Designed and built by Galin Yanakov in Kazanlak, Bulgaria." },
+    "projects": { "title": "Galin Yan - Projects", "description": "Selected projects by Galin Yanakov - Java, Spring, JavaScript." },
+    "about":    { "title": "Galin Yan - About Me", "description": "Learn about Galin Yanakov - Software & Web developer." },
+    "contacts": { "title": "Galin Yan - Contact Me", "description": "Get in touch with Galin Yanakov via email, GitHub or LinkedIn.", "ogDescription": "Get in touch with Galin Yanakov via email, GitHub, LinkedIn or Instagram." },
+    "privacy":  { "title": "Privacy Note | Galin Yan", "description": "What the contact form on galin-yan.com collects, why, and who handles it." },
+    "404":      { "title": "404 - Page Not Found | Galin Yan", "description": "This page doesn't exist on galin-yan.com." },
+    "projectSuffix": " - Galin Yan"
+  },
+
+  "common": {
+    "skip": "Skip to content",
+    "navToggle": "Toggle navigation",
+    "nav": { "home": "Home", "projects": "Projects", "about": "About Me", "contacts": "Contacts" },
+    "cta": "Get a quote",
+    "ctaArrow": "Get a quote →",
+    "rights": "All rights reserved",
+    "email": "Email",
+    "allProjects": "All projects"
+  },
+
+  "loc": { "label": "Base", "city": "Kazanlak", "country": "Bulgaria", "mapsHint": "opens Google Maps" },
+
+  "home": {
+    "first": "Galin", "last": "Yan",
+    "heroLead": "I design and build websites that make your business easy to find, trust and contact.",
+    "heroTail": "Clear to read, fast on every phone, made by hand in Kazanlak, Bulgaria.",
+    "seeWork": "See my work",
+    "work": "Selected Work",
+    "viewProject": "View project",
+    "services": "What I Do",
+    "process": "How It Works",
+    "about": "About Me",
+    "aboutHtml": "I'm Galin, a software and web developer focused on\n            <strong>bringing your ideas to life.</strong>\n            I combine technical precision with thoughtful design\n            to create intuitive, modern experiences that work.",
+    "moreAbout": "More about me",
+    "stripTitle": "Have a project in mind?",
+    "stripText": "Tell me what you need. I'll come back with questions or a quote."
+  },
+
+  "projects": {
+    "titleHtml": "Projects &amp;<br>Works",
+    "sub": "Client sites, my own products, and the projects I learned on.",
+    "filterLabel": "Filter projects",
+    "all": "All",
+    "openHint": "View Project →"
+  },
+
+  "project": {
+    "visit": "Visit the site →",
+    "tryDemo": "Try the demo →",
+    "codeGithub": "Code on GitHub",
+    "baAria": "Compare before and after: left shows the old site, right the new one",
+    "before": "Before",
+    "after": "After",
+    "baCaption": "Before: {label} (from the {source}). After: today. Drag to compare.",
+    "brief": "The brief",
+    "asked": "What they asked for:",
+    "aboutProject": "About the project",
+    "did": "What I did",
+    "result": "The result",
+    "screens": "Screens",
+    "type": "Type",
+    "stack": "Stack",
+    "links": "Links",
+    "demo": "Demo",
+    "code": "Code",
+    "more": "More projects",
+    "next": "Next: {title}"
+  },
+
+  "about": {
+    "title": "About Me",
+    "portraitAlt": "Galin Yanakov portrait",
+    "name": "GALIN YANAKOV",
+    "downloadCv": "Download CV (PDF)",
+    "timeline": "Experience &amp; Education",
+    "kinds": { "Work": "Work", "Education": "Education" },
+    "certificates": "Certificates",
+    "diploma": "Diploma: {name}",
+    "diplomaCaption": "Diploma: {name} ({date})",
+    "diplomaAlt": "SoftUni diploma: {name}",
+    "certSummary": "Software University, {date}. Plus {count} course certificates, from Programming Basics to Spring Advanced, MySQL and Containers and Cloud.",
+    "viewAll": "View all {count}",
+    "verifySite": "Verify on softuni.bg",
+    "listAll": "List every course",
+    "view": "View",
+    "verify": "Verify",
+    "viewAria": "View the {name} certificate",
+    "verifyAria": "Verify the {name} certificate on softuni.bg"
+  },
+
+  "contacts": {
+    "titleHtml": "You can find<br>me here",
+    "sub": "Tell me about your project, or just ask a question.",
+    "contact": "Contact",
+    "copy": "Copy",
+    "copyAria": "Copy email address",
+    "location": "Location",
+    "social": "Social",
+    "formTitle": "Send a message",
+    "formSub": "I usually reply within 24 hours.",
+    "nojs": "The form needs JavaScript. Please email me at",
+    "name": "Your name",
+    "nameMsg": "Please enter your name.",
+    "email": "Your email",
+    "emailMsg": "Please enter an email address I can reply to.",
+    "topic": "What do you need?",
+    "optional": "(optional)",
+    "choose": "Choose one",
+    "topics": { "website": "A new website", "redesign": "A redesign", "web-app": "A web application", "care": "Care after launch", "question": "Just a question" },
+    "message": "Message",
+    "messagePlaceholder": "A few lines about your project or question",
+    "messageMsg": "Please write a message.",
+    "honeypot": "Leave this empty",
+    "send": "Send message →",
+    "orEmail": "Or email me directly",
+    "privacyLine": "Your message is only used to reply to you.",
+    "privacyLink": "Privacy note"
+  },
+
+  "privacy": { "title": "Privacy note", "sub": "Short, because this site collects very little." },
+
+  "notFound": {
+    "title": "Wrong turn.",
+    "sub": "The page you're looking for doesn't exist, or it moved during the redesign.\n            The route back starts below.",
+    "back": "Back to home →",
+    "projects": "View projects",
+    "hud": "ERR_404 · Path terminated"
+  },
+
+  "js": {
+    "projectsShown": { "one": "{n} project shown", "other": "{n} projects shown" },
+    "live": "Live",
+    "baValue": "{before}% before, {after}% after",
+    "copied": "Copied!",
+    "copiedStatus": "Email address copied",
+    "copyFailed": "Copy failed — please copy manually.",
+    "sending": "Sending…",
+    "send": "Send message →",
+    "mailSubject": "Website message",
+    "tokenWait": "The spam check is still loading. Please wait a moment and send again.",
+    "verification": "The spam check didn’t go through. Please wait a moment and send again.",
+    "invalid": "Some fields need another look.",
+    "failed": "Your message couldn’t be sent.",
+    "fallback": "You can also <a href=\"{href}\">send it by email</a> instead.",
+    "ok": "<strong>Thanks, your message is on its way.</strong> I’ll reply to the email you gave."
+  }
+}

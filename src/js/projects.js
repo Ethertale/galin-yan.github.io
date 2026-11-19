@@ -23,7 +23,7 @@
             if (match) shown++;
         });
         chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === kind)); });
-        status.textContent = shown + (shown === 1 ? ' project' : ' projects') + ' shown';
+        status.textContent = T.fmt(T.projectsShown[shown === 1 ? 'one' : 'other'], { n: shown });
     }
 
     chips.forEach(function (c) {

@@ -1,19 +1,30 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">{{ site.name }}</a>
+        <a class="navbar-brand" href="{{ '/' | lp(lang) }}">{{ site.name }}</a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
-                aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="nav" aria-expanded="false" aria-label="{{ t.common.navToggle }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div id="nav" class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav gap-lg-5">
-                {%- for item in site.nav %}
-                <li class="nav-item"><a class="nav-link" href="{{ item.url }}"{% if page.url | cleanUrl == item.url %} aria-current="page"{% elif item.url != "/" and (page.url | cleanUrl).startsWith(item.url + "/") %} aria-current="true"{% endif %}>{{ item.label }}</a></li>
+                {%- for item in site.nav %}{% set u = item.url | lp(lang) %}
+                <li class="nav-item"><a class="nav-link" href="{{ u }}"{% if page.url | cleanUrl == u %} aria-current="page"{% elif item.url != "/" and (page.url | cleanUrl).startsWith(u + "/") %} aria-current="true"{% endif %}>{{ t.common.nav[item.key] }}</a></li>
                 {%- endfor %}
             </ul>
-            <a class="btn-me btn-sm nav-cta" href="/contacts#quote"><span>Get a quote</span></a>
+            {#- Language switch: on pages built in every language (they paginate), once a second language is published.
+                The 404 page has no counterpart URL, so it points at the other home page. #}
+            {%- if site.langs.length > 1 and pagination %}
+            <p class="lang-switch">
+                {%- for l in site.langs %}
+                {%- if l == lang %}<span aria-current="true">{{ l10n[l].t.lang.short }}</span>
+                {%- else %}<a href="{{ ('/' if pageKey == '404' else page.url | cleanUrl) | altUrl(l) }}" hreflang="{{ l }}" lang="{{ l }}" aria-label="{{ l10n[l].t.lang.short }} – {{ l10n[l].t.lang.switchLabel }}">{{ l10n[l].t.lang.short }}</a>{% endif %}
+                {%- if not loop.last %}<span class="lang-sep" aria-hidden="true">/</span>{% endif %}
+                {%- endfor %}
+            </p>
+            {%- endif %}
+            <a class="btn-me btn-sm nav-cta" href="{{ '/contacts' | lp(lang) }}#quote"><span>{{ t.common.cta }}</span></a>
         </div>
     </div>
 </nav>

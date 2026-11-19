@@ -32,6 +32,9 @@ const clean = (v, keepNewlines = false) => String(v ?? '')
 
 const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// Page languages (site.json "langs"), named in the email so the reply can match.
+const LANGS = { en: 'English', bg: 'Bulgarian' };
+
 const EMAIL = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
 
 export function validate(data) {
@@ -40,12 +43,13 @@ export function validate(data) {
         email: clean(data.email),
         message: clean(data.message, true).replace(/\r\n?/g, '\n'),
         topic: clean(data.topic),
+        lang: Object.hasOwn(LANGS, clean(data.lang)) ? clean(data.lang) : 'en',   // the page they wrote from
     };
     const bad = [];
     if (!f.name || f.name.length > LIMITS.name) bad.push('name');
     if (!EMAIL.test(f.email) || f.email.length > LIMITS.email) bad.push('email');
     if (f.message.length < 2 || f.message.length > LIMITS.message) bad.push('message');
-    if (f.topic && !(f.topic in TOPICS)) bad.push('topic');
+    if (f.topic && !Object.hasOwn(TOPICS, f.topic)) bad.push('topic');
     return { fields: f, bad };
 }
 
@@ -61,11 +65,11 @@ async function verifyTurnstile(token, ip, secret) {
     return out.success === true;
 }
 
-function compose({ name, email, message, topic }, meta) {
+function compose({ name, email, message, topic, lang }, meta) {
     const topicLabel = TOPICS[topic] || 'Not given';
     const subject = `Website message from ${name}` + (topic ? ` (${topicLabel})` : '');
-    const text = `Name: ${name}\nEmail: ${email}\nTopic: ${topicLabel}\n\n${message}\n\n--\nSent from ${meta.page} on ${meta.when}`;
-    const html = `<p><strong>Name:</strong> ${escapeHtml(name)}<br><strong>Email:</strong> ${escapeHtml(email)}<br><strong>Topic:</strong> ${escapeHtml(topicLabel)}</p>`
+    const text = `Name: ${name}\nEmail: ${email}\nTopic: ${topicLabel}\nLanguage: ${LANGS[lang]}\n\n${message}\n\n--\nSent from ${meta.page} on ${meta.when}`;
+    const html = `<p><strong>Name:</strong> ${escapeHtml(name)}<br><strong>Email:</strong> ${escapeHtml(email)}<br><strong>Topic:</strong> ${escapeHtml(topicLabel)}<br><strong>Language:</strong> ${LANGS[lang]}</p>`
         + `<p style="white-space:pre-wrap">${escapeHtml(message)}</p>`
         + `<p style="color:#777;font-size:12px">Sent from ${escapeHtml(meta.page)} on ${escapeHtml(meta.when)}</p>`;
     return { subject, text, html };

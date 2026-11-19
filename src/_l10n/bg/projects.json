@@ -1,0 +1,249 @@
+[
+  {
+    "slug": "rcth-stara-zagora",
+    "title": "РЦТХ Стара Загора",
+    "summary": "Сайт на център за кръводаряване в Стара Загора.",
+    "description": "Сайт на център за кръводаряване в Стара Загора. Пълен редизайн, който замени остарелия сайт с модерен, адаптивен и лесен за навигация.",
+    "coverAlt": "Корица на РЦТХ",
+    "shotAlt": "Началната страница на РЦТХ Стара Загора след редизайна",
+    "role": "Редизайн · WordPress тема",
+    "brief": "Регионалният център по трансфузионна хематология в Стара Загора трябва да публикува много информация: правила за кръводарителите, резултати, обществени поръчки. Старият им сайт беше остарял и семпъл – дълги страници с текст и нищо, което да води погледа.",
+    "goal": "Модерен, актуален сайт, лесен за ползване от кръводарителите и партньорите.",
+    "work": "Запазих WordPress, за да може екипът сам да редактира съдържанието, но махнах плъгините и библиотеките, които го натоварваха. Целият сайт стана една собствена тема – по-лека, по-бърза и много по-лесна за поддръжка и надграждане.",
+    "results": [
+      "По-бързи страници",
+      "По-лесен за ползване",
+      "По-лесен за редакция от екипа",
+      "Работи на всеки телефон"
+    ],
+    "metric": {
+      "value": "0,5 сек.",
+      "label": "до показване на основното съдържание",
+      "note": "Измерено при настолна връзка, ноември 2026."
+    },
+    "before": {
+      "label": "април 2021",
+      "alt": "Началната страница на РЦТХ Стара Загора през април 2021 г., преди редизайна",
+      "source": "Wayback Machine"
+    }
+  },
+  {
+    "slug": "em-di-oil",
+    "summary": "Изграден наново сайт за EM DI OIL, България.",
+    "description": "Нов сайт за фирма за PVC продукти от Трявна. Проектът замени остарелия сайт на клиента с модерен, адаптивен дизайн, който представя услугите на фирмата по-ясно, с по-изпипан каталог и по-добра достъпност.",
+    "coverAlt": "Корица на EM DI OIL",
+    "shotAlt": "Началната страница на EM DI OIL след изграждането наново",
+    "role": "Изграждане наново · HTML, CSS, JS",
+    "brief": "EM DI OIL AGRO продава PVC стенни панели, окачени тавани и профилни системи от два склада в България. WordPress сайтът им изглеждаше добре, но заради плъгините и лошите разширения всяка страница се зареждаше над 10 секунди, а поддръжката му беше станала скъпа.",
+    "goal": "Сайт, който се зарежда бързо и е лесен за ползване.",
+    "work": "Изградих го изцяло наново с HTML, CSS и JavaScript с Bootstrap – без CMS и без плъгини. По-малко движещи се части го правят бърз, надежден и лесен за промяна.",
+    "results": [
+      "По-бързи страници",
+      "По-лесен за ползване",
+      "По-лесен за редакция от екипа",
+      "Работи на всеки телефон"
+    ],
+    "metric": {
+      "value": "10 сек. → 0,4 сек.",
+      "label": "до показване на основното съдържание",
+      "note": "Преди: над 10 секунди на страница. След: измерено при настолна връзка, ноември 2026."
+    }
+  },
+  {
+    "slug": "find-a-dice",
+    "summary": "Социално място за D&D играчи – събития, групи, кампании.",
+    "description": "Социално място за D&D ролеви играчи, където могат да си пишат, да сформират групи, да организират събития и да водят собствените си кампании – всичко на едно място! Проектът е специален за мен като геймър: когато всичко е на едно място, хората се наслаждават на играта без разсейване и без да жонглират с 20 отворени раздела, а това е ключът към потапянето.",
+    "coverAlt": "Корица на Find A Dice",
+    "role": "Социална платформа · Java, Spring",
+    "gallery": [
+      [
+        "/rsc/imgs/projects/Find-A-Dice/welcome-page.png",
+        "Начална страница"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/login.png",
+        "Вход"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/register.png",
+        "Регистрация"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/home.png",
+        "Начало"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/chatrooms.png",
+        "Чат стаи"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/chat-specific.png",
+        "Чат стая"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/events.png",
+        "Събития"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/event-specific.png",
+        "Събитие"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/groups.png",
+        "Групи"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/group-specific-1.png",
+        "Група (1 от 3)"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/group-specific-2.png",
+        "Група (2 от 3)"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/group-specific-3.png",
+        "Група (3 от 3)"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/heroes.png",
+        "Герои"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/classes.png",
+        "Класове персонажи"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/dice-roll.png",
+        "Хвърляне на зарове"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/profile-1.png",
+        "Профил (1 от 2)"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/profile-2.png",
+        "Профил (2 от 2)"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/profile-hero-edit.png",
+        "Редактиране на герой"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/search.png",
+        "Търсене"
+      ],
+      [
+        "/rsc/imgs/projects/Find-A-Dice/users.png",
+        "Потребители"
+      ]
+    ]
+  },
+  {
+    "slug": "reason-and-domination",
+    "summary": "Финален проект за защита в СофтУни – форум, роли, вход, публикации и персонализиране на профила.",
+    "description": "Финален проект за защита в СофтУни: форум, потребителски роли, вход и регистрация, публикации, персонализиране на профила. Изграден със Spring Boot, Thymeleaf и JPA.",
+    "coverAlt": "Корица на Reason & Domination",
+    "role": "Учебен проект · защита в СофтУни",
+    "gallery": [
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Welcome.png",
+        "Началната страница на сайта."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Login.png",
+        "Вход: проверява името и паролата спрямо съществуващите потребители, с обработка на грешки."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Register.png",
+        "Регистрацията се проверява и във фронтенда, и в бекенда; грешни данни връщат потребителя обратно със съобщение за грешка."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Home.png",
+        "Начало: 5-те най-нови теми от всяка категория."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/News.png",
+        "Новини: като публикациите във форума, но само администратор може да ги създава."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/News-Ex-Post.png",
+        "Новина."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Forum.png",
+        "Форумът: започни тема или се включи в чужда."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Forum-Ex-Post.png",
+        "Всяка публикация във форума може да се коментира и обсъжда."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Guides.png",
+        "Ръководства: като публикациите във форума, но само администратор може да ги създава."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Guides-Ex-Post.png",
+        "Ръководство."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Lookup.png",
+        "Търсене на потребители: намира всеки, чието име съдържа търсената дума."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Races.png",
+        "Раси, превключвани с малка JavaScript галерия."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Classes.png",
+        "Класове, превключвани с малка JavaScript галерия."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Items.png",
+        "Всички предмети в базата данни (филтърът не е довършен)."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Item-Ex.png",
+        "Предмет – Thymeleaf оцветява името според рядкостта."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Dungeons.png",
+        "Подземията."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Dungeon-Ex.png",
+        "Подземие с карта и подробности."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Timers.png",
+        "Таймери за рейдовете във всяко подземие."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Admin-Panel.png",
+        "Админ панелът: добавяне на предмети, преглед на потребители и игрови данни."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Support.png",
+        "Нива на поддръжници, които дават титла (само за пример, без плащания)."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Profile.png",
+        "Профилът: потребителите сменят снимката си; само администратор може да променя данните им."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Error-404.png",
+        "Страница за грешки 4XX."
+      ],
+      [
+        "/rsc/imgs/projects/Reason-And-Domination/Error-500.png",
+        "Страница за грешки 5XX."
+      ]
+    ]
+  },
+  {
+    "slug": "rpg-character-generator",
+    "summary": "Малък генератор на персонажи за настолни игри, написан на JavaScript.",
+    "description": "Малък генератор на персонажи за настолни игри на JavaScript.",
+    "coverAlt": "Корица на RPG Character Generator",
+    "role": "Учебен проект · JavaScript"
+  }
+]

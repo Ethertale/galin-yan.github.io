@@ -1,8 +1,10 @@
 ---
-permalink: /contacts.html
-title: "Galin Yan - Contact Me"
-description: "Get in touch with Galin Yanakov via email, GitHub or LinkedIn."
-ogDescription: "Get in touch with Galin Yanakov via email, GitHub, LinkedIn or Instagram."
+pagination:
+  data: site.langs
+  size: 1
+  alias: lang
+permalink: "{{ '/contacts' | lp(lang) }}.html"
+pageKey: contacts
 pageStyle: contacts
 scripts:
   - /js/contacts.js
@@ -18,8 +20,8 @@ scripts:
 <div class="page-header page-frame">
     <div class="runner" data-runner aria-hidden="true"></div>
     <div class="container page-header-inner">
-        <h1 class="page-title" data-runner-target>You can find<br>me here</h1>
-        <p class="page-sub">Tell me about your project, or just ask a question.</p>
+        <h1 class="page-title" data-runner-target>{{ t.contacts.titleHtml | safe }}</h1>
+        <p class="page-sub">{{ t.contacts.sub }}</p>
     </div>
 </div>
 
@@ -32,14 +34,14 @@ scripts:
             <aside class="contact-panel panel-me">
 
                 <div class="panel-section">
-                    <p class="panel-label">Contact</p>
+                    <p class="panel-label">{{ t.contacts.contact }}</p>
 
                     <div class="contact-item">
                         {% icon "envelope" %}
                         <div>
-                            <div class="contact-item-label">Email</div>
+                            <div class="contact-item-label">{{ t.common.email }}</div>
                             <div class="contact-item-value" id="emailText">{{ site.email }}</div>
-                            <button class="btn-chip" type="button" id="copyEmail" aria-label="Copy email address">Copy</button>
+                            <button class="btn-chip" type="button" id="copyEmail" aria-label="{{ t.contacts.copyAria }}">{{ t.contacts.copy }}</button>
                             <span class="visually-hidden" role="status" id="copyStatus"></span>
                         </div>
                     </div>
@@ -47,14 +49,14 @@ scripts:
                     <div class="contact-item">
                         {% icon "geo-alt" %}
                         <div>
-                            <div class="contact-item-label">Location</div>
-                            <div class="contact-item-value">{{ site.location.city }}, {{ site.location.country }}</div>
+                            <div class="contact-item-label">{{ t.contacts.location }}</div>
+                            <div class="contact-item-value">{{ t.loc.city }}, {{ t.loc.country }}</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="panel-section">
-                    <p class="panel-label">Social</p>
+                    <p class="panel-label">{{ t.contacts.social }}</p>
 
                     {%- for s in site.socials %}
                     <a class="social-link" href="{{ s.url }}" target="_blank" rel="noopener">
@@ -69,53 +71,51 @@ scripts:
 
             <!-- FORM: js/contacts.js posts JSON to /api/contact (functions/api/contact.js); without JS only the email link shows -->
             <div class="form-block panel-me" id="quote">
-                <h2 class="form-title">Send a message</h2>
-                <p class="form-sub">I usually reply within 24 hours.</p>
+                <h2 class="form-title">{{ t.contacts.formTitle }}</h2>
+                <p class="form-sub">{{ t.contacts.formSub }}</p>
 
-                <p class="notice nojs-note">The form needs JavaScript. Please email me at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+                <p class="notice nojs-note">{{ t.contacts.nojs }} <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
                 <form id="contactForm" novalidate>
                     <div class="field-group">
-                        <label class="field-label" for="name">Your name</label>
+                        <label class="field-label" for="name">{{ t.contacts.name }}</label>
                         <input class="field-input" id="name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="name-msg" />
-                        <span class="field-msg" id="name-msg" hidden>Please enter your name.</span>
+                        <span class="field-msg" id="name-msg" hidden>{{ t.contacts.nameMsg }}</span>
                     </div>
                     <div class="field-group">
-                        <label class="field-label" for="email">Your email</label>
+                        <label class="field-label" for="email">{{ t.contacts.email }}</label>
                         <input class="field-input" id="email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" aria-describedby="email-msg" />
-                        <span class="field-msg" id="email-msg" hidden>Please enter an email address I can reply to.</span>
+                        <span class="field-msg" id="email-msg" hidden>{{ t.contacts.emailMsg }}</span>
                     </div>
                     <div class="field-group">
-                        <label class="field-label" for="topic">What do you need? <span class="field-optional">(optional)</span></label>
+                        <label class="field-label" for="topic">{{ t.contacts.topic }} <span class="field-optional">{{ t.contacts.optional }}</span></label>
                         <select class="field-input" id="topic" name="topic">
-                            <option value="">Choose one</option>
-                            <option value="website">A new website</option>
-                            <option value="redesign">A redesign</option>
-                            <option value="web-app">A web application</option>
-                            <option value="care">Care after launch</option>
-                            <option value="question">Just a question</option>
+                            <option value="">{{ t.contacts.choose }}</option>
+                            {%- for value, label in t.contacts.topics %}
+                            <option value="{{ value }}">{{ label }}</option>
+                            {%- endfor %}
                         </select>
                     </div>
                     <div class="field-group">
-                        <label class="field-label" for="message">Message</label>
-                        <textarea class="field-input" id="message" name="message" rows="6" maxlength="5000" required placeholder="A few lines about your project or question" aria-describedby="message-msg"></textarea>
-                        <span class="field-msg" id="message-msg" hidden>Please write a message.</span>
+                        <label class="field-label" for="message">{{ t.contacts.message }}</label>
+                        <textarea class="field-input" id="message" name="message" rows="6" maxlength="5000" required placeholder="{{ t.contacts.messagePlaceholder }}" aria-describedby="message-msg"></textarea>
+                        <span class="field-msg" id="message-msg" hidden>{{ t.contacts.messageMsg }}</span>
                     </div>
 
                     <!-- Honeypot: hidden from people and screen readers; bots that fill it are ignored -->
                     <div class="hp" aria-hidden="true">
-                        <label for="website">Leave this empty</label>
+                        <label for="website">{{ t.contacts.honeypot }}</label>
                         <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
                     </div>
 
-                    <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="light" data-size="flexible"></div>
+                    <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-language="{{ t.lang.code }}" data-theme="light" data-size="flexible"></div>
 
                     <div class="form-actions">
-                        <button class="btn-me btn-solid" type="submit" id="sendBtn"><span>Send message →</span></button>
-                        <a class="link-arrow" id="mailtoLink" href="mailto:{{ site.email }}">Or email me directly</a>
+                        <button class="btn-me btn-solid" type="submit" id="sendBtn"><span>{{ t.contacts.send }}</span></button>
+                        <a class="link-arrow" id="mailtoLink" href="mailto:{{ site.email }}">{{ t.contacts.orEmail }}</a>
                     </div>
                     <div class="form-result" id="formResult" role="status" aria-live="polite"></div>
                 </form>
-                <p class="form-privacy">Your message is only used to reply to you. <a href="/privacy">Privacy note</a></p>
+                <p class="form-privacy">{{ t.contacts.privacyLine }} <a href="{{ '/privacy' | lp(lang) }}">{{ t.contacts.privacyLink }}</a></p>
             </div>
 
         </div>

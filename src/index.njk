@@ -1,7 +1,10 @@
 ---
-permalink: /index.html
-title: "Galin Yan - Software & Web Developer"
-description: "Websites for businesses that are easy to find, trust and contact. Designed and built by Galin Yanakov in Kazanlak, Bulgaria."
+pagination:
+  data: site.langs
+  size: 1
+  alias: lang
+permalink: "{{ '/' | lp(lang) }}index.html"
+pageKey: index
 pageStyle: index
 ---
 {% extends "layouts/base.njk" %}
@@ -38,19 +41,19 @@ pageStyle: index
     <div class="container">
         <div class="hero-inner" data-reveal>
             <h1>
-                Galin<br>
-                <span class="line-accent">Yan</span>
+                {{ t.home.first }}<br>
+                <span class="line-accent">{{ t.home.last }}</span>
             </h1>
 
             <p class="hero-sub">
-                I design and build websites that make your business easy to find, trust and contact.
+                {{ t.home.heroLead }}
                 <span class="section-divider"></span>
-                Clear to read, fast on every phone, made by hand in Kazanlak, Bulgaria.
+                {{ t.home.heroTail }}
             </p>
 
             <div class="hero-actions">
-                <a href="/contacts#quote" class="btn-me btn-solid" data-runner-target><span>Get a quote →</span></a>
-                <a href="#work" class="link-arrow">See my work</a>
+                <a href="{{ '/contacts' | lp(lang) }}#quote" class="btn-me btn-solid" data-runner-target><span>{{ t.common.ctaArrow }}</span></a>
+                <a href="#work" class="link-arrow">{{ t.home.seeWork }}</a>
             </div>
         </div>
     </div>
@@ -58,7 +61,7 @@ pageStyle: index
     <!-- Location stamp: city-level on purpose (~1 km). Edit site.location in src/_data/site.json
          (label "Base" -> "HQ" plus streetAddress once there is a business address). -->
     {%- set loc = site.location %}
-    <span class="coord-stamp"><a href="{{ loc.mapsUrl }}" target="_blank" rel="noopener" aria-label="{{ loc.label }}: {{ loc.city }}, {{ loc.country }} (opens Google Maps)">{{ loc.label }} · {{ loc.city }}, {{ loc.countryCode }} &nbsp;/&nbsp; {{ loc.lat }}, {{ loc.lng }}</a> &nbsp;/&nbsp; <span data-clock></span></span>
+    <span class="coord-stamp"><a href="{{ loc.mapsUrl }}" target="_blank" rel="noopener" aria-label="{{ t.loc.label }}: {{ t.loc.city }}, {{ t.loc.country }} ({{ t.loc.mapsHint }})">{{ t.loc.label }} · {{ t.loc.city }}, {{ loc.countryCode }} &nbsp;/&nbsp; {{ loc.lat }}, {{ loc.lng }}</a> &nbsp;/&nbsp; <span data-clock></span></span>
 </section>
 
 <!-- SELECTED WORK: projects with "featured" in src/_data/projects.json, in that order -->
@@ -67,13 +70,13 @@ pageStyle: index
     <div class="container">
 
         <div class="section-header" data-reveal>
-            <h2 class="section-title" data-runner-target>Selected Work</h2>
+            <h2 class="section-title" data-runner-target>{{ t.home.work }}</h2>
         </div>
 
         <div class="row g-4">
             {%- for p in projects | selectattr("featured") | sort(false, false, "featured") %}
             <div class="col-md-6 col-lg-4" data-reveal{% if loop.index0 %} data-reveal-delay="{{ loop.index0 * 100 }}"{% endif %}>
-                <a class="card-me project-card" href="/projects/{{ p.slug }}">
+                <a class="card-me project-card" href="{{ ('/projects/' + p.slug) | lp(lang) }}">
                     <div class="card-face">
                         <div class="card-thumb"{% if p.thumbStyle %} style="{{ p.thumbStyle }}"{% endif %}>
                             {% image p.cover, "", "(min-width: 768px) 420px, 100vw", { loading: "lazy", style: p.imgStyle } %}
@@ -83,7 +86,7 @@ pageStyle: index
                             <p class="card-text">{{ p.summary }}</p>
                             <div class="card-foot work-foot">
                                 <span class="tag">{{ home.kinds[p.kind] }}</span>
-                                <span class="link-arrow">View project</span>
+                                <span class="link-arrow">{{ t.home.viewProject }}</span>
                             </div>
                         </div>
                     </div>
@@ -92,7 +95,7 @@ pageStyle: index
             {%- endfor %}
         </div>
 
-        <p class="work-all" data-reveal><a href="/projects" class="link-arrow link-arrow-lg">All projects</a></p>
+        <p class="work-all" data-reveal><a href="{{ '/projects' | lp(lang) }}" class="link-arrow link-arrow-lg">{{ t.common.allProjects }}</a></p>
     </div>
 </section>
 
@@ -102,7 +105,7 @@ pageStyle: index
     <div class="container">
 
         <div class="section-header" data-reveal>
-            <h2 class="section-title" data-runner-target>What I Do</h2>
+            <h2 class="section-title" data-runner-target>{{ t.home.services }}</h2>
         </div>
 
         <div class="row g-4">
@@ -124,7 +127,7 @@ pageStyle: index
     <div class="container">
 
         <div class="section-header" data-reveal>
-            <h2 class="section-title" data-runner-target>How It Works</h2>
+            <h2 class="section-title" data-runner-target>{{ t.home.process }}</h2>
         </div>
 
         <ol class="process">
@@ -144,14 +147,11 @@ pageStyle: index
     <div class="container">
 
         <div class="section-header" data-reveal>
-            <h2 class="section-title" data-runner-target>About Me</h2>
+            <h2 class="section-title" data-runner-target>{{ t.home.about }}</h2>
         </div>
 
         <p class="about-text" data-reveal>
-            I'm Galin, a software and web developer focused on
-            <strong>bringing your ideas to life.</strong>
-            I combine technical precision with thoughtful design
-            to create intuitive, modern experiences that work.
+            {{ t.home.aboutHtml | safe }}
         </p>
 
         <div class="tags mt-4" data-reveal data-reveal-delay="100">
@@ -164,7 +164,7 @@ pageStyle: index
             <span class="tag"><img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/mysql/mysql-original.svg" />MySQL /<img width="15" height="15" alt="" src="https://cdn.jsdelivr.net/gh/devicons/devicon@2.18.0/icons/sqlite/sqlite-original.svg" />SQLite</span>
         </div>
 
-        <p class="mt-4" data-reveal data-reveal-delay="200"><a href="/about" class="link-arrow">More about me</a></p>
+        <p class="mt-4" data-reveal data-reveal-delay="200"><a href="{{ '/about' | lp(lang) }}" class="link-arrow">{{ t.home.moreAbout }}</a></p>
     </div>
 </section>
 
@@ -175,14 +175,14 @@ pageStyle: index
         <div class="contact-strip panel-me" data-reveal>
 
             <div class="strip-pitch">
-                <h2 class="section-title" data-runner-target>Have a project in mind?</h2>
-                <p class="strip-text">Tell me what you need. I'll come back with questions or a quote.</p>
-                <a href="/contacts#quote" class="btn-me btn-solid"><span>Get a quote →</span></a>
+                <h2 class="section-title" data-runner-target>{{ t.home.stripTitle }}</h2>
+                <p class="strip-text">{{ t.home.stripText }}</p>
+                <a href="{{ '/contacts' | lp(lang) }}#quote" class="btn-me btn-solid"><span>{{ t.common.ctaArrow }}</span></a>
             </div>
 
             <div class="strip-links">
                 <a href="mailto:{{ site.email }}" class="contact-item">
-                    <span class="contact-platform">{% icon "envelope" %} Email</span>
+                    <span class="contact-platform">{% icon "envelope" %} {{ t.common.email }}</span>
                     <span class="contact-value">{{ site.email }}</span>
                     <span class="contact-arrow" aria-hidden="true">→</span>
                 </a>

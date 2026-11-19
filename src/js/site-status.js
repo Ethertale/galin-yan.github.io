@@ -12,7 +12,7 @@
         // Positive-only: a failed check (timeout, cold start, moved favicon) is
         // not proof a client site is down, so it never shows "Offline".
         if (!online) return;
-        el.textContent = "Live";
+        el.textContent = T.live;
         el.className = "badge-me badge-live";
     }
 

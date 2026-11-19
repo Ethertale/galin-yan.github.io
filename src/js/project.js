@@ -9,7 +9,7 @@
         var range = fig.querySelector('.ba-range');
         var set = function () {
             fig.style.setProperty('--pos', range.value + '%');
-            range.setAttribute('aria-valuetext', range.value + '% before, ' + (100 - range.value) + '% after');
+            range.setAttribute('aria-valuetext', T.fmt(T.baValue, { before: range.value, after: 100 - range.value }));
         };
         range.addEventListener('input', set);
         set();

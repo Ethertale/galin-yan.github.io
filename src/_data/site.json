@@ -36,10 +36,14 @@
     }
   ],
 
+  "_langs": "Published languages: every page that paginates over this list is built once per language (English at /, the others under /<code>/). Add \"bg\" when src/_l10n/bg.json is complete: the build fails if a key is missing.",
+  "langs": ["en", "bg"],
+
+  "_nav": "Labels are in src/_l10n/<lang>.json under common.nav.<key>",
   "nav": [
-    { "label": "Home",     "url": "/" },
-    { "label": "Projects", "url": "/projects" },
-    { "label": "About Me", "url": "/about" },
-    { "label": "Contacts", "url": "/contacts" }
+    { "key": "home",     "url": "/" },
+    { "key": "projects", "url": "/projects" },
+    { "key": "about",    "url": "/about" },
+    { "key": "contacts", "url": "/contacts" }
   ]
 }

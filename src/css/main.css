@@ -173,6 +173,23 @@ html { scroll-padding-top: 90px; }
 .nav-cta span { padding: 6px 16px; }
 @media (max-width: 991.98px) { .nav-cta { margin: 10px 0 14px; } }
 
+/* ── LANGUAGE SWITCH ── "EN / БГ" next to the CTA: the current language in ink, the other one a link */
+.lang-switch {
+    margin: 0 0 0 2.5rem;
+    font-family: var(--font-label);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.lang-switch [aria-current] { color: var(--ink); }
+.lang-switch a { color: var(--muted); text-decoration: none; padding: 6px 2px; }
+.lang-switch a:hover, .lang-switch a:focus-visible { color: var(--red-text); }
+.lang-sep { color: var(--line); }
+@media (max-width: 991.98px) { .lang-switch { margin: 10px 0 0; } }
+
 /* ── SKIP LINK ── first Tab stop on every page; jumps past the navbar to <main> */
 .skip-link {
     position: fixed;

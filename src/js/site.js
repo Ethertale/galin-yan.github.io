@@ -5,6 +5,12 @@
     // Tells the CSS that scripts run, so [data-reveal] content may start hidden. Without JS it never hides.
     document.documentElement.classList.add('js');
 
+    // Text for scripts in the page's language (layouts/base.njk -> src/_l10n/<lang>.json "js").
+    // T.fmt('{n} shown', { n: 3 }) fills placeholders.
+    var tjs = document.getElementById('t-js');
+    window.T = tjs ? JSON.parse(tjs.textContent) : {};
+    window.T.fmt = function (s, v) { return s.replace(/\{(\w+)\}/g, function (m, k) { return k in v ? v[k] : m; }); };
+
     var year = document.getElementById('year');
     if (year) year.textContent = new Date().getFullYear();
 

@@ -2,17 +2,18 @@
 # One page per project in src/_data/projects.json -> /projects/<slug> (written as /projects/<slug>.html,
 # see the cleanUrl note in eleventy.config.js). Every section is optional: it shows only when the
 # project has that field (brief, goal, work, results, metric, before, gallery). Title, description,
-# libs and scripts are computed in project-pages.11tydata.js.
+# libs and scripts are computed in project-pages.11tydata.js. One page per project per language in site.langs.
 pagination:
-  data: projects
+  data: l10n.projectPages
   size: 1
-  alias: p
-permalink: "/projects/{{ p.slug }}.html"
+  alias: pp
+permalink: "{{ ('/projects/' + pp.p.slug) | lp(pp.lang) }}.html"
 pageStyle: project
 ---
 {% extends "layouts/base.njk" %}
 
 {% block content %}
+{%- set p = pp.p %}
 <!-- PAGE HEADER -->
 <div class="page-header page-frame">
     <div class="runner" data-runner aria-hidden="true"></div>
@@ -29,13 +30,13 @@ pageStyle: project
 
         <div class="project-actions">
             {%- if p.links.live %}
-            <a class="btn-me" href="{{ p.links.live }}" target="_blank" rel="noopener"><span>Visit the site →</span></a>
+            <a class="btn-me" href="{{ p.links.live }}" target="_blank" rel="noopener"><span>{{ t.project.visit }}</span></a>
             {%- endif %}
             {%- if p.links.demo %}
-            <a class="btn-me" href="{{ p.links.demo }}"><span>Try the demo →</span></a>
+            <a class="btn-me" href="{{ p.links.demo }}"><span>{{ t.project.tryDemo }}</span></a>
             {%- endif %}
             {%- if p.links.code %}
-            <a class="btn-me btn-ink" href="{{ p.links.code }}" target="_blank" rel="noopener"><span>Code on GitHub</span></a>
+            <a class="btn-me btn-ink" href="{{ p.links.code }}" target="_blank" rel="noopener"><span>{{ t.project.codeGithub }}</span></a>
             {%- endif %}
         </div>
     </div>
@@ -56,12 +57,12 @@ pageStyle: project
                         </div>
                         <!-- the input comes before the handle so CSS can style the grip on focus (.ba-range:focus-visible ~ .ba-handle) -->
                         <input class="ba-range" type="range" min="0" max="100" value="50"
-                               aria-label="Compare before and after: left shows the old site, right the new one">
-                        <span class="ba-label ba-label-before" aria-hidden="true">Before</span>
-                        <span class="ba-label ba-label-after" aria-hidden="true">After</span>
+                               aria-label="{{ t.project.baAria }}">
+                        <span class="ba-label ba-label-before" aria-hidden="true">{{ t.project.before }}</span>
+                        <span class="ba-label ba-label-after" aria-hidden="true">{{ t.project.after }}</span>
                         <span class="ba-handle" aria-hidden="true"></span>
                     </div>
-                    <figcaption class="ba-caption">Before: {{ p.before.label }} (from the {{ p.before.source }}). After: today. Drag to compare.</figcaption>
+                    <figcaption class="ba-caption">{{ t.project.baCaption | fmt({ label: p.before.label, source: p.before.source }) }}</figcaption>
                 </figure>
                 {%- elif p.shot %}
                 <div class="plinth" data-reveal>{% image p.shot, p.shotAlt, "(min-width: 992px) 860px, 100vw", {}, [800, 1440] %}</div>
@@ -71,27 +72,27 @@ pageStyle: project
 
                 {%- if p.brief %}
                 <section class="project-section" data-reveal>
-                    <h2 class="project-h">The brief</h2>
+                    <h2 class="project-h">{{ t.project.brief }}</h2>
                     <p>{{ p.brief }}</p>
-                    {%- if p.goal %}<p><strong>What they asked for:</strong> {{ p.goal }}</p>{% endif %}
+                    {%- if p.goal %}<p><strong>{{ t.project.asked }}</strong> {{ p.goal }}</p>{% endif %}
                 </section>
                 {%- else %}
                 <section class="project-section" data-reveal>
-                    <h2 class="project-h">About the project</h2>
+                    <h2 class="project-h">{{ t.project.aboutProject }}</h2>
                     <p>{{ p.description }}</p>
                 </section>
                 {%- endif %}
 
                 {%- if p.work %}
                 <section class="project-section" data-reveal>
-                    <h2 class="project-h">What I did</h2>
+                    <h2 class="project-h">{{ t.project.did }}</h2>
                     <p>{{ p.work }}</p>
                 </section>
                 {%- endif %}
 
                 {%- if p.results %}
                 <section class="project-section" data-reveal>
-                    <h2 class="project-h">The result</h2>
+                    <h2 class="project-h">{{ t.project.result }}</h2>
                     {%- if p.metric %}
                     <p class="metric"><span class="metric-value">{{ p.metric.value }}</span> <span class="metric-label">{{ p.metric.label }}</span></p>
                     {%- endif %}
@@ -106,7 +107,7 @@ pageStyle: project
 
                 {%- if p.gallery %}
                 <section class="project-section" data-reveal>
-                    <h2 class="project-h">Screens</h2>
+                    <h2 class="project-h">{{ t.project.screens }}</h2>
                     <ul class="gallery">
                         {%- for g in p.gallery %}
                         <li>
@@ -123,31 +124,30 @@ pageStyle: project
             <!-- FACTS -->
             <aside class="col-lg-4">
                 <div class="panel-me project-facts" data-reveal>
-                    <h2 class="facts-label">Type</h2>
+                    <h2 class="facts-label">{{ t.project.type }}</h2>
                     <p>{{ p.role or home.kinds[p.kind] }}</p>
 
-                    <h2 class="facts-label">Stack</h2>
+                    <h2 class="facts-label">{{ t.project.stack }}</h2>
                     <ul class="tags">
                         {%- for key in p.stack %}
                         <li class="tag"><img width="15" height="15" alt="" src="{{ techs[key].icon }}" />{{ techs[key].label }}</li>
                         {%- endfor %}
                     </ul>
 
-                    <h2 class="facts-label">Links</h2>
+                    <h2 class="facts-label">{{ t.project.links }}</h2>
                     <ul class="facts-links">
                         {%- if p.links.live %}<li><a class="link-arrow" href="{{ p.links.live }}" target="_blank" rel="noopener">{{ p.links.live | host }}</a></li>{% endif %}
-                        {%- if p.links.demo %}<li><a class="link-arrow" href="{{ p.links.demo }}">Demo</a></li>{% endif %}
-                        {%- if p.links.code %}<li><a class="link-arrow" href="{{ p.links.code }}" target="_blank" rel="noopener">Code</a></li>{% endif %}
+                        {%- if p.links.demo %}<li><a class="link-arrow" href="{{ p.links.demo }}">{{ t.project.demo }}</a></li>{% endif %}
+                        {%- if p.links.code %}<li><a class="link-arrow" href="{{ p.links.code }}" target="_blank" rel="noopener">{{ t.project.code }}</a></li>{% endif %}
                     </ul>
                 </div>
             </aside>
         </div>
 
         <!-- NEXT -->
-        <nav class="project-next" aria-label="More projects" data-reveal>
-            <a class="link-arrow link-back" href="/projects">All projects</a>
-            {%- set next = projects[(pagination.pageNumber + 1) % projects.length] %}
-            <a class="link-arrow link-arrow-lg" href="/projects/{{ next.slug }}">Next: {{ next.title }}</a>
+        <nav class="project-next" aria-label="{{ t.project.more }}" data-reveal>
+            <a class="link-arrow link-back" href="{{ '/projects' | lp(lang) }}">{{ t.common.allProjects }}</a>
+            <a class="link-arrow link-arrow-lg" href="{{ ('/projects/' + pp.next.slug) | lp(lang) }}">{{ t.project.next | fmt({ title: pp.next.title }) }}</a>
         </nav>
     </div>
 </div>

@@ -12,10 +12,10 @@
         var t = emailText.textContent;
         navigator.clipboard?.writeText(t).then(function () {
             var old = copyBtn.textContent;
-            copyBtn.textContent = 'Copied!';
-            copyStatus.textContent = 'Email address copied';
+            copyBtn.textContent = T.copied;
+            copyStatus.textContent = T.copiedStatus;
             setTimeout(function () { copyBtn.textContent = old; copyStatus.textContent = ''; }, 1500);
-        }).catch(function () { alert('Copy failed — please copy manually.'); });
+        }).catch(function () { alert(T.copyFailed); });
     });
 
     // ── the form ──
@@ -46,7 +46,7 @@
     // The "email me directly" link carries whatever they've typed, so nothing is lost if they switch.
     function mailtoHref() {
         var topicText = topic.value ? topic.options[topic.selectedIndex].text : '';
-        var subj = 'Website message' + (topicText ? ' (' + topicText + ')' : '');
+        var subj = T.mailSubject + (topicText ? ' (' + topicText + ')' : '');
         return 'mailto:' + email + '?subject=' + encodeURIComponent(subj) +
             '&body=' + encodeURIComponent(document.getElementById('message').value);
     }
@@ -58,14 +58,10 @@
     function busy(on) {
         if (on) btn.setAttribute('aria-busy', 'true'); else btn.removeAttribute('aria-busy');
         btn.disabled = on;
-        btn.firstElementChild.textContent = on ? 'Sending…' : 'Send message →';
+        btn.firstElementChild.textContent = on ? T.sending : T.send;
     }
     function resetTurnstile() { if (window.turnstile) window.turnstile.reset(); }
 
-    var MESSAGES = {
-        verification: 'The spam check didn’t go through. Please wait a moment and send again.',
-        invalid: 'Some fields need another look.',
-    };
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -76,7 +72,7 @@
 
         var token = (form.querySelector('[name="cf-turnstile-response"]') || {}).value;
         if (!token) {
-            show('error', 'The spam check is still loading. Please wait a moment and send again.');
+            show('error', T.tokenWait);
             return;
         }
 
@@ -86,7 +82,7 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 name: fields[0].value, email: fields[1].value, message: fields[2].value,
-                topic: topic.value, website: document.getElementById('website').value, turnstile: token,
+                topic: topic.value, lang: document.documentElement.lang, website: document.getElementById('website').value, turnstile: token,
             }),
         })
             .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'server' }; }); })
@@ -94,15 +90,15 @@
                 if (out.ok) {
                     form.reset();
                     mailto.href = 'mailto:' + email;
-                    show('ok', '<strong>Thanks, your message is on its way.</strong> I’ll reply to the email you gave.');
+                    show('ok', T.ok);
                     return;
                 }
                 (out.fields || []).forEach(function (id) { var el = document.getElementById(id); if (el && el.id !== 'topic') mark(el, true); });
                 throw out.error;
             })
             .catch(function (code) {
-                show('error', '<strong>' + (MESSAGES[code] || 'Your message couldn’t be sent.') + '</strong> ' +
-                    'You can also <a href="' + mailtoHref().replace(/&/g, '&amp;') + '">send it by email</a> instead.');
+                var msg = (code === 'verification' || code === 'invalid') ? T[code] : T.failed;
+                show('error', '<strong>' + msg + '</strong> ' + T.fmt(T.fallback, { href: mailtoHref().replace(/&/g, '&amp;') }));
             })
             .then(function () { busy(false); resetTurnstile(); });
     });

@@ -1,7 +1,10 @@
 ---
-permalink: /404.html
-title: "404 - Page Not Found | Galin Yan"
-description: "This page doesn't exist on galin-yan.com."
+pagination:
+  data: site.langs
+  size: 1
+  alias: lang
+permalink: "{{ '/' | lp(lang) }}404.html"
+pageKey: "404"
 noindex: true
 eleventyExcludeFromCollections: true
 pageStyle: 404
@@ -14,18 +17,17 @@ pageStyle: 404
 
     <div class="container stage-inner">
         <h1 class="err-code" data-runner-target>4<span>0</span>4</h1>
-        <p class="err-title">Wrong turn.</p>
+        <p class="err-title">{{ t.notFound.title }}</p>
         <p class="err-sub">
-            The page you're looking for doesn't exist, or it moved during the redesign.
-            The route back starts below.
+            {{ t.notFound.sub }}
         </p>
 
         <div class="actions">
-            <a href="/" class="btn-me"><span>Back to home →</span></a>
-            <a href="/projects" class="text-link">View projects</a>
+            <a href="{{ '/' | lp(lang) }}" class="btn-me"><span>{{ t.notFound.back }}</span></a>
+            <a href="{{ '/projects' | lp(lang) }}" class="text-link">{{ t.notFound.projects }}</a>
         </div>
     </div>
 
-    <span class="hud" aria-hidden="true">ERR_404 · Path terminated</span>
+    <span class="hud" aria-hidden="true">{{ t.notFound.hud }}</span>
 </div>
 {% endblock %}

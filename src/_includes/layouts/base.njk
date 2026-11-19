@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% if pageKey %}{% set m = t.meta[pageKey] %}{% set title = m.title %}{% set description = m.description %}{% set ogDescription = m.ogDescription %}{% endif -%}
+<html lang="{{ t.lang.code }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +34,7 @@
 
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">{{ t.common.skip }}</a>
 
 {% include "partials/nav.njk" %}
 
@@ -43,6 +44,8 @@
 
 {% include "partials/footer.njk" %}
 
+<!-- Strings the scripts show (js/site.js reads them into window.T) -->
+<script type="application/json" id="t-js">{{ t.js | dump | safe }}</script>
 <script src="{{ vendor.bootstrap.js }}"></script>
 <script src="{{ '/js/site.js' | bust }}"></script>
 <script src="{{ '/js/runner.js' | bust }}"></script>
