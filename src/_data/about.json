@@ -7,6 +7,14 @@
 
   "timeline": [
     {
+      "kind": "Work",
+      "start": "Aug 2026", "end": "Present",
+      "title": "Office Manager",
+      "org": "Nastech Plus",
+      "place": "Bulgaria",
+      "text": "Manage teams of technicians and keep the local optical fibre network in good health."
+    },
+    {
       "kind": "Education",
       "start": "Oct 2022", "end": "Aug 2025",
       "title": "Back-End Software Engineer with Java",

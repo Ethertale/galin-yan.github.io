@@ -65,7 +65,7 @@ eleventyExcludeFromCollections: true
             <p class="cv-when">{{ e.start }} – {{ e.end }}</p>
             <div>
                 <h3 class="cv-title">{{ e.title }} <span class="cv-org">· {{ e.org }}, {{ e.place }}</span></h3>
-                <p>{{ e.text }}</p>
+                {%- if e.text %}<p>{{ e.text }}</p>{% endif %}
             </div>
         </div>
         {%- endif %}{% endfor %}
@@ -78,7 +78,7 @@ eleventyExcludeFromCollections: true
             <p class="cv-when">{{ e.start }} – {{ e.end }}</p>
             <div>
                 <h3 class="cv-title">{{ e.title }} <span class="cv-org">· {{ e.org }}</span></h3>
-                <p>{{ e.text }}</p>
+                {%- if e.text %}<p>{{ e.text }}</p>{% endif %}
             </div>
         </div>
         {%- endif %}{% endfor %}

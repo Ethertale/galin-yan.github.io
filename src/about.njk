@@ -57,7 +57,7 @@ scripts:
                             {%- if e.logo %}{% image e.logo, "", "36px", { class: "edu-logo" }, [72] %}{% endif -%}
                             {{ e.org }} · {{ e.place }}
                         </p>
-                        <p class="entry-desc">{{ e.text }}</p>
+                        {%- if e.text %}<p class="entry-desc">{{ e.text }}</p>{% endif %}
                         <span class="tag">{{ e.kind }}</span>
                     </div>
                 </li>
