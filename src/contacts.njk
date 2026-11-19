@@ -9,6 +9,10 @@ scripts:
 ---
 {% extends "layouts/base.njk" %}
 
+{% block head %}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+{% endblock %}
+
 {% block content %}
 <!-- PAGE HEADER -->
 <div class="page-header page-frame">
@@ -63,38 +67,55 @@ scripts:
 
             </aside>
 
-            <!-- FORM -->
+            <!-- FORM: js/contacts.js posts JSON to /api/contact (functions/api/contact.js); without JS only the email link shows -->
             <div class="form-block panel-me" id="quote">
-                <p class="notice">
-                    <strong>Note:</strong> The form will open your local mail client and prepare an email.
-                    You can also directly open your mail client through the button below.
-                </p>
+                <h2 class="form-title">Send a message</h2>
+                <p class="form-sub">I usually reply within 24 hours.</p>
 
-                <form id="contactForm">
+                <p class="notice nojs-note">The form needs JavaScript. Please email me at <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+                <form id="contactForm" novalidate>
                     <div class="field-group">
                         <label class="field-label" for="name">Your name</label>
-                        <input class="field-input" id="name" type="text" placeholder="Your full name" required />
+                        <input class="field-input" id="name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="name-msg" />
+                        <span class="field-msg" id="name-msg" hidden>Please enter your name.</span>
                     </div>
                     <div class="field-group">
                         <label class="field-label" for="email">Your email</label>
-                        <input class="field-input" id="email" type="email" placeholder="you@example.com" required />
+                        <input class="field-input" id="email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com" aria-describedby="email-msg" />
+                        <span class="field-msg" id="email-msg" hidden>Please enter an email address I can reply to.</span>
                     </div>
                     <div class="field-group">
-                        <label class="field-label" for="subject">Subject</label>
-                        <input class="field-input" id="subject" type="text" placeholder="What is this about?" required />
+                        <label class="field-label" for="topic">What do you need? <span class="field-optional">(optional)</span></label>
+                        <select class="field-input" id="topic" name="topic">
+                            <option value="">Choose one</option>
+                            <option value="website">A new website</option>
+                            <option value="redesign">A redesign</option>
+                            <option value="web-app">A web application</option>
+                            <option value="care">Care after launch</option>
+                            <option value="question">Just a question</option>
+                        </select>
                     </div>
                     <div class="field-group">
                         <label class="field-label" for="message">Message</label>
-                        <textarea class="field-input" id="message" rows="6" placeholder="Write your message here" required></textarea>
+                        <textarea class="field-input" id="message" name="message" rows="6" maxlength="5000" required placeholder="A few lines about your project or question" aria-describedby="message-msg"></textarea>
+                        <span class="field-msg" id="message-msg" hidden>Please write a message.</span>
                     </div>
 
-                    <div class="form-actions">
-                        <button class="btn-me btn-sm" type="button" id="openMailClient">
-                            <span>Open Mail Client →</span>
-                        </button>
-                        <span class="form-status" id="status" role="status"></span>
+                    <!-- Honeypot: hidden from people and screen readers; bots that fill it are ignored -->
+                    <div class="hp" aria-hidden="true">
+                        <label for="website">Leave this empty</label>
+                        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
                     </div>
+
+                    <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="light" data-size="flexible"></div>
+
+                    <div class="form-actions">
+                        <button class="btn-me btn-solid" type="submit" id="sendBtn"><span>Send message →</span></button>
+                        <a class="link-arrow" id="mailtoLink" href="mailto:{{ site.email }}">Or email me directly</a>
+                    </div>
+                    <div class="form-result" id="formResult" role="status" aria-live="polite"></div>
                 </form>
+                <p class="form-privacy">Your message is only used to reply to you. <a href="/privacy">Privacy note</a></p>
             </div>
 
         </div>

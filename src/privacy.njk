@@ -1,0 +1,43 @@
+---
+permalink: /privacy.html
+title: "Privacy Note | Galin Yan"
+description: "What the contact form on galin-yan.com collects, why, and who handles it."
+pageStyle: privacy
+---
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="page-header page-frame">
+    <div class="runner" data-runner aria-hidden="true"></div>
+    <div class="container page-header-inner">
+        <h1 class="page-title" data-runner-target>Privacy note</h1>
+        <p class="page-sub">Short, because this site collects very little.</p>
+    </div>
+</div>
+
+<div class="content-wrap">
+    <div class="container">
+        <article class="prose panel-me">
+            <h2>Who is responsible</h2>
+            <p>{{ site.author }}, {{ site.location.city }}, {{ site.location.country }}. Questions or requests: <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+            <h2>The contact form</h2>
+            <p>When you send the form, I receive your name, your email address, the optional topic you picked and your message. I use them only to reply to you and, if we work together, to talk about the project. I don’t add you to any mailing list, and I never sell or share your details.</p>
+            <p>The message travels to my inbox through these services, which handle it on my behalf:</p>
+            <ul>
+                <li><strong>Cloudflare</strong> hosts this site, and its <strong>Turnstile</strong> check stops spam bots. Turnstile looks at technical signals from your browser, not at what you write.</li>
+                <li><strong>Resend</strong> delivers the message as an email to me.</li>
+            </ul>
+            <p>I keep messages as long as our conversation or work needs them. Ask me and I’ll delete yours.</p>
+
+            <h2>Visit statistics</h2>
+            <p>The site counts page visits with its own small, cookie-free counter. It sets no cookies and builds no profile of you, so there is no cookie banner.</p>
+
+            <h2>Your rights</h2>
+            <p>You can ask to see, correct or delete the data I hold about you by emailing <a href="mailto:{{ site.email }}">{{ site.email }}</a>. You can also complain to the Bulgarian Commission for Personal Data Protection (<span lang="bg">Комисия за защита на личните данни</span>).</p>
+
+            <p class="prose-date">Last updated: November 2026</p>
+        </article>
+    </div>
+</div>
+{% endblock %}
