@@ -130,6 +130,10 @@ html { scroll-padding-top: 90px; }
     padding: 0;
 }
 .navbar .container { padding-top: 14px; padding-bottom: 14px; }
+/* The open phone menu covers the hero's giant name: near-solid, so the links read cleanly even where the blur isn't drawn */
+@media (max-width: 991.98px) {
+    .navbar:has(.navbar-collapse.show, .navbar-collapse.collapsing) { background: rgba(250, 250, 250, 0.98); }
+}
 
 .navbar-brand {
     font-family: var(--font-head);
