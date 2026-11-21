@@ -29,5 +29,5 @@
     chips.forEach(function (c) {
         c.addEventListener('click', function () { apply(c.dataset.filter); });
     });
-    bar.hidden = false;   // the chips only appear when they work
+    bar.classList.add('is-ready');   // the chips only appear when they work (their space is already reserved)
 })();

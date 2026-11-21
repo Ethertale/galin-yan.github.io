@@ -27,8 +27,9 @@ scripts:
 <!-- PROJECTS GRID -->
 <div class="projects-wrap">
     <div class="container">
-        <!-- Filters: buttons with aria-pressed (js/projects.js). Without JS they stay hidden and every card shows. -->
-        <div class="filter-bar" role="group" aria-label="{{ t.projects.filterLabel }}" hidden>
+        <!-- Filters: buttons with aria-pressed (js/projects.js). Their row is reserved from the first paint (no layout shift);
+             they turn visible, and reachable, once the script adds .is-ready. Without JS every card shows. -->
+        <div class="filter-bar" role="group" aria-label="{{ t.projects.filterLabel }}">
             <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">{{ t.projects.all }}</button>
             {%- for key, label in home.kinds %}
             <button class="filter-chip" type="button" data-filter="{{ key }}" aria-pressed="false">{{ label }}</button>

@@ -80,7 +80,7 @@ body { min-height: 100vh; }
     gap: var(--s-2);
     margin-bottom: var(--s-4);
 }
-.filter-bar[hidden] { display: none; }
+.filter-bar:not(.is-ready) { visibility: hidden; }   /* keeps its space, hides it from clicks, Tab and screen readers */
 .filter-chip {
     font-family: var(--font-label);
     font-weight: 600;

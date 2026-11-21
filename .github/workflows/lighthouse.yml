@@ -1,0 +1,40 @@
+# Lighthouse CI (roadmap 1.7.1.1): builds the site and checks six pages, three runs each (median).
+# Fails when Performance < 95, Accessibility < 100 or SEO < 100. Best practices only warns
+# (Turnstile reports an error on localhost, which isn't one of its allowed domains).
+# Reports: the "lighthouse" artifact of the run, and public report links in the "Run Lighthouse CI" log.
+name: Lighthouse
+
+on:
+  push:
+    branches: [update, main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Run Lighthouse CI
+        run: npx --yes @lhci/cli@0.16.1 autorun
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse
+          path: .lighthouseci/
+          retention-days: 14
