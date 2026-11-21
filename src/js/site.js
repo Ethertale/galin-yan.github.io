@@ -28,6 +28,31 @@
         setInterval(tick, 15000);
     }
 
+    // Language suggestion (partials/nav.njk). Uses the browser's language list, not the visitor's location:
+    // a Bulgarian abroad still gets Bulgarian, a tourist in Bulgaria still gets English. Never redirects.
+    // Any pick (the EN / БГ switch, the note's link or "No, thanks") is remembered and ends the suggestions.
+    var KEY = 'lang-choice';
+    var store = function (v) {
+        try { if (v === undefined) return localStorage.getItem(KEY); localStorage.setItem(KEY, v); } catch (e) { return null; }
+    };
+    document.addEventListener('click', function (e) {
+        var pick = e.target.closest && e.target.closest('[data-lang-pick]');
+        if (!pick) return;
+        store(pick.getAttribute('data-lang-pick'));
+        var note = pick.closest('.lang-suggest');
+        if (note && pick.tagName === 'BUTTON') note.hidden = true;
+    });
+    if (!store()) {
+        var here = document.documentElement.lang;
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+            var want = String(langs[i]).toLowerCase().split('-')[0];
+            if (want === here) break;                               // the page already matches an earlier preference
+            var offer = /^[a-z]{2,3}$/.test(want) && document.querySelector('[data-lang-suggest="' + want + '"]');
+            if (offer) { offer.hidden = false; break; }
+        }
+    }
+
     // Scroll reveal (replaces the AOS library): [data-reveal] gets .is-in once it enters the viewport.
     // Optional delay: data-reveal-delay="100|200" (CSS). Reduced motion is handled in main.css.
     var items = document.querySelectorAll('[data-reveal]');

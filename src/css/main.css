@@ -190,6 +190,31 @@ html { scroll-padding-top: 90px; }
 .lang-sep { color: var(--line); }
 @media (max-width: 991.98px) { .lang-switch { margin: 10px 0 0; } }
 
+/* Language suggestion (partials/nav.njk, js/site.js): a small note at the bottom, never covering the menu */
+.lang-suggest {
+    position: fixed;
+    right: 16px; bottom: 16px; left: 16px;
+    z-index: 1020;                       /* under the fixed navbar (1030) and the skip link */
+    max-width: 420px;
+    margin-left: auto;
+    padding: 14px 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--red);
+    box-shadow: 0 10px 30px rgba(20, 20, 20, 0.12);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+}
+.lang-suggest[hidden] { display: none; }
+.lang-suggest p { margin: 0; flex: 1 0 100%; color: var(--ink); }
+.lang-suggest-no {
+    background: none; border: 0; padding: 6px 2px;
+    color: var(--muted); font: inherit; text-decoration: underline; text-underline-offset: 3px;
+}
+.lang-suggest-no:hover, .lang-suggest-no:focus-visible { color: var(--red-text); }
+
 /* ── SKIP LINK ── first Tab stop on every page; jumps past the navbar to <main> */
 .skip-link {
     position: fixed;

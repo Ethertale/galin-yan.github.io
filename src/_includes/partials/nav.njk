@@ -19,7 +19,7 @@
             <p class="lang-switch">
                 {%- for l in site.langs %}
                 {%- if l == lang %}<span aria-current="true">{{ l10n[l].t.lang.short }}</span>
-                {%- else %}<a href="{{ ('/' if pageKey == '404' else page.url | cleanUrl) | altUrl(l) }}" hreflang="{{ l }}" lang="{{ l }}" aria-label="{{ l10n[l].t.lang.short }} – {{ l10n[l].t.lang.switchLabel }}">{{ l10n[l].t.lang.short }}</a>{% endif %}
+                {%- else %}<a href="{{ ('/' if pageKey == '404' else page.url | cleanUrl) | altUrl(l) }}" hreflang="{{ l }}" lang="{{ l }}" data-lang-pick="{{ l }}" aria-label="{{ l10n[l].t.lang.short }} – {{ l10n[l].t.lang.switchLabel }}">{{ l10n[l].t.lang.short }}</a>{% endif %}
                 {%- if not loop.last %}<span class="lang-sep" aria-hidden="true">/</span>{% endif %}
                 {%- endfor %}
             </p>
@@ -28,3 +28,14 @@
         </div>
     </div>
 </nav>
+{#- Language suggestion: one hidden note per other language, written in that language. js/site.js shows
+    the one matching the browser's preferred language, until the visitor picks a language or says no. #}
+{%- if site.langs.length > 1 and pagination %}
+{%- for l in site.langs %}{% if l != lang %}{% set lt = l10n[l].t.lang %}
+<aside class="lang-suggest" lang="{{ l }}" data-lang-suggest="{{ l }}" aria-label="{{ lt.name }}" hidden>
+    <p>{{ lt.suggest }}</p>
+    <a class="btn-me btn-sm" href="{{ ('/' if pageKey == '404' else page.url | cleanUrl) | altUrl(l) }}" hreflang="{{ l }}" data-lang-pick="{{ l }}"><span>{{ lt.suggestGo }}</span></a>
+    <button type="button" class="lang-suggest-no" data-lang-pick="{{ lang }}">{{ lt.suggestNo }}</button>
+</aside>
+{%- endif %}{% endfor %}
+{%- endif %}

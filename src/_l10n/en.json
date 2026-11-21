@@ -1,7 +1,8 @@
 {
   "_note": "Interface text for English pages. bg.json must have every key (the build checks it). {name} placeholders are filled by the fmt filter. Longer copy lives in src/_data/*.json (EN) and src/_l10n/bg/*.json (BG overrides).",
 
-  "lang": { "code": "en", "locale": "en_US", "name": "English", "short": "EN", "switchLabel": "Read this page in English" },
+  "lang": { "code": "en", "locale": "en_US", "name": "English", "short": "EN", "switchLabel": "Read this page in English",
+            "suggest": "This site is also in English.", "suggestGo": "Read it in English", "suggestNo": "No, thanks" },
 
   "meta": {
     "index":    { "title": "Galin Yan - Software & Web Developer", "description": "Websites for businesses that are easy to find, trust and contact. Designed and built by Galin Yanakov in Kazanlak, Bulgaria." },
