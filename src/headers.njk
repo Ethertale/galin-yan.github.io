@@ -16,12 +16,12 @@ eleventyExcludeFromCollections: true
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
   ! Access-Control-Allow-Origin
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' https://pulse.galin-yan.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://cdn.jsdelivr.net {{ liveOrigins | join(' ') }}; connect-src 'self' https://pulse.galin-yan.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://pulse.galin-yan.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://cdn.jsdelivr.net {{ liveOrigins | join(' ') }}; connect-src 'self' https://pulse.galin-yan.com; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # Legacy R&D demo (hand-written, many CDNs, inline code): its own looser policy.
 /projects/demo/*
-  ! Content-Security-Policy-Report-Only
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://pulse.galin-yan.com; style-src 'self' 'unsafe-inline' https:; font-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https://pulse.galin-yan.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
+  ! Content-Security-Policy
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://pulse.galin-yan.com; style-src 'self' 'unsafe-inline' https:; font-src 'self' https:; img-src 'self' data: https:; connect-src 'self' https://pulse.galin-yan.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'
 
 # Caching. HTML keeps Pages' default (revalidate on every visit), so a deploy shows up immediately.
 # Content-hashed or versioned URLs never change content: cache them for a year.
